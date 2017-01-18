@@ -5,6 +5,7 @@
 #define NEG -1
 
 #include <iostream>
+#include <iomanip>      // std::setw
 #include <fstream>	// open file
 #include <istream>	// getline
 #include <sstream>
@@ -141,8 +142,8 @@ private:
 
 struct ColFea
 {
-	int idx;
 	int label;
+	int idx;
 	double f;
 };
 

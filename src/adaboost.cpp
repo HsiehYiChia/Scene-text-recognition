@@ -334,7 +334,37 @@ void AdaBoost::real_training(TrainingData &td)
 			weight[j] = new_probability;
 		}
 
-		cout << t << "\tZ= " << min_Z << "\tdim: " << dim << "    thresh: " << thresh << "    Cp: " << c_p << "    Cn: " << c_n << endl;
+		
+		double result_threshold = 2.0;
+		double FP = 0;
+		double FN = 0;
+		double TP = 0;
+		double TN = 0;
+		for (int j = 0; j < nums; j++)
+		{
+			double result = predict(td.data[j].fv);
+			if (result >= result_threshold)
+			{
+				if (td.data[j].label == POS)
+					TP++;
+				else
+					FP++;
+			}
+			else
+			{
+				if (td.data[j].label == POS)
+					FN++;
+				else
+					TN++;
+			}
+		}
+		double training_error = (FP+FN) / nums;
+		double precision = TP / (TP + FP);
+		double recall = TP / (TP + FN);
+		
+		cout << setw(1);
+		cout << t << "  Z= " << min_Z << "  Dim: " << dim << "  Thresh: " << thresh << "  Cp: " << c_p << "  Cn: " << c_n;
+		cout << "  Training error: " << training_error << "  Precision: " << precision << "  Recall: " << recall << endl;
 	}
 }
 

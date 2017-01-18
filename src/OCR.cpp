@@ -27,7 +27,7 @@ OCR::~OCR()
 
 
 
-double OCR::lbp_run(vector<double> fv, const double angle)
+double OCR::lbp_run(vector<double> fv, double angle)
 {
 	svm_node *node = new svm_node[fv.size() + 1];
 	double *pv = new double[svm_get_nr_class(model)];
@@ -311,6 +311,173 @@ void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 		}
 	}
 }
+
+
+
+void OCR::feedback_verify(Text &text)
+{
+	// 1. See how many unchangeable upper-case letter and lower-case letter
+	ERs big_letter;
+	ERs small_letter;
+	for (auto it : text.ers)
+	{
+		int idx = index_mapping(it->letter);
+		if (cat[idx] == category::big)
+			big_letter.push_back(it);
+		else if (cat[idx] == category::small)
+			small_letter.push_back(it);
+	}
+
+	// 2. Correct interchangeable letter
+	for (auto it : text.ers)
+	{
+		const double T = 0.20;
+		unsigned vote_big = 0;
+		unsigned vote_little = 0;
+		switch (it->letter)
+		{
+		case 'C': case 'J': case 'O': case 'P': case 'S': case 'U': case 'V': case 'W': case 'X': case 'Z':
+			for (auto it2 : big_letter)
+			{
+				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
+					vote_little++;
+				else
+					vote_big++;
+			}
+			for (auto it2 : small_letter)
+			{
+				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
+					vote_little++;
+				else
+					vote_big++;
+			}
+			it->letter = (vote_big > vote_little) ? it->letter : it->letter + 0x20;
+			break;
+
+		case 'c': case 'j': case 'o': case 'p': case 's': case 'u': case 'v': case 'w': case 'x': case 'z':
+			if (!big_letter.empty())
+			{
+				for (auto it2 : big_letter)
+				{
+					double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+					if (it->bound.y - it->bound.height*T < it2->bound.y - offset)
+						vote_big++;
+					else
+						vote_little++;
+				}
+			}
+			else
+			{
+				for (auto it2 : small_letter)
+				{
+					double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+					if (it2->bound.y - it2->bound.height*T > it->bound.y + offset)
+						vote_big++;
+					else
+						vote_little++;
+				}
+			}
+			it->letter = (vote_big > vote_little) ? it->letter - 0x20 : it->letter;
+			break;
+
+
+		case '1': case 'i': case 'l':
+			for (auto it2 : big_letter)
+			{
+				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
+					vote_little++;
+				else
+					vote_big++;
+			}
+			for (auto it2 : small_letter)
+			{
+				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
+					vote_little++;
+				else
+					vote_big++;
+			}
+			if (vote_little > vote_big)
+				it->letter = 'i';
+			else
+				it->letter = 'l';
+
+			break;
+
+		default:
+			break;
+		}
+	}
+
+
+
+	// 3. Count the amount of upper-case and amount of number character after first pass
+	unsigned num_count = 0;
+	unsigned big_count = 0;
+	for (auto it : text.ers)
+	{
+		if (it->letter >= '0' && it->letter <= '9')
+			num_count++;
+		else if (it->letter >= 'A' && it->letter <= 'Z')
+			big_count++;
+	}
+
+
+	// 4. Correct 'l' to 'I', 'O' to '0'
+	for (auto it : text.ers)
+	{
+		if (big_count >= text.ers.size() / 2)
+		{
+			if (it->letter == 'l')
+				it->letter = 'I';
+		}
+		if (num_count >= text.ers.size() / 2)
+		{
+			if (it->letter == 'O')
+				it->letter = '0';
+		}
+	}
+
+
+	for (auto it : text.ers)
+		text.word.append(string(1, it->letter));
+
+	//try_add_space(text);
+}
+
+
+void OCR::try_add_space(Text &text)
+{
+	const double dist_weight = 2.2;
+	double avg_x_dist = 0;
+	double count = 0;
+	for (int i = 0; i < text.ers.size() - 1; i++)
+	{
+		double dist = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
+		if (dist >= 0)
+		{
+			avg_x_dist += dist;
+			count++;
+		}
+	}
+
+
+	avg_x_dist /= count;
+
+	for (int i = text.ers.size() - 2; i >= 0; i--)
+	{
+		double dist = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
+		if (dist > avg_x_dist * dist_weight && dist > 0)
+		{
+			text.word.insert(i + 1, " ");
+		}
+	}
+}
+
+
 
 int OCR::chain_code_direction(Point p1, Point p2)
 {

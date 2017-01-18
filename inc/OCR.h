@@ -20,7 +20,7 @@
 using namespace std;
 using namespace cv;
 
-
+struct Text;
 
 class OCR
 {
@@ -28,17 +28,18 @@ public:
 	OCR() {};
 	OCR(const char *svm_file_name);
 	~OCR();
-	double lbp_run(vector<double> fv, const double angle = 0);
-	double chain_run(Mat &src, double angle);
+	double lbp_run(vector<double> fv, double angle = 0);	// use LBP spacial histogram as feature vector
+	double chain_run(Mat &src, double angle);					// use chain code as feature
+	void feedback_verify(Text &text);
 	void rotate_mat(Mat &src, Mat &dst, double angle, bool crop = false);
 	void ARAN(Mat &src, Mat &dst, const int L = 24, const double para = 0.5);
 	void extract_feature(Mat &src, svm_node *fv);
+	int index_mapping(char c);
 	
 
 private:
 	svm_model *model;
-	
-	int index_mapping(char c);
+	void try_add_space(Text &text);
 	int chain_code_direction(Point p1, Point p2);
 };
 
