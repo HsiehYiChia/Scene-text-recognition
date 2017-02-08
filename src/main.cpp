@@ -11,7 +11,7 @@
 //#define DO_OCR
 
 #define THRESHOLD_STEP 2
-#define MIN_AREA 50
+#define MIN_AREA 80
 #define MAX_AREA 90000
 #define STABILITY_T 1
 #define OVERLAP_COEF 0.7
@@ -25,18 +25,23 @@ using namespace cv;
 
 int main(int argc, char** argv)
 {
-	get_canny_data();
-	train_classifier();
+	//get_canny_data();
+	//train_classifier();
 	//get_ocr_data(argc, argv, 0);
+	//opencv_train();
+	train_cascade();
 	return 0;
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_AREA, MAX_AREA, STABILITY_T, OVERLAP_COEF);
-	er_filter->adb1 = new AdaBoost("er_classifier/lbp.classifier");
-	er_filter->adb2 = new AdaBoost("er_classifier/lbp.classifier");
+	er_filter->adb1 = new CascadeBoost("er_classifier/cascade1.classifier");
+	er_filter->adb2 = new CascadeBoost("er_classifier/cascade2.classifier");
+	er_filter->adb3 = Algorithm::load<ml::Boost>("er_classifier/opencv_classifier.xml");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model");
 	er_filter->load_tp_table("transition_probability/tp.txt");
 
 	double time_sum = 0;
+	int k = 0;
+	int l = 0;
 	for (int n = 1; n <= 233; n++)
 	{
 		Mat src;
@@ -61,7 +66,7 @@ int main(int argc, char** argv)
 		{
 			root[i] = er_filter->er_tree_extract(channel[i]);
 			er_filter->non_maximum_supression(root[i], pool[i], channel[i]);
-			er_filter->classify(pool[i], strong[i], weak[i], channel[i], 1.5, -1.5);
+			er_filter->classify(pool[i], strong[i], weak[i], channel[i]);
 		}
 
 		ERs all_er;
@@ -84,7 +89,7 @@ int main(int argc, char** argv)
 		Mat weak_img = src.clone();
 		Mat all_img = src.clone();
 		for (int i = 0; i < pool.size(); i++)
-		{
+		{				
 			for (auto it : weak[i])
 				rectangle(weak_img, it->bound, Scalar(0, 0, 255));
 

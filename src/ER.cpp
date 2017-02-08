@@ -4,7 +4,7 @@
 // ======================== ER ========================
 // ====================================================
 ER::ER(const int level_, const int pixel_, const int x_, const int y_) : level(level_), pixel(pixel_), area(1), done(false), stability(.0), 
-																		parent(nullptr), child(nullptr), next(nullptr)
+																		parent(nullptr), child(nullptr), next(nullptr), stkw(0)
 {
 	bound = Rect(x_, y_, 1, 1);
 #ifndef DO_OCR
@@ -386,7 +386,7 @@ save_step_2:
 	// 5. End If
 }
 
-void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input, double sThresh, double wThresh)
+void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 {
 	int k = 0;
 	const int N = 2;
@@ -394,16 +394,33 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input, double sTh
 	
 	for (auto it : pool)
 	{
-		vector<double> spacial_hist = make_LBP_hist(input(it->bound), 2, 24);
+		vector<double> fv = make_LBP_hist(input(it->bound), N, normalize_size);
 
-		it->score = adb1->predict(spacial_hist);
-		if (it->score > wThresh)
+		double score1 = adb1->predict(fv);
+		if (score1 > -DBL_MAX)
 		{
-			if (it->score > sThresh)
-				strong.push_back(it);
-			else
-				weak.push_back(it);
+			strong.push_back(it);
+			it->score = 100 + score1;
 		}
+		else
+		{
+			double score2 = adb2->predict(fv);
+			if (score2 > -DBL_MAX)
+			{
+				weak.push_back(it);
+				it->score = score2;
+			}
+		}
+
+
+
+		/*Mat fv(1, 1024, CV_32F);
+		for (int i = 0; i < 1024; i++)
+		{
+			fv.at<float>(i) = spacial_hist[i];
+		}
+		it->score = adb3->predict(fv, noArray(), ml::StatModel::RAW_OUTPUT);*/
+		
 			
 		/*char buf[20];
 		sprintf(buf, "res/tmp2/%d.jpg", k);
@@ -423,18 +440,14 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 		{
 			calc_color(it, channel[i], Ycrcb);
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
-#ifdef DO_OCR
 			it->ch = i;
-#endif
 		}
 
 		for (auto it : weak[i])
 		{
 			calc_color(it, channel[i], Ycrcb);
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
-#ifdef DO_OCR
 			it->ch = i;
-#endif
 		}
 	}
 
@@ -453,8 +466,8 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 				{
 					ER* w = weak[m][n];
 					if (abs(s->center.x - w->center.x) + abs(s->center.y - w->center.y) < max(s->bound.width, s->bound.height) << 2 &&
-						abs(s->bound.height - w->bound.height) < max(s->bound.height, w->bound.height) &&
-						abs(s->bound.width - w->bound.width) < max(s->bound.width, w->bound.width) &&
+						abs(s->bound.height - w->bound.height) < min(s->bound.height, w->bound.height) &&
+						abs(s->bound.width - w->bound.width) < (s->bound.width + w->bound.width)/2 &&
 						abs(s->color1 - w->color1) < 25 &&
 						abs(s->color2 - w->color2) < 25 &&
 						abs(s->color3 - w->color3) < 25 &&
@@ -508,8 +521,8 @@ void ERFilter::er_grouping(ERs &all_er, Mat src)
 
 	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b){ return a->center.x < b->center.x; });
 
-	for (auto it:all_er)
-		rectangle(src, it->bound, Scalar(0, 255, 0));
+	/*for (auto it:all_er)
+		rectangle(src, it->bound, Scalar(0, 255, 0));*/
 
 	// 1. Find the left and right sibling of each ER
 	for (int i = 0; i < all_er.size(); i++)

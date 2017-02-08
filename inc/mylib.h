@@ -16,11 +16,15 @@ using namespace cv;
 
 bool load_test_file(Mat &src, int n);
 void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels);
+void save_biggest_er(string inImg, string outfile);
 
 
-// for training
+// Training Function
 void get_canny_data();
 void get_ocr_data(int argc, char **argv, int type);
 void train_classifier();
+void train_cascade();
+void opencv_train();
+void save_pos_biggest_er();
 
 #endif

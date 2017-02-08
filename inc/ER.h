@@ -5,6 +5,7 @@
 #include <string.h>
 #include <math.h>
 #include <iostream>
+#include <iterator>
 #include <fstream>
 #include <vector>
 #include <chrono>
@@ -38,6 +39,7 @@ public:
 	double color1;
 	double color2;
 	double color3;
+	double stkw;
 	double score;
 
 	// for non maximal supression
@@ -48,12 +50,8 @@ public:
 	ER* parent;
 	ER* child;
 	ER* next;
-
-#ifndef DO_OCR
-	//! Siblings for adjacent grouping
 	ER *sibling_L;
 	ER *sibling_R;
-#endif
 
 	//! for OCR
 	int ch;
@@ -98,12 +96,13 @@ public:
 	//! modules
 	AdaBoost *adb1;
 	AdaBoost *adb2;
+	Ptr<ml::Boost> adb3;
 	OCR *ocr;
 	
 	//! functions
 	ER* er_tree_extract(Mat input);
 	void non_maximum_supression(ER *er, ERs &pool, Mat input);
-	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input, double sThresh, double wThresh);
+	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
 	void er_grouping(ERs &all_er, Mat src);
 	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, const double min_ocr_prob, Mat src);

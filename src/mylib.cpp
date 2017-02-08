@@ -53,16 +53,131 @@ void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
 }
 
 
-
-// for training
-void train_classifier()
+void save_biggest_er(string inImg, string outfile)
 {
-	TrainingData td;
-	td.read_data("er_classifier/training_data.txt");
-	AdaBoost adb(AdaBoost::REAL, AdaBoost::DECISION_STUMP, 100);
-	adb.train_classifier(td, "er_classifier/lbp.classifier");
+	ERFilter erFilter(1, 10, MAX_AREA, STABILITY_T, OVERLAP_COEF);
+	
+	Mat img = imread(inImg, IMREAD_UNCHANGED);
+	if (img.empty())
+		return;
+
+	Mat gray;
+	cvtColor(img, gray, COLOR_BGR2GRAY);
+
+	
+	ER *black_root = erFilter.er_tree_extract(gray);
+	ER *white_root = erFilter.er_tree_extract(255-gray);
+	ER *max_er = new ER();
+	black_root->area = 0;
+	white_root->area = 0;
+
+	vector<ER *> tree_stack;
+	ER *root = black_root;
+save_step_21:
+	for (; root != nullptr; root = root->child)
+	{
+		tree_stack.push_back(root);
+		if (root->area > max_er->area && root->area < img.total())
+		{
+			max_er = root;
+		}
+	}
+
+	if (root == nullptr && tree_stack.empty())
+	{
+		goto white;
+	}
+
+	root = tree_stack.back();
+	tree_stack.pop_back();
+	root = root->next;
+	goto save_step_21;
+
+
+white:
+	tree_stack.clear();
+	root = white_root;
+save_step_22:
+	for (; root != nullptr; root = root->child)
+	{
+		tree_stack.push_back(root);
+		if (root->area > max_er->area && root->area < img.total())
+		{
+			max_er = root;
+		}
+	}
+
+	if (root == nullptr && tree_stack.empty())
+	{
+		goto save;
+	}
+
+	root = tree_stack.back();
+	tree_stack.pop_back();
+	root = root->next;
+	goto save_step_22;
+
+save:
+	imwrite(outfile, img(max_er->bound));
 }
 
+
+
+//==================================================
+//=============== Training Function ================
+//==================================================
+void train_classifier()
+{
+	TrainingData *td1 = new TrainingData();
+	TrainingData *td2 = new TrainingData();
+	AdaBoost adb1(AdaBoost::REAL, AdaBoost::DECISION_STUMP, 30);
+	AdaBoost adb2(AdaBoost::REAL, AdaBoost::DECISION_STUMP, 60);
+
+
+	td1->read_data("er_classifier/training_data.txt");
+	adb1.train_classifier(*td1, "er_classifier/adb1.classifier");
+	
+	for (int i = 0; i < td1->data.size(); i++)
+	{
+		if (adb1.predict(td1->data[i].fv) < 2.0)
+		{
+			td2->data.push_back(td1->data[i]);
+		}
+	}
+	
+	delete td1;
+
+
+	td2->set_num(td2->data.size());
+	td2->set_dim(td2->data.front().fv.size());
+	adb2.train_classifier(*td2, "er_classifier/adb2.classifier");
+}
+
+
+void train_cascade()
+{
+	double Ftarget1 = 0.02;
+	double f1 = 0.80;
+	double d1 = 0.60;
+	double Ftarget2 = 0.10;
+	double f2 = 0.80;
+	double d2 = 0.90;
+	TrainingData *td1 = new TrainingData();
+	TrainingData *tmp = new TrainingData();
+	TrainingData *td2 = new TrainingData();
+	AdaBoost *adb1 = new CascadeBoost(AdaBoost::REAL, AdaBoost::DECISION_STUMP, Ftarget1, f1, d1);
+	AdaBoost *adb2 = new CascadeBoost(AdaBoost::REAL, AdaBoost::DECISION_STUMP, Ftarget2, f2, d2);
+
+	freopen("er_classifier/log.txt", "w", stdout);
+
+	cout << "Strong Text    Ftarget:" << Ftarget1 << " f=" << f1 << " d:" << d1 << endl;
+	td1->read_data("er_classifier/training_data.txt");
+	adb1->train_classifier(*td1, "er_classifier/cascade1.classifier");
+
+	cout << endl << "Weak Text    Ftarget:" << Ftarget2 << " f=" << f2 << " d:" << d2 << endl;
+	td2->read_data("er_classifier/training_data.txt");
+	adb2->train_classifier(*td2, "er_classifier/cascade2.classifier");
+}
 
 
 void get_canny_data()
@@ -75,97 +190,52 @@ void get_canny_data()
 	const int N = 2;
 	const int normalize_size = 24;
 
-	for (int pic = 1; pic <= 8489; pic++)
+	for (int i = 1; i <= 4; i++)
 	{
-		char filename[30];
-		sprintf(filename, "res/neg/neg (%d).jpg", pic);
+		for (int pic = 1; pic <= 10000; pic++)
+		{
+			char filename[30];
+			sprintf(filename, "res/neg%d/%d.jpg", i, pic);
 
-		Mat input = imread(filename, IMREAD_GRAYSCALE);
+			Mat input = imread(filename, IMREAD_GRAYSCALE);
+			if (input.empty())	continue;
 
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, 2, 24);
-
-
-		fout << -1;
-		for (int f = 0; f < spacial_hist.size(); f++)
-			fout << " " << spacial_hist[f];
-		fout << endl;
+			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
 
 
-		cout << pic << "neg finish" << endl;
+			fout << -1;
+			for (int f = 0; f < spacial_hist.size(); f++)
+				fout << " " << spacial_hist[f];
+			fout << endl;
+
+
+			cout << pic << "\tneg" << i << " finish " << endl;
+		}
 	}
+	
 
-	for (int pic = 1; pic <= 6789; pic++)
+
+	for (int i = 1; i <= 3; i++)
 	{
-		char filename[30];
-		sprintf(filename, "res/neg2/%d.jpg", pic);
+		for (int pic = 1; pic <= 4000; pic++)
+		{
+			char filename[30];
+			sprintf(filename, "res/pos%d/%d.jpg", i, pic);
 
-		Mat input = imread(filename, IMREAD_GRAYSCALE);
+			Mat input = imread(filename, IMREAD_GRAYSCALE);
+			if (input.empty())	continue;
 
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, 2, 24);
+			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
 
+			fout << 1;
+			for (int f = 0; f < spacial_hist.size(); f++)
+				fout << " " << spacial_hist[f];
+			fout << endl;
 
-		fout << -1;
-		for (int f = 0; f < spacial_hist.size(); f++)
-			fout << " " << spacial_hist[f];
-		fout << endl;
-
-
-		cout << pic << "neg2 finish" << endl;
+			cout << pic << "\tpos" << i <<" finish " << endl;
+		}
 	}
-
-	for (int pic = 1; pic <= 3439; pic++)
-	{
-		char filename[30];
-		sprintf(filename, "res/pos/pos (%d).jpg", pic);
-
-		Mat input = imread(filename, IMREAD_GRAYSCALE);
-
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-
-		fout << 1;
-		for (int f = 0; f < spacial_hist.size(); f++)
-			fout << " " << spacial_hist[f];
-		fout << endl;
-
-
-		cout << pic << "pos finish" << endl;
-	}
-
-	for (int pic = 1; pic <= 6185; pic++)
-	{
-		char filename[30];
-		sprintf(filename, "res/pos2/%d.jpg", pic);
-
-		Mat input = imread(filename, IMREAD_GRAYSCALE);
-
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-
-		fout << 1;
-		for (int f = 0; f < spacial_hist.size(); f++)
-			fout << " " << spacial_hist[f];
-		fout << endl;
-
-
-		cout << pic << "pos2 finish" << endl;
-	}
-
-	for (int pic = 1; pic <= 5430; pic++)
-	{
-		char filename[30];
-		sprintf(filename, "res/pos3/%d.jpg", pic);
-
-		Mat input = imread(filename, IMREAD_GRAYSCALE);
-
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-
-		fout << 1;
-		for (int f = 0; f < spacial_hist.size(); f++)
-			fout << " " << spacial_hist[f];
-		fout << endl;
-
-
-		cout << pic << "pos3 finish" << endl;
-	}
+	
 }
 
 
@@ -241,4 +311,37 @@ void get_ocr_data(int argc, char **argv, int type)
 	}
 
 	return;
+}
+
+
+void opencv_train()
+{
+	using namespace ml;
+	Ptr<Boost> boost = Boost::create();
+	Ptr<TrainData> trainData = TrainData::loadFromCSV("er_classifier/training_data.txt", 0, 0, 1, String(), ' ');
+	boost->setBoostType(Boost::REAL);
+	boost->setWeakCount(100);
+	boost->setMaxDepth(1);
+	boost->setWeightTrimRate(0);
+	cout << "training..." << endl;
+	boost->train(trainData);
+	boost->save("er_classifier/opencv_classifier.xml");
+}
+
+
+void save_pos_biggest_er()
+{
+	for (int i = 2; i <= 3; i++)
+	{
+		for (int pic = 1; pic <= 3500; pic++)
+		{
+			char filename[30];
+			sprintf(filename, "res/pos%d/%d.jpg", i, pic);
+
+			char outfile[30];
+			sprintf(outfile, "res/tmp%d/%d.jpg", i, pic);
+			
+			save_biggest_er(filename, outfile);
+		}
+	}
 }

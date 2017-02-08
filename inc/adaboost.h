@@ -21,6 +21,12 @@
 
 using namespace std;
 
+struct ColFea
+{
+	int label;
+	int idx;
+	double f;
+};
 
 struct FeatureVector
 {
@@ -39,6 +45,10 @@ public:
 	// getters
 	const int get_num();
 	const int get_dim();
+
+	// setters
+	void set_num(int n);
+	void set_dim(int d);
 
 	// functions
 	bool read_data(string filename);
@@ -102,6 +112,7 @@ private:
 };
 
 
+
 class AdaBoost	
 {
 public:
@@ -112,21 +123,21 @@ public:
 
 	bool set_boost_type(int _type);
 	bool set_base_type(int _type);
-	void set_num_iter(int _type);
+	virtual void set_num_iter(int _iter);
 	int get_boost_type();
 	int get_base_type();
-	int get_num_iter();
-	double predict(vector<double> fv);
-	void train_classifier(TrainingData &training_data, string outfile);
-	bool load_classifier(string filename);
-	bool write_classifier(string filename);
-	void print_classifier();
+	virtual int get_num_iter();
+	virtual double predict(vector<double> fv);
+	virtual void train_classifier(TrainingData &training_data, string outfile);
+	virtual bool load_classifier(string filename);
+	virtual bool write_classifier(string filename);
+	virtual void print_classifier();
 	enum {
 		DISCRETE,
-		REAL, 
+		REAL,
+		GENTLE,
 		DECISION_STUMP
 	};
-	
 
 private:
 	int boost_type;
@@ -140,11 +151,37 @@ private:
 };
 
 
-struct ColFea
+class CascadeBoost : public AdaBoost
 {
-	int label;
-	int idx;
+public:
+	CascadeBoost();
+	CascadeBoost(string filename);
+	CascadeBoost(int boost, int base, double _Ftarget, double _f, double _d);
+	void set_num_iter(int _iter);
+	int get_num_iter();
+	double predict(vector<double> fv);
+	void train_classifier(TrainingData &td, string outfile);
+	bool load_classifier(string filename);
+	bool write_classifier(string filename);
+	void print_classifier();
+
+
+private:
+	int boost_type;
+	int base_type;
+	int cascade_stages;
+	double Ftarget;
 	double f;
+	double d;
+	vector<BaseClassifier*> classifier;
+	vector<int> num_of_iter;
+	vector<int> thresh;
+	vector<double> classifier_weight;
+	
+	void discrete_training(TrainingData &td, vector<set<double>> &thresh_set, vector<vector<ColFea>> &sorted_data, vector<double> &weight);
+	void real_training(TrainingData &td, vector<set<double>> &thresh_set, vector<vector<ColFea>> &sorted_data, vector<double> &weight);
+	void gentle_training(TrainingData &td, vector<set<double>> &thresh_set, vector<vector<ColFea>> &sorted_data, vector<double> &weight);
 };
+
 
 #endif
