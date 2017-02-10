@@ -40,7 +40,6 @@ public:
 	double color2;
 	double color3;
 	double stkw;
-	double score;
 
 	// for non maximal supression
 	bool done;
@@ -104,10 +103,11 @@ public:
 	void non_maximum_supression(ER *er, ERs &pool, Mat input);
 	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
-	void er_grouping(ERs &all_er, Mat src);
-	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, const double min_ocr_prob, Mat src);
+	void er_grouping(ERs &all_er, vector<Text> &text);
+	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob, Mat src);
 	vector<double> make_LBP_hist(Mat input, const int N = 2, const int normalize_size = 24);
 	bool load_tp_table(const char* filename);
+	Mat calc_LBP(Mat input, const int size = 24);
 
 private:
 	//! Parameters
@@ -130,10 +130,9 @@ private:
 	void build_graph(Text &text, Graph &graph);
 	void solve_graph(Text &text, Graph &graph);
 	void inner_suppression(ERs &pool);
-	void similar_suppression(ERs &pool);
+	void overlap_suppression(ERs &pool);
 
 	// feature extract
-	Mat calc_LBP(Mat input, const int size = 24);
 	Vec3d color_hist(Mat input);
 
 	double tp[65][65];

@@ -552,6 +552,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 		(it.label == POS) ? p_num++ : n_num++;
 	}
 
+	int offset = 0;
 	while (Fi > Ftarget)
 	{
 		const int nums = td.get_num();
@@ -599,7 +600,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 		thresh.push_back(Ti);
 
 		std::cout << "Layer " << i << "    pos=" << pos << " neg=" << neg << endl;
-		while (Fi > f * F_prev)
+		while (Fi > f * F_prev && Fi > Ftarget)
 		{
 			// Use P and N to train a classifier with ni features using AdaBoost
 			ni++;
@@ -614,7 +615,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 			// determine Fi and Di
 			// Decrease threshold for the ith classifier until the current
 			// cascaded classifier has a detection rate of at least
-			Ti = 2.0;
+			Ti = 0.5;
 			num_of_iter.back() = ni;
 			double Pi;
 			do
@@ -623,11 +624,13 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 				thresh.back() = Ti;
 				int tp = 0;
 				int fp = 0;
-				for (auto it : td.data)
+
+#pragma omp parallel for
+				for (int i = 0; i < td.data.size(); i++)
 				{
-					if (predict(it.fv) > Ti)
+					if (predict(td.data[i].fv) > Ti)
 					{
-						(it.label == POS) ? tp++ : fp++;
+						(td.data[i].label == POS) ? tp++ : fp++;
 					}
 				}
 				Di = (double)tp / p_num;
@@ -635,9 +638,9 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 				Pi = (double)tp / (tp + fp);
 			} while (Di < d*D_prev);
 
-			std::cout << ni << " Fi=" << Fi << " Di=" << Di << " Ti=" << Ti << " Pi=" << Pi << endl;
+			std::cout << offset + ni << " Fi=" << Fi << " Di=" << Di << " Ti=" << Ti << " Pi=" << Pi << endl;
 		}
-		
+		offset += ni;
 		
 
 
@@ -733,7 +736,6 @@ void CascadeBoost::discrete_training(TrainingData &td, vector<set<double>> &thre
 	// get the best weak classifier at this iteration
 	classifier_weight.push_back( log((1 - lowest_err) / lowest_err) );
 	classifier.push_back(new DecisionStump(dim, dir, thresh));
-	//std::cout << lowest_err << " " << classifier_weight.back() << endl;
 
 
 	// update weight of exmaples
@@ -761,14 +763,12 @@ void CascadeBoost::real_training(TrainingData &td, vector<set<double>> &thresh_s
 	const int dims = td.get_dim();
 	const int nums = td.get_num();
 	
+	omp_lock_t update_lock;
+	omp_init_lock(&update_lock);
+
 
 	double total_pos_weight = .0;
 	double total_neg_weight = .0;
-	double Pr_p = .0;
-	double Pr_n = .0;
-	double Pw_p = .0;
-	double Pw_n = .0;
-	double current_Z = .0;
 	double min_Z = DBL_MAX;
 	double c_p;
 	double c_n;
@@ -788,8 +788,14 @@ void CascadeBoost::real_training(TrainingData &td, vector<set<double>> &thresh_s
 	}
 
 	// search all the weak classifiers
+#pragma omp parallel for
 	for (int i = 0; i < dims; i++)
 	{
+		double Pr_p = .0;
+		double Pr_n = .0;
+		double Pw_p = .0;
+		double Pw_n = .0;
+		double current_Z = .0;
 		for (set<double>::iterator it = thresh_set[i].begin(); it != thresh_set[i].end(); it++)
 		{
 			Pr_p = .0;
@@ -816,6 +822,7 @@ void CascadeBoost::real_training(TrainingData &td, vector<set<double>> &thresh_s
 			}
 
 			current_Z = 2 * (sqrt(Pr_p*Pw_n) + sqrt(Pr_n*Pw_p));
+			omp_set_lock(&update_lock);
 			if (current_Z < min_Z)
 			{
 				min_Z = current_Z;
@@ -825,6 +832,7 @@ void CascadeBoost::real_training(TrainingData &td, vector<set<double>> &thresh_s
 				c_p = 0.5 * log((Pr_p + epsilon) / (Pw_n + epsilon));
 				c_n = 0.5 * log((Pw_p + epsilon) / (Pr_n + epsilon));
 			}
+			omp_unset_lock(&update_lock);
 		}
 	}
 

@@ -6,13 +6,12 @@
 #define STABILITY_T 2
 #define OVERLAP_COEF 0.7
 
+#define MAX_WIDTH 800
+#define MAX_HEIGHT 800
 
 
 bool load_test_file(Mat &src, int n)
 {
-	const int MAX_WIDTH = 800;
-	const int MAX_HEIGHT = 800;
-
 	char filename[50];
 	sprintf(filename, "res/ICDAR2015_test/img_%d.jpg", n);
 	src = imread(filename, CV_LOAD_IMAGE_UNCHANGED);
@@ -52,75 +51,89 @@ void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
 	channels.push_back(255 - splited[2]);
 }
 
-
-void save_biggest_er(string inImg, string outfile)
+void calc_detection_rate(int n, vector<Text>)
 {
-	ERFilter erFilter(1, 10, MAX_AREA, STABILITY_T, OVERLAP_COEF);
-	
-	Mat img = imread(inImg, IMREAD_UNCHANGED);
-	if (img.empty())
+	char filename[50];
+	sprintf(filename, "res/ICDAR2015_test_GT/gt_img_%d.txt", n);
+	fstream fin(filename, fstream::in);
+	if (!fin.is_open())
+	{
+		std::cout << "Error: Ground Truth file " << n << " is not opened!!" << endl;
 		return;
+	}
 
-	Mat gray;
-	cvtColor(img, gray, COLOR_BGR2GRAY);
+	char picname[50];
+	sprintf(picname, "res/ICDAR2015_test/img_%d.jpg", n);
+	Mat src = imread(picname, CV_LOAD_IMAGE_UNCHANGED);
 
-	
-	ER *black_root = erFilter.er_tree_extract(gray);
-	ER *white_root = erFilter.er_tree_extract(255-gray);
-	ER *max_er = new ER();
-	black_root->area = 0;
-	white_root->area = 0;
 
-	vector<ER *> tree_stack;
-	ER *root = black_root;
-save_step_21:
-	for (; root != nullptr; root = root->child)
+	vector<string> data;
+	while (!fin.eof())
 	{
-		tree_stack.push_back(root);
-		if (root->area > max_er->area && root->area < img.total())
+		string buf;
+		fin >> buf;
+		data.push_back(buf);
+	}
+
+	// the last data would be eof, erase it
+	data.pop_back();
+	for (int i = 0; i < data.size(); i++)
+	{
+		data[i].pop_back();
+		if (i % 5 == 4)
+			data[i].erase(data[i].begin());
+	}
+
+	double resize_factor = 1.0;
+	if (src.cols > MAX_WIDTH || src.rows > MAX_HEIGHT)
+	{
+		resize_factor = (src.rows > MAX_HEIGHT) ? (double)MAX_HEIGHT / src.rows : (double)MAX_WIDTH / src.cols;
+	}
+
+	// convert string numbers to bounding box, format as shown below
+	// 0 0 100 100 HAHA
+	// first 2 numbers represent the coordinate of top left point
+	// last 2 numbers represent the coordinate of bottom right point
+	vector<Rect> bbox;
+	for (int i = 0; i < data.size(); i += 5)
+	{
+		int x1 = stoi(data[i]);
+		int y1 = stoi(data[i + 1]);
+		int x2 = stoi(data[i + 2]);
+		int y2 = stoi(data[i + 3]);
+
+		x1 *= resize_factor;
+		y1 *= resize_factor;
+		x2 *= resize_factor;
+		y2 *= resize_factor;
+
+		bbox.push_back(Rect(Point(x1, y1), Point(x2, y2)));
+	}
+
+	// merge the bounding box that could in the same group
+	for (int i = 0; i < bbox.size(); i++)
+	{
+		for (int j = i+1; j < bbox.size(); j++)
 		{
-			max_er = root;
+			if (abs(bbox[i].y - bbox[j].y) < bbox[i].height &&
+				abs(bbox[i].y - bbox[j].y) < 0.2 * src.cols * resize_factor &&
+				(double)min(bbox[i].height, bbox[j].height) / (double)max(bbox[i].height, bbox[j].height) > 0.7)
+			{
+				int x1 = min(bbox[i].x, bbox[j].x);
+				int y1 = min(bbox[i].y, bbox[j].y);
+				int x2 = max(bbox[i].br().x, bbox[j].br().x);
+				int y2 = max(bbox[i].br().y, bbox[j].br().y);
+				bbox[i] = Rect(Point(x1, y1), Point(x2, y2));
+				bbox.erase(bbox.begin() + j);
+				j--;
+			}
 		}
 	}
 
-	if (root == nullptr && tree_stack.empty())
-	{
-		goto white;
-	}
-
-	root = tree_stack.back();
-	tree_stack.pop_back();
-	root = root->next;
-	goto save_step_21;
 
 
-white:
-	tree_stack.clear();
-	root = white_root;
-save_step_22:
-	for (; root != nullptr; root = root->child)
-	{
-		tree_stack.push_back(root);
-		if (root->area > max_er->area && root->area < img.total())
-		{
-			max_er = root;
-		}
-	}
-
-	if (root == nullptr && tree_stack.empty())
-	{
-		goto save;
-	}
-
-	root = tree_stack.back();
-	tree_stack.pop_back();
-	root = root->next;
-	goto save_step_22;
-
-save:
-	imwrite(outfile, img(max_er->bound));
+	fin.close();
 }
-
 
 
 //==================================================
@@ -158,9 +171,9 @@ void train_cascade()
 {
 	double Ftarget1 = 0.02;
 	double f1 = 0.80;
-	double d1 = 0.60;
-	double Ftarget2 = 0.10;
-	double f2 = 0.80;
+	double d1 = 0.80;
+	double Ftarget2 = 0.30;
+	double f2 = 0.90;
 	double d2 = 0.90;
 	TrainingData *td1 = new TrainingData();
 	TrainingData *tmp = new TrainingData();
@@ -201,8 +214,12 @@ void get_canny_data()
 			if (input.empty())	continue;
 
 			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
+			fout << -1;
+			for (int f = 0; f < spacial_hist.size(); f++)
+				fout << " " << spacial_hist[f];
+			fout << endl;
 
-
+			spacial_hist = erFilter.make_LBP_hist(255-input, N, normalize_size);
 			fout << -1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 				fout << " " << spacial_hist[f];
@@ -215,7 +232,7 @@ void get_canny_data()
 	
 
 
-	for (int i = 1; i <= 3; i++)
+	for (int i = 1; i <= 4; i++)
 	{
 		for (int pic = 1; pic <= 4000; pic++)
 		{
@@ -226,7 +243,12 @@ void get_canny_data()
 			if (input.empty())	continue;
 
 			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
+			fout << 1;
+			for (int f = 0; f < spacial_hist.size(); f++)
+				fout << " " << spacial_hist[f];
+			fout << endl;
 
+			spacial_hist = erFilter.make_LBP_hist(255 - input, N, normalize_size);
 			fout << 1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 				fout << " " << spacial_hist[f];
@@ -326,22 +348,4 @@ void opencv_train()
 	cout << "training..." << endl;
 	boost->train(trainData);
 	boost->save("er_classifier/opencv_classifier.xml");
-}
-
-
-void save_pos_biggest_er()
-{
-	for (int i = 2; i <= 3; i++)
-	{
-		for (int pic = 1; pic <= 3500; pic++)
-		{
-			char filename[30];
-			sprintf(filename, "res/pos%d/%d.jpg", i, pic);
-
-			char outfile[30];
-			sprintf(outfile, "res/tmp%d/%d.jpg", i, pic);
-			
-			save_biggest_er(filename, outfile);
-		}
-	}
 }

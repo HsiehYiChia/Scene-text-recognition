@@ -225,9 +225,7 @@ step_3:
 		//!<	returned pixel is at the same grey - level as the previous, go to 4	
 		if (priority == highest_level)
 		{
-			// In er_save, local maxima ERs in first stage will be save to pool
 			//er_save(er_stack.back());
-			
 			
 			delete[] pixel_accessible;
 			delete[] pixel_accumulated;
@@ -391,35 +389,30 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 	int k = 0;
 	const int N = 2;
 	const int normalize_size = 24;
-	
-	for (auto it : pool)
-	{
-		vector<double> fv = make_LBP_hist(input(it->bound), N, normalize_size);
 
-		double score1 = adb1->predict(fv);
-		if (score1 > -DBL_MAX)
+//#pragma omp parallel for
+	for (int i = 0; i < pool.size(); i++)
+	{
+		vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
+
+		if (adb1->predict(fv) > -DBL_MAX)
 		{
-			strong.push_back(it);
-			it->score = 100 + score1;
+			strong.push_back(pool[i]);
 		}
 		else
 		{
-			double score2 = adb2->predict(fv);
-			if (score2 > -DBL_MAX)
+			if (adb2->predict(fv) > -DBL_MAX)
 			{
-				weak.push_back(it);
-				it->score = score2;
+				weak.push_back(pool[i]);
 			}
 		}
-
-
 
 		/*Mat fv(1, 1024, CV_32F);
 		for (int i = 0; i < 1024; i++)
 		{
 			fv.at<float>(i) = spacial_hist[i];
 		}
-		it->score = adb3->predict(fv, noArray(), ml::StatModel::RAW_OUTPUT);*/
+		adb3->predict(fv, noArray(), ml::StatModel::RAW_OUTPUT);*/
 		
 			
 		/*char buf[20];
@@ -451,78 +444,100 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 		}
 	}
 
-	vector<vector<bool>> tracked(weak.size());
-	for (int i = 0; i < tracked.size(); i++)
-		tracked[i].resize(weak[i].size());
-
-	for (int i = 0; i < strong.size(); i++)
-	{
-		for (int j = 0; j < strong[i].size(); j++)
-		{
-			ER* s = strong[i][j];
-			for (int m = 0; m < weak.size(); m++)
-			{
-				for (int n = 0; n < weak[m].size(); n++)
-				{
-					ER* w = weak[m][n];
-					if (abs(s->center.x - w->center.x) + abs(s->center.y - w->center.y) < max(s->bound.width, s->bound.height) << 2 &&
-						abs(s->bound.height - w->bound.height) < min(s->bound.height, w->bound.height) &&
-						abs(s->bound.width - w->bound.width) < (s->bound.width + w->bound.width)/2 &&
-						abs(s->color1 - w->color1) < 25 &&
-						abs(s->color2 - w->color2) < 25 &&
-						abs(s->color3 - w->color3) < 25 &&
-						abs(s->area - w->area) < min(s->area, w->area) << 2)
-					{
-						tracked[m][n] = true;
-					}
-				}
-			}
-		}
-	}
-
-
 	for (int i = 0; i < strong.size(); i++)
 	{
 		all_er.insert(all_er.end(), strong[i].begin(), strong[i].end());
 	}
 
-	for (int i = 0; i < weak.size(); i++)
+	vector<vector<bool>> tracked(weak.size());
+	for (int i = 0; i < tracked.size(); i++)
 	{
-		for (int j = 0; j < weak[i].size(); j++)
-			if (tracked[i][j])
-				all_er.push_back(weak[i][j]);
+		tracked[i].resize(weak[i].size());
 	}
 
 
-
-	/*for (int i = 0; i < strong.size(); i++)
+	for (int i = 0; i < all_er.size(); i++)
 	{
-		for (int j = 0; j < strong[i].size(); j++)
-			rectangle(Ycrcb, strong[i][j]->bound, Scalar(255, 255, 255), 2);
-	}
-
-	for (int i = 0; i < weak.size(); i++)
-	{
-		for (int j = 0; j < weak[i].size(); j++)
+		ER *s = all_er[i];
+		for (int m = 0; m < weak.size(); m++)
 		{
-			if (tracked[i][j])
-				rectangle(Ycrcb, weak[i][j]->bound, Scalar(0, 0, 255));
+			for (int n = 0; n < weak[m].size(); n++)
+			{
+				if (tracked[m][n] == true) continue;
+
+				ER* w = weak[m][n];
+				if (abs(s->center.x - w->center.x) + abs(s->center.y - w->center.y) < max(s->bound.width, s->bound.height) << 1 &&
+					abs(s->bound.height - w->bound.height) < min(s->bound.height, w->bound.height) &&
+					abs(s->bound.width - w->bound.width) < (s->bound.width + w->bound.width) * 0.5 &&
+					abs(s->color1 - w->color1) < 25 &&
+					abs(s->color2 - w->color2) < 25 &&
+					abs(s->color3 - w->color3) < 25 &&
+					abs(s->area - w->area) < min(s->area, w->area) * 4)
+				{
+					tracked[m][n] = true;
+					all_er.push_back(w);
+				}
+			}
 		}
 	}
-	imshow("tracked", Ycrcb);*/
 }
 
 
-void ERFilter::er_grouping(ERs &all_er, Mat src)
+void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 {
+	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
 
-	similar_suppression(all_er);
+	overlap_suppression(all_er);
 	inner_suppression(all_er);
 
-	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b){ return a->center.x < b->center.x; });
+	//vector<int> group_index(all_er.size(), -1);
+	//int index = 0;
 
-	/*for (auto it:all_er)
-		rectangle(src, it->bound, Scalar(0, 255, 0));*/
+	//for (int i = 0; i < all_er.size(); i++)
+	//{
+	//	ER *a = all_er[i];
+	//	for (int j = i+1; j < all_er.size(); j++)
+	//	{
+	//		ER *b = all_er[j];
+	//		if (abs(a->bound.x - b->bound.x) < (a->bound.width + b->bound.width)*1.5 &&				// 0.5*3
+	//			abs(a->bound.y - b->bound.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
+	//			abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
+	//			abs(a->bound.width - b->bound.width) < (a->bound.width + b->bound.width)*0.5 &&
+	//			abs(a->color1 - b->color1) < 25 &&
+	//			abs(a->color2 - b->color2) < 25 &&
+	//			abs(a->color3 - b->color3) < 25 &&
+	//			abs(a->area - b->area) < min(a->area, b->area)*3)
+	//		{
+	//			if (group_index[i] == -1)
+	//			{
+	//				group_index[i] = index;
+	//				group_index[j] = index;
+	//				text.push_back(Text());
+	//				text[index].ers.push_back(a);
+	//				text[index].ers.push_back(b);
+	//				index++;
+	//			}
+
+	//			else
+	//			{
+	//				group_index[j] = group_index[i];
+	//				text[group_index[j]].ers.push_back(b);
+	//			}
+	//		}
+	//	}
+	//}
+
+	//for (auto it : text)
+	//{
+	//	it.box = it.ers.front()->bound;
+	//	for (int j = 0; j < it.ers.size(); j++)
+	//	{
+	//		it.box |= it.ers[j]->bound;
+	//	}
+	//}
+	
+
+	
 
 	// 1. Find the left and right sibling of each ER
 	for (int i = 0; i < all_er.size(); i++)
@@ -621,7 +636,6 @@ void ERFilter::er_grouping(ERs &all_er, Mat src)
 
 
 	// 5. find out the bounding box and fitting line of each sibling group
-	vector<Text> text;
 	for (int i = 0; i < sibling_group.size(); i++)
 	{
 		if (!sibling_group[i].empty())
@@ -652,15 +666,13 @@ void ERFilter::er_grouping(ERs &all_er, Mat src)
 				t.box |= t.ers[j]->bound;
 			}
 
-			rectangle(src, t.box, Scalar(0, 255, 255));
 			text.push_back(t);
 		}
 	}
-	imshow("group result", src);
 }
 
 
-void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, const double min_ocr_prob, Mat src)
+void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob, Mat src)
 {
 	const unsigned min_er = 10;
 	const unsigned min_pass_ocr = 3;
@@ -674,7 +686,6 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, const double m
 		return;
 
 	vector<bool> done_mask(all_er.size(), false);
-	vector<Text> text;
 	const int search_space = all_er.size() * 0.3;
 	vector<vector<int>> all_comb = comb(search_space, 2);
 
@@ -757,17 +768,13 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, const double m
 
 		ocr->feedback_verify(text[i]);
 
-
-
-
-
 		Rect box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			rectangle(src, text[i].ers[j]->bound, Scalar(0, 255, 0));
 			box |= text[i].ers[j]->bound;
 		}
-		rectangle(src, box, Scalar(0, 255, 255));
+		
 	}
 	imshow("group result", src);
 }
@@ -805,9 +812,8 @@ vector<double> ERFilter::make_LBP_hist(Mat input, const int N, const int normali
 
 Mat ERFilter::calc_LBP(Mat input, const int size)
 {
-	//ocr->ARAN(input, input, size);
-	resize(input, input, Size(size, size));
-
+	ocr->ARAN(input, input, size);
+	//resize(input, input, Size(size, size));
 
 	Mat LBP = Mat::zeros(size, size, CV_8U);
 	for (int i = 1; i < size-1; i++)
@@ -858,16 +864,11 @@ inline bool ERFilter::is_neighboring(ER *a, ER *b)
 		y_d < T3 * min(a->bound.height, b->bound.height) &&
 		(1 / T4 < area_ratio) && (area_ratio < T4) &&
 		color1 < T5 && color2 < T5 && color3 < T5)
-	{ 
 		return true;
-	}
 		
 
 	else
-	{
 		return false;
-	}
-		
 }
 
 inline bool ERFilter::is_overlapping(ER *a, ER *b)
@@ -918,36 +919,44 @@ void ERFilter::inner_suppression(ERs &pool)
 }
 
 
-void ERFilter::similar_suppression(ERs &pool)
+void ERFilter::overlap_suppression(ERs &pool)
 {
-	vector<bool> to_delete(pool.size(), false);
-	const double T2 = 0.2;
-	const double T3 = 0.8;
+	vector<bool> merged(pool.size(), false);
 
 	for (int i = 0; i < pool.size(); i++)
 	{
 		for (int j = i + 1; j < pool.size(); j++)
 		{
-			if (norm(pool[i]->center - pool[j]->center) < T2 * max(pool[i]->bound.width, pool[i]->bound.height))
+			if (merged[j])	continue;
+
+			Rect overlap = pool[i]->bound & pool[j]->bound;
+			Rect union_box = pool[i]->bound | pool[j]->bound;
+			
+			if ((double)overlap.area() / union_box.area() > 0.5)
 			{
-				Rect overlap = pool[i]->bound & pool[j]->bound;
-				if (overlap.area() > T3 * max(pool[i]->bound.area(), pool[j]->bound.area()))
-				{
-					if (pool[i]->score >pool[j]->score)
-						to_delete[j] = true;
-					else
-						to_delete[i] = true;
-				}
+				merged[j] = true;
+
+				int x = (pool[i]->bound.x + pool[j]->bound.x)*0.5;
+				int y = (pool[i]->bound.y + pool[j]->bound.y)*0.5;
+				int width = (pool[i]->bound.width + pool[j]->bound.width)*0.5;
+				int height = (pool[i]->bound.height + pool[j]->bound.height)*0.5;
+
+				pool[i]->bound.x = x;
+				pool[i]->bound.y = y;
+				pool[i]->bound.height = height;
+				pool[i]->bound.width = width;
+				pool[i]->center.x = x + pool[i]->bound.width / 2;
+				pool[i]->center.y = y + pool[i]->bound.height / 2;
 			}
 		}
 	}
 
-
-
-	for (int i = pool.size() - 1; i >= 0; i--)
+	for (int i = pool.size()-1; i >= 0; i--)
 	{
-		if (to_delete[i])
+		if (merged[i])
+		{
 			pool.erase(pool.begin() + i);
+		}
 	}
 }
 
