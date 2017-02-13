@@ -17,7 +17,9 @@ using namespace cv;
 // Testing Functions
 bool load_test_file(Mat &src, int n);
 void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels);
-void calc_detection_rate(int n, vector<Text>);
+vector<Vec4i> load_gt(int n);
+Vec6d calc_detection_rate(int n, vector<Text> &text);
+void save_deteval_xml(vector<vector<Text>> &text);
 
 
 // Training Functions

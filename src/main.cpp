@@ -11,7 +11,7 @@
 //#define DO_OCR
 
 #define THRESHOLD_STEP 2
-#define MIN_AREA 50
+#define MIN_AREA 20
 #define MAX_AREA 90000
 #define STABILITY_T 1
 #define OVERLAP_COEF 0.7
@@ -67,9 +67,17 @@ int main(int argc, char** argv)
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model");
 	er_filter->load_tp_table("transition_probability/tp.txt");
 
-	double time_sum = 0;
+
+
 	int img_count = 0;
-	for (int n = 1; n <= 400; n++)
+	double time_sum = 0;
+	double tp = 0;
+	double GT = 0;
+	double detect = 0;
+	double recall = 0;
+	double precision = 0;
+	vector<vector<Text>> det_text;
+	for (int n = 1; n <= 328; n++)
 	{
 		Mat src;
 		if (!load_test_file(src, n))
@@ -112,10 +120,21 @@ int main(int argc, char** argv)
 #endif
 
 		end = chrono::high_resolution_clock::now();
-		std::cout << "Running time: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n\n";
-
+		Vec6d rate = calc_detection_rate(n, text);
+		std::cout << "Running time: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n";
+		std::cout << "Recall: " << rate[3] << "    Precision: " << rate[4] << "    Hmean: " << rate[5] << endl << endl;
+		
+		
+		
+		// calculate average time, recall, precision
 		time_sum += chrono::duration<double>(end - start).count();
-		calc_detection_rate(n, text);
+		tp += rate[0];
+		GT += rate[1];
+		detect += rate[2];
+		recall += rate[3];
+		precision += rate[4];
+		
+		
 
 		Mat strong_img = src.clone();
 		Mat weak_img = src.clone();
@@ -143,15 +162,28 @@ int main(int argc, char** argv)
 			rectangle(group_result, it.box, Scalar(0, 255, 255));
 		}
 
+		det_text.push_back(text);
 
 		//imshow("src", src);
-		//imshow("weak", weak_img);
-		//imshow("strong", strong_img);
+		imshow("weak", weak_img);
+		imshow("strong", strong_img);
 		imshow("all", all_img);
 		imshow("tracked", tracked);
 		imshow("group result", group_result);
 		waitKey(0);
 	}
 
-	cout << "Average running time: " << 1000 * time_sum / img_count << "ms" << endl;
+	//recall = tp / GT;
+	//precision = tp / detect;
+	recall /= img_count;
+	precision /= img_count;
+	
+	std::cout << "Average running time: " << 1000 * time_sum / img_count << "ms" << endl;
+	std::cout << "Recall: " << recall << endl;
+	std::cout << "Precision: " << precision << endl;
+	std::cout << "Harmonic mean: " << (recall * precision * 2) / (recall + precision) << endl;
+
+	save_deteval_xml(det_text);
+
+	return 0;
 }

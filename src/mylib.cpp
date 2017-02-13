@@ -6,7 +6,7 @@
 #define STABILITY_T 2
 #define OVERLAP_COEF 0.7
 
-#define MAX_WIDTH 800
+#define MAX_WIDTH 1500
 #define MAX_HEIGHT 800
 
 
@@ -51,7 +51,8 @@ void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
 	channels.push_back(255 - splited[2]);
 }
 
-void calc_detection_rate(int n, vector<Text>)
+
+vector<Vec4i> load_gt(int n)
 {
 	char filename[50];
 	sprintf(filename, "res/ICDAR2015_test_GT/gt_img_%d.txt", n);
@@ -59,7 +60,7 @@ void calc_detection_rate(int n, vector<Text>)
 	if (!fin.is_open())
 	{
 		std::cout << "Error: Ground Truth file " << n << " is not opened!!" << endl;
-		return;
+		return vector<Vec4i>();
 	}
 
 	char picname[50];
@@ -111,13 +112,13 @@ void calc_detection_rate(int n, vector<Text>)
 	}
 
 	// merge the bounding box that could in the same group
-	for (int i = 0; i < bbox.size(); i++)
+	/*for (int i = 0; i < bbox.size(); i++)
 	{
 		for (int j = i+1; j < bbox.size(); j++)
 		{
-			if (abs(bbox[i].y - bbox[j].y) < bbox[i].height &&
-				abs(bbox[i].y - bbox[j].y) < 0.2 * src.cols * resize_factor &&
-				(double)min(bbox[i].height, bbox[j].height) / (double)max(bbox[i].height, bbox[j].height) > 0.7)
+		if (abs(bbox[i].y - bbox[j].y) < bbox[i].height &&
+			abs(bbox[i].y - bbox[j].y) < 0.2 * src.cols * resize_factor &&
+			(double)min(bbox[i].height, bbox[j].height) / (double)max(bbox[i].height, bbox[j].height) > 0.7)
 			{
 				int x1 = min(bbox[i].x, bbox[j].x);
 				int y1 = min(bbox[i].y, bbox[j].y);
@@ -128,11 +129,95 @@ void calc_detection_rate(int n, vector<Text>)
 				j--;
 			}
 		}
+	}*/
+
+	vector<Vec4i> gt;
+	for (int i = 0; i < bbox.size(); i++)
+	{
+		gt.push_back(Vec4i(bbox[i].x, bbox[i].y, bbox[i].width, bbox[i].height));
+	}
+
+	fin.close();
+	return gt;
+}
+
+
+Vec6d calc_detection_rate(int n, vector<Text> &text)
+{
+	vector<Vec4i> gt = load_gt(n);
+	vector<Rect> gt_box;
+	for (int i = 0; i < gt.size(); i++)
+	{
+		gt_box.push_back(Rect(gt[i][0], gt[i][1], gt[i][2], gt[i][3]));
 	}
 
 
+	vector<bool> detected(gt_box.size());
+	double tp = 0;
+	for (int i = 0; i < gt_box.size(); i++)
+	{
+		for (int j = 0; j < text.size(); j++)
+		{
+			Rect overlap = gt_box[i] & text[j].box;
+			Rect union_box = gt_box[i] | text[j].box;
 
-	fin.close();
+			if ((double)overlap.area() / union_box.area() > 0.4)
+			{
+				detected[i] = true;
+				tp++;
+				break;
+			}
+		}
+	}
+
+	double recall = tp / detected.size();
+	double precision = (!text.empty()) ? tp / text.size() : 0;
+	double harmonic_mean = (precision != 0) ? (recall*precision) * 2 / (recall + precision) : 0;
+
+	return Vec6d(tp, detected.size(), text.size(), recall, precision, harmonic_mean);
+}
+
+
+
+void save_deteval_xml(vector<vector<Text>> &text)
+{
+	remove("gt.xml");
+	remove("det.xml");
+	fstream fgt("gt.xml", fstream::out);
+	fstream fdet("det.xml", fstream::out);
+
+	fgt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl << "<tagset>" << endl;
+	fdet << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl << "<tagset>" << endl;
+
+	for (int i = 1; i <= 233; i++)
+	{
+		vector<Vec4i> gt = load_gt(i);
+		if (gt.empty()) continue;
+
+		// ground truth
+		fgt << "\t<image>" << endl << "\t\t" << "<imageName>img_" << i << ".jpg</imageName>" << endl;
+		fgt << "\t\t<taggedRectangles>" << endl;
+		for (int j = 0; j < gt.size(); j++)
+		{
+			fgt << "\t\t\t<taggedRectangle x=\"" << gt[j][0] << "\" y=\"" << gt[j][1] << "\" width=\"" << gt[j][2] << "\" height=\"" << gt[j][3] << "\" offset=\"0\" />" << endl;
+		}
+		fgt << "\t\t</taggedRectangles>" << endl;
+		fgt << "\t</image>" << endl;
+
+
+		// detections
+		fdet << "\t<image>" << endl << "\t\t" << "<imageName>img_" << i << ".jpg</imageName>" << endl;
+		fdet << "\t\t<taggedRectangles>" << endl;
+		for (int j = 0; j < text[i-1].size(); j++)
+		{
+			fdet << "\t\t\t<taggedRectangle x=\"" << text[i-1][j].box.x << "\" y=\"" << text[i - 1][j].box.y << "\" width=\"" << text[i - 1][j].box.width << "\" height=\"" << text[i - 1][j].box.height << "\" offset=\"0\" />" << endl;
+		}
+		fdet << "\t\t</taggedRectangles>" << endl;
+		fdet << "\t</image>" << endl;
+	}
+
+	fgt << "</tagset>";
+	fdet << "</tagset>";
 }
 
 

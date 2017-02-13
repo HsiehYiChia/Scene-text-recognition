@@ -367,8 +367,8 @@ save_step_2:
 			double aspect_ratio = (double)overlapped[min]->bound.width / (double)overlapped[min]->bound.height;
 			if (aspect_ratio < 1.5 && aspect_ratio > 0.12 && 
 				overlapped[min]->area < MAX_AREA && 
-				overlapped[min]->bound.height < input.rows*0.4 &&
-				overlapped[min]->bound.width < input.cols*0.4)
+				overlapped[min]->bound.height < input.rows*0.85 &&
+				overlapped[min]->bound.width < input.cols*0.85)
 			{
 				pool.push_back(overlapped[min]);
 				/*char buf[20];
@@ -492,7 +492,6 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 
 	//vector<int> group_index(all_er.size(), -1);
 	//int index = 0;
-
 	//for (int i = 0; i < all_er.size(); i++)
 	//{
 	//	ER *a = all_er[i];
@@ -527,12 +526,12 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 	//	}
 	//}
 
-	//for (auto it : text)
+	//for (int i = 0; i < text.size(); i++)
 	//{
-	//	it.box = it.ers.front()->bound;
-	//	for (int j = 0; j < it.ers.size(); j++)
+	//	text[i].box = text[i].ers.front()->bound;
+	//	for (int j = 0; j < text[i].ers.size(); j++)
 	//	{
-	//		it.box |= it.ers[j]->bound;
+	//		text[i].box |= text[i].ers[j]->bound;
 	//	}
 	//}
 	

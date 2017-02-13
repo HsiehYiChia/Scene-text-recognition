@@ -7,4 +7,4 @@ def rename_folder_file(folder, new_folder):
         i+=1
         print (file)
 
-rename_folder_file("pos3/", "tmp1/")
+rename_folder_file("pos4/", "tmp1/")
