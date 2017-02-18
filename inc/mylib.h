@@ -24,6 +24,7 @@ void save_deteval_xml(vector<vector<Text>> &text);
 
 // Training Functions
 void get_canny_data();
+void bootstrap();
 void get_ocr_data(int argc, char **argv, int type);
 void train_classifier();
 void train_cascade();

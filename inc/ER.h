@@ -8,6 +8,7 @@
 #include <iterator>
 #include <fstream>
 #include <vector>
+#include <list>
 #include <chrono>
 #include <omp.h>
 #include <memory>
@@ -95,16 +96,16 @@ public:
 	//! modules
 	AdaBoost *adb1;
 	AdaBoost *adb2;
-	Ptr<ml::Boost> adb3;
 	OCR *ocr;
 	
 	//! functions
 	ER* er_tree_extract(Mat input);
 	void non_maximum_supression(ER *er, ERs &pool, Mat input);
 	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);
+	void er_delete(ER *er);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
 	void er_grouping(ERs &all_er, vector<Text> &text);
-	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob, Mat src);
+	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob);
 	vector<double> make_LBP_hist(Mat input, const int N = 2, const int normalize_size = 24);
 	bool load_tp_table(const char* filename);
 	Mat calc_LBP(Mat input, const int size = 24);
@@ -121,7 +122,6 @@ private:
 	//! ER operation functions
 	inline void er_accumulate(ER *er, const int &current_pixel, const int &x, const int &y);
 	void er_merge(ER *parent, ER *child);
-	void er_save(ER *er);
 	void process_stack(const int new_pixel_grey_level, ERs &er_stack);
 
 	// Gouping operation functions

@@ -80,7 +80,7 @@ bool TrainingData::write_data(string filename)
 //==================================================
 DecisionStump::DecisionStump(int _dim, int _dir, double t) : dim(_dim), dir(_dir), thresh(t) {}
 
-double DecisionStump::predict(const vector<double> fv)
+inline double DecisionStump::predict(const vector<double> fv)
 {
 	return (fv[dim]*dir < thresh*dir) ? POS : NEG;
 }
@@ -120,7 +120,7 @@ void DecisionStump::set_para(const vector<double> para)
 //==================================================
 RealDecisionStump::RealDecisionStump(int d, double t, double _cp, double _cn) : dim(d), thresh(t), cp(_cp), cn(_cn) {}
 
-double RealDecisionStump::predict(const vector<double> fv)
+inline double RealDecisionStump::predict(const vector<double> fv)
 {
 	return (fv[dim] < thresh) ? cp : cn;
 }
@@ -625,7 +625,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 				int tp = 0;
 				int fp = 0;
 
-#pragma omp parallel for
+				#pragma omp parallel for
 				for (int i = 0; i < td.data.size(); i++)
 				{
 					if (predict(td.data[i].fv) > Ti)
@@ -822,17 +822,21 @@ void CascadeBoost::real_training(TrainingData &td, vector<set<double>> &thresh_s
 			}
 
 			current_Z = 2 * (sqrt(Pr_p*Pw_n) + sqrt(Pr_n*Pw_p));
-			omp_set_lock(&update_lock);
 			if (current_Z < min_Z)
 			{
-				min_Z = current_Z;
-				dim = i;
-				thresh = *it;
+				omp_set_lock(&update_lock);
+				if (current_Z < min_Z)
+				{
+					min_Z = current_Z;
+					dim = i;
+					thresh = *it;
 
-				c_p = 0.5 * log((Pr_p + epsilon) / (Pw_n + epsilon));
-				c_n = 0.5 * log((Pw_p + epsilon) / (Pr_n + epsilon));
+					c_p = 0.5 * log((Pr_p + epsilon) / (Pw_n + epsilon));
+					c_n = 0.5 * log((Pw_p + epsilon) / (Pr_n + epsilon));
+				}
+				omp_unset_lock(&update_lock);
 			}
-			omp_unset_lock(&update_lock);
+			
 		}
 	}
 

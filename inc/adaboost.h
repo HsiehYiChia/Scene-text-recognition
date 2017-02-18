@@ -68,7 +68,7 @@ class BaseClassifier
 public:
 	BaseClassifier() {};
 	~BaseClassifier() {};
-	virtual double predict(const vector<double> fv) = 0;
+	inline virtual double predict(const vector<double> fv) = 0;
 	virtual void print_classifier() = 0;
 	virtual vector<double> get_para() = 0;
 	virtual void set_para(const vector<double> para) = 0;
@@ -81,7 +81,7 @@ public:
 	DecisionStump(int _dim, int _dir, double t);
 	~DecisionStump() {};
 
-	double predict(const vector<double> fv);
+	inline double predict(const vector<double> fv);
 	void print_classifier();
 	vector<double> get_para();
 	void set_para(const vector<double> para);
@@ -99,7 +99,7 @@ public:
 	RealDecisionStump(int d, double t, double _cp, double _cn);
 	~RealDecisionStump() {};
 
-	double predict(const vector<double> fv);
+	inline double predict(const vector<double> fv);
 	void print_classifier();
 	vector<double> get_para();
 	void set_para(const vector<double> para);

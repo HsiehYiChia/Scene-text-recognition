@@ -52,9 +52,8 @@ void ERFilter::er_merge(ER *parent, ER *child)
 	parent->bound.width = x2 - x1 + 1;
 	parent->bound.height = y2 - y1 + 1;
 
-	if (child->area <= MIN_AREA ||
-		child->bound.height <= 10 ||
-		child->bound.width <= 5)
+	if (child->area <= MIN_AREA)
+	//if(false)
 	{
 		ER *new_child = child->child;
 
@@ -77,7 +76,7 @@ void ERFilter::er_merge(ER *parent, ER *child)
 }
 
 
-void ERFilter::er_save(ER *er)
+void ERFilter::er_delete(ER *er)
 {
 	// Non Recursive Preorder Tree Traversal
 	// See http://algorithms.tutorialhorizon.com/binary-tree-preorder-traversal-non-recursive-approach/ for more info.
@@ -105,9 +104,14 @@ save_step_2:
 	//		Go right, root = root.right.
 	//		Go to step 2.
 
+
+	
 	root = tree_stack.back();
 	tree_stack.pop_back();
+
+	ER *to_delete = root;
 	root = root->next;
+	delete to_delete;
 	goto save_step_2;
 
 	// 5. End If
@@ -365,10 +369,10 @@ save_step_2:
 			}
 
 			double aspect_ratio = (double)overlapped[min]->bound.width / (double)overlapped[min]->bound.height;
-			if (aspect_ratio < 1.5 && aspect_ratio > 0.12 && 
+			if (aspect_ratio < 2.0 && aspect_ratio > 0.10 && 
 				overlapped[min]->area < MAX_AREA && 
-				overlapped[min]->bound.height < input.rows*0.85 &&
-				overlapped[min]->bound.width < input.cols*0.85)
+				overlapped[min]->bound.height < input.rows*0.5 &&
+				overlapped[min]->bound.width < input.cols*0.5)
 			{
 				pool.push_back(overlapped[min]);
 				/*char buf[20];
@@ -416,8 +420,8 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 		
 			
 		/*char buf[20];
-		sprintf(buf, "res/tmp2/%d.jpg", k);
-		imwrite(buf, input(it->bound));
+		sprintf(buf, "res/tmp1/%d.jpg", k);
+		imwrite(buf, input(pool[i]->bound));
 		cout << k << " ";
 		k++;*/
 	}
@@ -427,11 +431,13 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 
 void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb)
 {
+	StrokeWidth SWT;
 	for (int i = 0; i < strong.size(); i++)
 	{
 		for (auto it : strong[i])
 		{
 			calc_color(it, channel[i], Ycrcb);
+			//it->stkw = SWT.SWT(channel[i](it->bound));
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
 			it->ch = i;
 		}
@@ -439,6 +445,7 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 		for (auto it : weak[i])
 		{
 			calc_color(it, channel[i], Ycrcb);
+			//it->stkw = SWT.SWT(channel[i](it->bound));
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
 			it->ch = i;
 		}
@@ -468,11 +475,11 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 				ER* w = weak[m][n];
 				if (abs(s->center.x - w->center.x) + abs(s->center.y - w->center.y) < max(s->bound.width, s->bound.height) << 1 &&
 					abs(s->bound.height - w->bound.height) < min(s->bound.height, w->bound.height) &&
-					abs(s->bound.width - w->bound.width) < (s->bound.width + w->bound.width) * 0.5 &&
+					abs(s->bound.width - w->bound.width) < (s->bound.width + w->bound.width) >> 1 &&
 					abs(s->color1 - w->color1) < 25 &&
 					abs(s->color2 - w->color2) < 25 &&
 					abs(s->color3 - w->color3) < 25 &&
-					abs(s->area - w->area) < min(s->area, w->area) * 4)
+					abs(s->area - w->area) < min(s->area, w->area) * 3)
 				{
 					tracked[m][n] = true;
 					all_er.push_back(w);
@@ -480,6 +487,15 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 			}
 		}
 	}
+
+	/*sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
+	for (int i = 0; i < all_er.size(); i++)
+	{
+		char buf[20];
+		sprintf(buf, "res/tmp1/%d.jpg", i);
+		imwrite(buf, Ycrcb(all_er[i]->bound));
+		cout << i << " ";
+	}*/
 }
 
 
@@ -490,188 +506,188 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 	overlap_suppression(all_er);
 	inner_suppression(all_er);
 
-	//vector<int> group_index(all_er.size(), -1);
-	//int index = 0;
-	//for (int i = 0; i < all_er.size(); i++)
-	//{
-	//	ER *a = all_er[i];
-	//	for (int j = i+1; j < all_er.size(); j++)
-	//	{
-	//		ER *b = all_er[j];
-	//		if (abs(a->bound.x - b->bound.x) < (a->bound.width + b->bound.width)*1.5 &&				// 0.5*3
-	//			abs(a->bound.y - b->bound.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
-	//			abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
-	//			abs(a->bound.width - b->bound.width) < (a->bound.width + b->bound.width)*0.5 &&
-	//			abs(a->color1 - b->color1) < 25 &&
-	//			abs(a->color2 - b->color2) < 25 &&
-	//			abs(a->color3 - b->color3) < 25 &&
-	//			abs(a->area - b->area) < min(a->area, b->area)*3)
-	//		{
-	//			if (group_index[i] == -1)
-	//			{
-	//				group_index[i] = index;
-	//				group_index[j] = index;
-	//				text.push_back(Text());
-	//				text[index].ers.push_back(a);
-	//				text[index].ers.push_back(b);
-	//				index++;
-	//			}
+	vector<int> group_index(all_er.size(), -1);
+	int index = 0;
+	for (int i = 0; i < all_er.size(); i++)
+	{
+		ER *a = all_er[i];
+		for (int j = i+1; j < all_er.size(); j++)
+		{
+			ER *b = all_er[j];
+			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*3.0 &&				// 0.5*3
+				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
+				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
+				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&
+				abs(a->color1 - b->color1) < 25 &&
+				abs(a->color2 - b->color2) < 25 &&
+				abs(a->color3 - b->color3) < 25 &&
+				abs(a->area - b->area) < min(a->area, b->area)*4)
+			{
+				if (group_index[i] == -1)
+				{
+					group_index[i] = index;
+					group_index[j] = index;
+					text.push_back(Text());
+					text[index].ers.push_back(a);
+					text[index].ers.push_back(b);
+					index++;
+				}
 
-	//			else
-	//			{
-	//				group_index[j] = group_index[i];
-	//				text[group_index[j]].ers.push_back(b);
-	//			}
-	//		}
-	//	}
-	//}
+				else
+				{
+					group_index[j] = group_index[i];
+					text[group_index[j]].ers.push_back(b);
+				}
+			}
+		}
+	}
 
-	//for (int i = 0; i < text.size(); i++)
-	//{
-	//	text[i].box = text[i].ers.front()->bound;
-	//	for (int j = 0; j < text[i].ers.size(); j++)
-	//	{
-	//		text[i].box |= text[i].ers[j]->bound;
-	//	}
-	//}
+	for (int i = 0; i < text.size(); i++)
+	{
+		text[i].box = text[i].ers.front()->bound;
+		for (int j = 0; j < text[i].ers.size(); j++)
+		{
+			text[i].box |= text[i].ers[j]->bound;
+		}
+	}
 	
 
 	
 
 	// 1. Find the left and right sibling of each ER
-	for (int i = 0; i < all_er.size(); i++)
-	{
-		int j = i - 1;
-		while (j > 0)
-		{
-			if (is_neighboring(all_er[i], all_er[j]))
-			{
-				all_er[i]->sibling_L = all_er[j], all_er[j]->sibling_R = all_er[i];
-				break;
-			}
-			j--;
-		}
+	//for (int i = 0; i < all_er.size(); i++)
+	//{
+	//	int j = i - 1;
+	//	while (j > 0)
+	//	{
+	//		if (is_neighboring(all_er[i], all_er[j]))
+	//		{
+	//			all_er[i]->sibling_L = all_er[j], all_er[j]->sibling_R = all_er[i];
+	//			break;
+	//		}
+	//		j--;
+	//	}
 
-		j = i + 1;
-		while (j < all_er.size())
-		{
-			if (is_neighboring(all_er[i], all_er[j]))
-			{
-				all_er[i]->sibling_R = all_er[j], all_er[j]->sibling_L = all_er[i];
-				break;
-			}
-			j++;
-		}
-	}
-
-
-	// 2. Find out sibling group
-	vector<set<ER *>> sibling_group(all_er.size());
-	for (int i = 0; i < sibling_group.size(); i++)
-	{
-		if (all_er[i]->sibling_L && all_er[i]->sibling_R)
-		{
-			sibling_group[i].insert(all_er[i]);
-			sibling_group[i].insert(all_er[i]->sibling_L);
-			sibling_group[i].insert(all_er[i]->sibling_R);
-		}
-	}
-
-	// 3. Repeat merging sibling group until no merge is performed
-	while (1)
-	{
-		int before_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
-
-		for (int i = 0; i < sibling_group.size(); i++)
-		{
-			for (int j = i + 1; j < sibling_group.size(); j++)
-			{
-				set<ER *> s;
-				set_intersection(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s, s.begin()));
-				if (s.size() >= 2)
-				{
-					set<ER *> s_union;
-					set_union(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s_union, s_union.begin()));
-					sibling_group[i] = s_union;
-					sibling_group[j].clear();
-				}
-			}
-		}
-
-		// check is there any merge performed
-		int after_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
-		if (before_empty_count == after_empty_count)
-			break;
-	}
+	//	j = i + 1;
+	//	while (j < all_er.size())
+	//	{
+	//		if (is_neighboring(all_er[i], all_er[j]))
+	//		{
+	//			all_er[i]->sibling_R = all_er[j], all_er[j]->sibling_L = all_er[i];
+	//			break;
+	//		}
+	//		j++;
+	//	}
+	//}
 
 
-	// 4. use area, distance and stroke width to filter false postive
-	for (int i = 0; i < sibling_group.size(); i++)
-	{
-		if (!sibling_group[i].empty())
-		{
-			ERs sorted_ER(sibling_group[i].begin(), sibling_group[i].end());
-			sort(sorted_ER.begin(), sorted_ER.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
+	//// 2. Find out sibling group
+	//vector<set<ER *>> sibling_group(all_er.size());
+	//for (int i = 0; i < sibling_group.size(); i++)
+	//{
+	//	if (all_er[i]->sibling_L && all_er[i]->sibling_R)
+	//	{
+	//		sibling_group[i].insert(all_er[i]);
+	//		sibling_group[i].insert(all_er[i]->sibling_L);
+	//		sibling_group[i].insert(all_er[i]->sibling_R);
+	//	}
+	//}
 
-			vector<double> area;
-			for (int j = 0; j < sorted_ER.size(); j++)
-			{
-				area.push_back(sorted_ER[j]->area);
-			}
+	//// 3. Repeat merging sibling group until no merge is performed
+	//while (1)
+	//{
+	//	int before_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
 
-			vector<double> dist;
-			for (int j= 0; j < sorted_ER.size() - 1; j++)
-			{
-				dist.push_back(sorted_ER[j + 1]->bound.x - sorted_ER[j]->bound.x);
-			}
+	//	for (int i = 0; i < sibling_group.size(); i++)
+	//	{
+	//		for (int j = i + 1; j < sibling_group.size(); j++)
+	//		{
+	//			set<ER *> s;
+	//			set_intersection(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s, s.begin()));
+	//			if (s.size() >= 2)
+	//			{
+	//				set<ER *> s_union;
+	//				set_union(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s_union, s_union.begin()));
+	//				sibling_group[i] = s_union;
+	//				sibling_group[j].clear();
+	//			}
+	//		}
+	//	}
 
-			double stdev_area = standard_dev(area, true);
-			double stdev_dist = standard_dev(dist, true);
-
-			if (stdev_area > 0.8 && stdev_dist > 0.8)
-				sibling_group[i].clear();
-		}
-	}
+	//	// check is there any merge performed
+	//	int after_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
+	//	if (before_empty_count == after_empty_count)
+	//		break;
+	//}
 
 
-	// 5. find out the bounding box and fitting line of each sibling group
-	for (int i = 0; i < sibling_group.size(); i++)
-	{
-		if (!sibling_group[i].empty())
-		{
-			Text t;
-			t.ers = vector<ER*>(sibling_group[i].begin(), sibling_group[i].end());
-			sort(t.ers.begin(), t.ers.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
+	//// 4. use area, distance and stroke width to filter false postive
+	//for (int i = 0; i < sibling_group.size(); i++)
+	//{
+	//	if (!sibling_group[i].empty())
+	//	{
+	//		ERs sorted_ER(sibling_group[i].begin(), sibling_group[i].end());
+	//		sort(sorted_ER.begin(), sorted_ER.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
 
-			vector<Point> points_top;
-			vector<Point> points_bot;
-			for (auto it : t.ers)
-			{
-				points_top.push_back(it->bound.tl());
-				points_bot.push_back(Point(it->bound.x, it->bound.br().y));
-			}
+	//		vector<double> area;
+	//		for (int j = 0; j < sorted_ER.size(); j++)
+	//		{
+	//			area.push_back(sorted_ER[j]->area);
+	//		}
 
-			double slope_top = fitline_avgslope(points_top);
-			double slope_bot = fitline_avgslope(points_bot);
+	//		vector<double> dist;
+	//		for (int j= 0; j < sorted_ER.size() - 1; j++)
+	//		{
+	//			dist.push_back(sorted_ER[j + 1]->bound.x - sorted_ER[j]->bound.x);
+	//		}
 
-			if (abs(slope_top) > 0.2 || abs(slope_bot) > 0.2)
-				continue;
+	//		double stdev_area = standard_dev(area, true);
+	//		double stdev_dist = standard_dev(dist, true);
 
-			
-			// find the bounding box
-			t.box = t.ers.front()->bound;
-			for (int j = 0; j < t.ers.size(); j++)
-			{
-				t.box |= t.ers[j]->bound;
-			}
+	//		if (stdev_area > 0.8 && stdev_dist > 0.8)
+	//			sibling_group[i].clear();
+	//	}
+	//}
 
-			text.push_back(t);
-		}
-	}
+
+	//// 5. find out the bounding box and fitting line of each sibling group
+	//for (int i = 0; i < sibling_group.size(); i++)
+	//{
+	//	if (!sibling_group[i].empty())
+	//	{
+	//		Text t;
+	//		t.ers = vector<ER*>(sibling_group[i].begin(), sibling_group[i].end());
+	//		sort(t.ers.begin(), t.ers.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
+
+	//		vector<Point> points_top;
+	//		vector<Point> points_bot;
+	//		for (auto it : t.ers)
+	//		{
+	//			points_top.push_back(it->bound.tl());
+	//			points_bot.push_back(Point(it->bound.x, it->bound.br().y));
+	//		}
+
+	//		double slope_top = fitline_avgslope(points_top);
+	//		double slope_bot = fitline_avgslope(points_bot);
+
+	//		if (abs(slope_top) > 0.2 || abs(slope_bot) > 0.2)
+	//			continue;
+
+	//		
+	//		// find the bounding box
+	//		t.box = t.ers.front()->bound;
+	//		for (int j = 0; j < t.ers.size(); j++)
+	//		{
+	//			t.box |= t.ers[j]->bound;
+	//		}
+
+	//		text.push_back(t);
+	//	}
+	//}
 }
 
 
-void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob, Mat src)
+void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob)
 {
 	const unsigned min_er = 10;
 	const unsigned min_pass_ocr = 3;
@@ -722,21 +738,6 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 			}
 		}
 	}
-
-	// draw the triplets
-	/*for (int i = 0; i < text.size(); i++)
-	{
-		Rect box = text[i].ers.front()->bound;
-		for (int j = 0; j < text[i].ers.size(); j++)
-		{
-			rectangle(src, text[i].ers[j]->bound, Scalar(0, 255, 0));
-			box |= text[i].ers[j]->bound;
-		}
-		rectangle(src, box, Scalar(0, 0, 255));
-	}
-	cv::imshow("group result", src);*/
-
-
 	
 	for (int i = 0; i < text.size(); i++)
 	{
@@ -767,15 +768,13 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 
 		ocr->feedback_verify(text[i]);
 
-		Rect box = text[i].ers.front()->bound;
+		text[i].box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
-			rectangle(src, text[i].ers[j]->bound, Scalar(0, 255, 0));
-			box |= text[i].ers[j]->bound;
+			text[i].box |= text[i].ers[j]->bound;
 		}
 		
 	}
-	imshow("group result", src);
 }
 
 
@@ -811,15 +810,15 @@ vector<double> ERFilter::make_LBP_hist(Mat input, const int N, const int normali
 
 Mat ERFilter::calc_LBP(Mat input, const int size)
 {
-	ocr->ARAN(input, input, size);
-	//resize(input, input, Size(size, size));
+	ocr->ARAN(input, input, size + 2);
+	//resize(input, input, Size(size + 2, size + 2));
 
 	Mat LBP = Mat::zeros(size, size, CV_8U);
-	for (int i = 1; i < size-1; i++)
+	for (int i = 0; i < size; i++)
 	{
-		uchar* ptr_input = input.ptr<uchar>(i);
+		uchar* ptr_input = input.ptr<uchar>(i + 1, 1);
 		uchar* ptr = LBP.ptr<uchar>(i);
-		for (int j = 1; j < size-1; j++)
+		for (int j = 0; j < size; j++)
 		{
 			double thresh = (ptr_input[j - size - 1] + ptr_input[j - size] + ptr_input[j - size + 1] + ptr_input[j + 1] +
 				ptr_input[j + size + 1] + ptr_input[j + size] + ptr_input[j + size - 1] + ptr_input[j - 1]) / 8.0;
@@ -931,21 +930,21 @@ void ERFilter::overlap_suppression(ERs &pool)
 			Rect overlap = pool[i]->bound & pool[j]->bound;
 			Rect union_box = pool[i]->bound | pool[j]->bound;
 			
-			if ((double)overlap.area() / union_box.area() > 0.5)
+			if ((double)overlap.area() / (double)union_box.area() > 0.5)
 			{
 				merged[j] = true;
 
-				int x = (pool[i]->bound.x + pool[j]->bound.x)*0.5;
-				int y = (pool[i]->bound.y + pool[j]->bound.y)*0.5;
-				int width = (pool[i]->bound.width + pool[j]->bound.width)*0.5;
-				int height = (pool[i]->bound.height + pool[j]->bound.height)*0.5;
+				int x = (pool[i]->bound.x + pool[j]->bound.x) * 0.5;
+				int y = (pool[i]->bound.y + pool[j]->bound.y) * 0.5;
+				int width = (pool[i]->bound.width + pool[j]->bound.width) * 0.5;
+				int height = (pool[i]->bound.height + pool[j]->bound.height) * 0.5;
 
 				pool[i]->bound.x = x;
 				pool[i]->bound.y = y;
 				pool[i]->bound.height = height;
-				pool[i]->bound.width = width;
-				pool[i]->center.x = x + pool[i]->bound.width / 2;
-				pool[i]->center.y = y + pool[i]->bound.height / 2;
+				pool[i]->bound.width = width;			
+				pool[i]->center.x = x + pool[i]->bound.width * 0.5;
+				pool[i]->center.y = y + pool[i]->bound.height * 0.5;
 			}
 		}
 	}
@@ -1098,64 +1097,71 @@ double StrokeWidth::SWT(Mat input)
 	Mat blur;
 	Mat grad_x;
 	Mat grad_y;
-	Mat mag;
-	Mat orien;
 	threshold(input, thresh, 128, 255, THRESH_OTSU);
 	cv::Canny(thresh, canny, 150, 300, 3);
 	cv::GaussianBlur(thresh, blur, Size(5, 5), 0);
 	cv::Sobel(blur, grad_x, CV_32F, 1, 0, CV_SCHARR);
 	cv::Sobel(blur, grad_y, CV_32F, 0, 1, CV_SCHARR);
-	cv::phase(grad_x, grad_y, orien, true);
-	cv::magnitude(grad_x, grad_y, mag);
 
 
 	// Stroke Width Transform 1st pass
 	Mat SWT_img(input.rows, input.cols, CV_32F, FLT_MAX);
 
 	vector<Ray> rays;
-	for (int pixel = 0; pixel < canny.total(); pixel++)
+
+	for (int i = 0; i < canny.rows; i++)
 	{
-		if (canny.data[pixel] != 0)
+		uchar *ptr = canny.ptr(i);
+		float *xptr = grad_x.ptr<float>(i);
+		float *yptr = grad_y.ptr<float>(i);
+		for (int j = 0; j < canny.cols; j++)
 		{
-			int x = pixel % input.cols;
-			int y = pixel / input.cols;
-			double dir_x = grad_x.at<float>(y, x) / mag.at<float>(y, x);
-			double dir_y = grad_y.at<float>(y, x) / mag.at<float>(y, x);
-			double cur_x = x;
-			double cur_y = y;
-			int cur_pixel_x = x;
-			int cur_pixel_y = y;
-			vector<SWTPoint2d> point(1, SWTPoint2d(x, y));
-			for (;;)
+			if (ptr[j] != 0)
 			{
-				cur_x += dir_x;
-				cur_y += dir_y;
-				if (round(cur_x) == cur_pixel_x && round(cur_y) == cur_pixel_y)
-					continue;
-				else
-					cur_pixel_x = round(cur_x), cur_pixel_y = round(cur_y);
-
-				if (cur_pixel_x < 0 || (cur_pixel_x >= canny.cols) || cur_pixel_y < 0 || (cur_pixel_y >= canny.rows))
-					break;
-
-				point.push_back(SWTPoint2d(cur_pixel_x, cur_pixel_y));
-				double q_x = grad_x.at<float>(cur_pixel_y, cur_pixel_x) / mag.at<float>(cur_pixel_y, cur_pixel_x);
-				double q_y = grad_y.at<float>(cur_pixel_y, cur_pixel_x) / mag.at<float>(cur_pixel_y, cur_pixel_x);
-				if (acos(dir_x * -q_x + dir_y * -q_y) < CV_PI / 2.0)
+				int x = j;
+				int y = i;
+				double dir_x = xptr[j] / sqrt(xptr[j] * xptr[j] + yptr[j] * yptr[j]);
+				double dir_y = yptr[j] / sqrt(xptr[j] * xptr[j] + yptr[j] * yptr[j]);
+				double cur_x = x;
+				double cur_y = y;
+				int cur_pixel_x = x;
+				int cur_pixel_y = y;
+				vector<SWTPoint2d> point;
+				point.push_back(SWTPoint2d(x, y));
+				for (;;)
 				{
-					double length = sqrt((cur_pixel_x - x)*(cur_pixel_x - x) + (cur_pixel_y - y)*(cur_pixel_y - y));
-					for (auto it : point)
+					cur_x += dir_x;
+					cur_y += dir_y;
+
+					if (round(cur_x) == cur_pixel_x && round(cur_y) == cur_pixel_y)
+						continue;
+					else
+						cur_pixel_x = round(cur_x), cur_pixel_y = round(cur_y);
+
+					if (cur_pixel_x < 0 || (cur_pixel_x >= canny.cols) || cur_pixel_y < 0 || (cur_pixel_y >= canny.rows))
+						break;
+
+					point.push_back(SWTPoint2d(cur_pixel_x, cur_pixel_y));
+					double gx = grad_x.at<float>(cur_pixel_y, cur_pixel_x);
+					double gy = grad_y.at<float>(cur_pixel_y, cur_pixel_x);
+					double mag = sqrt(gx*gx + gy*gy);;
+					double q_x = grad_x.at<float>(cur_pixel_y, cur_pixel_x) / mag;
+					double q_y = grad_y.at<float>(cur_pixel_y, cur_pixel_x) / mag;
+					if (acos(dir_x * -q_x + dir_y * -q_y) < CV_PI / 2.0)
 					{
-						if (length < SWT_img.at<float>(it.y, it.x))
+						double length = sqrt((cur_pixel_x - x)*(cur_pixel_x - x) + (cur_pixel_y - y)*(cur_pixel_y - y));
+						for (auto it : point)
 						{
-							SWT_img.at<float>(it.y, it.x) = length;
+							if (length < SWT_img.at<float>(it.y, it.x))
+							{
+								SWT_img.at<float>(it.y, it.x) = length;
+							}
 						}
+						rays.push_back(Ray(SWTPoint2d(j, i), SWTPoint2d(cur_pixel_x, cur_pixel_y), point));
+						break;
 					}
-					rays.push_back(Ray(SWTPoint2d(x, y), SWTPoint2d(cur_pixel_x, cur_pixel_y), point));
-					break;
 				}
 			}
-
 		}
 	}
 
@@ -1184,7 +1190,6 @@ double StrokeWidth::SWT(Mat input)
 				stkw += ptr[j];
 				count++;
 			}
-				
 		}
 	}
 	
@@ -1312,7 +1317,7 @@ double fitline_avgslope(const vector<Point> &p)
 void calc_color(ER* er, Mat mask_channel, Mat color)
 {
 	// calculate the color of each ER
-	Mat img = mask_channel(er->bound).clone();
+	/*Mat img = mask_channel(er->bound).clone();
 	threshold(img, img, 128, 255, THRESH_OTSU);
 	img = 255 - img;
 
@@ -1337,7 +1342,25 @@ void calc_color(ER* er, Mat mask_channel, Mat color)
 	}
 	er->color1 = color1 / count;
 	er->color2 = color2 / count;
-	er->color3 = color3 / count;
+	er->color3 = color3 / count;*/
+
+	Mat img = mask_channel(er->bound);
+	double color1 = 0;
+	double color2 = 0;
+	double color3 = 0;
+	for (int i = 0; i < img.rows; i++)
+	{
+		uchar *ptr = img.ptr(i);
+		for (int j = 0, k = 0; j < img.cols; j++, k+=3)
+		{
+			color1 += ptr[k];
+			color2 += ptr[k + 1];
+			color3 += ptr[k + 2];
+		}
+	}
+	color1 /= (img.rows*img.cols);
+	color2 /= (img.rows*img.cols);
+	color3 /= (img.rows*img.cols);
 }
 
 

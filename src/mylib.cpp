@@ -1,7 +1,7 @@
 #include "mylib.h"
 
 #define THRESHOLD_STEP 2
-#define MIN_AREA 50
+#define MIN_AREA 20
 #define MAX_AREA 90000
 #define STABILITY_T 2
 #define OVERLAP_COEF 0.7
@@ -161,7 +161,7 @@ Vec6d calc_detection_rate(int n, vector<Text> &text)
 			Rect overlap = gt_box[i] & text[j].box;
 			Rect union_box = gt_box[i] | text[j].box;
 
-			if ((double)overlap.area() / union_box.area() > 0.4)
+			if ((double)overlap.area() / union_box.area() > 0.3)
 			{
 				detected[i] = true;
 				tp++;
@@ -278,6 +278,51 @@ void train_cascade()
 }
 
 
+void bootstrap()
+{
+	ERFilter *erFilter = new ERFilter(THRESHOLD_STEP, MIN_AREA, MAX_AREA, STABILITY_T, OVERLAP_COEF);
+	erFilter->adb1 = new CascadeBoost("er_classifier/cascade1.classifier");
+	erFilter->adb2 = new CascadeBoost("er_classifier/cascade2.classifier");
+
+
+	int i = 0;
+	for (int pic = 6123; pic <= 10000; pic++)
+	{
+		char filename[30];
+		sprintf(filename, "res/neg/%d.jpg", pic);
+
+		ERs pool, strong, weak;
+		Mat input = imread(filename, IMREAD_GRAYSCALE);
+		if (input.empty()) continue;
+
+
+		ER *root = erFilter->er_tree_extract(input);
+		erFilter->non_maximum_supression(root, pool, input);
+		erFilter->classify(pool, strong, weak, input);
+
+
+		for (auto it : strong)
+		{
+			char imgname[30];
+			sprintf(imgname, "res/tmp1/%d_%d.jpg", pic, i);
+			imwrite(imgname, input(it->bound));
+			i++;
+		}
+
+		for (auto it : weak)
+		{
+			char imgname[30];
+			sprintf(imgname, "res/tmp1/%d_%d.jpg", pic, i);
+			imwrite(imgname, input(it->bound));
+			i++;
+		}
+
+		cout << pic << " finish " << endl;
+	}
+}
+
+
+
 void get_canny_data()
 {
 	fstream fout = fstream("er_classifier/training_data.txt", fstream::out);
@@ -304,11 +349,11 @@ void get_canny_data()
 				fout << " " << spacial_hist[f];
 			fout << endl;
 
-			spacial_hist = erFilter.make_LBP_hist(255-input, N, normalize_size);
+			/*spacial_hist = erFilter.make_LBP_hist(255-input, N, normalize_size);
 			fout << -1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 				fout << " " << spacial_hist[f];
-			fout << endl;
+			fout << endl;*/
 
 
 			cout << pic << "\tneg" << i << " finish " << endl;
@@ -319,7 +364,7 @@ void get_canny_data()
 
 	for (int i = 1; i <= 4; i++)
 	{
-		for (int pic = 1; pic <= 4000; pic++)
+		for (int pic = 1; pic <= 10000; pic++)
 		{
 			char filename[30];
 			sprintf(filename, "res/pos%d/%d.jpg", i, pic);
