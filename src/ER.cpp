@@ -3,7 +3,7 @@
 // ====================================================
 // ======================== ER ========================
 // ====================================================
-ER::ER(const int level_, const int pixel_, const int x_, const int y_) : level(level_), pixel(pixel_), area(1), done(false), stability(.0), 
+ER::ER(const int level_, const int pixel_, const int x_, const int y_) : level(level_), pixel(pixel_), x(x_), y(y_), area(1), done(false), stability(.0), 
 																		parent(nullptr), child(nullptr), next(nullptr), stkw(0)
 {
 	bound = Rect(x_, y_, 1, 1);
@@ -20,6 +20,50 @@ ERFilter::ERFilter(int thresh_step, int min_area, int max_area, int stability_t,
 																										STABILITY_T(stability_t), OVERLAP_COEF(overlap_coef)
 {
 
+}
+
+
+void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+{
+	Mat Ycrcb;
+	vector<Mat> channel;
+	compute_channels(src, Ycrcb, channel);
+
+	root.resize(channel.size());
+	pool.resize(channel.size());
+	strong.resize(channel.size());
+	weak.resize(channel.size());
+
+#pragma omp parallel for
+	for (int i = 0; i < channel.size(); i++)
+	{
+		root[i] = er_tree_extract(channel[i]);
+		non_maximum_supression(root[i], pool[i], channel[i]);
+		classify(pool[i], strong[i], weak[i], channel[i]);
+	}
+
+	er_track(strong, weak, tracked, channel, Ycrcb);
+
+#ifdef DO_OCR
+	er_grouping_ocr(tracked, channel, text, 0.1);
+#else
+	er_grouping(tracked, text);
+#endif
+}
+
+void ERFilter::compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
+{
+	vector<Mat> splited;
+
+	cv::cvtColor(src, YCrcb, COLOR_BGR2YCrCb);
+	split(YCrcb, splited);
+
+	channels.push_back(splited[0]);
+	channels.push_back(splited[1]);
+	channels.push_back(splited[2]);
+	channels.push_back(255 - splited[0]);
+	channels.push_back(255 - splited[1]);
+	channels.push_back(255 - splited[2]);
 }
 
 
@@ -53,7 +97,6 @@ void ERFilter::er_merge(ER *parent, ER *child)
 	parent->bound.height = y2 - y1 + 1;
 
 	if (child->area <= MIN_AREA)
-	//if(false)
 	{
 		ER *new_child = child->child;
 
@@ -136,7 +179,6 @@ ER* ERFilter::er_tree_extract(Mat input)
 
 	//!< 1. Clear the accessible pixel mask, the heap of boundary pixels and the component
 	bool *pixel_accessible = new bool[height*width]();
-	bool *pixel_accumulated = new bool[height*width]();
 	vector<int> boundary_pixel[256];
 	vector<int> boundary_edge[256];
 	vector<ER *>er_stack;
@@ -223,16 +265,12 @@ step_3:
 		//!< 5. Accumulate the current pixel to the component at the top of the stack 
 		//!<	(water saturates the current pixel).
 		er_accumulate(er_stack.back(), current_pixel, x, y);
-		pixel_accumulated[current_pixel] = true;
 
 		//!< 6. Pop the heap of boundary pixels. If the heap is empty, we are done. If the
 		//!<	returned pixel is at the same grey - level as the previous, go to 4	
 		if (priority == highest_level)
 		{
-			//er_save(er_stack.back());
-			
 			delete[] pixel_accessible;
-			delete[] pixel_accumulated;
 			return er_stack.back();
 		}
 			
@@ -272,18 +310,18 @@ void ERFilter::process_stack(const int new_pixel_grey_level, ERs &er_stack)
 		//!<	of new_pixel_grey_level and the grey - level for the second component on
 		//!<	the stack.
 		ER *top = er_stack.back();
+		ER *second_top = er_stack.end()[-2];
 		er_stack.pop_back();
-		ER *second_top = er_stack.back();
 
-		//!< 2. If new_pixel_grey_level is smaller than the grey - level on the second component
-		//!<	on the stack, set the top of stack grey - level to new_pixel_grey_level and return
-		//!<	from sub - routine(This occurs when the new pixel is at a grey - level for which
+		//!< 2. If new_pixel_grey_level is smaller than the grey-level on the second component
+		//!<	on the stack, set the top of stack grey-level to new_pixel_grey_level and return
+		//!<	from sub - routine(This occurs when the new pixel is at a grey-level for which
 		//!<	there is not yet a component instantiated, so we let the top of stack be that
 		//!<	level by just changing its grey - level.
 		if (new_pixel_grey_level < second_top->level)
 		{
-			top->level = new_pixel_grey_level;
-			er_stack.push_back(top);
+			er_stack.push_back(new ER(new_pixel_grey_level, top->pixel, top->x, top->y));
+			er_merge(er_stack.back(), top);
 			return;
 		}
 
@@ -291,15 +329,17 @@ void ERFilter::process_stack(const int new_pixel_grey_level, ERs &er_stack)
 		//!<	as follows : Add the first and second moment accumulators together and / or
 		//!<	join the pixel lists.Either merge the histories of the components, or take the
 		//!<	history from the winner.Note here that the top of stack should be considered
-		//!<	one ’time - step’ back, so its current size is part of the history.Therefore the
+		//!<	one ’time-step’ back, so its current size is part of the history.Therefore the
 		//!<	top of stack would be the winner if its current size is larger than the previous
 		//!<	size of second on stack.
+		//er_stack.pop_back();
 		er_merge(second_top, top);
 		
 	}
 	//!< 4. If(new_pixel_grey_level>top_of_stack_grey_level) go to 1.
 	while (new_pixel_grey_level > er_stack.back()->level);
 }
+
 
 void ERFilter::non_maximum_supression(ER *er, ERs &pool, Mat input)
 {
@@ -773,7 +813,7 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
-		
+
 	}
 }
 
@@ -810,8 +850,8 @@ vector<double> ERFilter::make_LBP_hist(Mat input, const int N, const int normali
 
 Mat ERFilter::calc_LBP(Mat input, const int size)
 {
-	ocr->ARAN(input, input, size + 2);
-	//resize(input, input, Size(size + 2, size + 2));
+	//ocr->ARAN(input, input, size + 2);
+	resize(input, input, Size(size + 2, size + 2));
 
 	Mat LBP = Mat::zeros(size, size, CV_8U);
 	for (int i = 0; i < size; i++)
@@ -831,10 +871,6 @@ Mat ERFilter::calc_LBP(Mat input, const int size)
 			ptr[j] += (ptr_input[j + size] > thresh) << 5;
 			ptr[j] += (ptr_input[j + size - 1] > thresh) << 6;
 			ptr[j] += (ptr_input[j - 1] > thresh) << 7;
-
-			/*ptr[j] += (ptr_input[j - size] > ptr_input[j]) << 0;
-			ptr[j] += (ptr_input[j + 1] > ptr_input[j]) << 1;
-			ptr[j] += (ptr_input[j + size - 1] > ptr_input[j]) << 2;*/
 		}
 	}
 	return LBP;
@@ -1057,7 +1093,7 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 	for (auto it : text.ers)
 		text.word.append(string(1, it->letter));
 	
-	cout << text.word << endl;
+	
 }
 
 

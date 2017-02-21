@@ -445,7 +445,7 @@ void OCR::feedback_verify(Text &text)
 	for (auto it : text.ers)
 		text.word.append(string(1, it->letter));
 
-	//try_add_space(text);
+	try_add_space(text);
 }
 
 

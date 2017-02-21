@@ -17,6 +17,7 @@
 #include "adaboost.h"
 #include "OCR.h"
 
+#define DO_OCR
 
 using namespace std;
 using namespace cv;
@@ -32,6 +33,8 @@ public:
 	//! seed point and threshold (max grey-level value)
 	int pixel;
 	int level;
+	int x;
+	int y;
 	
 	//! feature
 	int area;
@@ -99,6 +102,8 @@ public:
 	OCR *ocr;
 	
 	//! functions
+	void text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
+	void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels);
 	ER* er_tree_extract(Mat input);
 	void non_maximum_supression(ER *er, ERs &pool, Mat input);
 	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);

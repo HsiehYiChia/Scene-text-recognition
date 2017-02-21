@@ -1,13 +1,4 @@
-#include "mylib.h"
-
-#define THRESHOLD_STEP 2
-#define MIN_AREA 20
-#define MAX_AREA 90000
-#define STABILITY_T 2
-#define OVERLAP_COEF 0.7
-
-#define MAX_WIDTH 1500
-#define MAX_HEIGHT 800
+#include "utils.h"
 
 
 bool load_test_file(Mat &src, int n)
@@ -36,19 +27,56 @@ bool load_test_file(Mat &src, int n)
 }
 
 
-void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
+void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
 {
-	vector<Mat> splited;
+	Mat strong_img = src.clone();
+	Mat weak_img = src.clone();
+	Mat all_img = src.clone();
+	Mat tracked_img = src.clone();
+	Mat group_result = src.clone();
+	for (int i = 0; i < pool.size(); i++)
+	{
+		for (auto it : weak[i])
+			rectangle(weak_img, it->bound, Scalar(0, 0, 255));
 
-	cv::cvtColor(src, YCrcb, COLOR_BGR2YCrCb);
-	split(YCrcb, splited);
+		for (auto it : strong[i])
+			rectangle(strong_img, it->bound, Scalar(0, 255, 0));
 
-	channels.push_back(splited[0]);
-	channels.push_back(splited[1]);
-	channels.push_back(splited[2]);
-	channels.push_back(255 - splited[0]);
-	channels.push_back(255 - splited[1]);
-	channels.push_back(255 - splited[2]);
+		for (auto it : pool[i])
+			rectangle(all_img, it->bound, Scalar(255, 0, 0));
+	}
+
+	for (auto it : tracked)
+	{
+		rectangle(tracked_img, it->bound, Scalar(255, 0, 255));
+	}
+
+	for (auto it : text)
+	{
+		rectangle(group_result, it.box, Scalar(0, 255, 255));
+	}
+
+#ifdef DO_OCR
+	for (int i = 0; i < text.size(); i++)
+	{
+		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_COMPLEX, 1, Scalar(0, 0, 255));
+	}
+#endif
+
+	cv::imshow("weak", weak_img);
+	cv::imshow("strong", strong_img);
+	cv::imshow("all", all_img);
+	cv::imshow("tracked", tracked_img);
+	cv::imshow("group result", group_result);
+
+
+
+#ifndef WEBCAM_MODE
+	waitKey(0);
+#endif
+	
+
+	
 }
 
 
@@ -280,16 +308,16 @@ void train_cascade()
 
 void bootstrap()
 {
-	ERFilter *erFilter = new ERFilter(THRESHOLD_STEP, MIN_AREA, MAX_AREA, STABILITY_T, OVERLAP_COEF);
+	ERFilter *erFilter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 	erFilter->adb1 = new CascadeBoost("er_classifier/cascade1.classifier");
 	erFilter->adb2 = new CascadeBoost("er_classifier/cascade2.classifier");
 
 
 	int i = 0;
-	for (int pic = 6123; pic <= 10000; pic++)
+	for (int pic = 1; pic <= 10000; pic++)
 	{
 		char filename[30];
-		sprintf(filename, "res/neg/%d.jpg", pic);
+		sprintf(filename, "res/neg4/%d.jpg", pic);
 
 		ERs pool, strong, weak;
 		Mat input = imread(filename, IMREAD_GRAYSCALE);
@@ -301,13 +329,13 @@ void bootstrap()
 		erFilter->classify(pool, strong, weak, input);
 
 
-		for (auto it : strong)
+		/*for (auto it : strong)
 		{
 			char imgname[30];
 			sprintf(imgname, "res/tmp1/%d_%d.jpg", pic, i);
 			imwrite(imgname, input(it->bound));
 			i++;
-		}
+		}*/
 
 		for (auto it : weak)
 		{
@@ -327,7 +355,7 @@ void get_canny_data()
 {
 	fstream fout = fstream("er_classifier/training_data.txt", fstream::out);
 
-	ERFilter erFilter(THRESHOLD_STEP, MIN_AREA, MAX_AREA, STABILITY_T, OVERLAP_COEF);
+	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 	erFilter.ocr = new OCR();
 
 	const int N = 2;
@@ -419,7 +447,7 @@ void get_ocr_data(int argc, char **argv, int type)
 	}
 
 
-	ERFilter erFilter(THRESHOLD_STEP, MIN_AREA, MAX_AREA, STABILITY_T, OVERLAP_COEF);
+	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 	erFilter.ocr = new OCR();
 
 	fstream fout = fstream(outfile, fstream::app);
