@@ -61,7 +61,6 @@ int main(int argc, char** argv)
 
 		if (waitKey(1) >= 0) break;
 	}
-	return 0;
 
 #else
 	int img_count = 0;
@@ -97,5 +96,6 @@ int main(int argc, char** argv)
 
 	save_deteval_xml(det_text);
 #endif
+
 	return 0;
 }

@@ -8,7 +8,7 @@
 #include <iterator>
 #include <fstream>
 #include <vector>
-#include <list>
+#include <forward_list>
 #include <chrono>
 #include <omp.h>
 #include <memory>
@@ -21,6 +21,17 @@
 
 using namespace std;
 using namespace cv;
+
+struct plist 
+{
+	plist() :p(0), next(nullptr) {};
+	plist(int _p) :p(_p), next(nullptr) {};
+	plist(plist *_next) :p(0), next(_next) {};
+	plist(int _p, plist *_next) :p(_p), next(_next) {};
+
+	int p;
+	plist *next;
+};
 
 
 struct ER
@@ -74,7 +85,7 @@ struct Text
 		ers.push_back(z);
 	};
 	ERs ers;
-	double angle;
+	double slope;
 	Rect box;
 	string word;
 };

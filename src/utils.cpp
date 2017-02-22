@@ -53,13 +53,13 @@ void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &
 
 	for (auto it : text)
 	{
-		rectangle(group_result, it.box, Scalar(0, 255, 255));
+		rectangle(group_result, it.box, Scalar(0, 255, 255), 2);
 	}
 
 #ifdef DO_OCR
 	for (int i = 0; i < text.size(); i++)
 	{
-		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_COMPLEX, 1, Scalar(0, 0, 255));
+		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 2);
 	}
 #endif
 
@@ -374,7 +374,10 @@ void get_canny_data()
 			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
 			fout << -1;
 			for (int f = 0; f < spacial_hist.size(); f++)
-				fout << " " << spacial_hist[f];
+			{
+				if(spacial_hist[f])
+					fout << " " << f << ":" << spacial_hist[f];
+			}
 			fout << endl;
 
 			/*spacial_hist = erFilter.make_LBP_hist(255-input, N, normalize_size);
@@ -403,13 +406,19 @@ void get_canny_data()
 			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
 			fout << 1;
 			for (int f = 0; f < spacial_hist.size(); f++)
-				fout << " " << spacial_hist[f];
+			{
+				if (spacial_hist[f])
+					fout << " " << f << ":" << spacial_hist[f];
+			}
 			fout << endl;
 
 			spacial_hist = erFilter.make_LBP_hist(255 - input, N, normalize_size);
 			fout << 1;
 			for (int f = 0; f < spacial_hist.size(); f++)
-				fout << " " << spacial_hist[f];
+			{
+				if (spacial_hist[f])
+					fout << " " << f << ":" << spacial_hist[f];
+			}
 			fout << endl;
 
 			cout << pic << "\tpos" << i <<" finish " << endl;

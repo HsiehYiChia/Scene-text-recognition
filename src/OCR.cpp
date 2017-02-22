@@ -27,7 +27,7 @@ OCR::~OCR()
 
 
 
-double OCR::lbp_run(vector<double> fv, double angle)
+double OCR::lbp_run(vector<double> fv, double slope)
 {
 	svm_node *node = new svm_node[fv.size() + 1];
 	double *pv = new double[svm_get_nr_class(model)];
@@ -56,16 +56,26 @@ double OCR::lbp_run(vector<double> fv, double angle)
 }
 
 
-double OCR::chain_run(Mat &src, double angle)
+double OCR::chain_run(Mat &src, int thresh, double slope)
 {
 	Mat ocr_img;
-
+	
 	//! pre process
-	threshold(255 - src, ocr_img, 128, 255, CV_THRESH_OTSU);
-	if (abs(angle) > 0.01)
-		rotate_mat(ocr_img, ocr_img, angle, true);
-	ARAN(ocr_img, ocr_img, 35);
+	threshold(255-src, ocr_img, thresh, 255, CV_THRESH_OTSU);
+	/*imshow("un_rotated", ocr_img);
+	cout << thresh << " " << slope << endl;*/
+	if (abs(slope) > 0.001)
+	{
+		double rad = atan2(slope, 1);
+		rotate_mat(ocr_img, ocr_img, rad, true);
+	}
+		
+	/*imshow("rotated", ocr_img);
+	waitKey(0);
+	destroyWindow("un_rotated");
+	destroyWindow("rotated");*/
 
+	ARAN(ocr_img, ocr_img, 35);
 	//! feature extract
 	double *pv = new double[svm_get_nr_class(model)];
 	svm_node *fv = new svm_node[201];
@@ -166,10 +176,8 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 
 
 // Don't use this function any more
-void OCR::rotate_mat(Mat &src, Mat &dst, double angle, bool crop)
+void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 {
-	double angle_rad = angle * CV_PI / 180;
-
 	const int x0 = (src.cols - 1) / 2.0;
 	const int y0 = (src.rows - 1) / 2.0;
 
@@ -182,51 +190,49 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double angle, bool crop)
 	const int x4 = 0 - x0;
 	const int y4 = (src.rows - 1) - y0;
 
-	const int new_x1 = round(x1 * cos(angle_rad) - y1 * sin(angle_rad));
-	const int new_y1 = round(x1 * sin(angle_rad) + y1 * cos(angle_rad));
-	const int new_x2 = round(x2 * cos(angle_rad) - y2 * sin(angle_rad));
-	const int new_y2 = round(x2 * sin(angle_rad) + y2 * cos(angle_rad));
-	const int new_x3 = round(x3 * cos(angle_rad) - y3 * sin(angle_rad));
-	const int new_y3 = round(x3 * sin(angle_rad) + y3 * cos(angle_rad));
-	const int new_x4 = round(x4 * cos(angle_rad) - y4 * sin(angle_rad));
-	const int new_y4 = round(x4 * sin(angle_rad) + y4 * cos(angle_rad));
+	const int new_x1 = round(x1 * cos(rad) - y1 * sin(rad));
+	const int new_y1 = round(x1 * sin(rad) + y1 * cos(rad));
+	const int new_x2 = round(x2 * cos(rad) - y2 * sin(rad));
+	const int new_y2 = round(x2 * sin(rad) + y2 * cos(rad));
+	const int new_x3 = round(x3 * cos(rad) - y3 * sin(rad));
+	const int new_y3 = round(x3 * sin(rad) + y3 * cos(rad));
+	const int new_x4 = round(x4 * cos(rad) - y4 * sin(rad));
+	const int new_y4 = round(x4 * sin(rad) + y4 * cos(rad));
 
 	const int max_x = max(new_x1, max(new_x2, max(new_x3, new_x4)));
 	const int max_y = max(new_y1, max(new_y2, max(new_y3, new_y4)));
 	const int min_x = min(new_x1, min(new_x2, min(new_x3, new_x4)));
 	const int min_y = min(new_y1, min(new_y2, min(new_y3, new_y4)));
 
-	int crop_height = abs((max_x - min_x) * tan(angle_rad)) * 0.9;
-
 
 	if (crop)
 	{
+		int crop_height = (new_x2 - new_x1) * tan(rad) * 0.5;
 		Mat tmp = Mat::zeros(max_y - min_y + 1 - 2 * crop_height, max_x - min_x + 1, CV_8U);
-		for (int i = min_y; i < max_y; i++)
+		for (int i = min_y+crop_height; i < max_y- crop_height; i++)
 		{
+			uchar *tptr = tmp.ptr(i - min_y- crop_height);
 			for (int j = min_x; j < max_x; j++)
 			{
-				double new_j = cos(angle_rad) *j - sin(angle_rad)*i + x0;
-				double new_i = sin(angle_rad) *j + cos(angle_rad)*i + y0;
-
+				double new_j = cos(rad) *j - sin(rad)*(i-crop_height) + x0;
+				double new_i = sin(rad) *j + cos(rad)*(i - crop_height) + y0;
+				uchar *sptr = src.ptr(new_i, new_j);
 
 				if (new_i > 0 && new_j > 0 && new_i < src.rows - 1 && new_j < src.cols - 1 &&
 					i >(min_y + crop_height) && i < (max_y - crop_height))
 				{
 					if (new_i == floor(new_i) && new_j == floor(new_j))
-						tmp.at<uchar>(i - min_y, j - min_x) = src.at<uchar>(new_i, new_j);
+						tptr[j - min_x] = sptr[0];
 
 					else
 					{
 						double alpha = new_i - floor(new_i);
 						double beta = new_j - floor(new_j);
-						uchar A = src.at<uchar>(new_i, new_j);
-						uchar B = src.at<uchar>(new_i, new_j + 1);
-						uchar C = src.at<uchar>(new_i + 1, new_j);
-						uchar D = src.at<uchar>(new_i + 1, new_j + 1);
-						uchar E = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
-
-						tmp.at<uchar>(i - min_y - crop_height, j - min_x) = E;
+						uchar A = sptr[0];
+						uchar B = sptr[1];
+						uchar C = sptr[src.cols];
+						uchar D = sptr[src.cols + 1];
+						tptr[j - min_x] = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
 					}
 				}
 			}
@@ -240,28 +246,27 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double angle, bool crop)
 		Mat tmp = Mat::zeros(max_y - min_y + 1, max_x - min_x + 1, CV_8U);
 		for (int i = min_y; i < max_y; i++)
 		{
+			uchar *tptr = tmp.ptr(i - min_y);
 			for (int j = min_x; j < max_x; j++)
 			{
-				double new_j = cos(angle_rad) *j - sin(angle_rad)*i + x0;
-				double new_i = sin(angle_rad) *j + cos(angle_rad)*i + y0;
-
+				double new_j = cos(rad) *j - sin(rad)*i + x0;
+				double new_i = sin(rad) *j + cos(rad)*i + y0;
+				uchar *sptr = src.ptr(new_i, new_j);
 
 				if (new_i > 0 && new_j > 0 && new_i < src.rows - 1 && new_j < src.cols - 1)
 				{
 					if (new_i == floor(new_i) && new_j == floor(new_j))
-						tmp.at<uchar>(i - min_y, j - min_x) = src.at<uchar>(new_i, new_j);
+						tptr[j - min_x] = sptr[0];
 
 					else
 					{
 						double alpha = new_i - floor(new_i);
 						double beta = new_j - floor(new_j);
-						uchar A = src.at<uchar>(new_i, new_j);
-						uchar B = src.at<uchar>(new_i, new_j + 1);
-						uchar C = src.at<uchar>(new_i + 1, new_j);
-						uchar D = src.at<uchar>(new_i + 1, new_j + 1);
-						uchar E = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
-
-						tmp.at<uchar>(i - min_y, j - min_x) = E;
+						uchar A = sptr[0];
+						uchar B = sptr[1];
+						uchar C = sptr[src.cols];
+						uchar D = sptr[src.cols + 1];
+						tptr[j - min_x] = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
 					}
 				}
 			}
@@ -274,13 +279,44 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double angle, bool crop)
 }
 
 
+// The code was based on the post:
+// http://stackoverflow.com/questions/22041699/rotate-an-image-without-cropping-in-opencv-in-c
+void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool crop)
+{
+	const double angle = rad * 180 / CV_PI;
+	Point center(src.cols / 2, src.rows / 2);
+
+	// scale the image if one of the side is bigger than 60
+	double scale = (src.cols > 50 || src.rows > 50) ? 500.0 / max(src.cols, src.rows) : 1.0;
+
+	// get rotation matrix for rotating the image around its center
+	Mat rot = getRotationMatrix2D(center, angle, scale);
+
+	//determine the bounding box
+	Rect bbox = RotatedRect(center, Size(src.cols*scale, src.rows*scale), angle).boundingRect();
+
+	// adjust transformation matrix
+	rot.at<double>(0, 2) += bbox.width / 2.0 - center.x;
+	rot.at<double>(1, 2) += bbox.height / 2.0 - center.y;
+
+	if (crop)
+	{
+		const double crop_L = bbox.width * tan(angle / 180 * 3.1415926) - 1;
+		rot.at<double>(1, 2) -= crop_L;
+		bbox.height -= 2 * crop_L;
+	}
+
+	warpAffine(src, dst, rot, bbox.size());
+}
+
+
 void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 {
 	double R1 = (src.cols > src.rows) ? (double)src.rows / src.cols : (double)src.cols / src.rows;
 	Size size_R2 = (src.cols > src.rows) ? Size(L, L * pow(R1, para)) : Size(L * pow(R1, para), L);
 
 	Mat tmp;
-	resize(src, tmp, size_R2, 0, 0, INTER_LINEAR);
+	resize(src, tmp, size_R2);
 
 	dst = Mat::zeros(L, L, CV_8U);
 	if (tmp.cols > tmp.rows)
@@ -339,7 +375,7 @@ void OCR::feedback_verify(Text &text)
 		case 'C': case 'J': case 'O': case 'P': case 'S': case 'U': case 'V': case 'W': case 'X': case 'Z':
 			for (auto it2 : big_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
 					vote_little++;
 				else
@@ -347,7 +383,7 @@ void OCR::feedback_verify(Text &text)
 			}
 			for (auto it2 : small_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
 					vote_little++;
 				else
@@ -361,7 +397,7 @@ void OCR::feedback_verify(Text &text)
 			{
 				for (auto it2 : big_letter)
 				{
-					double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+					double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 					if (it->bound.y - it->bound.height*T < it2->bound.y - offset)
 						vote_big++;
 					else
@@ -372,7 +408,7 @@ void OCR::feedback_verify(Text &text)
 			{
 				for (auto it2 : small_letter)
 				{
-					double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+					double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 					if (it2->bound.y - it2->bound.height*T > it->bound.y + offset)
 						vote_big++;
 					else
@@ -386,7 +422,7 @@ void OCR::feedback_verify(Text &text)
 		case '1': case 'i': case 'l':
 			for (auto it2 : big_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
 					vote_little++;
 				else
@@ -394,7 +430,7 @@ void OCR::feedback_verify(Text &text)
 			}
 			for (auto it2 : small_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.angle * CV_PI / 180);
+				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
 				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
 					vote_little++;
 				else
@@ -442,6 +478,8 @@ void OCR::feedback_verify(Text &text)
 	}
 
 
+
+	text.word.clear();
 	for (auto it : text.ers)
 		text.word.append(string(1, it->letter));
 

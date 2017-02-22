@@ -1,0 +1,1574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tagset>
+   <image>
+      <imageName>img/14_03.jpg</imageName>
+      <address>341 Southwest 10th Avenue Portland OR</address>
+      <lex>LIVING,ROOM,THEATERS,KENNY,ZUKE,DELICATESSEN,CLYDE,COMMON,ACE,HOTEL,PORTLAND,ROSE,CITY,BOOKS,STUMPTOWN,COFFEE,ROASTERS,RED,CAP,GARAGE,FISH,GROTTO,SEAFOOD,RESTAURANT,AURA,RESTAURANT,LOUNGE,ROCCO,PIZZA,PASTA,BUFFALO,EXCHANGE,MARK,SPENCER,LIGHT,FEZ,BALLROOM,READING,FRENZY,ROXY,SCANDALS,MARTINOTTI,CAFE,DELI,CROWSENBERG,HALF</lex>
+      <Resolution x="1280" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="75" width="236" x="375" y="253">
+            <tag>LIVING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="76" width="175" x="639" y="272">
+            <tag>ROOM</tag>
+         </taggedRectangle>
+         <taggedRectangle height="87" width="281" x="839" y="283">
+            <tag>THEATERS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_04.jpg</imageName>
+      <address>1100 Southwest 6th Avenue Portland OR</address>
+      <lex>PORTLANDIA,PORTLAND,BUILDING,AUDITORIUM,PACWEST,CENTER,SEATTLE,BEST,COFFEE,THE,MELTING,POT,CITY,BUREAU,RISK,MANAGEMENT,SCHNITZER,CONCERT,HALL,HEATHMAN,HOTEL,STANDARD,PLAZA,STEAMERS,ASIAN,STREET,BISTRO,EWEN,GISVOLD,GUS,SOLOMON,UNITED,STATES,COURTHOUSE,TREES,RESTAURANT,CATERING,CONGRESS,INTERNATIONAL,RELATIONS,TRANSPORTATION,DEPARTMENT,DUFFY,KEKEL,LLP,INSURANCE,TICHENOR,DZIUBA,LLP,CONKLING,FISKUM,MCCORMICK</lex>
+      <Resolution x="1276" y="884"/>
+      <taggedRectangles>
+         <taggedRectangle height="64" width="366" x="571" y="344">
+            <tag>INSURANCE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="84" width="354" x="180" y="310">
+            <tag>STANDARD</tag>
+         </taggedRectangle>
+         <taggedRectangle height="64" width="229" x="973" y="359">
+            <tag>CENTER</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_08.jpg</imageName>
+      <address>2004 Greenville Avenue Dallas TX</address>
+      <lex>LULA,ANTIQUE,MALL,ZUBAR,TEPPO,YAKITORI,SUSHI,BAR,GEZELLIG,WHISKY,GREENVILLE,AVENUE,PUBLIC,HOUSE,THE,GIRLS,ROOM,ZYMOLOGY,HOTEL,CAPRI,SERVICE,PIZZA,BILLIARD,SUEDE,ZEPHYRS,PATIO,LOUNGE,ELAN,MAKEUP,STUDIO,NANDINA,ASIAN,TAPAS,OLD,CROW,SLICE,SUGAR,CREEK,EIGHT</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="64" width="171" x="756" y="410">
+            <tag>ANTIQUE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="54" width="113" x="591" y="416">
+            <tag>LULA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="116" x="927" y="420">
+            <tag>MALL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="35" width="87" x="1000" y="551">
+            <tag>LULA</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_12.jpg</imageName>
+      <address>135 West Ball Road Anaheim CA 92805-6023</address>
+      <lex>SUBWAY,KFC,PIZZA,TIME,BALL,LEMON,COIN,LAUNDRY,WESTERN,MEDICAL,CENTER,ANAHEIM,ANNA,HAIR,SALON,MARISCOS,NAYARIT,RESTAURANT,POLLO,LOCO,WATER,BOY,DONALD,ALCOHOL,AND,DRUG,ABUSE,TREATMENT,DEE,BEST,BUILDING,MAINTENANCE,HOT,LINE,BURGER,KING,ELEVEN,BUENA,PARK,HONDA,SUZUKI,CONCORD,EQUIPMENT,COMPANY,SHOE,CITY,OUTLET,SLEEP,HUMAYON,KHAN</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="159" width="673" x="176" y="292">
+            <tag>SUBWAY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_15.jpg</imageName>
+      <address>643 5th Avenue San Diego CA 92101-6915</address>
+      <lex>GHIRARDELLI,CHOCOLATE,GREYSTONE,THE,STEAKHOUSE,GASLAMP,QUARTER,ASSOCIATION,BORDERS,BOOKSTORE,BOOKS,MUSIC,MOVIES,HENRY,PUB,RESTAURANT,FIESTA,LOUNGE,BAR,HOSTELLING,INTERNATIONAL,USA,URBAN,OUTFITTERS,CHIANTI,WHISKEY,GIRL,HOSTELS,SAN,DIEGO,CHEESE,SHOP,TRATTORIA,STRADA,JIMMY,LOVE,ROCK,BOTTOM,BREWERY,BLUE,POINT,COASTAL,CUISINE,LIME,OSTERIA,PANEVINO,ASTI,RISTORANTE,FINE,DINING,SIDE</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="61" width="407" x="482" y="501">
+            <tag>CHOCOLATE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="98" width="731" x="177" y="354">
+            <tag>GHIRARDELLI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/04_04.jpg</imageName>
+      <address>538 North Glenoaks Boulevard Burbank CA</address>
+      <lex>CAM,PHOTO,IMAGING,THRIFT,LUX,CLEANERS,LOTUS,CHINESE,GOURMET,MASTER,NAILS,CUTTING,EDGE,GLENOAK,SHOE,REPAIR,VIVALDI,FLORIST,GIFTS,GOOD,TIME,VIDEO,ELEVEN,GROWING,YEARS,KINGS,COMIX,FLAMINGO,INSURANCE,UNIVERSITY,TRAVEL,SERVICES,BLOCK,INCOME,TAX,PREPARATION,RISHA,ENGINEERING,GROUP,ASSOCIATES,BARDI,PET,HAVEN,LINA,BEAUTY,SALON,CARE,CONCEPTS,COLONY,THEATRE,DATA,LINE</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="55" width="175" x="506" y="494">
+            <tag>MASTER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="120" x="680" y="492">
+            <tag>NAILS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="27" width="71" x="1032" y="622">
+            <tag>GLENOAK</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/12_07.jpg</imageName>
+      <address>1700 Benjamin Franklin Parkway Philadelphia PA</address>
+      <lex>WINDSOR,SUITES,PHILADELPHIA,FRIENDS,SELECT,SCHOOL,MARRIOTT,EXECUSTAY,MACE,CROSSING,EMBASSY,HOTEL,CATHEDRAL,PETER,PAUL,OFFICE,MEXICAN,POST,SHERATON,CITY,CENTER,BELL,ATLANTIC,SUBWAY,TGI,FRIDAY,ASIA,THE,PARKWAY,CON,MURPHY,KUJAKU,CAFE,MARABELLA,RESTAURANT,BANK,NEW,YORK,MELLON,TIR,NOG,BAR,GRILL,CENTRAL,PARKING,SYSTEMS,DESILVERIO,ROBERT</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="55" width="242" x="267" y="321">
+            <tag>WINDSOR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="55" width="100" x="166" y="324">
+            <tag>THE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_11.jpg</imageName>
+      <address>6033 Oram Street Dallas TX</address>
+      <lex>BANGKOK,INN,CALLE,DOCE,REDENTA,GARDEN,GOLD,RUSH,CAFE,YORK,STREET,CONSIGNMENT,SOLUTION,BENNY,BAGELS,EAST,DALLAS,DEVELOPMENTAL,CENTER,XMAXGAMES,LLC,COFFEE,TIPPERARY,POUR,HOUSE,COUNSELING,EVANS,JOHN,BAKER,PHD,METRO,PAWS,ANIMAL,HOSPITAL,GENERAL,CHINA,RESTAURANT,PAPERBACKS,PLUS,BOULEVARD,REALTY,PETER,POHLS,WINE,THERAPIST,LAKEWOOD,LANDING,PIZZA,HUT</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="124" width="682" x="365" y="212">
+            <tag>BANGKOK</tag>
+         </taggedRectangle>
+         <taggedRectangle height="104" width="192" x="1050" y="234">
+            <tag>INN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_16.jpg</imageName>
+      <address>1117 Prairie Street Houston TX</address>
+      <lex>ALDEN,HOUSTON,HUBCAB,GRILL,MAGNOLIA,HOTEL,ABC,BONDING,CHRIST,CHURCH,CATHEDRAL,LIVE,SPORTS,CAFE,TREEBEARD,RESTAURANT,TOMATO,LADY,KITCHEN,QUISINE,RONNIE,HARRISON,MOLLY,PUB,MERCURY,ROOM,THE,HOLLYWOOD,SANDWICH,SPECIALTY,RACHEL,SHOP,LITTLE,NAPOLI,ITALIAN,RESTURANT,LAURA,MAFRIGE,ENTERPRISES,CAVA,BISTRO,AMERICAN,COMPASS,INC,GMS,DENTAL,BAKER,CHRISTOPHER,DDS</lex>
+      <Resolution x="1280" y="882"/>
+      <taggedRectangles>
+         <taggedRectangle height="41" width="145" x="823" y="371">
+            <tag>ALDEN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/05_12.jpg</imageName>
+      <address>2007 South Racine Avenue Chicago IL</address>
+      <lex>MAX,TOWING,MARIACHI,MEXICO,VIVO,RESURRECTION,PROJECT,KEVIN,SMITH,PHOTOGRAPHY,INTERNATIONAL,RECORDS,ILLINOIS,ENGINEERED,PRODUCTS,CASA,AZTLAN,ACORN,WIRE,IRON,WORKS,LLC,AEROTECHTURE,INC,MAY,STREET,CAFE,PONCE,BUILDERS,CHICAGO,BATHROOM,HOME,RENOVATION,AND,REMODELING,OPEN,KITCHENS,DVORAK,PARK,MASONRY,AND,CONCRETE,CONTRACTORS,PEREZ,PUBLIC,SCHOOL,MEALS,WHEELS,HONKY,TONK,BBQ,PILSEN,ALLIANCE,DENTIST,BROADWAY,COSTUMES</lex>
+      <Resolution x="1278" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="41" width="92" x="205" y="313">
+            <tag>MAX</tag>
+         </taggedRectangle>
+         <taggedRectangle height="52" width="117" x="333" y="315">
+            <tag>TOWING</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_08.jpg</imageName>
+      <address>900 East Vermont Ave. Anaheim CA 92805-5615</address>
+      <lex>MARBLE,YARD,ANAHEIM,GRANITE,ORION,TILE,INC,ORANGE,COUNTY,TOWING,SERVICES,COVERKING,INTERSTATE,ELECTRONICS,DELTA,WYE,ELECTRIC,CDR,CONCRETE,STONE,PRODUCT,VFS,FIRE,PROTECTION,VIKING,SUPPRESSION,SYSTEM,JIM,WELDING,SOUTH,COAST,SURFACES,SUPERIOR,GASKET,SEAL,MICHAELANGELO,FAB,FOTO,CABINA,ACTION,SOUTHLAND,CITY,ELEM,SCHOOL,DISTRICT,LUCHETTI,IMAGINATION,LIGHTING</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="49" width="162" x="429" y="265">
+            <tag>MARBLE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="40" width="118" x="598" y="274">
+            <tag>YARD</tag>
+         </taggedRectangle>
+         <taggedRectangle height="51" width="183" x="422" y="338">
+            <tag>ORION</tag>
+         </taggedRectangle>
+         <taggedRectangle height="53" width="107" x="612" y="339">
+            <tag>TILE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_01.jpg</imageName>
+      <address>426 West Ball Road Anaheim CA 92805</address>
+      <lex>BEST,VALUE,ASTORIA,INN,AND,SUITES,ANAHEIM,VILLAGE,HOTEL,MENAGE,STARBUCKS,HARBOR,CHEVRON,TACO,BELL,HOLIDAY,STREET,FARE,UNION,TAXI,CAB,INC,LAURA,LEON,FAMILY,DENTISTRY,JIN,KWAK,SHELL,DISNEYLAND,RESORT,CALIFORNIA,TTY,FOR,HEARING,IMPAIRED,RESERVATIONS,COZZMAR,INSURANCE,BIGS,PIZZA,MORE,DAYS,APOLLO,FUNDING,INC,AUTO,CARE,MATT,KURILICH,LAW,OFFICES,CASA</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="35" width="99" x="416" y="437">
+            <tag>ASTORIA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="38" width="82" x="536" y="388">
+            <tag>BEST</tag>
+         </taggedRectangle>
+         <taggedRectangle height="40" width="55" x="516" y="428">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="31" width="84" x="594" y="428">
+            <tag>SUITES</tag>
+         </taggedRectangle>
+         <taggedRectangle height="40" width="112" x="623" y="379">
+            <tag>VALUE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/01_10.jpg</imageName>
+      <address>? 55 Peachtree Street Southwest Atlanta GA?</address>
+      <lex>PAYLESS,SHOE,SOURCE,UNDERGROUND,ATLANTA,WACHOVIA,BANK,FIVE,POINTS,STATION,UNIVERSITY,PLACE,LITTLE,ITALY,PIZZA,JOHNNY,ROCKETS,RAINBOW,KIDS,IMMACULATE,CONCEPTION,EASTER,SEALS,KANDLESTIX,ATL,CUSTOMS,CITY,NAILS,MICK,GEORGIA,STATE,SWEET,CORNER,DUPSIE,AFRICAN,CLOTHING,CHINA,SUB,AIR,COMM</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="136" width="497" x="270" y="207">
+            <tag>PAYLESS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="126" width="338" x="267" y="352">
+            <tag>SHOE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="128" width="467" x="600" y="349">
+            <tag>SOURCE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/03_19.jpg</imageName>
+      <address>2055 26th Street Boulder CO</address>
+      <lex>ARES,THRIFT,SHOP,ROCKY,MOUNTS,SALVAGGIO,ITALIAN,DELI,SALON,SABIHA,LLC,SPRUCE,INTERNAL,MEDICINE,BROWNE,HILLARY,GOODTIMES,GOOGLE,SPORTIQUE,SCOOTERS,LING,SHEILA,MARY,LANGLOIS,IVAN,GERRITY,AGENCY,MIKE,CAMERA,INC,TOLEDO,GLASS,OLIVE,GARDEN,HAWLEY,BEAR,ALIGNMENT,SERVICE,PEARL,STREET,DENTAL,COLORADO,DAILY,BEADS,BARNSLEY,TIRE</lex>
+      <Resolution x="1920" y="898"/>
+      <taggedRectangles>
+         <taggedRectangle height="66" width="150" x="1067" y="201">
+            <tag>MOUNTS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="67" width="129" x="951" y="198">
+            <tag>ROCKY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_09.jpg</imageName>
+      <address>122 South Euclid Street Anaheim CA 92802-1012</address>
+      <lex>GOODWILL,CHAIN,REACTION,DENNY,RADIO,SHACK,DAYTONA,CAR,WASH,TARGET,JUGO,DESIGNS,INC,COUPLES,MEGA,OUTLET,ACCURATE,BOOKKEEPING,NOTARY,INCOME,TAX,PAYROLL,YMCA,VENTURE,GROUP,LEED,MATTRESS,STORES,LOS,OLIVOS,BOX,PAMPAS,APARTMENTS,ARBY,MULTIMEDIA,ANAHEIM,CHEVROLET,GEO,LOARA,ELEMENTARY,SCHOOL,ABC,LIQUIDATORS</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="80" width="356" x="251" y="332">
+            <tag>GOODWILL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="25" width="68" x="160" y="376">
+            <tag>GOODWILL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_19.jpg</imageName>
+      <address>1855 Haight Street San Francisco CA</address>
+      <lex>AMOEBA,MUSIC,CHA,GIANT,ROBOT,SKATES,HAIGHT,MILK,STANYAN,PARK,HOTEL,KAN,ZAMAN,CAFE,ROCKIN,JAVA,JOHN,MURIO,TROPHY,ROOM,KEZAR,PUB,RESTAURANT,RED,VICTORIAN,MOVIE,HOUSE,ALEMBIC,THE,CITRUS,CLUB,DONALD,AVENUE,CYCLERY,BAR,ESCAPE,FROM,NEW,YORK,PIZZA,CHRISSY,BEE,ZONA,ROSA,YOGA,TREE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="300" width="736" x="178" y="147">
+            <tag>AMOEBA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="173" width="520" x="484" y="366">
+            <tag>MUSIC</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_19.jpg</imageName>
+      <address>326 North Charles Street Baltimore MD 21202</address>
+      <lex>BROWN,ARCADE,MICK,SHEA,IRISH,PUB,CAZBAR,THE,PARK,HOTEL,LUMBINI,RESTAURANT,OLD,PAUL,CHURCH,SHOGUN,INC,BASILICA,THE,ASSUMPTION,SOTTO,SOPRA,BALTIMORE,MILTON,GRILLE,BANTHAI,HOSTEL,MAISY,COPRA,SUPER,FRESH,DIE,MUSIK,COMFORT,INN,SUITES,FOR,EYES,OPTICAL</lex>
+      <Resolution x="1366" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="58" width="240" x="516" y="398">
+            <tag>ARCADE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="62" width="216" x="506" y="338">
+            <tag>BROWN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/12_11.jpg</imageName>
+      <address>752 South 10th Street Philadelphia PA 19147</address>
+      <lex>PHILADELPHIA,BELLA,VISTA,BED,BREAKFAST,AND,MOTELS,HOTELS,HOSTELS,TOURIST,ATTRACTIONS,DANTE,LUIGIS,MORNING,GLORY,ISGRO,PASTRIES,RALPH,ITALIAN,RESTAURANT,SABRINA,CAFE,BEER,DISTRIBUTORS,INC,SARCONE,DELI,HIRSCH,CHARLENE,DMD,PAUL,CATHOLIC,CHURCH,PALUMBOS,CONESTOGA,BANK,MEW,GALLERY,LLC,MAGIC,GARDENS,SON,PALUMBO,RECREATION,CENTER,MNB,ARCHITECTURE,HAWTHORNES,LORENZO,PIZZA,ACADEMY</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="66" width="184" x="308" y="417">
+            <tag>BELLA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="55" width="148" x="504" y="437">
+            <tag>VISTA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="51" width="77" x="667" y="449">
+            <tag>INC</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_14.jpg</imageName>
+      <address>1418 East Lincoln Avenue Anaheim CA 92805-2213</address>
+      <lex>ORIGINAL,PANCAKE,HOUSE,ABRAHAM,LINCOLN,ELEMENTARY,PHARMACY,MOORE,UPHOLSTERER,REINBOLD,GALLERY,PHOTOGRAPHY,GRUPO,RECUPERACION,ALCOHOLICOS,ANTHONY,ROSS,STUDIO,ALICIA,TRAVEL,CHA,HEARING,AID,CENTER,ORANGE,COUNTY,FIRE,SERVICES,ASSOCIATION,MAMMA,MINI,MART,MARI,HAIR,DESIGN,PARKVIEW,HEALTHCARE,PRO,TAX,SUPER,VIDEO,UNITED,OPTICAL,LEMON,TREE,HOTEL,KITCHEN,SUITES,DONES,FAMILY,DENTISTRY,DIAZ,PROFESIONALES,HISPANA,HOMES</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="80" width="163" x="571" y="397">
+            <tag>HOUSE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="69" width="151" x="567" y="328">
+            <tag>ORIGINAL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="87" width="245" x="318" y="374">
+            <tag>PANCAKE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_06.jpg</imageName>
+      <address>934 North Pennsylvania Street Indianapolis IN</address>
+      <lex>LIVING,ROOM,LOUNGE,URBAN,ELEMENT,INDIANAPOLIS,RUBBER,STAMP,DATSA,PIZZA,IDN,HOFFMAN,INC,LUCILLE,RAINES,RESIDENCE,APPEL,JOHN,MARION,COUNTY,PUBLIC,LIBRARY,CROSSROADS,BAPTIST,ASSOCIATION,ABBEY,COFFEE,HOUSE,VOLUNTEERS,AMERICA,METROPOLITAN,CENTER,ARTIFICIAL,LIMB,CORPORATION,CASTLETON,INN,RADIO,ONE,LOCKERBIE,COURT,APARTMENTS,ARVEY,PAPER,OFFICE,PRODUCTS,PPG,PORTER,PAINTS,HVAF,INDIANA,BUCKINGHAM,COMPANIES</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="41" width="119" x="481" y="353">
+            <tag>LIVING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="33" width="131" x="706" y="352">
+            <tag>LOUNGE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="34" width="103" x="600" y="351">
+            <tag>ROOM</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_04.jpg</imageName>
+      <address>647 West Pratt Street Baltimore MD</address>
+      <lex>BABE,RUTH,BIRTHPLACE,AND,MUSEUM,CAMDEN,PUB,PENN,CARRY,OUT,RESTAURANT,PEACE,CUP,JOE,INC,UNIVERSITY,MARYLAND,MEDICAL,CENTER,HAMPTON,INN,BALTIMORE,DOWNTOWN,CONVENTION,HOTEL,INSTITUTE,EMERGENCY,RIDGELYS,DELIGHT,HISTORIC,DISTRICT,SAIL,CLOTH,FACTORY,CHIEF,EXAMINER,OFFICE,SERVICES,PICKLES,NATIONAL,DENTISTRY,UNIV,MED,SYSTEM,RICHARDSON,DENISE,CYSCOM,ROBERT,BASS,ISLAND,CUISINE,AMBULANCE,LICENSING,GREENE,HOUSE,APARTMENTS,LLC</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="52" width="139" x="484" y="425">
+            <tag>CAMDEN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="44" width="67" x="634" y="431">
+            <tag>PUB</tag>
+         </taggedRectangle>
+         <taggedRectangle height="61" width="122" x="50" y="339">
+            <tag>PUB</tag>
+         </taggedRectangle>
+         <taggedRectangle height="65" width="143" x="949" y="353">
+            <tag>CAMDEN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="41" width="71" x="546" y="664">
+            <tag>CAMDEN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/03_10.jpg</imageName>
+      <address>1900 29th Street Boulder CO</address>
+      <lex>MACY,CROSSROADS,MALL,BOULDER,DAPHNE,GREEK,CAFE,HARPO,SPORTS,GRILL,LENSCRAFTERS,SLEEP,NUMBER,STORE,SELECT,COMFORT,WALKING,DOCTOR,OPTOMETRY,STAPLES,JAMBA,JUICE,A123,IMMEDIATE,MINUTES,LOCKSMITH,FIREHOUSE,SUBS,CINGULAR,WIRELESS,29TH,BICE,THE,BUCKET,AND,ROADSIDE,TOWING,RECOVERY,PEI,WEI,ASIAN,DINER,TCI,TIRE,CENTER,MODMARKET</lex>
+      <Resolution x="1920" y="904"/>
+      <taggedRectangles>
+         <taggedRectangle height="169" width="434" x="611" y="313">
+            <tag>MACY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/18_12.jpg</imageName>
+      <address>222 Yale Avenue North Seattle WA</address>
+      <lex>REI,SEATTLE,FLAGSHIP,ALLEY,APARTMENTS,ESPRESSO,VIVACE,WORLD,WRAPPS,VELOCITY,ART,AND,DESIGN,SNOWBOARD,CONNECTION,CORAZON,SPA,BLIX,TOTTINI,COLE,WEBER,UNITED,WUNDERMAN,FEATHERED,FRIENDS,NBBJ,URBAN,BEAST,FOREST,SERVICE,OUTDOOR,SOUTHLAKE,GRILL,PLAY,AGAIN,SPORTS,SIGHTLIFE,PUJARI,CENTER</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="67" width="144" x="548" y="352">
+            <tag>REI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_02.jpg</imageName>
+      <address>1023 4th Avenue San Diego CA 92101</address>
+      <lex>YARD,HOUSE,SAN,DIEGO,SUSHI,THE,GRANT,BELO,RESTAURANT,NIGHTLIFE,REI,GADO,BLUES,COURTYARD,DOWNTOWN,LOCAL,EATERY,CONFIDENTIAL,SUITE,TENDER,WESTGATE,HOTEL,STREET,ALLEY,DAKOTA,GRILL,SPIRITS,OSETRA,WATERGRILL,FORMERLY,THE,FISHHOUSE,ELIXIR,ESPRESSO,BAR,BROADWAY,EVENT,CENTER,RUBIO,SUBWAY,POOL,TIME,SWIMMING,REPAIR,TILING</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="157" width="372" x="504" y="355">
+            <tag>HOUSE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="140" width="269" x="227" y="348">
+            <tag>YARD</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_16.jpg</imageName>
+      <address>1313 West Burnside Street Portland OR</address>
+      <lex>MCMENAMINS,PUBS,CRYSTAL,BALLROOM,RINGLERS,PUB,EVERYDAY,MUSIC,CACAO,MASU,CASSIDY,RESTAURANT,JAKE,FAMOUS,CRAWFISH,HENRY,12TH,STREET,TAVERN,ANNEX,ODESSA,EAGLE,PORTLAND,SCOOTER,QUADES,MENAMINS,HISTORIC,PROPERTIES,WHOLE,FOODS,MARKET,PEARL,HOOD,SKIBOWL,WINTER,RESORT,SILVERADO,DUST,DIAMONDS,DETAIL,ANTHROPOLOGIE,ART,THE,INSTITUTE,CONTEMPORARY</lex>
+      <Resolution x="1278" y="884"/>
+      <taggedRectangles>
+         <taggedRectangle height="68" width="371" x="519" y="242">
+            <tag>EVERYDAY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="65" width="161" x="911" y="264">
+            <tag>MUSIC</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/03_08.jpg</imageName>
+      <address>2015 Pearl Street Boulder CO</address>
+      <lex>TEN,TIMBERLINE,FINE,FURNITURE,DISH,COLOR,MINE,MATEO,BOULDER,COOPERATIVE,MARKET,PEERLESS,TYRE,COLORADO,BUSINESS,BANK,FOUR,STAR,REALTY,AND,PROPERTY,MANAGEMENT,INC,BARTLETT,INTERIORS,PLANETARY,SOLUTIONS,METRO,HOME,STORE,BARRETT,STUDIO,ARCHITECTS,VECCHIO,BICICLETTERIA,ESPRESSORIA,GARTH,BRAUN,ASSOCIATES,WHITTIER,ELEMENTARY,SCHOOL,COCONA,EVELYN,BASSOFF,PHD</lex>
+      <Resolution x="1918" y="904"/>
+      <taggedRectangles>
+         <taggedRectangle height="83" width="462" x="633" y="318">
+            <tag>TIMBERLINE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_05.jpg</imageName>
+      <address>4812 Bryan Street Dallas TX</address>
+      <lex>MAI,VIETNAMESE,RESTAURANT,JIMMY,FOOD,STORE,JADE,GARDEN,CHINESE,FRENCH,SANDWICHES,DALLASITE,BILLIARDS,URBANO,CAFE,BINH,MINH,MARKET,DALLAS,COSMETIC,DENTIST,CRIMINAL,LAWYER,PINTIP,CHARUNMETHEE,DDS,NGUYEN,TRAN,ASSOCIATES,1410,THE,DALAT,ISAMARE,BEVERAGE,INC,BRYAN,PLACE,DENTAL,ALESSIO,RISTORANTE,LND,HAIR,STUDIO,ALLCARE,FAMILY,CLINIC,TOY,TRAINS,UNLIMITED,LIVE,OAK,ROOMING,HOUSE</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="106" width="230" x="511" y="190">
+            <tag>MAI</tag>
+         </taggedRectangle>
+         <taggedRectangle height="67" width="257" x="867" y="224">
+            <tag>RESTAURANT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="325" x="693" y="292">
+            <tag>VIETNAMESE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/01_02.jpg</imageName>
+      <address>186 Courtland Street Northeast Atlanta GA?</address>
+      <lex>HOLIDAY,INN,ATLANTA,DOWNTOWN,WORLD,CONGRESS,CTR,SHERATON,HOTEL,UPTOWN,RESTAURANT,LOUNGE,MARRIOTT,MARQUIS,SOL,LIQUOR,HERTZ,LOCAL,EDITION,COURTLAND,STREET,165,GYRO,KING,PEACH,PACKAGE,GINGER,BAY,CAFE,TRADER,VIC,PEACHTREE,CENTER,ATHLETIC,CLUB,HILTON,MYSTERY,DINNER,THEATER,AGATHA,NIKOLAI,ROOF,UPS,STORE,AVIS,RENT,CAR,FLOOD,WATER,DAMAGE,AND,RESTORATION,COCA,COLA,WINGS</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="58" width="108" x="567" y="316">
+            <tag>SOL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_04.jpg</imageName>
+      <address>101 West Maryland Street Indianapolis IN</address>
+      <lex>CIRCLE,CENTRE,MALL,PALOMINO,STEAK,SHAKE,HOULIHAN,CANTERBURY,HOTEL,ELMO,HOUSE,CHAMPPS,AMERICANA,RUTH,CHRIS,DOWNTOWN,INDIANAPOLIS,CHANG,CHINA,BISTRO,RAM,RESTAURANT,BREWERY,ALCATRAZ,BREWING,DENTIST,THE,MIKADO,JAPANESE,CONRAD,HOTEL,SOUTH,MERIDIAN,REGAL,HARRY,IZZY,WEST,BERTOLINI,AUTHENTIC,TRATTORIA</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="67" width="181" x="615" y="310">
+            <tag>SHAKE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="60" width="161" x="413" y="314">
+            <tag>STEAK</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_15.jpg</imageName>
+      <address>1101 Southeast Division Street Portland OR</address>
+      <lex>GENIES,FOXFIRE,TEAS,TROPICAL,SALVAGE,MOTOKITTY,MODIFIED,TAOIST,TAI,CHI,SOCIETY,USA,MAKOOL,PORTLAND,HEALTH,WELLNESS,DAN,PALMER,FINE,JEWELERS,PONYTAIL,PHOTOGRAPHY,ARTEMIS,FOODS,CATERING,AND,CAFE,DOGTOWN,PET,SUPPLY,FANCY,SALON,FIORI,ARAKAWA,HANGING,SYSTEMS,SOLSTICE,VIDEO,PRODUCTIONS,MON,AMOUR,DUCHESS,CLOTHIER,BLITZ,LADD,COLLEEN,CAHILL,PHOTOGRAPHER,MUSE,MODEL,MANAGEMENT</lex>
+      <Resolution x="1280" y="876"/>
+      <taggedRectangles>
+         <taggedRectangle height="61" width="284" x="750" y="340">
+            <tag>GENIES</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_09.jpg</imageName>
+      <address>49 Stevenson Street San Francisco CA?</address>
+      <lex>YANK,SING,RESTAURANTS,CHEVRON,TOWER,MORGAN,PRIVATE,BANK,LOUIE,BAR,AND,GRILL,GOLDEN,GATE,UNIVERSITY,SALT,HOUSE,ORGANIC,INC,SATORI,YOGA,STUDIO,BARE,ESCENTUALS,SEPHORA,USA,MIXT,GREENS,BBDO,WEST,STACEY,BOOKSTORE,ONE,BUSH,PLAZA,MILLENNIUM,SAN,FRANCISCO,CENTRAL,PARKING,SYSTEM,TRIBAL,DDB,CHIPOTLE,MEXICAN,GGU,STUDENT,CENTER,CAFE,REALITY,DIGITAL</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="62" width="178" x="523" y="393">
+            <tag>SING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="53" width="167" x="525" y="349">
+            <tag>YANK</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/11_14.jpg</imageName>
+      <address>333 North Orange Avenue Orlando FL?</address>
+      <lex>DETROIT,JOES,ORIGINAL,CONEY,MANUEL,THE,28TH,DIXIE,CAFE,EMPIRE,SZECHUAN,BELLE,FURS,OUTERWEAR,BILLY,JACKSON,LAW,OFFICE,250,NORTH,ORANGE,AVE,LLC,MARYBETH,MCDONALD,OFCS,BANK,AMERICA,MINI,MART,JAVA,LAVA,COFFEE,SHOP,DIOCESE,ORLANDO,CATHOLIC,MAGICTECH,COMPUTERS,DAKOTA,MICROFILM,SERVICES,FEDEX,PRINT,SHIP,CENTER,CLUB,LIMELITE,SIR,SPEEDY,PRINTING,NYPD,SERGIO,FRANK,EIDSON</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="83" width="415" x="306" y="313">
+            <tag>DETROIT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="92" width="267" x="731" y="299">
+            <tag>JOES</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="168" x="312" y="405">
+            <tag>ORIGINAL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="41" width="124" x="492" y="406">
+            <tag>CONEY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/17_04.jpg</imageName>
+      <address>193 Jackson Street San Jose CA.</address>
+      <lex>GOMBEI,JAPANESE,RESTAURANT,SAN,JOSE,TOFU,KUBOTA,ROY,STATION,COFFEE,TEA,OMOGARI,KOREAN,SEVEN,BAMBOO,SHUEI,MANJU,SHOP,SHABU,NIJIYA,MARKET,HUKILAU,SAKURA,NAIL,BAR,KUMAKO,KAITA,TSUGARU,KAMIMOTO,STRING,INSTRUMENTS,KAZOO,MINATO,CUISINE,SHABURI,WING,CHINESE</lex>
+      <Resolution x="1280" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="44" width="153" x="726" y="359">
+            <tag>GOMBEI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/04_03.jpg</imageName>
+      <address>446 North Glenoaks Boulevard Burbank CA</address>
+      <lex>KINGS,COMIX,CABO,TAN,LUCAS,TANNING,CENTER,GILBERT,CLEANERS,LOTUS,CHINESE,GOURMET,MODERN,BARBER,SHOP,LILY,CAFE,CAM,PHOTO,IMAGING,MARKET,HEALTH,THE,CLEANING,STORE,BURBANK,LAWNMOWER,THIRST,QUENCHER,LIQUORS,DOMINO,PIZZA,MOBILE,APOLLO,RESTAURANT,CARTOON,NETWORK,STUDIOS,REVITOL,CORPORATION,CARTY,TALENT,INC,NAILS,STATE,FARM,INSURANCE,COMMUNITY,YMC</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="74" width="278" x="531" y="481">
+            <tag>BARBER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="227" x="553" y="442">
+            <tag>MODERN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_01.jpg</imageName>
+      <address>1200 Travis Street Houston TX</address>
+      <lex>COURTYARD,HOUSTON,DOWNTOWN,CONVENTION,CENTER,RESIDENCE,INN,POLICE,DEPARTMENT,HUMBLE,TOWER,APARTMENTS,GONZALEZ,STARBUCKS,MACYS,THE,TIPPING,POINT,JAMES,CONEY,ISLAND,HYATT,HOTELS,RESORTS,REGENCY,ZERO,SANDWICH,SHOP,LOUISIANA,PLACE,FIRST,UNITED,METHODIST,CHURCH,RELIANT,ENERGY,PLAZA,FOUNDATION,MCDONALD,EXPRESS,PASO,PRODUCTION,EDGE,PETROLEUM,CORPORATION</lex>
+      <Resolution x="1280" y="882"/>
+      <taggedRectangles>
+         <taggedRectangle height="78" width="416" x="542" y="312">
+            <tag>DEPARTMENT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="39" width="195" x="133" y="382">
+            <tag>HOUSTON</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="186" x="342" y="357">
+            <tag>POLICE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_06.jpg</imageName>
+      <address>815 Dallas Street Houston TX</address>
+      <lex>JAMES,CONEY,ISLAND,COURTYARD,HOUSTON,DOWNTOWN,CONVENTION,CENTER,ZERO,SANDWICH,SHOP,RESIDENCE,INN,POLICE,DEPARTMENT,MACYS,HUMBLE,TOWER,APARTMENTS,HYATT,HOTELS,RESORTS,REGENCY,MCDONALD,PASO,PRODUCTION,LOUISIANA,PLACE,GONZALEZ,RELIANT,ENERGY,PLAZA,STARBUCKS,FASTSIGNS,SIGNS,AND,GRAPHICS,CENTERPOINT,SUBWAY,WILCOX,OIL,GAS,INC,POST,OAK,GRILL</lex>
+      <Resolution x="1278" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="47" width="123" x="755" y="336">
+            <tag>CONEY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="144" x="883" y="334">
+            <tag>ISLAND</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="133" x="616" y="337">
+            <tag>JAMES</tag>
+         </taggedRectangle>
+         <taggedRectangle height="52" width="163" x="32" y="338">
+            <tag>SIGNS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_04.jpg</imageName>
+      <address>1804 McMillan Avenue Dallas TX</address>
+      <lex>LOUIE,BARCADIA,LLC,PEARL,CUP,LLC,THE,CAFE,SAN,MIGUEL,BLUE,COLLAR,BAR,SAVE,WAY,GROCERY,STORE,NEW,FLOWER,MARKET,SPUTNIK,ARE,1976,INC,ALFREDO,ITALIAN,CUISINE,AND,SEAFOOD,RELOCATING,COUTURE,CONFECTIONS,POLE,DANCE,WORKOUTS,FITNESS,CLASSES,VERT,WELLNESS,CENTER,SANDY,JOHN,KENNEDY,LEARNING,TAQUERIA,LUPITA,AGAIN,DESIGN,STUDIO,GARZA,CHIROPRACTIC,CHILDREN,ORAL,HEALTH</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="68" width="188" x="569" y="409">
+            <tag>SAVE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="62" width="142" x="792" y="409">
+            <tag>WAY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_02.jpg</imageName>
+      <address>401 East Washington Street Indianapolis IN</address>
+      <lex>DAYS,INN,INDIANAPOLIS,BAA,LLC,RED,ROOF,INNS,NORTH,AEROFINITY,INC,HELICOPTERS,HELIPORT,UNITED,STATES,GOVERNMENT,GENERAL,SERVICES,ADMINISTRATION,FEDERAL,BUILDINGS,OPERATION,AND,LEASING,GOODMAN,JEWELERS,SQUARED,COMMUNICATIONS,WTTS,MAVRIS,ARTS,EVENT,CENTER,KUNZ,RESTORATIONS,CRITICAL,CARE,TRANSPORT,MARKET,SQUARE,ARENA,STUDENT,ATLAS,HOTEL,JOHN,OBERLIES,CONSULTING,ENGINEERS,KEVIN,JONES,CHEM,DRY,SENTINEL,OFFENDER,WEIR,ASSOCIATES</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="47" width="62" x="634" y="371">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="82" width="123" x="481" y="54">
+            <tag>DAYS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="45" width="90" x="542" y="368">
+            <tag>DAYS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="60" width="67" x="619" y="110">
+            <tag>INN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_09.jpg</imageName>
+      <address>605 East Market Street Indianapolis IN</address>
+      <lex>THERAPY,NIGHT,CLUB,LOUNGE,CIRCLE,CITY,PIZZA,OZZIE,BAR,GRILL,CHEESEBOUROUGH,BORUTA,FRAZIER,ASSOCIATES,FLANNER,AND,BUCHANAN,FUNERAL,CENTER,MARKET,SUN,KING,BREWING,LLC,ROSCOE,STOVALL,LAW,AXIS,ARCHITECTURE,INTERIORS,MILAGRO,INC,MAXINE,CHICKEN,WAFFLES,DILK,GARY,BROWN,TOMPKINS,LORY,SHIRT,PRINTING,INDIANAPOLIS,XTREME,GRAPHICS,CREMATION,INDIANA,PAYDAY,LOANS,COURTYARD,LANE,CHRISTOPHER,WEINLAND,THOMAS,MCMANUS,ASSOICATES,NORTHSIDE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="21" width="43" x="596" y="405">
+            <tag>NIGHT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="45" width="150" x="587" y="368">
+            <tag>THERAPY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="17" width="51" x="679" y="410">
+            <tag>LOUNGE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/17_19.jpg</imageName>
+      <address>366 South 1st Street San Jose CA 95113</address>
+      <lex>EULIPIA,RESTAURANT,BAR,ANNO,DOMINI,AGENDA,LOUNGE,SAINTE,CLAIRE,HOTEL,ORIGINAL,JOE,WET,NIGHTCLUB,MOTIF,HOOKAHNITES,HUNTERS,VIDEO,SOUTH,FIRST,BILLIARDS,CLUB,AND,HIVE,SAN,JOSE,MARRIOTT,SOFA,FORNAIO,RAMADA,LIMITED,MOSAIC,JERSEYS,THE,BLUE,CHIP,CAFE,MATISSE,CONVENTION,CENTER,GLO</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="44" width="98" x="427" y="497">
+            <tag>ANNO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="43" width="112" x="530" y="495">
+            <tag>DOMINI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_00.jpg</imageName>
+      <address>345 Stockton Street San Francisco CA?</address>
+      <lex>GRAND,HYATT,SAN,FRANCISCO,LEVI,STORE,UNION,SQUARE,GRANDVIEWS,THE,VESSEL,CAMPTON,PLACE,HOTEL,SIR,FRANCIS,DRAKE,NIKE,TIFFANY,FOLK,ART,INTERNATIONAL,SUTTER,STOCKTON,GARAGE,450,BUILDING,SCALA,BISTRO,WILLIAMS,SONOMA,POST,STREET,HARRY,DENTON,STARLIGHT,ROOM,MARRIOTT,ZARA,KARIKTER,LASSEN,TOUR,TRAVEL,INC,UGG,AUSTRALIA,GREEN,DENTISTRY</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="73" width="389" x="549" y="446">
+            <tag>FRANCISCO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="75" width="375" x="486" y="213">
+            <tag>GRAND</tag>
+         </taggedRectangle>
+         <taggedRectangle height="189" width="683" x="325" y="263">
+            <tag>HYATT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="41" width="130" x="403" y="444">
+            <tag>SAN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/13_05.jpg</imageName>
+      <address>117 West Grant Street Phoenix AZ</address>
+      <lex>PORTAL,RESTAURANT,GRANT,PARK,AMERICAN,LEGION,FRIENDLY,HOUSE,HOME,CARE,RUBY,ROOM,POOL,PROZ,ASU,DORMS,ATM,SERVICE,REPAIR,EEG,PRINTING,SERVICES,PROPERTY,LLP,ANTHONY,CATHOLIC,CHURCH,QUEEN,LIQUORS,COMMERCIAL,STAFFING,WELLS,FARGO,BANK,MIRANDA,CUSTOMS,PHOENIX,PRODUCE,ARTISTIC,FORGE,METAL,DESIGNS,AWEBCHROME,NET,CHICANOS,POR,CAUSA,FEDERAL,PIANO,TUNING,SPECIALIST,THE,MAN</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="27" width="102" x="469" y="294">
+            <tag>PORTAL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/07_14.jpg</imageName>
+      <address>321 17th Street Denver CO?</address>
+      <lex>THE,BROWN,PALACE,HOTEL,AND,SPA,SHIP,TAVERN,COMFORT,INN,DOWNTOWN,REPUBLIC,PLAZA,DENVER,WELLS,FARGO,BANK,ELLYNGTON,1600,GLENARM,PLACE,LUXURY,APARTMENTS,THE,CHURCHILL,BAR,AFTERNOON,TEA,STARBUCKS,TRINITY,GRILLE,WORLD,TRADE,CENTER,EDUCATIONAL,PARAMOUNT,THEATRE,EARLS,RESTAURANT,BAKER,HUGHES,16TH,STREET,MALL,ENCANA,OIL,GAS,USA,INC,1670,BROADWAY,DELECTABLE,EGG2</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="44" width="149" x="228" y="322">
+            <tag>BROWN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="124" x="532" y="322">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="38" width="149" x="379" y="326">
+            <tag>PALACE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="33" width="72" x="728" y="328">
+            <tag>SPA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="33" width="67" x="659" y="328">
+            <tag>AND</tag>
+         </taggedRectangle>
+         <taggedRectangle height="21" width="62" x="133" y="389">
+            <tag>COMFORT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="29" width="84" x="17" y="462">
+            <tag>COMFORT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="21" width="39" x="101" y="468">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="13" width="31" x="149" y="404">
+            <tag>INN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_19.jpg</imageName>
+      <address>1110 Main Street Houston TX</address>
+      <lex>MACYS,RELIANT,ENERGY,PLAZA,COURTYARD,HOUSTON,DOWNTOWN,CONVENTION,CENTER,RESIDENCE,INN,HUMBLE,TOWER,APARTMENTS,STARBUCKS,FOLEY,DEPARTMENT,STORE,ACADEMY,FOREVER,BOOKS,MILLION,MCCORMICK,SCHMICK,PASO,PRODUCTION,POLICE,SUNGLASS,HUT,THE,TIPPING,POINT,CHUTNEYS,INDIAN,RESTAURANT,CORNER,BAKERY,CAFE,JAMES,CONEY,ISLAND,CAMILLE,SIDEWALK,POPEYE,CHICKEN,BISCUITS</lex>
+      <Resolution x="1278" y="876"/>
+      <taggedRectangles>
+         <taggedRectangle height="84" width="267" x="289" y="192">
+            <tag>MACYS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/17_11.jpg</imageName>
+      <address>566 North 6th Street San Jose CA</address>
+      <lex>MIRAIDO,VILLAGE,APARTMENTS,NIJIYA,MARKET,KAZOO,RESTAURANT,HUKILAU,JAPANTOWN,BUSINESS,ASSOCIATION,SUSHI,MARU,SHUEI,MANJU,SHOP,BANANA,CREPE,TSUGARU,JAPANESE,DOBASHI,MKT,INCORPORATED,MINATO,CUISINE,OKAYAMA,KAITA,KUBOTA,KUMAKO,GOMBEI,BLOCKBUSTER,VIDEO,NISHIME,ROBERT,SAN,JOSE</lex>
+      <Resolution x="1278" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="100" width="311" x="472" y="357">
+            <tag>MIRAIDO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="80" width="255" x="797" y="370">
+            <tag>VILLAGE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/07_05.jpg</imageName>
+      <address>1280 Grant Street Denver CO</address>
+      <lex>BENDERS,TAVERN,COREPOWER,YOGA,GRANT,BUFFALO,EXCHANGE,CITY,LUCKY,FORTUNE,CHINESE,RESTAURANT,DOMINO,PIZZA,WATERCOURSE,BAKERY,PANDORA,JEWELRY,MOXIE,HAIR,CAPITOL,HEIGHTS,APARTMENTS,TOKYO,JOE,MOLLY,BROWN,HOUSE,MUSEUM,CAMELLIA,CUSTOM,TAILORS,QUIZNOS,IYER,LAW,OFFICE,LLC,CRIMINAL,ATTORNEY,COLORADO,HISTORY,SPA,TUNE,DENVER,HILL,PUBLIC,LIBRARY</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="36" width="137" x="486" y="183">
+            <tag>DOMINO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="51" width="118" x="104" y="199">
+            <tag>BENDERS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/07_11.jpg</imageName>
+      <address>420 East Colfax Avenue Denver CO</address>
+      <lex>CHEEKY,MONK,BELGIAN,BEER,CAFE,CATHEDRAL,IMMACULATE,CNCPTN,GREAT,WALL,CHINESE,RESTAURANT,RED,ROOM,AND,BAR,TAKI,DENVER,PRIVATE,INVESTIGATOR,MILE,HIGH,INVESTIGATIONS,DUMAN,CUSTOM,TAILOR,WOLFE,BARBEQUE,NOB,HILL,INN,COLORADO,STATE,CAPITOL,DONALD,ATTORNEY,MOLLY,BROWN,HOUSE,MUSEUM,ROSLYNN,GRILL,ABEJA,ACACIA,APARTMENTS,DRUG,LIQUOR,GARCIA,RICHARD,ATTY,WALNUT,CITY,GRILLE</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="145" width="249" x="481" y="171">
+            <tag>HILL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="166" width="272" x="745" y="150">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="122" width="227" x="231" y="194">
+            <tag>NOB</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/07_00.jpg</imageName>
+      <address>300 East Colfax Avenue Denver CO</address>
+      <lex>COLORADO,STATE,CAPITOL,SHISH,KABOB,GRILL,HILL,BOOKS,CATHEDRAL,IMMACULATE,CNCPTN,RED,ROOM,RESTAURANT,AND,BAR,CITY,GRILLE,WOLFE,BARBEQUE,JERRY,RECORD,EXCHANGE,TAKI,DENVER,PRIVATE,INVESTIGATOR,MILE,HIGH,INVESTIGATIONS,SATELLITE,GOVERNMENT,LEGISLATURE,LEGISLATIVE,LEGAL,SERVICES,WALNUT,CAFE,JOEY,PIZZA,ARGONAUT,APARTMENTS,NEWHOUSE,HOTEL,EDUCATION,ASSOCIATION,EMILIO,THE,CAMBRIDGE,BROUSSARD,CREOLE</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="51" width="247" x="503" y="368">
+            <tag>BOOKS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="194" x="484" y="322">
+            <tag>CAPITOL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="101" x="675" y="319">
+            <tag>HILL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_00.jpg</imageName>
+      <address>1844 Southwest Morrison Street Portland OR</address>
+      <lex>PGE,PARK,THE,AGENCY,ULTRA,SPORT,LOUNGE,PORTLAND,STATE,UNIVERSITY,CONTINUING,EDUCATION,MULTNOMAH,ATHLETIC,CLUB,MATADOR,END,KINGSTON,BAR,GRILL,MORRISON,APARTMENTS,PLAINFIELD,RESTAURANT,CHEERFUL,BULLPEN,BITTER,END,PUB,LLC,COFFEE,HOUSE,NORTHWEST,STADIUM,STATION,KINGS,HILL,SOUTHWEST,SALMON,GERMAN,RADIO,EAT,PIZZA,HOTLIPS,CIVIC,TOWERS,MAZATLAN,MEXICAN,STARBUCKS,MAX</lex>
+      <Resolution x="1280" y="876"/>
+      <taggedRectangles>
+         <taggedRectangle height="142" width="228" x="345" y="95">
+            <tag>PGE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="53" width="80" x="489" y="662">
+            <tag>PGE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="154" width="368" x="584" y="54">
+            <tag>PARK</tag>
+         </taggedRectangle>
+         <taggedRectangle height="51" width="120" x="574" y="666">
+            <tag>PARK</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/05_09.jpg</imageName>
+      <address>1101 South Canal Street Chicago IL</address>
+      <lex>WHOLE,FOODS,MARKET,DSW,SHOE,WAREHOUSE,CHICAGO,PANERA,BREAD,STARBUCKS,WHITE,PALACE,GRILLS,MICHAEL,ARTS,CRAFTS,COST,PLUS,WORLD,GAMESTOP,SOUTHGATE,OFFICE,DEPOT,PETSMART,STANDARD,PARKING,BANFIELD,THE,PET,HOSPITAL,FITNESS,HIRSCH,SHELDON,NEW,MAXWELL,STREET,STAPLES,SOIFER,NEIL,NAJAFI,CHRISTOPHER</lex>
+      <Resolution x="1278" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="64" width="144" x="580" y="197">
+            <tag>MARKET</tag>
+         </taggedRectangle>
+         <taggedRectangle height="72" width="138" x="430" y="191">
+            <tag>WORLD</tag>
+         </taggedRectangle>
+         <taggedRectangle height="63" width="238" x="968" y="129">
+            <tag>MICHAEL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="20" width="38" x="983" y="190">
+            <tag>THE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="21" width="51" x="1019" y="191">
+            <tag>ARTS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="18" width="72" x="1083" y="191">
+            <tag>CRAFTS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="32" width="184" x="1044" y="2">
+            <tag>FITNESS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_05.jpg</imageName>
+      <address>121 7th Street San Francisco CA</address>
+      <lex>BEST,WESTERN,AMERICANIA,CUSTOM,BURGER,AND,LOUNGE,CARRIAGE,INN,GOOD,HOTEL,MOTELS,SAN,FRANCISCO,INC,FLAMINGO,FEDERAL,BUILDING,SOMA,RESIDENCES,GENERAL,BEAD,ART,GLASS,BUTTONS,TONY,BALONYS,PIZZA,CITY,PAINTS,ROXANNE,CAFE,MISSION,RESTAURANT,HEAVEN,DOG,PEPPERS,ROSY,HEELS,SOUTH,MARKET,HEALTH,CENTER,RAMADA,DOWNTOWN,INCREDIBLE,ADVENTURES</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="71" width="319" x="514" y="300">
+            <tag>AMERICANIA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="44" width="86" x="367" y="352">
+            <tag>BEST</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="139" x="345" y="382">
+            <tag>WESTERN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="66" width="188" x="580" y="371">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_01.jpg</imageName>
+      <address>5310 Junius Street Dallas TX</address>
+      <lex>GARDEN,CAFE,DALLAS,LAWYER,LITTLE,BEAN,IRENE,COREY,DESIGN,ASSOCIATES,QUAINT,HOME,GALLERY,WOOTTON,DALE,AAAA,PIANO,LOGISTICS,BLUE,DIAMOND,LIMOUSINES,PRODIGY,RENOVATIONS,MANDALAY,APARTMENTS,SOLARES,GEORGE,BEAUMONDE,GAWEL,DRUE,ROOF,RAISERS,HIGHER,GROUND,CONSULTANTS,MILLS,III,CPA,GONZALES,ANDY,HAMILTON,PHOTOGRAPHY,JAS,WALKER,ATTORNEY,SIGERCON</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="104" width="202" x="1111" y="340">
+            <tag>CAFE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="117" width="317" x="766" y="320">
+            <tag>GARDEN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/17_12.jpg</imageName>
+      <address>262 Jackson Street San Jose CA</address>
+      <lex>SUSHI,MARU,KAZOO,RESTAURANT,MIRAIDO,VILLAGE,APARTMENTS,NIJIYA,MARKET,MINATO,JAPANESE,CUISINE,HUKILAU,BANANA,CREPE,SHUEI,MANJU,SHOP,JAPANTOWN,BUSINESS,ASSOCIATION,TSUGARU,ESPLANADE,DOBASHI,MKT,INCORPORATED,NIKAKU,ARTS,KAITA,CUBAN,INTERNATIONAL,BLOCKBUSTER,VIDEO,KUMAKO,KUBOTA,NISHIME,ROBERT</lex>
+      <Resolution x="1272" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="74" width="210" x="779" y="387">
+            <tag>MARU</tag>
+         </taggedRectangle>
+         <taggedRectangle height="82" width="232" x="533" y="379">
+            <tag>SUSHI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_05.jpg</imageName>
+      <address>735 Massachusetts Avenue Indianapolis IN</address>
+      <lex>COMPLEXIONS,SPA,SALON,BOUTIQUE,SCHOLARS,INN,GOURMET,CAFE,CHATHAM,TAP,MASS,AVENUE,PUB,INC,FORTY,FIVE,DEGREES,COMEDYSPORTZ,INDIANAPOLIS,YATS,RESTAURANT,METRO,NITE,CLUB,STOP,SAGE,745,BAR,GRILL,PHOENIX,THEATRE,AGIO,LLC,FIRE,FIGHTERS,MSM,SAKURA,URBAN,STUDIO,GOULDING,AND,WOOD,RUMBA,ART,BANK,ARCH,PROFESSIONAL,CITY,MARION,COUNTY,AGENCIES,SURVIVE,ALIVE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="32" width="181" x="516" y="367">
+            <tag>COMPLEXIONS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_14.jpg</imageName>
+      <address>237 South High Street Baltimore MD</address>
+      <lex>SABATINO,ITALIAN,RESTAURANT,CHIAPPARELLI,AMICCIS,ALDO,CAPRICCIO,CIAO,BELLA,VACCARO,PASTRY,SHOP,CAESAR,DEN,MIMMO,TAVOLA,LEO,ROMAN,CATHOLIC,CHURCH,FISHERMAN,WHARF,INNER,ISABELLA,STAR,SPANGLED,BANNER,FLAG,HOUSE,GIA,CAFE,CRAB,PASTA,FACTORY,BALTIMORE,DELLA,NOTTE,RISTORANTE,INDIA,RASOI,SCALA,DALESIO,LITTLE,ITLY</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="50" width="296" x="493" y="472">
+            <tag>CHIAPPARELLI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_03.jpg</imageName>
+      <address>982 Market Street San Francisco CA</address>
+      <lex>WARFIELD,CURRAN,THEATRE,CRAZY,HORSE,GENTLEMEN,CLUB,THEATER,DISTRICT,SAN,FRANCISCO,CALIFORNIA,TULAN,RESTAURANT,FARMERBROWN,SHOWDOGS,LUGGAGE,STORE,PEARL,ART,CRAFT,SUPPLIES,INC,SUITE,181,TAQUERIA,CANCUN,AUNT,CHARLIE,LOUNGE,TWENTY,ONE,TAYLOR,ORIGINAL,JOE,JOSSEY,BASS,WILEY,IMPRINT,HOTEL,METROPOLIS,UNDERGROUND,SMOKE,SHOP,ANU,BICYCLE,COALITION,NEW,GRAND,APARTMENTS</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="33" width="161" x="795" y="253">
+            <tag>WARFIELD</tag>
+         </taggedRectangle>
+         <taggedRectangle height="33" width="163" x="211" y="261">
+            <tag>WARFIELD</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/05_08.jpg</imageName>
+      <address>214 West 22nd Place Chicago IL</address>
+      <lex>CHINATOWN,HOTEL,SRO,PUI,TAK,CENTER,THREE,HAPPINESS,RESTAURANT,WON,KOW,PENANG,MALAYSIAN,CUISINE,MOON,PALACE,NEW,CHINA,TOWN,CHOP,SUEY,EMPEROR,CHOICE,TRIPLE,CROWN,PHOENIX,GIFTLAND,INC,MARKET,SAINT,ALP,TEAHOUSE,CHAMBER,COMMERCE,DOUBLE,CHINESE,RED,WOKS,THINGS,KAM,FUNG,FEIDA,BAKERY</lex>
+      <Resolution x="1276" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="26" width="110" x="584" y="380">
+            <tag>CHINATOWN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="16" width="82" x="597" y="400">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_15.jpg</imageName>
+      <address>3930 Crutcher Street Dallas TX</address>
+      <lex>PHYSICIANS,DAY,SURGERY,CENTER,BAYLOR,SCHOOL,FOR,CHILDREN,CENTRAL,DALLAS,MINISTRIES,MEDCO,CONSTRUCTION,SURGICARE,TOM,LANDRY,FITNESS,FOSTER,LUNG,CARE,MILLARD,MARK,GERIATRICS,BAPTIST,GENERAL,CONVENTION,ORTHOPEDIC,ASSOCIATE,MOLLABASHY,ALLAADDIN,UNIVERSITY,NURSING,MARTHA,AKIRA,NUMAJIRI,THOMPSON,JOYCE,DONALD,KENNERLY,KRONENBERGER,MICHAEL,BROTHERS,SANDRA,ASSOCIATES,TEXAS,ALLERGY,POST,OFFICE</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="35" width="59" x="753" y="460">
+            <tag>DAY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="44" width="179" x="751" y="419">
+            <tag>PHYSICIANS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="40" width="142" x="806" y="456">
+            <tag>SURGERY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_16.jpg</imageName>
+      <address>1100 3rd Avenue San Diego CA 92101</address>
+      <lex>SAN,DIEGO,CIVIC,CENTER,WESTGATE,HOTEL,THE,GRANT,BRISTOL,4TH,AND,LOCAL,EATERY,OPERA,STATION,DOWNTOWN,JOHNNY,BROWN,YARD,HOUSE,FONTAINEBLEAU,RESTAURANT,SOFIA,KNSD,FOURTH,CONCERTS,SPECIAL,FONTAINBLEAU,SUSHI,DELI,BELO,NIGHTLIFE,BLUES,REI,GADO</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="30" width="89" x="734" y="536">
+            <tag>CENTER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="31" width="78" x="511" y="529">
+            <tag>DIEGO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="33" width="67" x="450" y="522">
+            <tag>SAN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_14.jpg</imageName>
+      <address>660 G Street San Diego CA 92101</address>
+      <lex>COMFORT,INN,GASLAMP,CONVENTION,CENTER,BUCA,BEPPO,SAN,DIEGO,ZANZIBAR,CAFE,PANNIKIN,COFFEE,TEA,NEIGHBORHOOD,CHOPAHN,AUTHENTIC,AFGHAN,CSN,EXY,CLOSED,GHIRARDELLI,CHOCOLATE,BORDERS,BOOKSTORE,BOOKS,MUSIC,MOVIES,ARLINGTON,APARTMENT,HOTEL,MAX,REAL,ESTATE,CONSULTANTS,USA,HOSTELS,GREYSTONE,THE,STEAKHOUSE,RAMADA,HOSTELLING,INTERNATIONAL,VILLAGER,LODGE,QUARTER,KITCHEN,KIYO,JAPANESE,RESTAURANT,ASSOCIATION,ASTI,RISTORANTE,FINE,DINING</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="106" width="279" x="823" y="85">
+            <tag>COMFORT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="55" width="163" x="826" y="734">
+            <tag>GASLAMP</tag>
+         </taggedRectangle>
+         <taggedRectangle height="76" width="146" x="1107" y="122">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="94" x="937" y="681">
+            <tag>INN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="157" x="778" y="683">
+            <tag>COMFORT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/12_19.jpg</imageName>
+      <address>1714 Delancey Street Philadelphia PA 19103-6715</address>
+      <lex>PLAYS,PLAYERS,TENTH,PRESBYTERIAN,CHURCH,SATALOFF,ROBERT,BRANZINO,RESTAURANT,FONTANA,DELLA,CITTA,BED,BREAKFAST,CENTER,CITY,RITTENHOUSE,CLEANERS,TAILORS,GREAT,SCOT,SUPERMARKET,HEMAN,ACKAH,YOLANDA,1715,BOUTIQUE,HOTEL,MAXWELL,REALTY,INC,PHILADELPHIA,ART,ALLIANCE,MONKS,BELGIAN,CAFE,BLACK,SHEEP,PUB,ALAN,SCHWARTZ,ESQUIRE,THOMAS,ANAPOL,ACADEMY,MIRIAM,BENTON,BARISH,MARK,LEWINTER,BAIA,BISTRO</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="48" width="200" x="396" y="312">
+            <tag>PLAYERS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="36" width="116" x="189" y="317">
+            <tag>PLAYS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_02.jpg</imageName>
+      <address>914 Dallas Street Houston TX</address>
+      <lex>COURTYARD,HOUSTON,DOWNTOWN,CONVENTION,CENTER,RESIDENCE,INN,HUMBLE,TOWER,APARTMENTS,THE,TIPPING,POINT,STARBUCKS,MACYS,POLICE,DEPARTMENT,FOREVER,GONZALEZ,FIRST,UNITED,METHODIST,CHURCH,RELIANT,ENERGY,PLAZA,BOOKS,MILLION,MCCORMICK,SCHMICK,EDGE,PETROLEUM,CORPORATION,JAMES,CONEY,ISLAND,BUFFALO,WILD,WINGS,FAX,YOUR,ORDER,HYATT,HOTELS,RESORTS,REGENCY,INNOVUS,INC,ZERO,SANDWICH,SHOP,SAMSON,RESOURCES</lex>
+      <Resolution x="1280" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="30" width="222" x="411" y="381">
+            <tag>STARBUCKS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_15.jpg</imageName>
+      <address>1300 Lamar Street Houston TX</address>
+      <lex>FOUR,SEASONS,HOUSTON,MASSA,SEAFOOD,GRILL,QUATTRO,HOUSE,BLUES,STRIP,STEAK,DOWNTOWN,CLUB,CENTER,JOSEPHINE,RISTORANTE,ONE,PARK,PLACE,SHOPS,GILBANE,BUILDERS,GREEN,MARKET,DISCOVERY,SUNDAYS,NOON,4PM,VILLE,RESTAURANT,AMERICAN,ARBITRATION,ASSOCIATION,TORCH,ENERGY,ADVISORS,INC,AEROS,HOCKEY,SULLIVAN,PETER,NINFAS,MEXICAN,CADDELL,CHAPMAN</lex>
+      <Resolution x="1278" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="50" width="248" x="554" y="241">
+            <tag>FOUR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="58" width="409" x="477" y="280">
+            <tag>SEASONS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_11.jpg</imageName>
+      <address>219 Southwest Broadway Portland OR</address>
+      <lex>OUTDOOR,STORE,BAILEY,TAPROOM,TUG,BOAT,BREWING,BENSON,HOTEL,SAUCEBOX,CAFE,BAR,MARY,CLUB,LONDON,GRILL,GAUCHO,360,VINYL,LUCIA,DOWNTOWN,PORTLAND,SILVER,DOLLAR,PIZZA,GRILLO,VINTAGE,PLAZA,THA,ARCHITECTURE,PAUL,MITCHELL,THE,SCHOOL,UNION,BANK,INCOME,PROPERTY,MANAGEMENT,BLUE,SKY,GALLERY,AND,NINE,ESCAPE</lex>
+      <Resolution x="1280" y="876"/>
+      <taggedRectangles>
+         <taggedRectangle height="75" width="286" x="197" y="182">
+            <tag>OUTDOOR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="70" width="201" x="903" y="231">
+            <tag>OUTDOOR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="64" width="170" x="497" y="204">
+            <tag>STORE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="58" width="122" x="1109" y="257">
+            <tag>STORE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/13_18.jpg</imageName>
+      <address>105 West Portland Street Phoenix AZ</address>
+      <lex>PORTLAND,RESTAURANT,WINE,BAR,POST,ROOSEVELT,SQUARE,IRISH,CULTURAL,CENTER,FAIR,TRADE,CAFE,KPNX,TRINITY,EPISCOPAL,CATHEDRAL,MARGARET,HANCE,PARK,YOGA,HEART,STATE,FARM,INSURANCE,PARTNERS,METRO,WEST,KPFF,CONSULTING,ENGINEERS,STOP,FORECLOSURE,LOAN,MODIFICATION,NEGOTIATORS,PAYING,CASH,FOR,HOUSES,CAMBRIDGE,WEALTH,MANAGEMENT,ATTORNEY,BACKED,LOAN,MODIFICATION,COMPANY,PTE,REAL,ESTATE,GROUP,LLC,CARLY,BISTRO,ADVIXEN,ROBERT,KORLJAN,LTD</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="36" width="191" x="156" y="285">
+            <tag>PORTLAND</tag>
+         </taggedRectangle>
+         <taggedRectangle height="27" width="213" x="578" y="290">
+            <tag>RESTAURANT</tag>
+         </taggedRectangle>
+         <taggedRectangle height="35" width="64" x="830" y="282">
+            <tag>BAR</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_02.jpg</imageName>
+      <address>1924 North Henderson Avenue Dallas TX</address>
+      <lex>CAFE,SAN,MIGUEL,BARCADIA,LLC,LOUIE,BLUE,COLLAR,BAR,PEARL,CUP,LLC,THE,ALFREDO,ITALIAN,CUISINE,AND,SEAFOOD,RELOCATING,SANDY,AGAIN,DESIGN,STUDIO,GARZA,CHIROPRACTIC,ARE,1976,INC,TAQUERIA,LUPITA,BICH,HUONG,NGUYEN,SAVE,WAY,GROCERY,STORE,SPUTNIK,FUJI,MASSAGE,NEW,FLOWER,MARKET,POLE,DANCE,WORKOUTS,FITNESS,CLASSES,VERT,WELLNESS,CENTER,ATORON</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="40" width="76" x="996" y="609">
+            <tag>BAR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="138" width="292" x="448" y="478">
+            <tag>BLUE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="165" width="397" x="734" y="459">
+            <tag>COLLAR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="34" width="51" x="487" y="450">
+            <tag>THE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_01.jpg</imageName>
+      <address>601 Pacific Highway San Diego CA 92101</address>
+      <lex>EMBASSY,SUITES,HOTEL,SAN,DIEGO,BAY,DOWNTOWN,PACIFIC,FISH,SEAPORT,VILLAGE,STARBUCKS,ARCHSTONE,HARBORVIEW,GREEK,ISLAND,CAFE,UPSTART,CROW,BOOKSTORE,COFFEE,STREET,DELI,BARNETT,GRAND,PIER,ASAGGIO,PIZZA,PASTA,PLUS,BEAUTY,SALON,RAZKALLAH,BARBER,SHOP,WATER,TAXI,APPLE,BOX,TOYS,BRICKYARD,TEA,SAFARI,ANIMAL,COLLECTION,MARION,MARKET,SHOPS,RESTAURANTS,THE,DINNER,DETECTIVE</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="36" width="134" x="411" y="250">
+            <tag>EMBASSY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="28" width="105" x="423" y="275">
+            <tag>SUITES</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/14_19.jpg</imageName>
+      <address>915 Southeast Hawthorne Boulevard Portland</address>
+      <lex>LUCKY,LABRADOR,BREW,PUB,IORIO,RESTAURANT,VANITY,JUNKIE,CLEVER,CYCLES,HOWLIDAY,INN,DOGGIE,HOTEL,KUSH,HAND,KNOTTED,CARPETS,RUGS,MADISON,GRILL,ROOTS,BREWING,CHELSEA,BALLROOM,LLC,CRAVE,CATERING,PLAN,STARFISH,STUDIOS,NEW,DEAL,DISTILLERY,AND,TASTING,ROOM,ANTIQUE,FURNITURE,WAREHOUSE,COLUMBIA,PRINTING,GRAPHICS,NEWSPACE,DARKROOM,STUDIO,STREET,YOGA,FREE,GEEK,LIFESTYLES,PHYSICAL,THERAPY,11TH,AVENUE,LIQUOR</lex>
+      <Resolution x="1280" y="880"/>
+      <taggedRectangles>
+         <taggedRectangle height="50" width="214" x="876" y="314">
+            <tag>BREW</tag>
+         </taggedRectangle>
+         <taggedRectangle height="68" width="344" x="503" y="313">
+            <tag>LABRADOR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="209" x="271" y="317">
+            <tag>LUCKY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="79" width="158" x="1101" y="299">
+            <tag>PUB</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_17.jpg</imageName>
+      <address>123 West Louisiana Street Indianapolis IN</address>
+      <lex>CROWNE,PLAZA,HISTORIC,UNION,STATION,INDIANAPOLIS,AMTRAK,STATION,PULLMAN,RESTAURANT,BAR,GREYHOUND,LINES,SLIPPERY,NOODLE,INN,STOP,OMNI,SEVERIN,HOTEL,WHOLESALE,DISTRICT,RCA,DOME,UGLY,MONKEY,PAN,AMERICAN,ARENA,LUCAS,OIL,STADIUM,POST,OFFICE,CLADDAGH,IRISH,PUB,PACKAGE,XPRESS,CLURE,COMMERCIAL,INDUSTRIAL,RED,EYE,CAFE,TEACHER,PET,TRAVEL,INC</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="50" width="273" x="400" y="405">
+            <tag>CROWNE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="62" width="196" x="700" y="391">
+            <tag>PLAZA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="35" width="136" x="452" y="473">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/13_09.jpg</imageName>
+      <address>18 West Adams Street Phoenix AZ</address>
+      <lex>TWO,RENAISSANCE,SQUARE,SECURITY,STARBUCKS,THAI,ELEPHANT,BAJA,FRESH,MEXICAN,GRILL,YASDA,BENTO,BANK,WYNDHAM,PHOENIX,HOTEL,CONEY,ISLAND,PITA,SUBS,SALADS,CHASE,AND,ATM,DOWNTOWN,DELI,SAN,CARLOS,MONROE,SEAMUS,MCCAFFFREY,IRISH,PUB,RESTAURANT,QUIZNOS,HYATT,REGENCY,MESA,PIT,BBQ,SMOKEHOUSE,JACQUEE,ESPRESSO,HANNY,YOSHI,ZOE,KITCHEN</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="67" width="158" x="474" y="530">
+            <tag>BENTO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="75" width="160" x="302" y="530">
+            <tag>YASDA</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/00_00.jpg</imageName>
+      <address>107 South Adams Street Anaheim CA 92802-1001</address>
+      <lex>DOLL,HUT,ALL,ABOARD,MINI,STORAGE,IMPORT,AUTO,SUPPLY,ARAM,VENETIAN,MARBLE,CAL,TRANSMISSION,PEST,OPTIONS,INC,LANDSCAPE,MANAGEMENT,CENTER,BRAKE,TIRES,PSI,PIPE,SURGEON,ROOF,PREP,GOAR,PLUMBING,DIRECT,SALES,EARL,SCHEIB,PAINT,BODY,INTERSTATE,RECOVERY,SERVICES,PENN,CORPORATE,RELOCATION,SERV,PARK,WILSHIRE,APARTMENTS,PACIFIC,CHANNELS,SOUTHERN,TRANSPORTATION,ANAHEIM,FREIGHT,STATION,FAIRMONT,PRIVATE,SCHOOLS,12TH,GRADE,ROMAN,CONTRACTING</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="92" width="222" x="398" y="257">
+            <tag>DOLL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="95" width="233" x="400" y="350">
+            <tag>HUT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_10.jpg</imageName>
+      <address>? 2 Harrison Street San Francisco CA?</address>
+      <lex>PALOMINO,GORDON,BIERSCH,BREWERY,RESTAURANT,GOOGLE,SAN,FRANCISCO,CRUNCH,GYM,HILLS,PLAZA,SPORTS,AND,SPINE,BRIDGE,HOUSING,CORPORATION,BABCOCK,BROWN,TAG,AVIATION,TAKESHI,SAEKI,STARBUCKS,EPIC,ROASTHOUSE,LOOMIS,GROUP,BITE,COMMUNICATIONS,BUR,EAT,GENSLER,ARCHITECTS,WIDEORBIT,INC,GAP,OUTLET,HEADQUARTERS,SECRET,SERVICE,MARIN,DAY,SCHOOLS,EDGAR,DUNN,INFINITY,SALES,OFFICE,DOT,PRINTER,THE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="115" width="219" x="578" y="353">
+            <tag>BIERSCH</tag>
+         </taggedRectangle>
+         <taggedRectangle height="50" width="253" x="561" y="502">
+            <tag>BREWERY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="108" width="205" x="584" y="255">
+            <tag>GORDON</tag>
+         </taggedRectangle>
+         <taggedRectangle height="45" width="236" x="569" y="544">
+            <tag>RESTAURANT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/17_01.jpg</imageName>
+      <address>98 East San Salvador Street San Jose CA 95112-3689</address>
+      <lex>DAKAO,SANDWICH,CHINA,CHEN,IGUANAS,TAQUERIA,RAMADA,LIMITED,SAN,JOSE,DAI,THANH,SUPERMARKET,MILANO,RESTAURANT,YWCA,SILICON,VALLEY,BURRITOZILLA,AGENDA,BAR,LOUNGE,ANNO,DOMINI,VICTORIA,SOUTH,FIRST,BILLIARDS,CLUB,AND,WET,NIGHTCLUB,STUDIES,AMERICAN,LANGUAGE,TOWN,BICYCLE,EXPRESS,EULIPIA,BACH,BAKERY,METRO,GARDENS,APARTMENTS,MUSEUM,QUILTS,TEXTILES</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="80" width="151" x="450" y="470">
+            <tag>DAKAO</tag>
+         </taggedRectangle>
+         <taggedRectangle height="44" width="144" x="450" y="543">
+            <tag>RESTAURANT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/04_15.jpg</imageName>
+      <address>149 South Glenoaks Boulevard Burbank CA 91502-1315</address>
+      <lex>CAFE,COLOMBIA,TOKYO,YAKIDORI,SOLAR,CENTRAL,PAK,MAIL,LAND,RECORDS,DONNA,FLORIST,GARIBYAN,MELANYA,THE,PEOPLE,FURNITURE,INC,MANSOOR,KARAMOOZ,DERMAPHIL,LASER,AND,SKIN,CARE,CENTER,BEAUTY,KISS,FLOOR,WINDOW,CLEANING,PLACE,ARTISTRY,ENTERTAINMENT,INTERNATIONAL,HOME,RUN,SPORTS,SCHOLASTIC,GARDENS,FAKHRIRAN,GHAHARI,BASE,CONSTRUCTION,SWORDS,FENCING,STUDIO,SODIUM</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="26" width="96" x="722" y="515">
+            <tag>GARIBYAN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="28" width="87" x="637" y="514">
+            <tag>MELANYA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="46" width="132" x="907" y="488">
+            <tag>CLEANING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="44" width="109" x="1036" y="492">
+            <tag>PLACE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_08.jpg</imageName>
+      <address>448 Brannan Street San Francisco CA</address>
+      <lex>BACAR,RESTAURANT,WINE,SALON,BRICKHOUSE,CAFE,BAR,KOH,SAMUI,THE,MONKEY,POST,OFFICE,LITTLE,SKILLET,CHROME,INDUSTRIES,STARBUCKS,COCO,500,WELLS,FARGO,BANK,ZEKE,DIAMOND,FRINGALE,ZUPPA,440,BRANNAN,STUDIO,330,RITCH,POWERSET,INC,SFSOFAS,3VR,SECURITY,MERCHANTS,MOTION,BENDER,BROTHERS</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="175" width="647" x="373" y="319">
+            <tag>BACAR</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_11.jpg</imageName>
+      <address>804 North Charles Street Baltimore MD</address>
+      <lex>HELMAND,VERNON,SUPER,MART,DONNA,THAIRISH,INC,AKBAR,RESTAURANT,INDIGMA,THAI,WASHINGTON,MONUMENT,MUSEUM,BLU,VINTAGE,SAFFRON,PLACE,UNITED,CAFE,VIET,EAST,MADISON,INN,FEAST,PATRON,ZONE,PEABODY,INSTITUTE,THE,JOHNS,HOPKINS,UNIVERSITY,RED,EMMA,BOOKSTORE,COFFEE,STABLE,SALOON,NEVER,SUNDAY</lex>
+      <Resolution x="1366" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="76" width="216" x="587" y="365">
+            <tag>THAIRISH</tag>
+         </taggedRectangle>
+         <taggedRectangle height="35" width="62" x="611" y="441">
+            <tag>THAI</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_14.jpg</imageName>
+      <address>5618 Bell Avenue Dallas TX</address>
+      <lex>LABYRINTH,CONTEMPORARY,THEATRE,DALLAS,LIBERTINE,BAR,ZEPHYRS,PATIO,LOUNGE,TORCH,DODIE,NEW,ORLEANS,SEAFOOD,BIG,WONG,SIMPLY,FONDUE,ZUBAR,THAI,ORIENTAL,FOOD,STORE,WINEDALE,TAVERN,SHADE,BLARNEY,STONE,SHAKE,RAG,MUSIC,NANDINA,ASIAN,TAPAS,MILK,TEPPO,YAKITORI,SUSHI,DEATH,GLORY,LULA,ANTIQUE,MALL,GEZELLIG</lex>
+      <Resolution x="1680" y="1050"/>
+      <taggedRectangles>
+         <taggedRectangle height="65" width="241" x="726" y="343">
+            <tag>LABYRINTH</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_18.jpg</imageName>
+      <address>750 B Street San Diego CA 92101-8114</address>
+      <lex>SAN,DIEGO,SYMPHONY,ORCHESTRA,UNIVERSITY,CLUB,ATOP,TOWERS,SHERATON,SUITES,HALL,MARTINEZ,CUTRI,ARCHITECTS,SELTZER,CAPLAN,MAHON,VITEK,LAW,OFFICES,SHANA,BLACK,PRICEWATERHOUSE,COOPERS,YOGA,ONE,CITY,PIZZERIA,SENATOR,DIANNE,FEINSTEIN,KENNA,LONG,ALDRIDGE,COCCHIA,ROBERT,WACHOVIA,BANK,NOT,BRANCH,DOUGLAS,GEYMAN,KPMG,CAKE,CHATEAU,MURCHISON,CUMMING,LLP,WOLF,HALDENSTEIN,ADLER,FREEMAN,EMBASSY,OLD,GALLERY,COFFEE,HOUSE</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="48" width="147" x="420" y="447">
+            <tag>SYMPHONY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="40" width="74" x="577" y="443">
+            <tag>HALL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/01_18.jpg</imageName>
+      <address>89 Luckie Street Northwest Atlanta GA?</address>
+      <lex>QUALITY,INN,DOWNTOWN,ATLANTA,MARK,ULTRA,LOUNGE,SUPER,DNTN,WORLD,CONGRESS,THE,WESTIN,PEACHTREE,PLAZA,RESIDENCE,SIDEBAR,RIALTO,CENTER,FOR,THE,ARTS,WOODRUFF,PARK,THEATRICAL,OUTFIT,AMERICAN,ENGLISH,SCHOOL,SLICE,HAMPTON,SUITES,FEDEX,OFFICE,PRINT,SHIP,LANDMARK,DINER,FULTON,PUBLIC,LIBRARY,HEALEY,BUILDING,ELLIS,HOTEL,COUNTY,GOVERNMENT,DEFENDER,DUNKIN,DONUTS,STARBUCKS</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="117" width="323" x="436" y="274">
+            <tag>QUALITY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="87" width="212" x="765" y="314">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/08_10.jpg</imageName>
+      <address>1001 McKinney Street Houston TX</address>
+      <lex>MORTON,THE,STEAKHOUSE,RELIANT,ENERGY,PLAZA,MAINSTREET,DEPOT,CORNER,BAKERY,CAFE,CVS,PHARMACY,MCKINNEY,CONSTRUCTION,INC,FIRST,CITY,TOWER,RAGIN,CAJUN,RESTAURANT,DOWNTOWN,DISTRICT,FRANKLIN,CARDWELL,JONES,CURVES,IBC,BANK,AMERICA,SHEINESS,SCOTT,COHN,MAINPLACE,CDX,GAS,PAYLESS,SHOE,SOURCE,FEDERAL,EXECUTIVE,BOARD,HIRE,SYNERGY,MILLER</lex>
+      <Resolution x="1278" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="59" width="380" x="566" y="289">
+            <tag>MCKINNEY</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/10_02.jpg</imageName>
+      <address>130 Church Street New York NY 10007-2226</address>
+      <lex>BONBON,CHICKEN,KULA,YOGA,PROJECT,BRICK,SOPHIE,CUBAN,CUISINE,SUBWAY,DUNKIN,DONUTS,ESPRESSO,LOUNGE,FOUNTAIN,PEN,HOSPITAL,CARY,BUILDING,NEW,YORK,CITY,CARL,STEAKS,VINTNERS,DUANE,STREET,HOTEL,SMYTH,THOMPSON,JERRY,CAFE,COSMOPOLITAN,SUN,THE,HOT,DOG,MUDVILLE,SALOON,BLUE,SPOON,COFFEE,LLC,BRIAN,DORSEY,STUDIOS</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="43" width="173" x="496" y="374">
+            <tag>DONUTS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="49" width="168" x="308" y="379">
+            <tag>DUNKIN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="49" width="127" x="471" y="427">
+            <tag>COFFEE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/07_16.jpg</imageName>
+      <address>638 East 13th Avenue Denver CO</address>
+      <lex>WAX,TRAX,RECORDS,MOLLY,BROWN,HOUSE,MUSEUM,BENNY,BLANCO,PIZZA,SNAKE,PIT,JOHN,CATHEDRAL,KILGORE,USED,BOOKS,AND,COMICS,FASHIONATION,KIRKLAND,FINE,DECORATIVE,ART,CHIPOTLE,PENN,CLOSED,STREET,PERK,DENVER,TED,510,RETRO,CAFE,NETHERWORLD,FOUNTAINHEAD,APARTMENTS,CUSTOM,CARE,CLEANERS,SHIRT,CONVENIENCE,STORE,KING,QUEEN,SCOOP,ICE,CREAM,BEAUTY,BAR,MOREY,MIDDLE,SCHOOL</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="39" width="85" x="595" y="436">
+            <tag>TRAX</tag>
+         </taggedRectangle>
+         <taggedRectangle height="37" width="72" x="517" y="437">
+            <tag>WAX</tag>
+         </taggedRectangle>
+         <taggedRectangle height="20" width="65" x="929" y="873">
+            <tag>RECORDS</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/09_08.jpg</imageName>
+      <address>1250 East Market Street Indianapolis IN</address>
+      <lex>WASHINGTON,IRVING,ELEMENTARY,ANGIE,LIST,HOLT,FOUNDATION,MID,AMERICA,ELEVATOR,ARMS,APARTMENTS,DOVE,RECOVERY,HOUSE,FOR,WOMAN,HAIR,BODY,SALON,VMC,AFFILIATE,MIDSTATES,MARKETING,INC,RELIABLE,INSURANCE,HOLY,CROSS,CHURCH,ALL,RISK,HORIZON,SNYDER,DIANA,BYRNE,COURT,SECOND,HELPINGS,SAFETY,AUTO,GLASS,TAXI,LOGISTICS,CENTRAL,SCHOOL,THOMAS,INUI</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="25" width="69" x="726" y="402">
+            <tag>IRVING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="30" width="141" x="584" y="402">
+            <tag>WASHINGTON</tag>
+         </taggedRectangle>
+         <taggedRectangle height="22" width="66" x="648" y="429">
+            <tag>SCHOOL</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/18_14.jpg</imageName>
+      <address>2000 4th Avenue Seattle WA</address>
+      <lex>LOLA,HOTEL,ANDRA,DAHLIA,LOUNGE,CORPORATION,ASSAGGIO,RISTORANTE,SUB,POP,RECORDS,WARWICK,SEATTLE,BAKERY,ICON,GRILL,AMC,THEATRES,CINERAMA,SERIOUS,PIE,THE,VIRGINIAN,APARTMENTS,PALACE,BALLROOM,WESTIN,BUILDING,GARAGE,JAZZ,ALLEY,BRASSERIE,MARGAUX,RALPH,GROCERY,DELI,KINGS,INN,5TH,AVE,BARBER,SHERIDAN</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="69" width="117" x="539" y="320">
+            <tag>LOLA</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/16_07.jpg</imageName>
+      <address>309 Clement Street San Francisco CA?</address>
+      <lex>BURMA,SUPERSTAR,RESTAURANT,BLUE,DANUBE,COFFEE,HOUSE,GENKI,CREPES,ROCKIT,ROOM,RESTAURANT,AND,WINE,BAR,CAFE,TROYA,KING,THAI,NOODLE,MURASAKI,SUSHI,BAR,PARK,LIFE,PHO,CLEMENT,TOY,BOAT,DESSERT,LEE,HOU,JAVA,SOURCE,STRESS,REDUCTION,CENTER,CITIKIDS,BABY,NEWS,STORE,BITTER,END,CHASE,BANK,ATM,MAI,VIETNAMESE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="45" width="178" x="556" y="349">
+            <tag>BURMA</tag>
+         </taggedRectangle>
+         <taggedRectangle height="42" width="278" x="750" y="344">
+            <tag>SUPERSTAR</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/18_05.jpg</imageName>
+      <address>? 1001 East Pike Street Seattle WA</address>
+      <lex>QUINN,PUB,NEUMOS,CAFFE,VITA,COMET,TAVERN,BIMBOS,CANTINA,HAVANA,VIA,TRIBUNALI,PIKE,STREET,FISH,FRY,SATELLITE,LOUNGE,SOLE,REPAIR,SHOP,ATLAS,CLOTHING,SWEAT,BOX,YOGA,WILD,ROSE,MOE,BAR,BASIC,PLUMBING,PLATINUM,RECORDS,LIGHTS,SOUND,BARCA,ODD,FELLOWS,CAFE,EVERYDAY,MUSIC,HOTHOUSE,SPA,SAUNA</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="77" width="184" x="484" y="386">
+            <tag>QUINN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/01_09.jpg</imageName>
+      <address>? 240 Martin Luther King Junior Drive Southeast Atlanta GA</address>
+      <lex>DADDY,NICK,FOOD,EYEDRUM,COOK,ELEMENTARY,JOE,CATERING,INC,MATTRESS,FACTORY,LOFTS,MARTIN,LUTHER,KING,BOULEVARD,LOCKSMITH,GAS,WITH,INVIGORATE,MOVING,MED,CARE,CONKLIN,METAL,INDUSTRIES,LAMPLIGHTER,CAFE,ANDERSON,THURMAN,JUNK,CAR,RECYCLING,CROSS,FIT,ATLANTA,CROSSFIT,THE,MOVE,BLACK,CHERRY,HAIR,DESIGN,BLOOD,FIRE,MINISTRIES,TOWING,STANDARD,AUTO</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="138" width="286" x="497" y="288">
+            <tag>NICK</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/03_07.jpg</imageName>
+      <address>1123 Walnut Street Boulder CO</address>
+      <lex>WALNUT,BREWERY,RIO,GRANDE,MEXICAN,RESTAURANT,FOUNDRY,BILLARDS,CLUB,JAPANGO,SUNDOWN,SALOON,PIZZA,GRILL,THE,SCOTCH,CORNER,PUB,WALRUS,MEDITERRANEAN,KITCHEN,HAPA,SUSHI,SAKE,BAR,PEARL,STREET,CELLAR,OLD,CHICAGO,AMANTE,COFFEE,BOULDER,COLO,BRASSERIE,TEN,BOOK,STORE,BOMBAY,BISTRO,MILE,HIGH,PIPES,TOBACCO,DOWNTOWN,BUSINESS</lex>
+      <Resolution x="1914" y="898"/>
+      <taggedRectangles>
+         <taggedRectangle height="67" width="399" x="528" y="332">
+            <tag>BREWERY</tag>
+         </taggedRectangle>
+         <taggedRectangle height="91" width="357" x="133" y="323">
+            <tag>WALNUT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_07.jpg</imageName>
+      <address>802 5th Avenue San Diego CA 92101-6108</address>
+      <lex>CROCE,RESTAURANT,BARS,TIKI,THE,KEATING,HOTEL,PININFARINA,MEDICI,RISTORANTE,ITALIANO,BITTER,END,MALONEY,TAVERN,USA,HOSTELS,SAN,DIEGO,STAR,INDIA,PATRICK,MERK,BISTRO,CAFE,LULU,MARTINI,RANCH,HARD,ROCK,XAVIER,BAR,GRILL,ASTI,FINE,DINING,RAMADA,GASLAMP,CONVENTION,CENTER,GRAPE,ONYX,ROOM,GEORGE,FIFTH,OLE,MADRID</lex>
+      <Resolution x="1024" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="97" width="193" x="153" y="303">
+            <tag>CROCE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="99" width="362" x="437" y="299">
+            <tag>RESTAURANT</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/05_03.jpg</imageName>
+      <address>1112 S Canal St Chicago IL</address>
+      <lex>WHOLE,FOODS,MARKET,WHITE,PALACE,GRILLS,MICHAEL,ARTS,CRAFTS,DSW,SHOE,WAREHOUSE,CHICAGO,PANERA,BREAD,STARBUCKS,COST,PLUS,WORLD,STAPLES,NEW,MAXWELL,STREET,GAMESTOP,SOUTHGATE,PETSMART,OFFICE,DEPOT,FITNESS,STANDARD,PARKING,BANFIELD,THE,PET,HOSPITAL,MANNY,COFFEE,SHOP,DELI,HIRSCH,SHELDON,BEST,BUY,SOUTH,LOOP</lex>
+      <Resolution x="1280" y="876"/>
+      <taggedRectangles>
+         <taggedRectangle height="61" width="164" x="745" y="234">
+            <tag>FOODS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="32" width="252" x="604" y="282">
+            <tag>MARKET</tag>
+         </taggedRectangle>
+         <taggedRectangle height="73" width="201" x="543" y="219">
+            <tag>WHOLE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_07.jpg</imageName>
+      <address>1005 N Charles St Frnt Baltimore MD 21201</address>
+      <lex>GRAND,CENTRAL,CLUB,RED,MAPLE,BRASS,ELEPHANT,HIPPO,MINATO,SUSHI,BAR,GIGI,JUST,DELICIOUS,BELVEDERE,HOTEL,SQUARE,MARYLAND,CITY,CAFE,INC,MUGHAL,GARDEN,EDDIE,IGA,EAGER,STREET,ZENA,DAY,SPA,KUMARI,RESTAURANT,MONA,HAJJ,INTERIORS,BALTIMORE,HAPPY,HOUR,EDEN,LOUNGE,VERNON,SUPER,MART,TIJUANA,CANTINA,OWL,GENTEI</lex>
+      <Resolution x="1366" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="23" width="47" x="592" y="363">
+            <tag>DELICIOUS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="47" width="113" x="534" y="320">
+            <tag>GIGI</tag>
+         </taggedRectangle>
+         <taggedRectangle height="24" width="21" x="575" y="366">
+            <tag>JUST</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/06_06.jpg</imageName>
+      <address>2711 North Haskell Avenue Dallas TX?</address>
+      <lex>CITYPLACE,CENTER,CHG,CITY,PLACE,HUDSON,ADVISORS,SCHMIDT,STACY,CONSULTING,HELLMUTH,OBATA,KASSABAUM,STATION,JIM,ADLER,AND,ASSOCIATES,AON,RISK,SERVICES,INC,FINANCIAL,NETWORK,INVESTMENT,ROSEWOOD,CORPORATION,GLINCHEY,STAFFORD,HUB,INTERNATIONAL,PERSONAL,INSURANCE,EDUCATION,FREEDOM,GRAU,KOHEN,TOWER,ATHLETIC,CLUB,SPA,ZIX,SUBWAY,ORRICK,HARRINGTON,SUTCLIFFE,SERVICELANE,COM,WYNNWOOD,HOSPITALITY</lex>
+      <Resolution x="1114" y="700"/>
+      <taggedRectangles>
+         <taggedRectangle height="31" width="53" x="552" y="324">
+            <tag>CENTER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="29" width="75" x="479" y="326">
+            <tag>CITYPLACE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/02_12.jpg</imageName>
+      <address>615 The Fallsway Baltimore MD 21202</address>
+      <lex>SCORES,BALTIMORE,MERRITT,ATHLETIC,CLUBS,DOG,HOUSE,OUR,DAILY,BREAD,EMPLOYMENT,CENTER,ROY,KIRBY,SONS,STAGE,BAYSIDE,LANDING,RESTAURANT,MARYLAND,CORRECTIONAL,ADJ,WATERLOO,PLACE,CENTERSTAGE,SUN,CONSTELLATION,ENERGY,GROUP,PEABODY,INSTITUTE,THE,JOHNS,HOPKINS,UNIVERSITY,STANDARD,BUILDING,FALLSWAY,PARK,RIDE,TIME,FLIGHT,AVIATION,SERVICES,COBURNS,CAFE,HIGHWAY,MAINTENANCE,APARTMENTS,WASHINGTON,MONUMENT,MUSEUM</lex>
+      <Resolution x="1366" y="768"/>
+      <taggedRectangles>
+         <taggedRectangle height="28" width="64" x="220" y="511">
+            <tag>BALTIMORE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="48" width="133" x="523" y="267">
+            <tag>SCORES</tag>
+         </taggedRectangle>
+         <taggedRectangle height="56" width="117" x="196" y="483">
+            <tag>SCORES</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/03_13.jpg</imageName>
+      <address>2319 Arapahoe Avenue Boulder CO</address>
+      <lex>DOLAN,RESTAURANT,SIAMESE,PLATE,RINCON,DEL,SOL,VILLAGE,COFFEE,SHOP,SUMIDA,SUSHI,BAR,TASTEFULLY,TOASTED,GREAT,HARVEST,BREAD,SUBWAY,TIFFANY,NAILS,SPA,LLC,BRIAR,ROSE,BED,AND,BREAKFAST,NAROPA,UNIVERSITY,BOULDER,SKI,DEALS,BLOCKBUSTER,VIDEO,DATA,DOCTORS,GUCKIN,HARDWARE,INC,ARAPAHOE,AVE,23RD,PERFORMANCE,BICYCLE,WATCH,GALAXY,ZOLO,GRILL,PAUL,LEV,ARY,ASSOCIATES</lex>
+      <Resolution x="1920" y="906"/>
+      <taggedRectangles>
+         <taggedRectangle height="78" width="200" x="640" y="343">
+            <tag>DOLAN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="70" width="217" x="984" y="335">
+            <tag>DOLAN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/18_11.jpg</imageName>
+      <address>400 Spring Street Seattle WA</address>
+      <lex>EXECUTIVE,HOTEL,PACIFIC,SEATTLE,EARTH,OCEAN,MONACO,SAZERAC,SEATTLES,BEST,COFFEE,VINTAGE,PARK,THE,FAIRMONT,OLYMPIC,JASMINE,BAR,BELLE,EPICUREAN,CROWNE,PLAZA,SKINNER,BUILDING,TULIO,COMMUNITY,GROCERY,BERNARD,SENECA,STARBUCKS,BENIHANA,REVIEWS,PURPLE,CAFE,AND,WINE,1001,FOURTH,AVENUE</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="69" width="354" x="200" y="305">
+            <tag>EXECUTIVE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="61" width="204" x="565" y="305">
+            <tag>HOTEL</tag>
+         </taggedRectangle>
+         <taggedRectangle height="69" width="236" x="781" y="296">
+            <tag>PACIFIC</tag>
+         </taggedRectangle>
+         <taggedRectangle height="41" width="75" x="190" y="274">
+            <tag>THE</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_13.jpg</imageName>
+      <address>1350 El Prado San Diego CA 92101-1681</address>
+      <lex>MUSEUM,MAN,OLD,GLOBE,MINGEI,INTERNATIONAL,THE,SAN,DIEGO,ART,TIMKEN,INSTITUTE,PRADO,BALBOA,PARK,SPECIAL,EVENTS,CABRILLO,BRIDGE,BOTANICAL,BUILDING,AND,LILY,POND,SDMA,CAFE,WATERS,JAPANESE,FRIENDSHIP,GARDEN,SPRECKELS,ORGAN,SOCIETY,RESTAURANT,SDAI,THE,LIVING,ARTIST,MODEL,RAILROAD,HOUSE,HOSPITALITY,TREE,CARE,PASSPORT,PHOTOGRAPHIC,ARTS</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="47" width="93" x="1071" y="453">
+            <tag>MAN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="49" width="168" x="848" y="456">
+            <tag>MUSEUM</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/15_09.jpg</imageName>
+      <address>555 West Ash Street San Diego CA 92101-3414</address>
+      <lex>BEST,WESTERN,BAYSIDE,ANTHOLOGY,ENOTECA,STYLE,INTRAX,INTERNATIONAL,INSTITUTE,TIC,INN,LLC,ALLEGRO,TOWERS,RAINWATER,KETTNER,PETRINI,RESTAURANT,WAVE,IMAGING,CORPORATION,SAN,DIEGO,FABRISONS,ESET,PRACTICE,GROUP,SPA,VELIA,ISAAC,BLUMBERG,LAW,OFFICE,EXTRAORDINARY,DESSERTS,JOHN,LEMON,OFFICES,MEXICAN,FIESTA,LIPKA,COM,INC,DGA</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="75" width="248" x="372" y="311">
+            <tag>BAYSIDE</tag>
+         </taggedRectangle>
+         <taggedRectangle height="53" width="83" x="245" y="355">
+            <tag>BEST</tag>
+         </taggedRectangle>
+         <taggedRectangle height="39" width="120" x="227" y="397">
+            <tag>WESTERN</tag>
+         </taggedRectangle>
+         <taggedRectangle height="72" width="114" x="439" y="393">
+            <tag>INN</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/05_07.jpg</imageName>
+      <address>1101 South Canal Street Chicago IL</address>
+      <lex>WHOLE,FOODS,MARKET,DSW,SHOE,WAREHOUSE,CHICAGO,PANERA,BREAD,STARBUCKS,WHITE,PALACE,GRILLS,MICHAEL,ARTS,CRAFTS,COST,PLUS,WORLD,GAMESTOP,SOUTHGATE,OFFICE,DEPOT,PETSMART,STANDARD,PARKING,BANFIELD,THE,PET,HOSPITAL,FITNESS,HIRSCH,SHELDON,NEW,MAXWELL,STREET,STAPLES,SOIFER,NEIL,NAJAFI,CHRISTOPHER</lex>
+      <Resolution x="1278" y="878"/>
+      <taggedRectangles>
+         <taggedRectangle height="49" width="182" x="613" y="244">
+            <tag>GAMESTOP</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/11_11.jpg</imageName>
+      <address>401 West Livingston Street Orlando FL 32801</address>
+      <lex>BOB,CARR,PERFORMING,ARTS,CENTRE,ORLANDO,MARRIOTT,DOWNTOWN,CENTER,SPECTATORS,SPORTSBAR,CONVENTION,SERVICES,FACILITIES,AMWAY,ARENA,HERTZ,LOCAL,EDITION,LIVINGSTON,STREET,CAFE,LANIER,PARKING,SYSTEM,OFFICE,INC,CELESTIAL,TRAVEL,SOLUTIONS,LEGENDS,TICKETMASTER,ALPHA,BROADCASTING,FRINGE,FESTIVAL,ACCESS,LYNX,AVISPL,TECH,PETRONES,ITALIAN,RESTAURANT,SECUR,AMERICA</lex>
+      <Resolution x="1280" y="800"/>
+      <taggedRectangles>
+         <taggedRectangle height="41" width="57" x="660" y="332">
+            <tag>ARTS</tag>
+         </taggedRectangle>
+         <taggedRectangle height="38" width="55" x="645" y="294">
+            <tag>BOB</tag>
+         </taggedRectangle>
+         <taggedRectangle height="38" width="68" x="700" y="294">
+            <tag>CARR</tag>
+         </taggedRectangle>
+         <taggedRectangle height="41" width="95" x="722" y="332">
+            <tag>CENTER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="36" width="131" x="528" y="331">
+            <tag>PERFORMING</tag>
+         </taggedRectangle>
+         <taggedRectangle height="23" width="67" x="521" y="391">
+            <tag>ORLANDO</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+   <image>
+      <imageName>img/04_16.jpg</imageName>
+      <address>324 South Glenoaks Boulevard Burbank CA 91502-1318</address>
+      <lex>BLOCKBUSTER,VIDEO,LAW,OFFICES,RAY,FOUNTAIN,CRIMINAL,DEFENSE,ATTORNEY,LAWYER,PIZZA,MAN,CAFE,COLOMBIA,GERRO,MARSHA,RICO,GLENOAKS,PHARMACY,AND,MEDICAL,SUPPLY,RAMIREZ,LYNN,TER,POGHOSYAN,ZARINE,JAS,GIFTS,KNOX,TIMOTHY,DDS,LILLY,PARK,HOME,THEATER,HAMOUI,MOBIL,MART,CLEANERS,TOKYO,YAKIDORI,SHIRVAN,REALTY,GROUP,NAPA,AUTO,CARE,CENTER,TRAN,DEBBY</lex>
+      <Resolution x="1280" y="1024"/>
+      <taggedRectangles>
+         <taggedRectangle height="61" width="281" x="467" y="497">
+            <tag>BLOCKBUSTER</tag>
+         </taggedRectangle>
+         <taggedRectangle height="58" width="114" x="750" y="497">
+            <tag>VIDEO</tag>
+         </taggedRectangle>
+      </taggedRectangles>
+   </image>
+</tagset>

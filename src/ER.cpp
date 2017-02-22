@@ -4,13 +4,9 @@
 // ======================== ER ========================
 // ====================================================
 ER::ER(const int level_, const int pixel_, const int x_, const int y_) : level(level_), pixel(pixel_), x(x_), y(y_), area(1), done(false), stability(.0), 
-																		parent(nullptr), child(nullptr), next(nullptr), stkw(0)
+																		parent(nullptr), child(nullptr), next(nullptr), sibling_L(nullptr), sibling_R(nullptr), stkw(0)
 {
 	bound = Rect(x_, y_, 1, 1);
-#ifndef DO_OCR
-	sibling_L = nullptr;
-	sibling_R = nullptr;
-#endif
 }
 
 // ====================================================
@@ -45,7 +41,7 @@ void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &s
 	er_track(strong, weak, tracked, channel, Ycrcb);
 
 #ifdef DO_OCR
-	er_grouping_ocr(tracked, channel, text, 0.1);
+	er_grouping_ocr(tracked, channel, text, 0.10);
 #else
 	er_grouping(tracked, text);
 #endif
@@ -729,9 +725,8 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 
 void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob)
 {
-	const unsigned min_er = 10;
+	const unsigned min_er = 6;
 	const unsigned min_pass_ocr = 3;
-
 
 	inner_suppression(all_er);
 	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b){ return a->center.x < b->center.x; });
@@ -744,11 +739,12 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 	const int search_space = all_er.size() * 0.3;
 	vector<vector<int>> all_comb = comb(search_space, 2);
 
+
 	for (int i = 0; i < all_er.size(); i++)
 	{
 		// check for every 3 ER whether they can be triplet
 		// skip the combination with zero, bacause it cannot compare with itself
-		for (int j = search_space; j < all_comb.size(); j++)
+		for (int j = 0; j < all_comb.size(); j++)
 		{
 			const int &j1 = all_comb[j][0];
 			const int &j2 = all_comb[j][1];
@@ -774,46 +770,46 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 						done_mask[k] = true;
 					}
 				}
-				text.back().angle = fitline_LMS(points_bot);
+				text.back().slope = fitline_LMS(points_bot);
 			}
 		}
 	}
 	
+
+	
 	for (int i = 0; i < text.size(); i++)
 	{
 		// get OCR label of each ER
-#pragma omp parallel for
+	//#pragma omp parallel for
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			ER* er = text[i].ers[j];
-			const double result = ocr->chain_run(channel[er->ch](er->bound), text[i].angle);
+			const double result = ocr->chain_run(channel[er->ch](er->bound), er->level*THRESH_STEP,text[i].slope);
 			er->letter = floor(result);
 			er->prob = result - floor(result);
 		}
-
+		
 		// delete ER with low OCR confidence
 		for (int j = text[i].ers.size() - 1; j >= 0; j--)
 		{
 			if (text[i].ers[j]->prob < min_ocr_prob)
 				text[i].ers.erase(text[i].ers.begin() + j);
 		}
-
+		
 		if (text[i].ers.size() < min_pass_ocr)
 			continue;
-
+		
 		Graph graph;
 		build_graph(text[i], graph);
 		solve_graph(text[i], graph);
 
-
+		//cout << text[i].word << endl;
 		ocr->feedback_verify(text[i]);
-
 		text[i].box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
-
 	}
 }
 
@@ -850,8 +846,8 @@ vector<double> ERFilter::make_LBP_hist(Mat input, const int N, const int normali
 
 Mat ERFilter::calc_LBP(Mat input, const int size)
 {
-	//ocr->ARAN(input, input, size + 2);
-	resize(input, input, Size(size + 2, size + 2));
+	ocr->ARAN(input, input, size + 2);
+	//resize(input, input, Size(size + 2, size + 2));
 
 	Mat LBP = Mat::zeros(size, size, CV_8U);
 	for (int i = 0; i < size; i++)

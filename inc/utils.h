@@ -3,7 +3,7 @@
 
 #define WEBCAM_MODE
 
-#define THRESHOLD_STEP 2
+#define THRESHOLD_STEP 1
 #define MIN_ER_AREA 30
 #define MAX_ER_AREA 90000
 #define NMS_STABILITY_T 2
