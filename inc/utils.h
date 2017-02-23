@@ -4,7 +4,7 @@
 #define WEBCAM_MODE
 
 #define THRESHOLD_STEP 1
-#define MIN_ER_AREA 30
+#define MIN_ER_AREA 100
 #define MAX_ER_AREA 90000
 #define NMS_STABILITY_T 2
 #define NMS_OVERLAP_COEF 0.7
@@ -35,6 +35,7 @@ void save_deteval_xml(vector<vector<Text>> &text);
 
 // Training Functions
 void get_canny_data();
+void rotate_image();
 void bootstrap();
 void get_ocr_data(int argc, char **argv, int type);
 void train_classifier();

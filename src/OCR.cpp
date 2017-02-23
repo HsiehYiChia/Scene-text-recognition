@@ -20,10 +20,6 @@ OCR::OCR(const char *svm_file_name)
 {
 	model = svm_load_model(svm_file_name);
 }
-OCR::~OCR()
-{
-	svm_free_model_content(model);
-}
 
 
 
@@ -64,7 +60,7 @@ double OCR::chain_run(Mat &src, int thresh, double slope)
 	threshold(255-src, ocr_img, thresh, 255, CV_THRESH_OTSU);
 	/*imshow("un_rotated", ocr_img);
 	cout << thresh << " " << slope << endl;*/
-	if (abs(slope) > 0.001)
+	if (abs(slope) > 0.005)
 	{
 		double rad = atan2(slope, 1);
 		rotate_mat(ocr_img, ocr_img, rad, true);
@@ -208,6 +204,12 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 	if (crop)
 	{
 		int crop_height = (new_x2 - new_x1) * tan(rad) * 0.5;
+		if (max_y - min_y + 1 - 2 * crop_height <= 0)
+		{
+			rotate_mat(src, dst, rad, false);
+			return;
+		}
+
 		Mat tmp = Mat::zeros(max_y - min_y + 1 - 2 * crop_height, max_x - min_x + 1, CV_8U);
 		for (int i = min_y+crop_height; i < max_y- crop_height; i++)
 		{
@@ -286,8 +288,8 @@ void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool cro
 	const double angle = rad * 180 / CV_PI;
 	Point center(src.cols / 2, src.rows / 2);
 
-	// scale the image if one of the side is bigger than 60
-	double scale = (src.cols > 50 || src.rows > 50) ? 500.0 / max(src.cols, src.rows) : 1.0;
+	// scale the image if one of the side is bigger than 1000
+	double scale = (src.cols > 1000 || src.rows > 1000) ? 500.0 / max(src.cols, src.rows) : 1.0;
 
 	// get rotation matrix for rotating the image around its center
 	Mat rot = getRotationMatrix2D(center, angle, scale);
@@ -301,12 +303,12 @@ void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool cro
 
 	if (crop)
 	{
-		const double crop_L = bbox.width * tan(angle / 180 * 3.1415926) - 1;
+		const double crop_L = bbox.width * tan(rad) - 1;
 		rot.at<double>(1, 2) -= crop_L;
 		bbox.height -= 2 * crop_L;
 	}
 
-	warpAffine(src, dst, rot, bbox.size());
+	warpAffine(src, dst, rot, bbox.size(), 1, 0, Scalar(255));
 }
 
 
@@ -315,9 +317,9 @@ void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 	double R1 = (src.cols > src.rows) ? (double)src.rows / src.cols : (double)src.cols / src.rows;
 	Size size_R2 = (src.cols > src.rows) ? Size(L, L * pow(R1, para)) : Size(L * pow(R1, para), L);
 
+
 	Mat tmp;
 	resize(src, tmp, size_R2);
-
 	dst = Mat::zeros(L, L, CV_8U);
 	if (tmp.cols > tmp.rows)
 	{

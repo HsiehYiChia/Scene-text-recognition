@@ -316,8 +316,10 @@ void bootstrap()
 	int i = 0;
 	for (int pic = 1; pic <= 10000; pic++)
 	{
-		char filename[30];
-		sprintf(filename, "res/neg4/%d.jpg", pic);
+		char filename[100];
+		//sprintf(filename, "res/neg/image_net_neg/%d.jpg", pic);
+		sprintf(filename, "D:\\0.Projects\\image_data_set\\ICDAR2015\\Challenge1\\Challenge1_Test_Task3_Images\\word_%d.png", pic);
+	
 
 		ERs pool, strong, weak;
 		Mat input = imread(filename, IMREAD_GRAYSCALE);
@@ -329,13 +331,13 @@ void bootstrap()
 		erFilter->classify(pool, strong, weak, input);
 
 
-		/*for (auto it : strong)
+		for (auto it : strong)
 		{
 			char imgname[30];
 			sprintf(imgname, "res/tmp1/%d_%d.jpg", pic, i);
 			imwrite(imgname, input(it->bound));
 			i++;
-		}*/
+		}
 
 		for (auto it : weak)
 		{
@@ -361,12 +363,12 @@ void get_canny_data()
 	const int N = 2;
 	const int normalize_size = 24;
 
-	for (int i = 1; i <= 4; i++)
+	for (int i = 1; i <= 3; i++)
 	{
-		for (int pic = 1; pic <= 10000; pic++)
+		for (int pic = 1; pic <= 15000; pic++)
 		{
 			char filename[30];
-			sprintf(filename, "res/neg%d/%d.jpg", i, pic);
+			sprintf(filename, "res/neg/neg%d/%d.jpg", i, pic);
 
 			Mat input = imread(filename, IMREAD_GRAYSCALE);
 			if (input.empty())	continue;
@@ -375,8 +377,7 @@ void get_canny_data()
 			fout << -1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 			{
-				if(spacial_hist[f])
-					fout << " " << f << ":" << spacial_hist[f];
+				fout << " " << spacial_hist[f];
 			}
 			fout << endl;
 
@@ -387,18 +388,18 @@ void get_canny_data()
 			fout << endl;*/
 
 
-			cout << pic << "\tneg" << i << " finish " << endl;
+			cout << filename << " finish " << endl;
 		}
 	}
 	
 
 
-	for (int i = 1; i <= 4; i++)
+	for (int i = 1; i <= 3; i++)
 	{
-		for (int pic = 1; pic <= 10000; pic++)
+		for (int pic = 1; pic <= 15000; pic++)
 		{
 			char filename[30];
-			sprintf(filename, "res/pos%d/%d.jpg", i, pic);
+			sprintf(filename, "res/pos/pos%d/%d.jpg", i, pic);
 
 			Mat input = imread(filename, IMREAD_GRAYSCALE);
 			if (input.empty())	continue;
@@ -408,7 +409,7 @@ void get_canny_data()
 			for (int f = 0; f < spacial_hist.size(); f++)
 			{
 				if (spacial_hist[f])
-					fout << " " << f << ":" << spacial_hist[f];
+					fout << " " << spacial_hist[f];
 			}
 			fout << endl;
 
@@ -417,13 +418,67 @@ void get_canny_data()
 			for (int f = 0; f < spacial_hist.size(); f++)
 			{
 				if (spacial_hist[f])
-					fout << " " << f << ":" << spacial_hist[f];
+					fout << " " << spacial_hist[f];
 			}
 			fout << endl;
 
-			cout << pic << "\tpos" << i <<" finish " << endl;
+			cout << filename <<" finish " << endl;
 		}
 	}
+	
+}
+
+
+void rotate_image()
+{
+	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
+		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
+	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
+	vector<string> cat = { "lower", "upper", "number" };
+
+	OCR ocr = OCR();
+	int n = 0;
+	double rad = 0/180.0*CV_PI;
+	for (int i = 0; i < font_name.size(); i++)
+	{
+		for (int j = 0; j < font_type.size(); j++)
+		{
+			for (int k = 0; k < 3; k++)
+			{
+				string path = String("ocr_classifier/" + font_name[i] + "/" + font_type[j] + "/" + cat[k] + "/");
+				string c;
+				int loop_num;
+				if (k == 0 || k == 1)
+				{
+					c = { 'a', '.', 'j', 'p', 'g', '\0' };
+					loop_num = 26;
+				}
+				else if (k == 2)
+				{
+					c = { '0', '.', 'j', 'p', 'g', '\0' };
+					loop_num = 10;
+				}
+				for (int i = 0; i < loop_num; i++)
+				{
+					String filename = path + c;
+					cout << filename << endl;
+
+					Mat img = imread(filename, IMREAD_GRAYSCALE);
+					c[0]++;
+
+					if (img.empty()) continue;
+
+					ocr.geometric_normalization(img, img, rad, false);
+
+					char buf[256];
+					sprintf(buf, "res/tmp1/%d.jpg",  n++);
+					imwrite(buf, img);
+				}
+			}
+		}
+	}
+
+	
 	
 }
 

@@ -407,6 +407,7 @@ save_step_2:
 			double aspect_ratio = (double)overlapped[min]->bound.width / (double)overlapped[min]->bound.height;
 			if (aspect_ratio < 2.0 && aspect_ratio > 0.10 && 
 				overlapped[min]->area < MAX_AREA && 
+				overlapped[min]->area > MIN_AREA &&
 				overlapped[min]->bound.height < input.rows*0.5 &&
 				overlapped[min]->bound.width < input.cols*0.5)
 			{

@@ -20,6 +20,7 @@ int main(int argc, char** argv)
 	//opencv_train();
 	//train_cascade();
 	//bootstrap();
+	//rotate_image();
 	//return 0;
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
