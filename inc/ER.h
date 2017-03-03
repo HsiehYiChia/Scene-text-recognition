@@ -17,7 +17,7 @@
 #include "adaboost.h"
 #include "OCR.h"
 
-#define DO_OCR
+//#define DO_OCR
 
 using namespace std;
 using namespace cv;
@@ -46,6 +46,7 @@ public:
 	int level;
 	int x;
 	int y;
+	plist *p;
 	
 	//! feature
 	int area;
@@ -192,7 +193,7 @@ public:
 double fitline_LSE(const vector<Point> &p);
 double fitline_LMS(const vector<Point> &p);
 double fitline_avgslope(const vector<Point> &p);
-void calc_color(ER* er, Mat mask_channel, Mat color);
+void calc_color(ER* er, Mat mask_channel, Mat color_img);
 vector<vector<int> > comb(int N, int K);
 double standard_dev(vector<double> arr, bool normalize);
 

@@ -1,7 +1,7 @@
 #ifndef __MYLIB__
 #define __MYLIB__
 
-#define WEBCAM_MODE
+//#define WEBCAM_MODE
 
 #define THRESHOLD_STEP 1
 #define MIN_ER_AREA 100
@@ -32,7 +32,6 @@ vector<Vec4i> load_gt(int n);
 Vec6d calc_detection_rate(int n, vector<Text> &text);
 void save_deteval_xml(vector<vector<Text>> &text);
 
-
 // Training Functions
 void get_canny_data();
 void rotate_image();
@@ -42,4 +41,6 @@ void train_classifier();
 void train_cascade();
 void opencv_train();
 
+// Other
+void draw_all_er();
 #endif

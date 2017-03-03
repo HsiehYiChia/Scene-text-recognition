@@ -76,6 +76,13 @@ inline void ERFilter::er_accumulate(ER *er, const int &current_pixel, const int 
 	er->bound.y = y1;
 	er->bound.width = x2 - x1 + 1;
 	er->bound.height = y2 - y1 + 1;
+
+	/*plist *ptr = er->p;
+	while (ptr != nullptr)
+	{
+		ptr = ptr->next;
+	}
+	ptr = new plist(current_pixel);*/
 }
 
 void ERFilter::er_merge(ER *parent, ER *child)
@@ -353,6 +360,7 @@ save_step_2:
 	for (; root != nullptr; root = root->child)
 	{
 		tree_stack.push_back(root);
+		n++;
 	}
 	
 
@@ -360,6 +368,7 @@ save_step_2:
 	//		return, we are done.
 	if (root == nullptr && tree_stack.empty())
 	{
+		//cout << "Before NMS: " << n << "    After NMS: " << pool.size() << endl;
 		return;
 	}
 
@@ -539,7 +548,6 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 {
 	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-
 	overlap_suppression(all_er);
 	inner_suppression(all_er);
 
@@ -551,7 +559,7 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 		for (int j = i+1; j < all_er.size(); j++)
 		{
 			ER *b = all_er[j];
-			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*3.0 &&				// 0.5*3
+			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*3.0 &&
 				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
 				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
 				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&
@@ -560,7 +568,7 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 				abs(a->color3 - b->color3) < 25 &&
 				abs(a->area - b->area) < min(a->area, b->area)*4)
 			{
-				if (group_index[i] == -1)
+				if (group_index[i] == -1 && group_index[j] == -1)
 				{
 					group_index[i] = index;
 					group_index[j] = index;
@@ -568,6 +576,12 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 					text[index].ers.push_back(a);
 					text[index].ers.push_back(b);
 					index++;
+				}
+
+				else if (group_index[j] != -1)
+				{
+					group_index[i] = group_index[j];
+					text[group_index[i]].ers.push_back(a);
 				}
 
 				else
@@ -729,51 +743,63 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 	const unsigned min_er = 6;
 	const unsigned min_pass_ocr = 3;
 
+	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
+	//overlap_suppression(all_er);
 	inner_suppression(all_er);
-	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b){ return a->center.x < b->center.x; });
-	
 
-	if (all_er.size() < min_er)
-		return;
-
-	vector<bool> done_mask(all_er.size(), false);
-	const int search_space = all_er.size() * 0.3;
-	vector<vector<int>> all_comb = comb(search_space, 2);
-
-
+	vector<int> group_index(all_er.size(), -1);
+	int index = 0;
 	for (int i = 0; i < all_er.size(); i++)
 	{
-		// check for every 3 ER whether they can be triplet
-		// skip the combination with zero, bacause it cannot compare with itself
-		for (int j = 0; j < all_comb.size(); j++)
+		ER *a = all_er[i];
+		for (int j = i + 1; j < all_er.size(); j++)
 		{
-			const int &j1 = all_comb[j][0];
-			const int &j2 = all_comb[j][1];
-			if ((i + j2) < all_er.size() && !done_mask[i] && !done_mask[i + j1] && !done_mask[i + j2] &&
-				is_neighboring(all_er[i], all_er[i + j1]) && is_neighboring(all_er[i + j1], all_er[i + j2]))
+			ER *b = all_er[j];
+			if (abs(a->center.x - b->center.x) < max(a->bound.width, b->bound.width)*3.0 &&
+				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
+				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
+				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&
+				abs(a->color1 - b->color1) < 25 &&
+				abs(a->color2 - b->color2) < 25 &&
+				abs(a->color3 - b->color3) < 25 &&
+				abs(a->area - b->area) < min(a->area, b->area) * 4)
 			{
-				// once we find a triplet, group and make them done so that it only appear once
-				vector<Point> points_bot;
-				points_bot.push_back(Point(all_er[i]->bound.x, all_er[i]->bound.br().y));
-				points_bot.push_back(Point(all_er[i + j1]->bound.x, all_er[i + j1]->bound.br().y));
-				points_bot.push_back(Point(all_er[i + j2]->bound.x, all_er[i + j2]->bound.br().y));
-				done_mask[i] = true;
-				done_mask[i + j1] = true;
-				done_mask[i + j2] = true;
-				text.push_back(Text(all_er[i], all_er[i + j1], all_er[i + j2]));
-
-				for (int k = i + j2 + 1; k < all_er.size(); k++)
+				if (group_index[i] == -1 && group_index[j] == -1)
 				{
-					if (!done_mask[k] && is_neighboring(text.back().ers.back(), all_er[k]))
-					{
-						text.back().ers.push_back(all_er[k]);
-						points_bot.push_back(Point(all_er[k]->bound.x, all_er[k]->bound.br().y));
-						done_mask[k] = true;
-					}
+					group_index[i] = index;
+					group_index[j] = index;
+					text.push_back(Text());
+					text[index].ers.push_back(a);
+					text[index].ers.push_back(b);
+					index++;
 				}
-				text.back().slope = fitline_LMS(points_bot);
+
+				else if (group_index[j] != -1)
+				{
+					group_index[i] = group_index[j];
+					text[group_index[i]].ers.push_back(a);
+				}
+
+				else
+				{
+					group_index[j] = group_index[i];
+					text[group_index[j]].ers.push_back(b);
+				}
 			}
 		}
+	}
+
+	for (int i = 0; i < text.size(); i++)
+	{
+		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
+
+		vector<Point> points;
+		for (int j = 0; j < text[i].ers.size(); j++)
+		{
+			points.push_back(text[i].ers[j]->bound.br());
+		}
+
+		text[i].slope = fitline_LMS(points);
 	}
 	
 
@@ -781,7 +807,7 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 	for (int i = 0; i < text.size(); i++)
 	{
 		// get OCR label of each ER
-	//#pragma omp parallel for
+	#pragma omp parallel for
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			ER* er = text[i].ers[j];
@@ -1004,7 +1030,7 @@ void ERFilter::build_graph(Text &text, Graph &graph)
 		int cmp_idx = -1;
 		for (int k = j + 1; k < text.ers.size(); k++)
 		{
-			// encounter an ER that is similar to j
+			// encounter an ER that is overlapping to j
 			if (is_overlapping(text.ers[j], text.ers[k]))
 				continue;
 
@@ -1020,7 +1046,7 @@ void ERFilter::build_graph(Text &text, Graph &graph)
 				graph[j].adj_list.push_back(graph[k]);
 			}
 
-			// encounter an ER that is similar to cmp_idx
+			// encounter an ER that is overlapping to cmp_idx
 			else if (is_overlapping(text.ers[cmp_idx], text.ers[k]))
 			{
 				cmp_idx = k;
@@ -1347,12 +1373,11 @@ double fitline_avgslope(const vector<Point> &p)
 	return slope;
 }
 
-void calc_color(ER* er, Mat mask_channel, Mat color)
+void calc_color(ER* er, Mat mask_channel, Mat color_img)
 {
 	// calculate the color of each ER
-	/*Mat img = mask_channel(er->bound).clone();
-	threshold(img, img, 128, 255, THRESH_OTSU);
-	img = 255 - img;
+	Mat img = mask_channel(er->bound).clone();
+	threshold(255-img, img, 128, 255, THRESH_OTSU);
 
 	int count = 0;
 	double color1 = 0;
@@ -1361,7 +1386,7 @@ void calc_color(ER* er, Mat mask_channel, Mat color)
 	for (int i = 0; i < img.rows; i++)
 	{
 		uchar* ptr = img.ptr(i);
-		uchar* color_ptr = color.ptr(i);
+		uchar* color_ptr = color_img.ptr(i);
 		for (int j = 0, k = 0; j < img.cols; j++, k += 3)
 		{
 			if (ptr[j] != 0)
@@ -1375,9 +1400,9 @@ void calc_color(ER* er, Mat mask_channel, Mat color)
 	}
 	er->color1 = color1 / count;
 	er->color2 = color2 / count;
-	er->color3 = color3 / count;*/
+	er->color3 = color3 / count;
 
-	Mat img = mask_channel(er->bound);
+	/*Mat img = color_img(er->bound);
 	double color1 = 0;
 	double color2 = 0;
 	double color3 = 0;
@@ -1391,9 +1416,9 @@ void calc_color(ER* er, Mat mask_channel, Mat color)
 			color3 += ptr[k + 2];
 		}
 	}
-	color1 /= (img.rows*img.cols);
-	color2 /= (img.rows*img.cols);
-	color3 /= (img.rows*img.cols);
+	er->color1 = color1 / (img.rows*img.cols);
+	er->color2 = color2 / (img.rows*img.cols);
+	er->color3 = color3 / (img.rows*img.cols);*/
 }
 
 

@@ -53,13 +53,13 @@ void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &
 
 	for (auto it : text)
 	{
-		rectangle(group_result, it.box, Scalar(0, 255, 255), 2);
+		rectangle(group_result, it.box, Scalar(0, 255, 255), 1);
 	}
 
 #ifdef DO_OCR
 	for (int i = 0; i < text.size(); i++)
 	{
-		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 2);
+		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 1);
 	}
 #endif
 
@@ -68,7 +68,11 @@ void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &
 	cv::imshow("all", all_img);
 	cv::imshow("tracked", tracked_img);
 	cv::imshow("group result", group_result);
-
+	imwrite("non_maximum_suppression.jpg", all_img);
+	imwrite("weak.jpg", weak_img);
+	imwrite("strong.jpg", strong_img);
+	imwrite("tracked.jpg", tracked_img);
+	imwrite("result.jpg", group_result);
 
 
 #ifndef WEBCAM_MODE
@@ -249,6 +253,13 @@ void save_deteval_xml(vector<vector<Text>> &text)
 }
 
 
+void draw_all_er()
+{
+	Mat haha= imread("haha.jpg");
+
+}
+
+
 //==================================================
 //=============== Training Function ================
 //==================================================
@@ -408,8 +419,7 @@ void get_canny_data()
 			fout << 1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 			{
-				if (spacial_hist[f])
-					fout << " " << spacial_hist[f];
+				fout << " " << spacial_hist[f];
 			}
 			fout << endl;
 
@@ -417,8 +427,7 @@ void get_canny_data()
 			fout << 1;
 			for (int f = 0; f < spacial_hist.size(); f++)
 			{
-				if (spacial_hist[f])
-					fout << " " << spacial_hist[f];
+				fout << " " << spacial_hist[f];
 			}
 			fout << endl;
 
