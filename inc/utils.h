@@ -3,7 +3,7 @@
 
 //#define WEBCAM_MODE
 
-#define THRESHOLD_STEP 1
+#define THRESHOLD_STEP 2
 #define MIN_ER_AREA 100
 #define MAX_ER_AREA 90000
 #define NMS_STABILITY_T 2
@@ -27,7 +27,10 @@ using namespace cv;
 
 // Testing Functions
 bool load_test_file(Mat &src, int n);
-void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
+void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
+void draw_linear_time_MSER(string img_name);
+void draw_multiple_channel(string img_name);
+void test_MSER_time(string img_name);
 vector<Vec4i> load_gt(int n);
 Vec6d calc_detection_rate(int n, vector<Text> &text);
 void save_deteval_xml(vector<vector<Text>> &text);

@@ -18,6 +18,7 @@
 #include "OCR.h"
 
 //#define DO_OCR
+#define GET_ALL_ER
 
 using namespace std;
 using namespace cv;
@@ -114,10 +115,10 @@ public:
 	OCR *ocr;
 	
 	//! functions
-	void text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
+	void text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
 	void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels);
 	ER* er_tree_extract(Mat input);
-	void non_maximum_supression(ER *er, ERs &pool, Mat input);
+	void non_maximum_supression(ER *er, ERs &all, ERs &pool, Mat input);
 	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);
 	void er_delete(ER *er);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
@@ -126,6 +127,7 @@ public:
 	vector<double> make_LBP_hist(Mat input, const int N = 2, const int normalize_size = 24);
 	bool load_tp_table(const char* filename);
 	Mat calc_LBP(Mat input, const int size = 24);
+	
 
 private:
 	//! Parameters

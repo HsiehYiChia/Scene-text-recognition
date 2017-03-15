@@ -21,6 +21,9 @@ int main(int argc, char** argv)
 	//train_cascade();
 	//bootstrap();
 	//rotate_image();
+	//draw_linear_time_MSER("img_7.jpg");
+	//draw_multiple_channel("img_6.jpg");
+	//test_MSER_time("img_7.jpg");
 	//return 0;
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
@@ -44,18 +47,19 @@ int main(int argc, char** argv)
 		start = chrono::high_resolution_clock::now();
 
 		ERs root;
+		vector<ERs> all;
 		vector<ERs> pool;
 		vector<ERs> strong;
 		vector<ERs> weak;
 		ERs tracked;
 		vector<Text> text;
 
-		er_filter->text_detect(frame, root, pool, strong, weak, tracked, text);
+		er_filter->text_detect(frame, root, all, pool, strong, weak, tracked, text);
 
 		end = chrono::high_resolution_clock::now();
 		std::cout << "Running time: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n";
 
-		show_result(frame, pool, strong, weak, tracked, text);
+		show_result(frame, all, pool, strong, weak, tracked, text);
 
 		for (auto it : root)
 			er_filter->er_delete(it);
@@ -77,20 +81,21 @@ int main(int argc, char** argv)
 		start = chrono::high_resolution_clock::now();
 
 		ERs root;
+		vector<ERs> all;
 		vector<ERs> pool;
 		vector<ERs> strong;
 		vector<ERs> weak;
 		ERs tracked;
 		vector<Text> text;
 
-		er_filter->text_detect(src, root, pool, strong, weak, tracked, text);
+		er_filter->text_detect(src, root, all, pool, strong, weak, tracked, text);
 
 		end = chrono::high_resolution_clock::now();
 		time_sum += chrono::duration<double>(end - start).count();
 		std::cout << "Running time: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n";
 		
 
-		show_result(src, pool, strong, weak, tracked, text);
+		show_result(src, all, pool, strong, weak, tracked, text);
 		det_text.push_back(text);
 	}
 	std::cout << "Average running time: " << 1000 * time_sum / img_count << "ms" << endl;

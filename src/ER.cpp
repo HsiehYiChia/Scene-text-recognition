@@ -19,13 +19,14 @@ ERFilter::ERFilter(int thresh_step, int min_area, int max_area, int stability_t,
 }
 
 
-void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
 {
 	Mat Ycrcb;
 	vector<Mat> channel;
 	compute_channels(src, Ycrcb, channel);
 
 	root.resize(channel.size());
+	all.resize(channel.size());
 	pool.resize(channel.size());
 	strong.resize(channel.size());
 	weak.resize(channel.size());
@@ -34,7 +35,7 @@ void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &pool, vector<ERs> &s
 	for (int i = 0; i < channel.size(); i++)
 	{
 		root[i] = er_tree_extract(channel[i]);
-		non_maximum_supression(root[i], pool[i], channel[i]);
+		non_maximum_supression(root[i], all[i], pool[i], channel[i]);
 		classify(pool[i], strong[i], weak[i], channel[i]);
 	}
 
@@ -119,6 +120,10 @@ void ERFilter::er_merge(ER *parent, ER *child)
 		parent->child = child;
 		child->parent = parent;
 	}
+
+	/*child->next = parent->child;
+	parent->child = child;
+	child->parent = parent;*/
 }
 
 
@@ -344,7 +349,7 @@ void ERFilter::process_stack(const int new_pixel_grey_level, ERs &er_stack)
 }
 
 
-void ERFilter::non_maximum_supression(ER *er, ERs &pool, Mat input)
+void ERFilter::non_maximum_supression(ER *er, ERs &all, ERs &pool, Mat input)
 {
 	// Non Recursive Preorder Tree Traversal
 	// See http://algorithms.tutorialhorizon.com/binary-tree-preorder-traversal-non-recursive-approach/ for more info.
@@ -353,14 +358,15 @@ void ERFilter::non_maximum_supression(ER *er, ERs &pool, Mat input)
 	vector<ER *> tree_stack;
 	ER *root = er;
 	root->parent = root;
-	int n = 0;
 
 save_step_2:
 	// 2. Print the root and push it to Stack and go left, i.e root=root.left and till it hits the nullptr.
 	for (; root != nullptr; root = root->child)
 	{
 		tree_stack.push_back(root);
-		n++;
+	#ifdef GET_ALL_ER
+		all.push_back(root);
+	#endif
 	}
 	
 
@@ -401,29 +407,29 @@ save_step_2:
 		{
 			for (int i = 0; i < overlapped.size() - STABILITY_T; i++)
 			{
-				overlapped[i]->stability = (overlapped[i + STABILITY_T]->bound.area() - overlapped[i]->bound.area()) / (double)overlapped[i]->bound.area();
+				overlapped[i]->stability =  (double)overlapped[i]->bound.area() / (double)(overlapped[i + STABILITY_T]->bound.area() - overlapped[i]->bound.area());
 			}
 
-			int min = 0;
+			int max = 0;
 			for (int i = 1; i < overlapped.size() - STABILITY_T; i++)
 			{
-				if (overlapped[i]->stability < overlapped[min]->stability )
-					min = i;
-				else if (overlapped[i]->stability == overlapped[min]->stability)
-					min = (overlapped[i]->bound.area() < overlapped[min]->bound.area()) ? i : min;
+				if (overlapped[i]->stability > overlapped[max]->stability )
+					max = i;
+				else if (overlapped[i]->stability == overlapped[max]->stability)
+					max = (overlapped[i]->bound.area() < overlapped[max]->bound.area()) ? i : max;
 			}
 
-			double aspect_ratio = (double)overlapped[min]->bound.width / (double)overlapped[min]->bound.height;
+			double aspect_ratio = (double)overlapped[max]->bound.width / (double)overlapped[max]->bound.height;
 			if (aspect_ratio < 2.0 && aspect_ratio > 0.10 && 
-				overlapped[min]->area < MAX_AREA && 
-				overlapped[min]->area > MIN_AREA &&
-				overlapped[min]->bound.height < input.rows*0.5 &&
-				overlapped[min]->bound.width < input.cols*0.5)
+				overlapped[max]->area < MAX_AREA && 
+				overlapped[max]->area > MIN_AREA &&
+				overlapped[max]->bound.height < input.rows*0.5 &&
+				overlapped[max]->bound.width < input.cols*0.5)
 			{
-				pool.push_back(overlapped[min]);
+				pool.push_back(overlapped[max]);
 				/*char buf[20];
 				sprintf(buf, "res/tmp/%d.jpg", n++);
-				imwrite(buf, input(overlapped[min]->bound));*/
+				imwrite(buf, input(overlapped[max]->bound));*/
 			}
 		}
 	}
@@ -898,6 +904,7 @@ Mat ERFilter::calc_LBP(Mat input, const int size)
 	}
 	return LBP;
 }
+
 
 
 inline bool ERFilter::is_neighboring(ER *a, ER *b)

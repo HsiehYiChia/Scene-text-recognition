@@ -27,23 +27,27 @@ bool load_test_file(Mat &src, int n)
 }
 
 
-void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
 {
+	Mat all_img = src.clone();
+	Mat pool_img = src.clone();
 	Mat strong_img = src.clone();
 	Mat weak_img = src.clone();
-	Mat all_img = src.clone();
 	Mat tracked_img = src.clone();
-	Mat group_result = src.clone();
+	Mat result_img = src.clone();
 	for (int i = 0; i < pool.size(); i++)
 	{
+		for (auto it : all[i])
+			rectangle(all_img, it->bound, Scalar(255, 0, 0));
+
+		for (auto it : pool[i])
+			rectangle(pool_img, it->bound, Scalar(255, 0, 0));
+
 		for (auto it : weak[i])
 			rectangle(weak_img, it->bound, Scalar(0, 0, 255));
 
 		for (auto it : strong[i])
 			rectangle(strong_img, it->bound, Scalar(0, 255, 0));
-
-		for (auto it : pool[i])
-			rectangle(all_img, it->bound, Scalar(255, 0, 0));
 	}
 
 	for (auto it : tracked)
@@ -53,34 +57,329 @@ void show_result(Mat &src, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &
 
 	for (auto it : text)
 	{
-		rectangle(group_result, it.box, Scalar(0, 255, 255), 1);
+		rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
 	}
 
 #ifdef DO_OCR
 	for (int i = 0; i < text.size(); i++)
 	{
-		putText(group_result, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 1);
+		putText(result_img, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 2);
 	}
 #endif
 
+	double alpha = 0.7;
+	addWeighted(all_img, alpha, src, 1.0 - alpha, 0.0, all_img);
+	cv::imshow("all", all_img);
+	cv::imshow("pool", pool_img);
 	cv::imshow("weak", weak_img);
 	cv::imshow("strong", strong_img);
-	cv::imshow("all", all_img);
 	cv::imshow("tracked", tracked_img);
-	cv::imshow("group result", group_result);
-	imwrite("non_maximum_suppression.jpg", all_img);
+	cv::imshow("result", result_img);
+
+#ifndef WEBCAM_MODE
+	imwrite("all.jpg", all_img);
+	imwrite("pool.jpg", pool_img);
 	imwrite("weak.jpg", weak_img);
 	imwrite("strong.jpg", strong_img);
 	imwrite("tracked.jpg", tracked_img);
-	imwrite("result.jpg", group_result);
-
-
-#ifndef WEBCAM_MODE
+	imwrite("result.jpg", result_img);
 	waitKey(0);
 #endif
+
+}
+
+
+
+void draw_linear_time_MSER(string img_name)
+{
+	Mat input = imread(img_name);
+
+	int pixel_count = 0;
+	VideoWriter writer;
+	//writer.open("Linear time MSER.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, input.size());
+	writer.open("Linear time MSER.wmv", CV_FOURCC('W', 'M', 'V', '2'), 30, input.size());
+
+
+	Mat color = Mat::zeros(input.rows, input.cols, CV_8UC3);
+	Mat gray;
+	cvtColor(input, gray, COLOR_BGR2GRAY);
+	const int width = gray.cols;
+	const int height = gray.rows;
+	const int highest_level = 255 + 1;
+	const uchar *imgData = gray.data;
+
+	//!< 1. Clear the accessible pixel mask, the heap of boundary pixels and the component
+	bool *pixel_accessible = new bool[height*width]();
+	vector<int> boundary_pixel[256];
+	vector<int> boundary_edge[256];
+	vector<ER *>er_stack;
+
+	int priority = highest_level;
+
+
+	//!< 1-2. push a dummy-component onto the stack, 
+	//!<	  with grey-level heigher than any allowed in the image
+	er_stack.push_back(new ER(256, 0, 0, 0));
+
+
+	//!< 2. make the top-right corner the source pixel, get its gray level and mark it accessible
+	int current_pixel = 0;
+	int current_edge = 0;
+	int current_level = imgData[current_pixel];
+	pixel_accessible[current_pixel] = true;
+
+
+step_3:
+	int x = current_pixel % width;
+	int y = current_pixel / width;
+
+	//!< 3. push an empty component with current_level onto the component stack
+	er_stack.push_back(new ER(current_level, current_pixel, x, y));
+
+
+	for (;;)
+	{
+		//!< 4. Explore the remaining edges to the neighbors of the current pixel, in order, as follows : 
+		//!<	For each neighbor, check if the neighbor is already accessible.If it
+		//!<	is not, mark it as accessible and retrieve its grey - level.If the grey - level is not
+		//!<	lower than the current one, push it onto the heap of boundary pixels.If on
+		//!<	the other hand the grey - level is lower than the current one, enter the current
+		//!<	pixel back into the queue of boundary pixels for later processing(with the
+		//!<	next edge number), consider the new pixel and its grey - level and go to 3.
+		int neighbor_pixel;
+		int neighbor_level;
+
+
+		for (; current_edge < 4; current_edge++)
+		{
+			switch (current_edge)
+			{
+			case 0: neighbor_pixel = (x + 1 < width) ? current_pixel + 1 : current_pixel;	break;
+			case 1: neighbor_pixel = (y + 1 < height) ? current_pixel + width : current_pixel;	break;
+			case 2: neighbor_pixel = (x > 0) ? current_pixel - 1 : current_pixel;	break;
+			case 3: neighbor_pixel = (y > 0) ? current_pixel - width : current_pixel;	break;
+			default: break;
+			}
+
+			if (!pixel_accessible[neighbor_pixel] && neighbor_pixel != current_pixel)
+			{
+				pixel_accessible[neighbor_pixel] = true;
+				neighbor_level = imgData[neighbor_pixel];
+
+				if (neighbor_level >= current_level)
+				{
+					boundary_pixel[neighbor_level].push_back(neighbor_pixel);
+					boundary_edge[neighbor_level].push_back(0);
+
+					if (neighbor_level < priority)
+						priority = neighbor_level;
+
+					int nx = neighbor_pixel % width;
+					int ny = neighbor_pixel / width;
+					color.at<uchar>(ny, nx * 3) = 0;
+					color.at<uchar>(ny, nx * 3 + 1) = 255;
+					color.at<uchar>(ny, nx * 3 + 2) = 0;
+				}
+				else
+				{
+					boundary_pixel[current_level].push_back(current_pixel);
+					boundary_edge[current_level].push_back(current_edge + 1);
+
+					if (current_level < priority)
+						priority = current_level;
+
+					color.at<uchar>(y, x * 3) = 0;
+					color.at<uchar>(y, x * 3 + 1) = 255;
+					color.at<uchar>(y, x * 3 + 2) = 0;
+
+					current_pixel = neighbor_pixel;
+					current_level = neighbor_level;
+					current_edge = 0;
+					goto step_3;
+				}
+			}
+		}
+
+
+
+
+		//!< 5. Accumulate the current pixel to the component at the top of the stack 
+		//!<	(water saturates the current pixel).
+		er_stack.back()->area++;
+		int x1 = min(er_stack.back()->bound.x, x);
+		int x2 = max(er_stack.back()->bound.br().x - 1, x);
+		int y1 = min(er_stack.back()->bound.y, y);
+		int y2 = max(er_stack.back()->bound.br().y - 1, y);
+		er_stack.back()->bound.x = x1;
+		er_stack.back()->bound.y = y1;
+		er_stack.back()->bound.width = x2 - x1 + 1;
+		er_stack.back()->bound.height = y2 - y1 + 1;
+
+		color.at<uchar>(y, x * 3) = input.at<uchar>(y, x * 3);
+		color.at<uchar>(y, x * 3 + 1) = input.at<uchar>(y, x * 3 + 1);
+		color.at<uchar>(y, x * 3 + 2) = input.at<uchar>(y, x * 3 + 2);
+		/*color.at<uchar>(y, x * 3) = current_level;
+		color.at<uchar>(y, x * 3 + 1) = current_level;
+		color.at<uchar>(y, x * 3 + 2) = current_level;*/
+		pixel_count++;
+		if (pixel_count % 300 == 0)
+		{
+			imshow("Linear time MSER", color);
+			writer << color;
+			waitKey(1);
+		}
+
+
+		//!< 6. Pop the heap of boundary pixels. If the heap is empty, we are done. If the
+		//!<	returned pixel is at the same grey - level as the previous, go to 4	
+		if (priority == highest_level)
+		{
+			delete[] pixel_accessible;
+			writer.release();
+			waitKey(0);
+			return;
+		}
+
+
+		int new_pixel = boundary_pixel[priority].back();
+		int new_edge = boundary_edge[priority].back();
+		int new_pixel_grey_level = imgData[new_pixel];
+
+		boundary_pixel[priority].pop_back();
+		boundary_edge[priority].pop_back();
+
+		while (boundary_pixel[priority].empty() && priority < highest_level)
+			priority++;
+
+		current_pixel = new_pixel;
+		current_edge = new_edge;
+		x = current_pixel % width;
+		y = current_pixel / width;
+
+		if (new_pixel_grey_level != current_level)
+		{
+			
+			current_level = new_pixel_grey_level;
+
+			do
+			{
+				ER *top = er_stack.back();
+				ER *second_top = er_stack.end()[-2];
+				er_stack.pop_back();
+
+				
+				if (new_pixel_grey_level < second_top->level)
+				{
+					er_stack.push_back(new ER(new_pixel_grey_level, top->pixel, top->x, top->y));
+					er_stack.back()->area += top->area;
+
+					const int x1 = min(er_stack.back()->bound.x, top->bound.x);
+					const int x2 = max(er_stack.back()->bound.br().x - 1, top->bound.br().x - 1);
+					const int y1 = min(er_stack.back()->bound.y, top->bound.y);
+					const int y2 = max(er_stack.back()->bound.br().y - 1, top->bound.br().y - 1);
+
+					er_stack.back()->bound.x = x1;
+					er_stack.back()->bound.y = y1;
+					er_stack.back()->bound.width = x2 - x1 + 1;
+					er_stack.back()->bound.height = y2 - y1 + 1;
+
+					
+					top->next = er_stack.back()->child;
+					er_stack.back()->child = top;
+					top->parent = er_stack.back();
+
+					break;
+				}
+
+				second_top->area += top->area;
+
+				const int x1 = min(second_top->bound.x, top->bound.x);
+				const int x2 = max(second_top->bound.br().x - 1, top->bound.br().x - 1);
+				const int y1 = min(second_top->bound.y, top->bound.y);
+				const int y2 = max(second_top->bound.br().y - 1, top->bound.br().y - 1);
+
+				second_top->bound.x = x1;
+				second_top->bound.y = y1;
+				second_top->bound.width = x2 - x1 + 1;
+				second_top->bound.height = y2 - y1 + 1;
+
+
+				top->next = second_top->child;
+				second_top->child = top;
+				top->parent = second_top;
+
+			}
+			while (new_pixel_grey_level > er_stack.back()->level);
+		}
+	}
+}
+
+
+void draw_multiple_channel(string img_name)
+{
+	ERFilter *erFilter = new ERFilter(1, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+	Mat input = imread(img_name);
 	
 
-	
+
+	Mat Ycrcb;
+	vector<Mat> channel;
+	erFilter->compute_channels(input, Ycrcb, channel);
+
+	ERs root;
+	vector<ERs> all;
+	vector<ERs> pool;
+	root.resize(channel.size());
+	all.resize(channel.size());
+	pool.resize(channel.size());
+
+	for (int i = 0; i < channel.size(); i++)
+	{
+		root[i] = erFilter->er_tree_extract(channel[i]);
+		erFilter->non_maximum_supression(root[i], all[i], pool[i], channel[i]);
+
+		for (int j = 0; j < pool[i].size(); j++)
+		{
+			rectangle(channel[i%3], pool[i][j]->bound, Scalar(0));
+		}
+	}
+
+
+	imshow("Y", channel[0]);
+	imshow("Cr", channel[1]);
+	imshow("Cb", channel[2]);
+	imwrite("Y.jpg", channel[0]);
+	imwrite("Cr.jpg", channel[1]);
+	imwrite("Cb.jpg", channel[2]);
+	waitKey(0);
+}
+
+
+void test_MSER_time(string img_name)
+{
+	fstream fout = fstream("time.txt", fstream::out);
+	ERFilter *erFilter = new ERFilter(1, 100, 1.0E7, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+	Mat input = imread(img_name, IMREAD_GRAYSCALE);
+	double coef = 0.2;
+	Mat tmp;
+	while (tmp.total() <= 1.0E8)
+	{
+		resize(input, tmp, Size(), coef, coef);
+
+		chrono::high_resolution_clock::time_point start, end;
+		start = chrono::high_resolution_clock::now();
+
+		ER *root = erFilter->er_tree_extract(tmp);
+
+		end = chrono::high_resolution_clock::now();
+
+		erFilter->er_delete(root);
+		std::cout << "pixel number: " << tmp.total();
+		std::cout << "\ttime: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n";
+		fout << tmp.total() << " " << chrono::duration<double>(end - start).count() * 1000 << endl;
+		coef += 0.1;
+	}
+	erFilter->er_tree_extract(input);
 }
 
 
@@ -332,13 +631,13 @@ void bootstrap()
 		sprintf(filename, "D:\\0.Projects\\image_data_set\\ICDAR2015\\Challenge1\\Challenge1_Test_Task3_Images\\word_%d.png", pic);
 	
 
-		ERs pool, strong, weak;
+		ERs all, pool, strong, weak;
 		Mat input = imread(filename, IMREAD_GRAYSCALE);
 		if (input.empty()) continue;
 
 
 		ER *root = erFilter->er_tree_extract(input);
-		erFilter->non_maximum_supression(root, pool, input);
+		erFilter->non_maximum_supression(root, all, pool, input);
 		erFilter->classify(pool, strong, weak, input);
 
 
@@ -376,7 +675,7 @@ void get_canny_data()
 
 	for (int i = 1; i <= 3; i++)
 	{
-		for (int pic = 1; pic <= 15000; pic++)
+		for (int pic = 0; pic <= 15000; pic++)
 		{
 			char filename[30];
 			sprintf(filename, "res/neg/neg%d/%d.jpg", i, pic);
@@ -407,7 +706,7 @@ void get_canny_data()
 
 	for (int i = 1; i <= 3; i++)
 	{
-		for (int pic = 1; pic <= 15000; pic++)
+		for (int pic = 0; pic <= 15000; pic++)
 		{
 			char filename[30];
 			sprintf(filename, "res/pos/pos%d/%d.jpg", i, pic);
