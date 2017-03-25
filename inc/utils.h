@@ -15,7 +15,7 @@
 #include <iostream>
 #include <chrono>
 #include <opencv.hpp>
-
+#include <time.h>
 #include "ER.h"
 #include "OCR.h"
 #include "adaboost.h"
@@ -37,9 +37,10 @@ void save_deteval_xml(vector<vector<Text>> &text);
 
 // Training Functions
 void get_canny_data();
-void rotate_image();
 void bootstrap();
-void get_ocr_data(int argc, char **argv, int type);
+void access_ocr_samples(void(*callback)());
+void rotate_ocr_samples();
+void get_ocr_data();
 void train_classifier();
 void train_cascade();
 void opencv_train();

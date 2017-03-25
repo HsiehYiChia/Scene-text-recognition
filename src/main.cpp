@@ -16,19 +16,19 @@ int main(int argc, char** argv)
 {
 	//get_canny_data();
 	//train_classifier();
-	//get_ocr_data(argc, argv, 0);
+	//get_ocr_data();
 	//opencv_train();
 	//train_cascade();
 	//bootstrap();
-	//rotate_image();
+	//rotate_ocr_samples();
 	//draw_linear_time_MSER("img_7.jpg");
 	//draw_multiple_channel("img_6.jpg");
 	//test_MSER_time("img_7.jpg");
 	//return 0;
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-	er_filter->adb1 = new CascadeBoost("er_classifier/cascade1.classifier");
-	er_filter->adb2 = new CascadeBoost("er_classifier/cascade2.classifier");
+	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
+	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model");
 	er_filter->load_tp_table("transition_probability/tp.txt");
 

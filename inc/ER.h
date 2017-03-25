@@ -110,8 +110,8 @@ public:
 	~ERFilter()	{}
 	
 	//! modules
-	AdaBoost *adb1;
-	AdaBoost *adb2;
+	AdaBoost *stc;
+	AdaBoost *wtc;
 	OCR *ocr;
 	
 	//! functions

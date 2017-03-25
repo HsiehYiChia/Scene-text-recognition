@@ -360,24 +360,31 @@ void test_MSER_time(string img_name)
 	fstream fout = fstream("time.txt", fstream::out);
 	ERFilter *erFilter = new ERFilter(1, 100, 1.0E7, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 	Mat input = imread(img_name, IMREAD_GRAYSCALE);
-	double coef = 0.2;
+	double coef = 0.181;
 	Mat tmp;
-	while (tmp.total() <= 1.0E8)
+	while (tmp.total() <= 1.0E7)
 	{
 		resize(input, tmp, Size(), coef, coef);
 
 		chrono::high_resolution_clock::time_point start, end;
 		start = chrono::high_resolution_clock::now();
 
-		ER *root = erFilter->er_tree_extract(tmp);
+		ERs root(5);
+		for (int i = 0; i < root.size(); i++)
+		{
+			root[i] = erFilter->er_tree_extract(tmp);
+		}
+			
 
 		end = chrono::high_resolution_clock::now();
 
-		erFilter->er_delete(root);
+		for (int i = 0; i < root.size(); i++)
+			erFilter->er_delete(root[i]);
+
 		std::cout << "pixel number: " << tmp.total();
-		std::cout << "\ttime: " << chrono::duration<double>(end - start).count() * 1000 << "ms\n";
-		fout << tmp.total() << " " << chrono::duration<double>(end - start).count() * 1000 << endl;
-		coef += 0.1;
+		std::cout << "\ttime: " << chrono::duration<double>(end - start).count() * 1000 / root.size() << "ms\n";
+		fout << tmp.total() << " " << chrono::duration<double>(end - start).count() * 1000 / root.size() << endl;
+		coef += 0.01;
 	}
 	erFilter->er_tree_extract(input);
 }
@@ -619,8 +626,8 @@ void train_cascade()
 void bootstrap()
 {
 	ERFilter *erFilter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-	erFilter->adb1 = new CascadeBoost("er_classifier/cascade1.classifier");
-	erFilter->adb2 = new CascadeBoost("er_classifier/cascade2.classifier");
+	erFilter->stc = new CascadeBoost("er_classifier/strong.classifier");
+	erFilter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 
 
 	int i = 0;
@@ -737,16 +744,13 @@ void get_canny_data()
 }
 
 
-void rotate_image()
+void access_ocr_samples(void (*callback)())
 {
 	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
 		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
 	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
 	vector<string> cat = { "lower", "upper", "number" };
 
-	OCR ocr = OCR();
-	int n = 0;
-	double rad = 0/180.0*CV_PI;
 	for (int i = 0; i < font_name.size(); i++)
 	{
 		for (int j = 0; j < font_type.size(); j++)
@@ -776,92 +780,126 @@ void rotate_image()
 
 					if (img.empty()) continue;
 
+					
+					void (*func)() = callback;
+					func();
+				}
+			}
+		}
+	}
+}
+
+
+void rotate_ocr_samples()
+{
+	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
+	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
+		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
+	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
+	vector<string> category = { "number", "upper", "lower", "symbol" };
+	vector<int> cat_num = { 10,26,26,3 };
+
+	OCR ocr = OCR();
+	int n = 0;
+	double rad = 10/180.0*CV_PI;
+	for (int i = 0; i < font_name.size(); i++)
+	{
+		for (int j = 0; j < font_type.size(); j++)
+		{
+			int label = 0;
+			for (int k = 0; k < category.size(); k++)
+			{
+				string path = String("ocr_classifier/" + font_name[i] + "/" + font_type[j] + "/" + category[k] + "/");
+				for (int cat_it = 0; cat_it < cat_num[k]; cat_it++)
+				{
+					String filename = path + table[label] + ".jpg";
+					label++;
+					Mat img = imread(filename, IMREAD_GRAYSCALE);
+
+					if (!img.empty())
+						cout << filename << " done!" << endl;
+					else
+					{
+						cout << filename << " not exist!" << endl;
+						continue;
+					}
+
 					ocr.geometric_normalization(img, img, rad, false);
 
 					char buf[256];
-					sprintf(buf, "res/tmp1/%d.jpg",  n++);
+					sprintf(buf, "res/tmp2/%d.jpg",  n++);
 					imwrite(buf, img);
 				}
 			}
 		}
 	}
-
-	
-	
 }
 
 
-void get_ocr_data(int argc, char **argv, int type)
+void get_ocr_data()
 {
-	char *in_img = nullptr;
-	char *outfile = nullptr;
-	int label = 0;
-	if (argc != 4)
+	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
+	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
+		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
+	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
+	vector<string> category = {"number", "upper", "lower", "symbol" };
+	vector<int> cat_num = { 10,26,26,3 };
+
+
+	fstream fout = fstream("ocr_classifier/OCR.data", fstream::out);
+
+	for (int i = 0; i < font_name.size(); i++)
 	{
-		cout << "wrong input format" << endl;
-		return;
-	}
-
-	else
-	{
-		in_img = argv[1];
-		outfile = argv[2];
-		label = atoi(argv[3]);
-	}
-
-
-
-	Mat input = imread(in_img, IMREAD_GRAYSCALE);
-	if (input.empty())
-	{
-		cout << "No such file:" << in_img << endl;
-		return;
-	}
-
-
-	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-	erFilter.ocr = new OCR();
-
-	fstream fout = fstream(outfile, fstream::app);
-	fout << label;
-
-	if (type == 0)
-	{
-		Mat ocr_img;
-		threshold(255 - input, ocr_img, 128, 255, CV_THRESH_OTSU);
-		erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
-		erFilter.ocr->ARAN(ocr_img, ocr_img, 35);
-
-		svm_node *fv = new svm_node[201];
-		erFilter.ocr->extract_feature(ocr_img, fv);
-
-		int i = 0;
-		while (fv[i].index != -1)
+		for (int j = 0; j < font_type.size(); j++)
 		{
-			fout << " " << fv[i].index << ":" << fv[i].value;
-			i++;
-		}
+			int label = 0;
+			for (int k = 0; k < category.size(); k++)
+			{
+				string path = String("ocr_classifier/" + font_name[i] + "/" + font_type[j] + "/" + category[k] + "/");
+				for (int cat_it = 0; cat_it < cat_num[k]; cat_it++)
+				{
+					String filename = path + table[label]+ ".jpg";
+					label++;
 
-		fout << endl;
+					Mat img = imread(filename, IMREAD_GRAYSCALE);
+
+					if (!img.empty())
+						cout << filename << " done!" << endl;
+					else
+					{
+						cout << filename << " not exist!" << endl;
+						continue;
+					}
+						
+
+					ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+					erFilter.ocr = new OCR();
+
+					fout << label-1;
+
+					Mat ocr_img;
+					threshold(255 - img, ocr_img, 128, 255, CV_THRESH_OTSU);
+					erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
+					erFilter.ocr->ARAN(ocr_img, ocr_img, 35);
+
+					svm_node *fv = new svm_node[201];
+					erFilter.ocr->extract_feature(ocr_img, fv);
+
+					int m = 0;
+					while (fv[m].index != -1)
+					{
+						fout << " " << fv[m].index << ":" << fv[m].value;
+						m++;
+					}
+
+					fout << endl;
+				}
+			}
+		}
 	}
 
-	else if (type == 1)
-	{
-		const int N = 2;
-		const int normalize_size = 24;
-
-		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-
-		double scale = (normalize_size / 2) * (normalize_size / 2);
-		for (int f = 0; f < spacial_hist.size(); f++)
-		{
-			if (spacial_hist[f] != 0)
-				fout << " " << f << ":" << spacial_hist[f] / 129.0;
-		}
-
-		fout << endl;
-	}
-
+	system("C:/libsvm-3.21/windows/svm-train.exe -b 1 -c 2048.0 -g 0.0001220703125 ocr_classifier/OCR.data ocr_classifier/OCR.model");
+	system("C:/libsvm-3.21/windows/svm-predict.exe ocr_classifier/OCR.data ocr_classifier/OCR.model ocr_classifier/predict_result.txt");
 	return;
 }
 

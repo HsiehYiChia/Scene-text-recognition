@@ -451,13 +451,13 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 	{
 		vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
 
-		if (adb1->predict(fv) > -DBL_MAX)
+		if (stc->predict(fv) > -DBL_MAX)
 		{
 			strong.push_back(pool[i]);
 		}
 		else
 		{
-			if (adb2->predict(fv) > -DBL_MAX)
+			if (wtc->predict(fv) > -DBL_MAX)
 			{
 				weak.push_back(pool[i]);
 			}
@@ -554,8 +554,8 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 {
 	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-	overlap_suppression(all_er);
-	inner_suppression(all_er);
+	//overlap_suppression(all_er);
+	//inner_suppression(all_er);
 
 	vector<int> group_index(all_er.size(), -1);
 	int index = 0;
