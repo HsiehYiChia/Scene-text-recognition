@@ -12,8 +12,8 @@ ER::ER(const int level_, const int pixel_, const int x_, const int y_) : level(l
 // ====================================================
 // ===================== ER_filter ====================
 // ====================================================
-ERFilter::ERFilter(int thresh_step, int min_area, int max_area, int stability_t, double overlap_coef) : THRESH_STEP(thresh_step), MIN_AREA(min_area), MAX_AREA(max_area),
-																										STABILITY_T(stability_t), OVERLAP_COEF(overlap_coef)
+ERFilter::ERFilter(int thresh_step, int min_area, int max_area, int stability_t, double overlap_coef, double min_ocr_prob) : THRESH_STEP(thresh_step), MIN_AREA(min_area), MAX_AREA(max_area),
+																													STABILITY_T(stability_t), OVERLAP_COEF(overlap_coef), MIN_OCR_PROB(min_ocr_prob)
 {
 
 }
@@ -42,7 +42,7 @@ void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &po
 	er_track(strong, weak, tracked, channel, Ycrcb);
 
 #ifdef DO_OCR
-	er_grouping_ocr(tracked, channel, text, 0.10);
+	er_grouping_ocr(tracked, channel, text);
 #else
 	er_grouping(tracked, text);
 #endif
@@ -446,7 +446,6 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 	const int N = 2;
 	const int normalize_size = 24;
 
-//#pragma omp parallel for
 	for (int i = 0; i < pool.size(); i++)
 	{
 		vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
@@ -462,20 +461,6 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 				weak.push_back(pool[i]);
 			}
 		}
-
-		/*Mat fv(1, 1024, CV_32F);
-		for (int i = 0; i < 1024; i++)
-		{
-			fv.at<float>(i) = spacial_hist[i];
-		}
-		adb3->predict(fv, noArray(), ml::StatModel::RAW_OUTPUT);*/
-		
-			
-		/*char buf[20];
-		sprintf(buf, "res/tmp1/%d.jpg", k);
-		imwrite(buf, input(pool[i]->bound));
-		cout << k << " ";
-		k++;*/
 	}
 }
 
@@ -606,9 +591,17 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
-	}
-	
 
+
+		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
+		vector<Point> points;
+		for (int j = 0; j < text[i].ers.size(); j++)
+		{
+			points.push_back(text[i].ers[j]->bound.br());
+		}
+
+		text[i].slope = fitline_avgslope(points);
+	}
 	
 
 	// 1. Find the left and right sibling of each ER
@@ -744,7 +737,7 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 }
 
 
-void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob)
+void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 {
 	const unsigned min_er = 6;
 	const unsigned min_pass_ocr = 3;
@@ -794,7 +787,7 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 			}
 		}
 	}
-
+	
 	for (int i = 0; i < text.size(); i++)
 	{
 		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
@@ -805,45 +798,50 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 			points.push_back(text[i].ers[j]->bound.br());
 		}
 
-		text[i].slope = fitline_LMS(points);
+		text[i].slope = fitline_avgslope(points);
 	}
 	
-
 	
-	for (int i = 0; i < text.size(); i++)
+	
+	for (int i = text.size()-1; i >= 0; i--)
 	{
 		// get OCR label of each ER
-	#pragma omp parallel for
+	//#pragma omp parallel for
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			ER* er = text[i].ers[j];
-			const double result = ocr->chain_run(channel[er->ch](er->bound), er->level*THRESH_STEP,text[i].slope);
+			const double result = ocr->chain_run(channel[er->ch](er->bound), er->level*THRESH_STEP, text[i].slope);
 			er->letter = floor(result);
 			er->prob = result - floor(result);
 		}
-		
 		// delete ER with low OCR confidence
 		for (int j = text[i].ers.size() - 1; j >= 0; j--)
 		{
-			if (text[i].ers[j]->prob < min_ocr_prob)
+			if (text[i].ers[j]->prob < MIN_OCR_PROB)
 				text[i].ers.erase(text[i].ers.begin() + j);
 		}
 		
 		if (text[i].ers.size() < min_pass_ocr)
+		{
+			
+			text.erase(text.begin() + i);
 			continue;
+		}
 		
 		Graph graph;
 		build_graph(text[i], graph);
 		solve_graph(text[i], graph);
-
-		//cout << text[i].word << endl;
 		ocr->feedback_verify(text[i]);
+		
 		text[i].box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
+		
+		//cout << text[i].word << " " << text[i].slope << endl;
 	}
+	
 }
 
 
@@ -1077,8 +1075,8 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 {
 	vector<double> DP_score(graph.size(), 0);
 	vector<int> DP_path(graph.size(), -1);
-	const double char_weight = 10;
-	const double edge_weight = 50;
+	const double char_weight = 5;
+	const double edge_weight = 2;
 
 	for (int j = 0; j < graph.size(); j++)
 	{
@@ -1089,6 +1087,7 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 		{
 			const int &adj = graph[j].adj_list[k].index;
 			const double score = DP_score[j] + graph[j].edge_prob[k] * edge_weight + text.ers[adj]->prob * char_weight;
+			
 			if (score > DP_score[adj])
 			{
 				DP_score[adj] = score;
@@ -1122,8 +1121,6 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 
 	for (auto it : text.ers)
 		text.word.append(string(1, it->letter));
-	
-	
 }
 
 

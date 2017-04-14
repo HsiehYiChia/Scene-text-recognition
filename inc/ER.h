@@ -17,7 +17,7 @@
 #include "adaboost.h"
 #include "OCR.h"
 
-//#define DO_OCR
+#define DO_OCR
 #define GET_ALL_ER
 
 using namespace std;
@@ -106,7 +106,7 @@ typedef vector<Node> Graph;
 class ERFilter
 {
 public:
-	ERFilter(int thresh_step = 2, int min_area = 100, int max_area = 100000, int stability_t = 2, double overlap_coef = 0.7);
+	ERFilter(int thresh_step = 2, int min_area = 100, int max_area = 100000, int stability_t = 2, double overlap_coef = 0.7, double min_ocr_prob = 0.01);
 	~ERFilter()	{}
 	
 	//! modules
@@ -123,7 +123,7 @@ public:
 	void er_delete(ER *er);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
 	void er_grouping(ERs &all_er, vector<Text> &text);
-	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text, const double min_ocr_prob);
+	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text);
 	vector<double> make_LBP_hist(Mat input, const int N = 2, const int normalize_size = 24);
 	bool load_tp_table(const char* filename);
 	Mat calc_LBP(Mat input, const int size = 24);
@@ -136,6 +136,7 @@ private:
 	const int MAX_AREA;
 	const int STABILITY_T;
 	const double OVERLAP_COEF;
+	const double MIN_OCR_PROB;
 	enum { right, bottom, left, top };
 
 	//! ER operation functions

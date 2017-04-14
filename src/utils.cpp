@@ -57,15 +57,40 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 
 	for (auto it : text)
 	{
-		rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
+		if (abs(it.slope) > 0.05)
+		{
+			vector<Point> points;
+			for (auto it_er : it.ers)
+			{
+				points.push_back(Point(it_er->bound.x, it_er->bound.y));
+				points.push_back(Point(it_er->bound.br().x, it_er->bound.br().y));
+				points.push_back(Point(it_er->bound.x, it_er->bound.br().y));
+				points.push_back(Point(it_er->bound.br().x, it_er->bound.y));
+			}
+			RotatedRect ro_rect = minAreaRect(points);
+			Point2f vertices[4];
+			ro_rect.points(vertices);
+			for (int i = 0; i < 4; i++)
+				line(result_img, vertices[i], vertices[(i + 1) % 4], Scalar(0, 255, 255), 2);
+		}
+
+		else
+		{
+			rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
+		}
+
+#ifndef DO_OCR
+		//rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y-20, 53, 19), Scalar(30, 30, 200), CV_FILLED);
+		//putText(result_img, "Text", Point(it.box.tl().x, it.box.tl().y-4), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
+		circle(result_img, Point(it.box.tl().x+5, it.box.tl().y-12), 10, Scalar(30, 30, 200), CV_FILLED);
+		putText(result_img, "T", Point(it.box.tl().x-2, it.box.tl().y-5), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
+#else
+		Size text_size = getTextSize(it.word, FONT_HERSHEY_COMPLEX_SMALL, 1, 1, 0);
+		rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y - 20, text_size.width, text_size.height+5), Scalar(30, 30, 200, 0), CV_FILLED);
+		putText(result_img, it.word, Point(it.box.tl().x, it.box.tl().y - 4), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0xff, 0xff, 0xff), 1);
+#endif
 	}
 
-#ifdef DO_OCR
-	for (int i = 0; i < text.size(); i++)
-	{
-		putText(result_img, text[i].word, text[i].box.tl(), FONT_HERSHEY_DUPLEX, 1, Scalar(0, 0, 255), 2);
-	}
-#endif
 
 	double alpha = 0.7;
 	addWeighted(all_img, alpha, src, 1.0 - alpha, 0.0, all_img);
@@ -77,7 +102,7 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 	cv::imshow("result", result_img);
 
 #ifndef WEBCAM_MODE
-	imwrite("all.jpg", all_img);
+	imwrite("all.png", all_img);
 	imwrite("pool.jpg", pool_img);
 	imwrite("weak.jpg", weak_img);
 	imwrite("strong.jpg", strong_img);
@@ -87,7 +112,6 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 #endif
 
 }
-
 
 
 void draw_linear_time_MSER(string img_name)
@@ -390,6 +414,13 @@ void test_MSER_time(string img_name)
 }
 
 
+
+void test_classifier_ROC(string classifier_name, string test_file)
+{
+
+}
+
+
 vector<Vec4i> load_gt(int n)
 {
 	char filename[50];
@@ -558,12 +589,6 @@ void save_deteval_xml(vector<vector<Text>> &text)
 	fdet << "</tagset>";
 }
 
-
-void draw_all_er()
-{
-	Mat haha= imread("haha.jpg");
-
-}
 
 
 //==================================================
@@ -744,64 +769,22 @@ void get_canny_data()
 }
 
 
-void access_ocr_samples(void (*callback)())
-{
-	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
-		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
-	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
-	vector<string> cat = { "lower", "upper", "number" };
-
-	for (int i = 0; i < font_name.size(); i++)
-	{
-		for (int j = 0; j < font_type.size(); j++)
-		{
-			for (int k = 0; k < 3; k++)
-			{
-				string path = String("ocr_classifier/" + font_name[i] + "/" + font_type[j] + "/" + cat[k] + "/");
-				string c;
-				int loop_num;
-				if (k == 0 || k == 1)
-				{
-					c = { 'a', '.', 'j', 'p', 'g', '\0' };
-					loop_num = 26;
-				}
-				else if (k == 2)
-				{
-					c = { '0', '.', 'j', 'p', 'g', '\0' };
-					loop_num = 10;
-				}
-				for (int i = 0; i < loop_num; i++)
-				{
-					String filename = path + c;
-					cout << filename << endl;
-
-					Mat img = imread(filename, IMREAD_GRAYSCALE);
-					c[0]++;
-
-					if (img.empty()) continue;
-
-					
-					void (*func)() = callback;
-					func();
-				}
-			}
-		}
-	}
-}
 
 
 void rotate_ocr_samples()
 {
 	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
-	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
-		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
+	vector<string> font_name = { 
+		"Arial", "Bitter", "Calibri", "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming",
+		"Gill_Sans", "Francois_One", "Georgia", "Impact", "Lato", "Neuton", "Open_Sans", "Oswald", "Oxygen", "Play", "PT_Serif", "Roboto_Slab", "Russo_One", 
+		"Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Ubuntu", "Verdana" };
 	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
 	vector<string> category = { "number", "upper", "lower", "symbol" };
 	vector<int> cat_num = { 10,26,26,3 };
 
 	OCR ocr = OCR();
 	int n = 0;
-	double rad = 10/180.0*CV_PI;
+	double rad = 0 / 180.0*CV_PI;
 	for (int i = 0; i < font_name.size(); i++)
 	{
 		for (int j = 0; j < font_type.size(); j++)
@@ -836,18 +819,21 @@ void rotate_ocr_samples()
 }
 
 
-void get_ocr_data()
+void train_ocr_model()
 {
 	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
-	vector<string> font_name = { "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming", "Francois_One", "Georgia", "Impact",
-		"Neuton", "Play", "PT_Serif", "Russo_One", "Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Verdana" };
+	vector<string> font_name = {
+		"Arial", "Bitter", "Calibri", "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming",
+		"Gill_Sans", "Francois_One", "Georgia", "Impact", "Lato", "Neuton", "Open_Sans", "Oswald", "Oxygen", "Play", "PT_Serif", "Roboto_Slab", "Russo_One",
+		"Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Ubuntu", "Verdana" };
 	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
 	vector<string> category = {"number", "upper", "lower", "symbol" };
 	vector<int> cat_num = { 10,26,26,3 };
 
 
 	fstream fout = fstream("ocr_classifier/OCR.data", fstream::out);
-
+	Mat feature;
+	vector<int> labels;
 	for (int i = 0; i < font_name.size(); i++)
 	{
 		for (int j = 0; j < font_type.size(); j++)
@@ -876,12 +862,13 @@ void get_ocr_data()
 					erFilter.ocr = new OCR();
 
 					fout << label-1;
-
+					
 					Mat ocr_img;
-					threshold(255 - img, ocr_img, 128, 255, CV_THRESH_OTSU);
+					threshold(255 - img, ocr_img, 200, 255, CV_THRESH_BINARY);
 					erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
 					erFilter.ocr->ARAN(ocr_img, ocr_img, 35);
-
+					
+					// get svm node
 					svm_node *fv = new svm_node[201];
 					erFilter.ocr->extract_feature(ocr_img, fv);
 
@@ -891,16 +878,66 @@ void get_ocr_data()
 						fout << " " << fv[m].index << ":" << fv[m].value;
 						m++;
 					}
-
 					fout << endl;
+
+					// get flann feature
+					Mat point = Mat::zeros(1, 200, CV_32F);
+					float *ptr = point.ptr<float>(0);
+					m = 0;
+					while (fv[m].index != -1)
+					{
+						ptr[fv[m].index] = fv[m].value;
+						m++;
+					}
+					feature.push_back(point);
+					labels.push_back(label - 1);
 				}
 			}
 		}
 	}
+	fout.close();
 
-	system("C:/libsvm-3.21/windows/svm-train.exe -b 1 -c 2048.0 -g 0.0001220703125 ocr_classifier/OCR.data ocr_classifier/OCR.model");
-	system("C:/libsvm-3.21/windows/svm-predict.exe ocr_classifier/OCR.data ocr_classifier/OCR.model ocr_classifier/predict_result.txt");
-	return;
+	// svm
+	//std::system("C:/libsvm-3.21/windows/svm-train.exe -b 1 -c 512.0.0 -g 0.0078125 ocr_classifier/svm.data ocr_classifier/OCR.model");
+	//std::system("C:/libsvm-3.21/windows/svm-predict.exe -b 1 ocr_classifier/OCR.data ocr_classifier/svm.model ocr_classifier/predict_result.txt");
+
+	// flann
+	cout << "train flann index" << endl;
+	flann::Index index(feature, flann::AutotunedIndexParams(0.9, 0.0, 0.0, 1));
+	index.save("ocr_classifier/index.fln");
+	cv::FileStorage fs_out("ocr_classifier/flann_feature.yml", cv::FileStorage::WRITE);
+	fs_out << "flann_feature" << feature;
+	fs_out << "labels" << labels;
+	fs_out.release();
+}
+
+
+void extract_ocr_sample()
+{
+	string path = "ocr_classifier/Calibri/Normal/";
+	string file = path + "C.jpg";
+	Mat input = imread(file, IMREAD_GRAYSCALE);
+	
+	ERFilter erFilter(1, 200, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+
+	ER* root = erFilter.er_tree_extract(input);
+	ERs all, pool, strong, weak;
+	erFilter.non_maximum_supression(root, all, pool, input);
+	int n = 0;
+	for (auto it : pool)
+	{
+		char buf[100];
+		sprintf(buf, "ocr_classifier/Calibri/Normal/%d.jpg", n++);
+		imwrite(buf, input(it->bound));
+	}
+
+	for (auto it : pool)
+	{
+		rectangle(input, it->bound, Scalar(128));
+	}
+
+	imshow("input", input);
+	waitKey(0);
 }
 
 

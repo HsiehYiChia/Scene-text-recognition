@@ -26,7 +26,7 @@ class OCR
 {
 public:
 	OCR() {};
-	OCR(const char *svm_file_name);
+	OCR(const char *svm_file_name, const char *flann_feature_file_name, const char*flann_index_file_name);
 	~OCR() {};
 	double lbp_run(vector<double> fv, double slope = 0);	// use LBP spacial histogram as feature vector
 	double chain_run(Mat &src, int thresh, double slope = 0);					// use chain code as feature
@@ -40,6 +40,9 @@ public:
 
 private:
 	svm_model *model;
+	flann::Index index;
+	Mat features;
+	vector<int> labels;
 	void try_add_space(Text &text);
 	int chain_code_direction(Point p1, Point p2);
 };

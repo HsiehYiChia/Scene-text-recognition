@@ -16,7 +16,7 @@ int main(int argc, char** argv)
 {
 	//get_canny_data();
 	//train_classifier();
-	//get_ocr_data();
+	//train_ocr_model();
 	//opencv_train();
 	//train_cascade();
 	//bootstrap();
@@ -24,14 +24,14 @@ int main(int argc, char** argv)
 	//draw_linear_time_MSER("img_7.jpg");
 	//draw_multiple_channel("img_6.jpg");
 	//test_MSER_time("img_7.jpg");
+	//extract_ocr_sample();
 	//return 0;
 
-	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
-	er_filter->ocr = new OCR("ocr_classifier/OCR.model");
+	er_filter->ocr = new OCR("ocr_classifier/svm.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln");
 	er_filter->load_tp_table("transition_probability/tp.txt");
-
 
 #ifdef WEBCAM_MODE
 	VideoCapture cap(0);

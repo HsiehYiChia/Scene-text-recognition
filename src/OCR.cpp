@@ -15,10 +15,14 @@ big, big, big};
 
 
 
-
-OCR::OCR(const char *svm_file_name)
+OCR::OCR(const char *svm_file_name, const char *flann_feature_file_name, const char*flann_index_file_name)
 {
 	model = svm_load_model(svm_file_name);
+
+	cv::FileStorage fs_out(flann_feature_file_name, cv::FileStorage::READ);
+	fs_out["flann_feature"] >> features;
+	fs_out["labels"] >> labels;
+	index.load(features, flann_index_file_name);
 }
 
 
@@ -55,36 +59,74 @@ double OCR::lbp_run(vector<double> fv, double slope)
 double OCR::chain_run(Mat &src, int thresh, double slope)
 {
 	Mat ocr_img;
-	
+
 	//! pre process
 	threshold(255-src, ocr_img, thresh, 255, CV_THRESH_OTSU);
-	/*imshow("un_rotated", ocr_img);
-	cout << thresh << " " << slope << endl;*/
-	if (abs(slope) > 0.005)
+	if (abs(slope) > 0.01)
 	{
 		double rad = atan2(slope, 1);
+		//geometric_normalization(ocr_img, ocr_img, rad, false);
 		rotate_mat(ocr_img, ocr_img, rad, true);
 	}
-		
-	/*imshow("rotated", ocr_img);
-	waitKey(0);
-	destroyWindow("un_rotated");
-	destroyWindow("rotated");*/
-
 	ARAN(ocr_img, ocr_img, 35);
+
+	/*imshow("input", src);
+	imshow("rotated_ARAN", ocr_img);
+	moveWindow("input", 200, 400);
+	moveWindow("rotated_ARAN", 500, 400);*/
+
 	//! feature extract
 	double *pv = new double[svm_get_nr_class(model)];
 	svm_node *fv = new svm_node[201];
 	extract_feature(ocr_img, fv);
-
+	
 	//! classify
 	const int label = svm_predict_probability(model, fv, pv);
 	const double prob = pv[label];
 
 	//cout << table[label] << " Probability = " << pv[label] << endl;
 
+	/*Mat flann_feature = Mat::zeros(1, 200, CV_32F);
+	float *ptr = flann_feature.ptr<float>(0);
+	int m = 0;
+	while (fv[m].index != -1)
+	{
+		ptr[fv[m].index] = fv[m].value;
+		m++;
+	}
+	vector<int> indice;
+	vector<float> dists;
+	index.knnSearch(flann_feature, indice, dists, 7, flann::SearchParams(64));
+	vector<char> neighbors;
+
+	for (int i = 0; i < indice.size(); i++)
+	{
+		neighbors.push_back(table[labels[indice[i]]]);
+	}
+	
+	sort(neighbors.begin(), neighbors.end(), [](char a, char b) {return a < b; });
+	int frequency = 0;
+	int max_frequency = 0;
+	char current_char = neighbors[0];
+	char most_frequency = neighbors[0];
+	for (int i = 0; i < neighbors.size(); i++)
+	{
+		if (neighbors[i] == current_char)
+			frequency++;
+		else if (frequency > max_frequency)
+		{
+			max_frequency = frequency;
+			most_frequency = current_char;
+		}
+	}
+	return most_frequency + max_frequency / 7.0;*/
+
 	delete[] fv;
 	delete[] pv;
+
+	/*waitKey(0);
+	destroyWindow("input");
+	destroyWindow("rotated_ARAN");*/
 
 	return table[label] + prob;
 }
@@ -93,35 +135,61 @@ double OCR::chain_run(Mat &src, int thresh, double slope)
 
 void OCR::extract_feature(Mat &src, svm_node *fv)
 {
+	/*imshow("src", src);
+	moveWindow("src", 100, 500);*/
+
 	Mat f_channel[8];
 	for (int i = 0; i < 8; i++)
 		f_channel[i] = Mat::zeros(35, 35, CV_8U);
 
-	// get boundary direction
+	// get boundary direction and insert every boundary pixel into 8 bitmap
 	vector<vector<Point>> contours;
 	cv::findContours(src, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
 
-
-	// insert every boundary pixel into 8 bitmap
 	for (int i = 0; i < contours.size(); i++)
 	{
-		contours[i].push_back(contours[i].front());
+		if (contours[i].size() == 1)
+			continue;
+		else
+			contours[i].push_back(contours[i].front());
+
 		for (int j = 0; j < contours[i].size() - 1; j++)
 		{
 			int dir = chain_code_direction(contours[i][j + 1], contours[i][j]);
-			if (dir != -1)
-				f_channel[dir].at<uchar>(contours[i][j]) = 255;
+			f_channel[dir].at<uchar>(contours[i][j]) = 255;
 		}
 	}
 
 
+	/*Mat all_chain_code = Mat::zeros(35,35, CV_8U);
+	for (int i = 0; i < 8; i++)
+	{
+		all_chain_code += f_channel[i];
+	}
+	imshow("all", all_chain_code);
+	imshow("0", f_channel[0]);
+	imshow("1", f_channel[1]);
+	imshow("2", f_channel[2]);
+	imshow("3", f_channel[3]);
+	imshow("4", f_channel[4]);
+	imshow("5", f_channel[5]);
+	imshow("6", f_channel[6]);
+	imshow("7", f_channel[7]);
+	moveWindow("0", 50, 100);
+	moveWindow("1", 200, 100);
+	moveWindow("2", 350, 100);
+	moveWindow("3", 500, 100);
+	moveWindow("4", 650, 100);
+	moveWindow("5", 800, 100);
+	moveWindow("6", 950, 100);
+	moveWindow("7", 1100, 100);*/
+
 	// blur and normalize
 	for (int i = 0; i < 8; i++)
 	{
-		GaussianBlur(f_channel[i], f_channel[i], Size(11, 11), 0);
+		GaussianBlur(f_channel[i], f_channel[i], Size(7, 7), 0);
 		normalize(f_channel[i], f_channel[i], 0, 255, NORM_MINMAX, CV_8U);
 		resize(f_channel[i], f_channel[i], Size(5, 5));
-
 	}
 
 	// make svm feature
@@ -143,22 +211,22 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 
 	/*for (int i = 0; i < 8; i++)
 		resize(f_channel[i], f_channel[i], Size(100, 100));
-	imshow("0", f_channel[0]);
-	imshow("1", f_channel[1]);
-	imshow("2", f_channel[2]);
-	imshow("3", f_channel[3]);
-	imshow("4", f_channel[4]);
-	imshow("5", f_channel[5]);
-	imshow("6", f_channel[6]);
-	imshow("7", f_channel[7]);
-	moveWindow("0", 50, 100);
-	moveWindow("1", 200, 100);
-	moveWindow("2", 350, 100);
-	moveWindow("3", 500, 100);
-	moveWindow("4", 650, 100);
-	moveWindow("5", 800, 100);
-	moveWindow("6", 950, 100);
-	moveWindow("7", 1100, 100);
+	imshow("0_gaussian", f_channel[0]);
+	imshow("1_gaussian", f_channel[1]);
+	imshow("2_gaussian", f_channel[2]);
+	imshow("3_gaussian", f_channel[3]);
+	imshow("4_gaussian", f_channel[4]);
+	imshow("5_gaussian", f_channel[5]);
+	imshow("6_gaussian", f_channel[6]);
+	imshow("7_gaussian", f_channel[7]);
+	moveWindow("0_gaussian", 50, 250);
+	moveWindow("1_gaussian", 200, 250);
+	moveWindow("2_gaussian", 350, 250);
+	moveWindow("3_gaussian", 500, 250);
+	moveWindow("4_gaussian", 650, 250);
+	moveWindow("5_gaussian", 800, 250);
+	moveWindow("6_gaussian", 950, 250);
+	moveWindow("7_gaussian", 1100, 250);
 	imwrite("0.bmp", f_channel[0]);
 	imwrite("1.bmp", f_channel[1]);
 	imwrite("2.bmp", f_channel[2]);
@@ -167,7 +235,10 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 	imwrite("5.bmp", f_channel[5]);
 	imwrite("6.bmp", f_channel[6]);
 	imwrite("7.bmp", f_channel[7]);
-	waitKey(0);*/
+	system("C:/Users/Larry/AppData/Local/Programs/Python/Python35/python.exe draw_chain_code.py");
+	imshow("chain_code_direction", imread("chain_code_direction.png"));
+	waitKey(0);
+	destroyAllWindows();*/
 }
 
 
@@ -491,26 +562,27 @@ void OCR::feedback_verify(Text &text)
 
 void OCR::try_add_space(Text &text)
 {
-	const double dist_weight = 2.2;
-	double avg_x_dist = 0;
-	double count = 0;
+	vector<double> dist;
 	for (int i = 0; i < text.ers.size() - 1; i++)
 	{
-		double dist = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
-		if (dist >= 0)
+		double d = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
+		if (d >= 0)
 		{
-			avg_x_dist += dist;
-			count++;
+			dist.push_back(d);
 		}
 	}
 
+	if (dist.empty())
+		return;
 
-	avg_x_dist /= count;
+	sort(dist.begin(), dist.end(), [](double a, double b) {return a < b; });
+	double median_x_dist = dist[dist.size()/2];
 
+	const double dist_thresh = 2.0;
 	for (int i = text.ers.size() - 2; i >= 0; i--)
 	{
-		double dist = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
-		if (dist > avg_x_dist * dist_weight && dist > 0)
+		double d = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
+		if (d > median_x_dist * dist_thresh && d > 0)
 		{
 			text.word.insert(i + 1, " ");
 		}
@@ -537,7 +609,6 @@ int OCR::chain_code_direction(Point p1, Point p2)
 		return 6;
 	else if (p1.x < p2.x && p1.y > p2.y)
 		return 7;
-	return -1;
 }
 
 int OCR::index_mapping(char c)
