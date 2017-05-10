@@ -18,9 +18,23 @@ ERFilter::ERFilter(int thresh_step, int min_area, int max_area, int stability_t,
 
 }
 
-
-void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+void ERFilter::set_thresh_step(int t)
 {
+	THRESH_STEP = t;
+}
+
+
+void ERFilter::set_min_area(int m)
+{
+	MIN_AREA = m;
+}
+
+
+vector<double> ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+{
+	chrono::high_resolution_clock::time_point start, end;
+	start = chrono::high_resolution_clock::now();
+
 	Mat Ycrcb;
 	vector<Mat> channel;
 	compute_channels(src, Ycrcb, channel);
@@ -31,26 +45,76 @@ void ERFilter::text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &po
 	strong.resize(channel.size());
 	weak.resize(channel.size());
 
+	vector<chrono::high_resolution_clock::time_point> time_vec(channel.size() * 4 + 4);
+
 #pragma omp parallel for
 	for (int i = 0; i < channel.size(); i++)
 	{
+		time_vec[i*4] = chrono::high_resolution_clock::now();
 		root[i] = er_tree_extract(channel[i]);
+		time_vec[i*4+1] = chrono::high_resolution_clock::now();
 		non_maximum_supression(root[i], all[i], pool[i], channel[i]);
+		time_vec[i*4+2] = chrono::high_resolution_clock::now();
 		classify(pool[i], strong[i], weak[i], channel[i]);
+		time_vec[i*4+3] = chrono::high_resolution_clock::now();
 	}
 
+	time_vec.rbegin()[3] = chrono::high_resolution_clock::now();
 	er_track(strong, weak, tracked, channel, Ycrcb);
-
-#ifdef DO_OCR
-	er_grouping_ocr(tracked, channel, text);
+	time_vec.rbegin()[2] = chrono::high_resolution_clock::now();
+#ifndef DO_OCR
+	er_grouping(tracked, text, false, false);
+	time_vec.rbegin()[1] = chrono::high_resolution_clock::now();
 #else
-	er_grouping(tracked, text);
+	er_grouping(tracked, text, false, true);
+	time_vec.rbegin()[1] = chrono::high_resolution_clock::now();
+	er_ocr(tracked, channel, text);
+	time_vec.rbegin()[0] = chrono::high_resolution_clock::now();
 #endif
+
+	end = chrono::high_resolution_clock::now();
+
+
+	// calculate time
+	chrono::duration<double> extract_time;
+	chrono::duration<double> nms_time;
+	chrono::duration<double> classify_time;
+	for (int i = 0; i < channel.size(); i++)
+	{
+		if(extract_time < time_vec[i * 4 + 1] - time_vec[i * 4])
+			extract_time = time_vec[i * 4 + 1] - time_vec[i * 4];
+
+		if(nms_time < time_vec[i * 4 + 2] - time_vec[i * 4 + 1])
+			nms_time = time_vec[i * 4 + 2] - time_vec[i * 4 + 1];
+
+		if(classify_time < time_vec[i * 4 + 3] - time_vec[i * 4 + 2])
+			classify_time = time_vec[i * 4 + 3] - time_vec[i * 4 + 2];
+	}
+	chrono::duration<double> track_time = (time_vec.rbegin()[2] - time_vec.rbegin()[3]);
+	chrono::duration<double> grouping_time = (time_vec.rbegin()[1] - time_vec.rbegin()[2]);
+#ifdef DO_OCR
+	chrono::duration<double> ocr_time = (time_vec.rbegin()[0] - time_vec.rbegin()[1]);
+#endif
+
+	vector<double> times(7, 0);
+	times[0] = extract_time.count();
+	times[1] = nms_time.count();
+	times[2] = classify_time.count();
+	times[3] = track_time.count();
+	times[4] = grouping_time.count();
+#ifdef DO_OCR
+	times[5] = ocr_time.count();
+#endif
+	times[6] = chrono::duration<double>(end - start).count();
+
+	return times;
 }
+
 
 void ERFilter::compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels)
 {
 	vector<Mat> splited;
+	channels.clear();
 
 	cv::cvtColor(src, YCrcb, COLOR_BGR2YCrCb);
 	split(YCrcb, splited);
@@ -449,7 +513,6 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 	for (int i = 0; i < pool.size(); i++)
 	{
 		vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
-
 		if (stc->predict(fv) > -DBL_MAX)
 		{
 			strong.push_back(pool[i]);
@@ -461,6 +524,33 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 				weak.push_back(pool[i]);
 			}
 		}
+
+		/*vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
+		svm_node *svm_fv = new svm_node[fv.size() + 1];
+		int count = 0;
+		for (int j = 0; j < fv.size(); j++)
+		{
+			if (fv[j] != 0)
+			{
+				svm_fv[count].index = j;
+				svm_fv[count].value = fv[j] / 144.0;
+				count++;
+			}
+		}
+		svm_fv[count].index = -1;
+
+		cout << svm_predict(st_svm, svm_fv) << endl;
+		if (svm_predict(st_svm, svm_fv) == 1)
+		{
+			strong.push_back(pool[i]);
+		}
+		else
+		{
+			if (svm_predict(wt_svm, svm_fv) == 1)
+			{
+				weak.push_back(pool[i]);
+			}
+		}*/
 	}
 }
 
@@ -468,13 +558,17 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 
 void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb)
 {
+#ifdef USE_STROKE_WIDTH
 	StrokeWidth SWT;
+#endif
 	for (int i = 0; i < strong.size(); i++)
 	{
 		for (auto it : strong[i])
 		{
 			calc_color(it, channel[i], Ycrcb);
-			//it->stkw = SWT.SWT(channel[i](it->bound));
+#ifdef USE_STROKE_WIDTH
+			it->stkw = SWT.SWT(channel[i](it->bound));
+#endif
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
 			it->ch = i;
 		}
@@ -482,7 +576,9 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 		for (auto it : weak[i])
 		{
 			calc_color(it, channel[i], Ycrcb);
-			//it->stkw = SWT.SWT(channel[i](it->bound));
+#ifdef USE_STROKE_WIDTH
+			it->stkw = SWT.SWT(channel[i](it->bound));
+#endif
 			it->center = Point(it->bound.x + it->bound.width / 2, it->bound.y + it->bound.height / 2);
 			it->ch = i;
 		}
@@ -516,6 +612,10 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 					abs(s->color1 - w->color1) < 25 &&
 					abs(s->color2 - w->color2) < 25 &&
 					abs(s->color3 - w->color3) < 25 &&
+#ifdef USE_STROKE_WIDTH
+					(s->stkw / w->stkw) < 4 &&
+					(s->stkw / w->stkw) > 0.25 &&
+#endif
 					abs(s->area - w->area) < min(s->area, w->area) * 3)
 				{
 					tracked[m][n] = true;
@@ -536,12 +636,15 @@ void ERFilter::er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vec
 }
 
 
-void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
+void ERFilter::er_grouping(ERs &all_er, vector<Text> &text, bool overlap_sup, bool inner_sup)
 {
 	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-	//overlap_suppression(all_er);
-	//inner_suppression(all_er);
-
+	
+	if(overlap_sup)
+		overlap_suppression(all_er);
+	if(inner_sup)
+		inner_suppression(all_er);
+	
 	vector<int> group_index(all_er.size(), -1);
 	int index = 0;
 	for (int i = 0; i < all_er.size(); i++)
@@ -557,6 +660,10 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 				abs(a->color1 - b->color1) < 25 &&
 				abs(a->color2 - b->color2) < 25 &&
 				abs(a->color3 - b->color3) < 25 &&
+#ifdef USE_STROKE_WIDTH
+				(a->stkw / b->stkw) < 4 &&
+				(a->stkw / b->stkw) > 0.25 &&
+#endif
 				abs(a->area - b->area) < min(a->area, b->area)*4)
 			{
 				if (group_index[i] == -1 && group_index[j] == -1)
@@ -586,227 +693,66 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text)
 
 	for (int i = 0; i < text.size(); i++)
 	{
+		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
+
+		ERs tmp_ers;
+		tmp_ers.assign(text[i].ers.begin(), text[i].ers.end());
+		overlap_suppression(tmp_ers);
+		inner_suppression(tmp_ers);
+
+		vector<Point> points;
+		for (int j = 0; j < tmp_ers.size(); j++)
+		{
+			points.push_back(tmp_ers[j]->bound.br());
+		}
+
+		text[i].slope = fitline_avgslope(points);
+		//cout << text[i].slope << endl;
+#ifndef DO_OCR
 		text[i].box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
-
-
-		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-		vector<Point> points;
-		for (int j = 0; j < text[i].ers.size(); j++)
-		{
-			points.push_back(text[i].ers[j]->bound.br());
-		}
-
-		text[i].slope = fitline_avgslope(points);
+#endif	
 	}
-	
-
-	// 1. Find the left and right sibling of each ER
-	//for (int i = 0; i < all_er.size(); i++)
-	//{
-	//	int j = i - 1;
-	//	while (j > 0)
-	//	{
-	//		if (is_neighboring(all_er[i], all_er[j]))
-	//		{
-	//			all_er[i]->sibling_L = all_er[j], all_er[j]->sibling_R = all_er[i];
-	//			break;
-	//		}
-	//		j--;
-	//	}
-
-	//	j = i + 1;
-	//	while (j < all_er.size())
-	//	{
-	//		if (is_neighboring(all_er[i], all_er[j]))
-	//		{
-	//			all_er[i]->sibling_R = all_er[j], all_er[j]->sibling_L = all_er[i];
-	//			break;
-	//		}
-	//		j++;
-	//	}
-	//}
-
-
-	//// 2. Find out sibling group
-	//vector<set<ER *>> sibling_group(all_er.size());
-	//for (int i = 0; i < sibling_group.size(); i++)
-	//{
-	//	if (all_er[i]->sibling_L && all_er[i]->sibling_R)
-	//	{
-	//		sibling_group[i].insert(all_er[i]);
-	//		sibling_group[i].insert(all_er[i]->sibling_L);
-	//		sibling_group[i].insert(all_er[i]->sibling_R);
-	//	}
-	//}
-
-	//// 3. Repeat merging sibling group until no merge is performed
-	//while (1)
-	//{
-	//	int before_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
-
-	//	for (int i = 0; i < sibling_group.size(); i++)
-	//	{
-	//		for (int j = i + 1; j < sibling_group.size(); j++)
-	//		{
-	//			set<ER *> s;
-	//			set_intersection(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s, s.begin()));
-	//			if (s.size() >= 2)
-	//			{
-	//				set<ER *> s_union;
-	//				set_union(sibling_group[i].begin(), sibling_group[i].end(), sibling_group[j].begin(), sibling_group[j].end(), inserter(s_union, s_union.begin()));
-	//				sibling_group[i] = s_union;
-	//				sibling_group[j].clear();
-	//			}
-	//		}
-	//	}
-
-	//	// check is there any merge performed
-	//	int after_empty_count = count_if(sibling_group.begin(), sibling_group.end(), [](set<ER *> s){return s.empty(); });
-	//	if (before_empty_count == after_empty_count)
-	//		break;
-	//}
-
-
-	//// 4. use area, distance and stroke width to filter false postive
-	//for (int i = 0; i < sibling_group.size(); i++)
-	//{
-	//	if (!sibling_group[i].empty())
-	//	{
-	//		ERs sorted_ER(sibling_group[i].begin(), sibling_group[i].end());
-	//		sort(sorted_ER.begin(), sorted_ER.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
-
-	//		vector<double> area;
-	//		for (int j = 0; j < sorted_ER.size(); j++)
-	//		{
-	//			area.push_back(sorted_ER[j]->area);
-	//		}
-
-	//		vector<double> dist;
-	//		for (int j= 0; j < sorted_ER.size() - 1; j++)
-	//		{
-	//			dist.push_back(sorted_ER[j + 1]->bound.x - sorted_ER[j]->bound.x);
-	//		}
-
-	//		double stdev_area = standard_dev(area, true);
-	//		double stdev_dist = standard_dev(dist, true);
-
-	//		if (stdev_area > 0.8 && stdev_dist > 0.8)
-	//			sibling_group[i].clear();
-	//	}
-	//}
-
-
-	//// 5. find out the bounding box and fitting line of each sibling group
-	//for (int i = 0; i < sibling_group.size(); i++)
-	//{
-	//	if (!sibling_group[i].empty())
-	//	{
-	//		Text t;
-	//		t.ers = vector<ER*>(sibling_group[i].begin(), sibling_group[i].end());
-	//		sort(t.ers.begin(), t.ers.end(), [](ER *a, ER * b) { return a->bound.x < b->bound.x; });
-
-	//		vector<Point> points_top;
-	//		vector<Point> points_bot;
-	//		for (auto it : t.ers)
-	//		{
-	//			points_top.push_back(it->bound.tl());
-	//			points_bot.push_back(Point(it->bound.x, it->bound.br().y));
-	//		}
-
-	//		double slope_top = fitline_avgslope(points_top);
-	//		double slope_bot = fitline_avgslope(points_bot);
-
-	//		if (abs(slope_top) > 0.2 || abs(slope_bot) > 0.2)
-	//			continue;
-
-	//		
-	//		// find the bounding box
-	//		t.box = t.ers.front()->bound;
-	//		for (int j = 0; j < t.ers.size(); j++)
-	//		{
-	//			t.box |= t.ers[j]->bound;
-	//		}
-
-	//		text.push_back(t);
-	//	}
-	//}
 }
 
 
-void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
+void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 {
 	const unsigned min_er = 6;
-	const unsigned min_pass_ocr = 3;
-
-	sort(all_er.begin(), all_er.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-	//overlap_suppression(all_er);
-	inner_suppression(all_er);
-
-	vector<int> group_index(all_er.size(), -1);
-	int index = 0;
-	for (int i = 0; i < all_er.size(); i++)
-	{
-		ER *a = all_er[i];
-		for (int j = i + 1; j < all_er.size(); j++)
-		{
-			ER *b = all_er[j];
-			if (abs(a->center.x - b->center.x) < max(a->bound.width, b->bound.width)*3.0 &&
-				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
-				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
-				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&
-				abs(a->color1 - b->color1) < 25 &&
-				abs(a->color2 - b->color2) < 25 &&
-				abs(a->color3 - b->color3) < 25 &&
-				abs(a->area - b->area) < min(a->area, b->area) * 4)
-			{
-				if (group_index[i] == -1 && group_index[j] == -1)
-				{
-					group_index[i] = index;
-					group_index[j] = index;
-					text.push_back(Text());
-					text[index].ers.push_back(a);
-					text[index].ers.push_back(b);
-					index++;
-				}
-
-				else if (group_index[j] != -1)
-				{
-					group_index[i] = group_index[j];
-					text[group_index[i]].ers.push_back(a);
-				}
-
-				else
-				{
-					group_index[j] = group_index[i];
-					text[group_index[j]].ers.push_back(b);
-				}
-			}
-		}
-	}
-	
-	for (int i = 0; i < text.size(); i++)
-	{
-		sort(text[i].ers.begin(), text[i].ers.end(), [](ER *a, ER *b) { return a->center.x < b->center.x; });
-
-		vector<Point> points;
-		for (int j = 0; j < text[i].ers.size(); j++)
-		{
-			points.push_back(text[i].ers[j]->bound.br());
-		}
-
-		text[i].slope = fitline_avgslope(points);
-	}
-	
-	
+	const unsigned min_pass_ocr = 2;
 	
 	for (int i = text.size()-1; i >= 0; i--)
 	{
+		// delete ERs that are in the same channel and are highly overlap
+		vector<bool> to_delete(text[i].ers.size(), false);
+		for (int m = 0; m < text[i].ers.size(); m++)
+		{
+			for (int n = m + 1; n < text[i].ers.size(); n++)
+			{
+				double overlap_area = (text[i].ers[m]->bound & text[i].ers[n]->bound).area();
+				double union_area = (text[i].ers[m]->bound | text[i].ers[n]->bound).area();
+				if (overlap_area / union_area > 0.95)
+				{
+					if (text[i].ers[m]->bound.area() > text[i].ers[n]->bound.area())
+						to_delete[n] = true;
+					else
+						to_delete[m] = true;
+				}
+			}
+		}
+
+		for (int j = text[i].ers.size() - 1; j >= 0; j--)
+		{
+			if (to_delete[j])
+				text[i].ers.erase(text[i].ers.begin() + j);
+		}
+
+
 		// get OCR label of each ER
-	//#pragma omp parallel for
+	#pragma omp parallel for
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			ER* er = text[i].ers[j];
@@ -814,6 +760,7 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 			er->letter = floor(result);
 			er->prob = result - floor(result);
 		}
+		
 		// delete ER with low OCR confidence
 		for (int j = text[i].ers.size() - 1; j >= 0; j--)
 		{
@@ -823,25 +770,45 @@ void ERFilter::er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &
 		
 		if (text[i].ers.size() < min_pass_ocr)
 		{
-			
 			text.erase(text.begin() + i);
 			continue;
 		}
-		
+
 		Graph graph;
 		build_graph(text[i], graph);
 		solve_graph(text[i], graph);
 		ocr->feedback_verify(text[i]);
+
+
+		/*fstream fout("graph.txt", fstream::out);
+		for (int i = 0; i < graph.size(); i++)
+		{
+			fout << graph[i].index << " " << graph[i].vertex->letter << " " << graph[i].vertex->prob * 100 << " ";
+			for (int j = 0; j < graph[i].adj_list.size(); j++)
+			{
+				fout << graph[i].adj_list[j].index << " ";
+				fout << graph[i].edge_prob[j] * 50 << " ";
+			}
+			fout << endl;
+
+			char buf[30];
+			sprintf(buf, "D:/%d.PNG", i);
+			Mat ocr_img = channel[graph[i].vertex->ch](graph[i].vertex->bound);
+			double resize_factor = 30.0 / ocr_img.rows;
+			resize(ocr_img, ocr_img, Size(), resize_factor, resize_factor);
+			threshold(ocr_img, ocr_img, 128, 255, THRESH_OTSU);
+			imwrite(buf, ocr_img);
+		}
+		fout.close();*/
+
 		
 		text[i].box = text[i].ers.front()->bound;
 		for (int j = 0; j < text[i].ers.size(); j++)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
-		
 		//cout << text[i].word << " " << text[i].slope << endl;
 	}
-	
 }
 
 
@@ -1075,8 +1042,8 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 {
 	vector<double> DP_score(graph.size(), 0);
 	vector<int> DP_path(graph.size(), -1);
-	const double char_weight = 5;
-	const double edge_weight = 2;
+	const double char_weight = 100;
+	const double edge_weight = 50;
 
 	for (int j = 0; j < graph.size(); j++)
 	{
@@ -1354,6 +1321,9 @@ double fitline_LMS(const vector<Point> &p)
 
 double fitline_avgslope(const vector<Point> &p)
 {
+	if (p.size() < 2)
+		return 0;
+
 	const double epsilon = 0.07;
 	double slope = .0;
 
@@ -1372,8 +1342,9 @@ double fitline_avgslope(const vector<Point> &p)
 		else if (abs(slope13) < abs(slope12) && abs(slope13) < abs(slope23))
 			slope += slope13;
 	}
-
+	
 	slope /= (p.size() - 2);
+	
 	return slope;
 }
 

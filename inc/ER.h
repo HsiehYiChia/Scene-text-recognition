@@ -18,7 +18,8 @@
 #include "OCR.h"
 
 #define DO_OCR
-#define GET_ALL_ER
+//#define GET_ALL_ER
+//#define USE_STROKE_WIDTH
 
 using namespace std;
 using namespace cv;
@@ -112,31 +113,35 @@ public:
 	//! modules
 	AdaBoost *stc;
 	AdaBoost *wtc;
+	svm_model *st_svm;
+	svm_model *wt_svm;
 	OCR *ocr;
 	
 	//! functions
-	void text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
+	vector<double> text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
 	void compute_channels(Mat &src, Mat &YCrcb, vector<Mat> &channels);
 	ER* er_tree_extract(Mat input);
 	void non_maximum_supression(ER *er, ERs &all, ERs &pool, Mat input);
 	void classify(ERs &pool, ERs &strong, ERs &weak, Mat input);
 	void er_delete(ER *er);
 	void er_track(vector<ERs> &strong, vector<ERs> &weak, ERs &all_er, vector<Mat> &channel, Mat Ycrcb);
-	void er_grouping(ERs &all_er, vector<Text> &text);
-	void er_grouping_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text);
+	void er_grouping(ERs &all_er, vector<Text> &text, bool overlap_sup = false, bool inner_sup = false);
+	void er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text);
 	vector<double> make_LBP_hist(Mat input, const int N = 2, const int normalize_size = 24);
 	bool load_tp_table(const char* filename);
 	Mat calc_LBP(Mat input, const int size = 24);
+	void set_thresh_step(int t);
+	void set_min_area(int m);
 	
 
 private:
 	//! Parameters
-	const int THRESH_STEP;
-	const int MIN_AREA;
-	const int MAX_AREA;
-	const int STABILITY_T;
-	const double OVERLAP_COEF;
-	const double MIN_OCR_PROB;
+	int THRESH_STEP;
+	int MIN_AREA;
+	int MAX_AREA;
+	int STABILITY_T;
+	double OVERLAP_COEF;
+	double MIN_OCR_PROB;
 	enum { right, bottom, left, top };
 
 	//! ER operation functions

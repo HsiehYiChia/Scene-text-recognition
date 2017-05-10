@@ -15,7 +15,7 @@ big, big, big};
 
 
 
-OCR::OCR(const char *svm_file_name, const char *flann_feature_file_name, const char*flann_index_file_name)
+OCR::OCR(const char *svm_file_name, const char *flann_feature_file_name, const char*flann_index_file_name, int _img_L, int _feature_L) : img_L(_img_L), feature_L(_feature_L)
 {
 	model = svm_load_model(svm_file_name);
 
@@ -26,11 +26,24 @@ OCR::OCR(const char *svm_file_name, const char *flann_feature_file_name, const c
 }
 
 
-
-double OCR::lbp_run(vector<double> fv, double slope)
+double OCR::lbp_run(Mat &src, int thresh, double slope)
 {
+	Mat ocr_img;
+
+	threshold(255 - src, ocr_img, thresh, 255, CV_THRESH_OTSU);
+	if (abs(slope) > 0.01)
+	{
+		double rad = atan2(slope, 1);
+		//geometric_normalization(ocr_img, ocr_img, rad, false);
+		rotate_mat(ocr_img, ocr_img, rad, true);
+	}
+	ARAN(ocr_img, ocr_img, img_L);
+
+	ERFilter erfilter;
+	Mat lbp = erfilter.calc_LBP(ocr_img);
+	vector<double> fv = erfilter.make_LBP_hist(lbp, 2, img_L);
+
 	svm_node *node = new svm_node[fv.size() + 1];
-	double *pv = new double[svm_get_nr_class(model)];
 
 	int j = 0;
 	for (int i = 0; i < fv.size(); i++)
@@ -38,13 +51,13 @@ double OCR::lbp_run(vector<double> fv, double slope)
 		if (fv[i] != 0)
 		{
 			node[j].index = i;
-			node[j].value = fv[i]/129.0;
+			node[j].value = fv[i] / 129.0;
 			j++;
 		}
 	}
 	node[j].index = -1;
 	
-
+	double *pv = new double[svm_get_nr_class(model)];
 	const int label = svm_predict_probability(model, node, pv);
 	const double prob = pv[label];
 	cout << table[label] << " Probability = " << pv[label] << endl;
@@ -68,7 +81,7 @@ double OCR::chain_run(Mat &src, int thresh, double slope)
 		//geometric_normalization(ocr_img, ocr_img, rad, false);
 		rotate_mat(ocr_img, ocr_img, rad, true);
 	}
-	ARAN(ocr_img, ocr_img, 35);
+	ARAN(ocr_img, ocr_img, img_L);
 
 	/*imshow("input", src);
 	imshow("rotated_ARAN", ocr_img);
@@ -76,17 +89,17 @@ double OCR::chain_run(Mat &src, int thresh, double slope)
 	moveWindow("rotated_ARAN", 500, 400);*/
 
 	//! feature extract
-	double *pv = new double[svm_get_nr_class(model)];
-	svm_node *fv = new svm_node[201];
+	svm_node *fv = new svm_node[8 * feature_L * feature_L + 1];
 	extract_feature(ocr_img, fv);
 	
 	//! classify
+	double *pv = new double[svm_get_nr_class(model)];
 	const int label = svm_predict_probability(model, fv, pv);
 	const double prob = pv[label];
 
 	//cout << table[label] << " Probability = " << pv[label] << endl;
 
-	/*Mat flann_feature = Mat::zeros(1, 200, CV_32F);
+	/*Mat flann_feature = Mat::zeros(1, 8 * feature_L * feature_L, CV_32F);
 	float *ptr = flann_feature.ptr<float>(0);
 	int m = 0;
 	while (fv[m].index != -1)
@@ -140,7 +153,7 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 
 	Mat f_channel[8];
 	for (int i = 0; i < 8; i++)
-		f_channel[i] = Mat::zeros(35, 35, CV_8U);
+		f_channel[i] = Mat::zeros(img_L, img_L, CV_8U);
 
 	// get boundary direction and insert every boundary pixel into 8 bitmap
 	vector<vector<Point>> contours;
@@ -161,7 +174,7 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 	}
 
 
-	/*Mat all_chain_code = Mat::zeros(35,35, CV_8U);
+	/*Mat all_chain_code = Mat::zeros(img_L, img_L, CV_8U);
 	for (int i = 0; i < 8; i++)
 	{
 		all_chain_code += f_channel[i];
@@ -189,7 +202,7 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 	{
 		GaussianBlur(f_channel[i], f_channel[i], Size(7, 7), 0);
 		normalize(f_channel[i], f_channel[i], 0, 255, NORM_MINMAX, CV_8U);
-		resize(f_channel[i], f_channel[i], Size(5, 5));
+		resize(f_channel[i], f_channel[i], Size(feature_L, feature_L));
 	}
 
 	// make svm feature
@@ -197,11 +210,11 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 	for (int i = 0; i < 8; i++)
 	{
 		uchar* ptr = f_channel[i].ptr<uchar>(0);
-		for (int p = 0; p < 25; p++)
+		for (int p = 0; p < feature_L*feature_L; p++)
 		{
 			if (ptr[p] != 0)
 			{
-				fv[j].index = 25 * i + p;
+				fv[j].index = feature_L * feature_L * i + p;
 				fv[j].value = ptr[p] / 255.0;
 				j++;
 			}

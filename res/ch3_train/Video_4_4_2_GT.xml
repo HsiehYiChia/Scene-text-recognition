@@ -1,0 +1,4338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Frames>
+  <frame ID="1">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="648" y="20" />
+      <Point x="648" y="33" />
+      <Point x="684" y="33" />
+      <Point x="684" y="20" />
+    </object>
+  </frame>
+  <frame ID="2">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="651" y="21" />
+      <Point x="652" y="34" />
+      <Point x="688" y="34" />
+      <Point x="688" y="21" />
+    </object>
+  </frame>
+  <frame ID="3">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="660" y="17" />
+      <Point x="661" y="30" />
+      <Point x="698" y="30" />
+      <Point x="698" y="17" />
+    </object>
+  </frame>
+  <frame ID="4">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="665" y="15" />
+      <Point x="666" y="28" />
+      <Point x="704" y="28" />
+      <Point x="704" y="15" />
+    </object>
+  </frame>
+  <frame ID="5">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="667" y="15" />
+      <Point x="667" y="29" />
+      <Point x="706" y="28" />
+      <Point x="706" y="15" />
+    </object>
+  </frame>
+  <frame ID="6">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="674" y="13" />
+      <Point x="674" y="27" />
+      <Point x="714" y="26" />
+      <Point x="714" y="13" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="34" y="266" />
+      <Point x="34" y="278" />
+      <Point x="63" y="276" />
+      <Point x="63" y="264" />
+    </object>
+  </frame>
+  <frame ID="7">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="678" y="8" />
+      <Point x="678" y="22" />
+      <Point x="719" y="21" />
+      <Point x="719" y="8" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="33" y="265" />
+      <Point x="34" y="277" />
+      <Point x="63" y="275" />
+      <Point x="62" y="263" />
+    </object>
+  </frame>
+  <frame ID="8">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="685" y="1" />
+      <Point x="685" y="15" />
+      <Point x="720" y="14" />
+      <Point x="720" y="1" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="34" y="263" />
+      <Point x="34" y="276" />
+      <Point x="62" y="275" />
+      <Point x="62" y="262" />
+    </object>
+  </frame>
+  <frame ID="9">
+    <object Transcription="##DONT#CARE##" ID="1001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="689" y="0" />
+      <Point x="689" y="13" />
+      <Point x="723" y="12" />
+      <Point x="723" y="0" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="34" y="261" />
+      <Point x="34" y="274" />
+      <Point x="62" y="273" />
+      <Point x="62" y="260" />
+    </object>
+  </frame>
+  <frame ID="10">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="36" y="260" />
+      <Point x="36" y="273" />
+      <Point x="65" y="272" />
+      <Point x="65" y="259" />
+    </object>
+  </frame>
+  <frame ID="11">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="36" y="260" />
+      <Point x="36" y="273" />
+      <Point x="66" y="272" />
+      <Point x="67" y="259" />
+    </object>
+  </frame>
+  <frame ID="12">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="36" y="262" />
+      <Point x="36" y="275" />
+      <Point x="66" y="273" />
+      <Point x="66" y="261" />
+    </object>
+  </frame>
+  <frame ID="13">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="41" y="264" />
+      <Point x="41" y="277" />
+      <Point x="71" y="275" />
+      <Point x="71" y="263" />
+    </object>
+  </frame>
+  <frame ID="14">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="47" y="266" />
+      <Point x="47" y="279" />
+      <Point x="77" y="277" />
+      <Point x="77" y="265" />
+    </object>
+  </frame>
+  <frame ID="15">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="41" y="267" />
+      <Point x="40" y="280" />
+      <Point x="74" y="279" />
+      <Point x="74" y="266" />
+    </object>
+  </frame>
+  <frame ID="16">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="39" y="270" />
+      <Point x="39" y="283" />
+      <Point x="69" y="282" />
+      <Point x="69" y="269" />
+    </object>
+  </frame>
+  <frame ID="17">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="45" y="273" />
+      <Point x="45" y="286" />
+      <Point x="79" y="285" />
+      <Point x="79" y="272" />
+    </object>
+  </frame>
+  <frame ID="18">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="56" y="273" />
+      <Point x="56" y="286" />
+      <Point x="90" y="285" />
+      <Point x="90" y="272" />
+    </object>
+  </frame>
+  <frame ID="19">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="63" y="273" />
+      <Point x="62" y="286" />
+      <Point x="96" y="285" />
+      <Point x="96" y="272" />
+    </object>
+  </frame>
+  <frame ID="20">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="67" y="272" />
+      <Point x="67" y="285" />
+      <Point x="99" y="284" />
+      <Point x="99" y="272" />
+    </object>
+  </frame>
+  <frame ID="21">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="64" y="271" />
+      <Point x="64" y="284" />
+      <Point x="95" y="283" />
+      <Point x="95" y="270" />
+    </object>
+  </frame>
+  <frame ID="22">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="63" y="271" />
+      <Point x="63" y="284" />
+      <Point x="92" y="283" />
+      <Point x="92" y="270" />
+    </object>
+  </frame>
+  <frame ID="23">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="65" y="269" />
+      <Point x="65" y="282" />
+      <Point x="94" y="281" />
+      <Point x="94" y="268" />
+    </object>
+  </frame>
+  <frame ID="24">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="66" y="267" />
+      <Point x="66" y="280" />
+      <Point x="95" y="279" />
+      <Point x="95" y="266" />
+    </object>
+  </frame>
+  <frame ID="25">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="64" y="264" />
+      <Point x="64" y="277" />
+      <Point x="93" y="277" />
+      <Point x="93" y="263" />
+    </object>
+  </frame>
+  <frame ID="26">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="65" y="263" />
+      <Point x="65" y="276" />
+      <Point x="94" y="276" />
+      <Point x="94" y="262" />
+    </object>
+  </frame>
+  <frame ID="27">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="63" y="262" />
+      <Point x="63" y="275" />
+      <Point x="92" y="275" />
+      <Point x="92" y="261" />
+    </object>
+  </frame>
+  <frame ID="28">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="57" y="259" />
+      <Point x="57" y="272" />
+      <Point x="86" y="272" />
+      <Point x="86" y="258" />
+    </object>
+  </frame>
+  <frame ID="29">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="52" y="258" />
+      <Point x="52" y="271" />
+      <Point x="82" y="271" />
+      <Point x="81" y="257" />
+    </object>
+  </frame>
+  <frame ID="30">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="53" y="258" />
+      <Point x="53" y="271" />
+      <Point x="83" y="271" />
+      <Point x="82" y="257" />
+    </object>
+  </frame>
+  <frame ID="31">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="52" y="259" />
+      <Point x="52" y="272" />
+      <Point x="82" y="272" />
+      <Point x="81" y="258" />
+    </object>
+  </frame>
+  <frame ID="32">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="50" y="260" />
+      <Point x="50" y="273" />
+      <Point x="80" y="273" />
+      <Point x="79" y="259" />
+    </object>
+  </frame>
+  <frame ID="33">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="45" y="260" />
+      <Point x="45" y="273" />
+      <Point x="76" y="272" />
+      <Point x="76" y="259" />
+    </object>
+  </frame>
+  <frame ID="34">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="39" y="262" />
+      <Point x="39" y="275" />
+      <Point x="70" y="274" />
+      <Point x="70" y="261" />
+    </object>
+  </frame>
+  <frame ID="35">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="32" y="264" />
+      <Point x="32" y="277" />
+      <Point x="64" y="276" />
+      <Point x="63" y="263" />
+    </object>
+  </frame>
+  <frame ID="36">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="16" y="267" />
+      <Point x="16" y="281" />
+      <Point x="48" y="280" />
+      <Point x="47" y="266" />
+    </object>
+  </frame>
+  <frame ID="37">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="16" y="267" />
+      <Point x="16" y="281" />
+      <Point x="48" y="280" />
+      <Point x="47" y="266" />
+    </object>
+  </frame>
+  <frame ID="38">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="8" y="264" />
+      <Point x="8" y="278" />
+      <Point x="40" y="277" />
+      <Point x="39" y="263" />
+    </object>
+  </frame>
+  <frame ID="39">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="2" y="265" />
+      <Point x="2" y="279" />
+      <Point x="35" y="278" />
+      <Point x="34" y="264" />
+    </object>
+  </frame>
+  <frame ID="40">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="2" y="264" />
+      <Point x="2" y="278" />
+      <Point x="35" y="277" />
+      <Point x="34" y="263" />
+    </object>
+  </frame>
+  <frame ID="41">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="0" y="264" />
+      <Point x="0" y="279" />
+      <Point x="30" y="278" />
+      <Point x="30" y="263" />
+    </object>
+  </frame>
+  <frame ID="42">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="0" y="264" />
+      <Point x="0" y="279" />
+      <Point x="22" y="278" />
+      <Point x="21" y="264" />
+    </object>
+  </frame>
+  <frame ID="43">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="0" y="264" />
+      <Point x="0" y="278" />
+      <Point x="22" y="277" />
+      <Point x="20" y="263" />
+    </object>
+  </frame>
+  <frame ID="44">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="0" y="265" />
+      <Point x="0" y="279" />
+      <Point x="21" y="278" />
+      <Point x="19" y="264" />
+    </object>
+  </frame>
+  <frame ID="45">
+    <object Transcription="##DONT#CARE##" ID="6001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="-1" y="264" />
+      <Point x="-1" y="278" />
+      <Point x="11" y="278" />
+      <Point x="11" y="264" />
+    </object>
+  </frame>
+  <frame ID="46" />
+  <frame ID="47" />
+  <frame ID="48" />
+  <frame ID="49" />
+  <frame ID="50" />
+  <frame ID="51" />
+  <frame ID="52" />
+  <frame ID="53" />
+  <frame ID="54" />
+  <frame ID="55" />
+  <frame ID="56" />
+  <frame ID="57" />
+  <frame ID="58" />
+  <frame ID="59" />
+  <frame ID="60" />
+  <frame ID="61" />
+  <frame ID="62" />
+  <frame ID="63" />
+  <frame ID="64" />
+  <frame ID="65" />
+  <frame ID="66" />
+  <frame ID="67" />
+  <frame ID="68" />
+  <frame ID="69" />
+  <frame ID="70" />
+  <frame ID="71" />
+  <frame ID="72" />
+  <frame ID="73" />
+  <frame ID="74" />
+  <frame ID="75" />
+  <frame ID="76" />
+  <frame ID="77" />
+  <frame ID="78" />
+  <frame ID="79" />
+  <frame ID="80" />
+  <frame ID="81" />
+  <frame ID="82" />
+  <frame ID="83" />
+  <frame ID="84" />
+  <frame ID="85" />
+  <frame ID="86" />
+  <frame ID="87" />
+  <frame ID="88" />
+  <frame ID="89" />
+  <frame ID="90" />
+  <frame ID="91" />
+  <frame ID="92" />
+  <frame ID="93" />
+  <frame ID="94" />
+  <frame ID="95" />
+  <frame ID="96" />
+  <frame ID="97" />
+  <frame ID="98" />
+  <frame ID="99" />
+  <frame ID="100" />
+  <frame ID="101" />
+  <frame ID="102" />
+  <frame ID="103" />
+  <frame ID="104" />
+  <frame ID="105" />
+  <frame ID="106" />
+  <frame ID="107" />
+  <frame ID="108" />
+  <frame ID="109" />
+  <frame ID="110" />
+  <frame ID="111" />
+  <frame ID="112" />
+  <frame ID="113" />
+  <frame ID="114" />
+  <frame ID="115" />
+  <frame ID="116" />
+  <frame ID="117" />
+  <frame ID="118" />
+  <frame ID="119" />
+  <frame ID="120" />
+  <frame ID="121" />
+  <frame ID="122" />
+  <frame ID="123" />
+  <frame ID="124" />
+  <frame ID="125" />
+  <frame ID="126" />
+  <frame ID="127" />
+  <frame ID="128" />
+  <frame ID="129">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="309" y="95" />
+      <Point x="309" y="106" />
+      <Point x="336" y="106" />
+      <Point x="336" y="95" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="345" y="105" />
+      <Point x="345" y="95" />
+      <Point x="335" y="95" />
+      <Point x="335" y="105" />
+    </object>
+  </frame>
+  <frame ID="130">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="311" y="95" />
+      <Point x="311" y="106" />
+      <Point x="338" y="106" />
+      <Point x="338" y="95" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="105" />
+      <Point x="347" y="95" />
+      <Point x="337" y="95" />
+      <Point x="337" y="105" />
+    </object>
+  </frame>
+  <frame ID="131">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="312" y="94" />
+      <Point x="312" y="104" />
+      <Point x="339" y="104" />
+      <Point x="339" y="94" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="103" />
+      <Point x="347" y="94" />
+      <Point x="339" y="94" />
+      <Point x="339" y="103" />
+    </object>
+  </frame>
+  <frame ID="132">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="309" y="93" />
+      <Point x="309" y="104" />
+      <Point x="336" y="104" />
+      <Point x="336" y="93" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="344" y="103" />
+      <Point x="344" y="93" />
+      <Point x="336" y="93" />
+      <Point x="336" y="103" />
+    </object>
+  </frame>
+  <frame ID="133">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="310" y="96" />
+      <Point x="310" y="108" />
+      <Point x="337" y="108" />
+      <Point x="337" y="96" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="344" y="107" />
+      <Point x="344" y="96" />
+      <Point x="336" y="96" />
+      <Point x="336" y="107" />
+    </object>
+  </frame>
+  <frame ID="134">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="315" y="97" />
+      <Point x="315" y="109" />
+      <Point x="342" y="109" />
+      <Point x="342" y="97" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="349" y="108" />
+      <Point x="349" y="97" />
+      <Point x="341" y="97" />
+      <Point x="341" y="108" />
+    </object>
+  </frame>
+  <frame ID="135">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="317" y="96" />
+      <Point x="317" y="108" />
+      <Point x="344" y="108" />
+      <Point x="344" y="96" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="352" y="107" />
+      <Point x="352" y="96" />
+      <Point x="344" y="96" />
+      <Point x="344" y="107" />
+    </object>
+  </frame>
+  <frame ID="136">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="331" y="98" />
+      <Point x="331" y="110" />
+      <Point x="358" y="110" />
+      <Point x="358" y="98" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="358" y="110" />
+      <Point x="358" y="99" />
+      <Point x="350" y="99" />
+      <Point x="350" y="110" />
+    </object>
+  </frame>
+  <frame ID="137">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="101" />
+      <Point x="342" y="113" />
+      <Point x="369" y="113" />
+      <Point x="369" y="101" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="377" y="112" />
+      <Point x="377" y="101" />
+      <Point x="369" y="101" />
+      <Point x="369" y="112" />
+    </object>
+  </frame>
+  <frame ID="138">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="101" />
+      <Point x="340" y="113" />
+      <Point x="368" y="113" />
+      <Point x="368" y="101" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="375" y="112" />
+      <Point x="375" y="101" />
+      <Point x="367" y="101" />
+      <Point x="367" y="112" />
+    </object>
+  </frame>
+  <frame ID="139">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="102" />
+      <Point x="327" y="112" />
+      <Point x="355" y="112" />
+      <Point x="355" y="102" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="112" />
+      <Point x="363" y="101" />
+      <Point x="355" y="101" />
+      <Point x="355" y="112" />
+    </object>
+  </frame>
+  <frame ID="140">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="100" />
+      <Point x="327" y="110" />
+      <Point x="354" y="110" />
+      <Point x="354" y="100" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="110" />
+      <Point x="363" y="99" />
+      <Point x="354" y="99" />
+      <Point x="354" y="110" />
+    </object>
+  </frame>
+  <frame ID="141">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="332" y="98" />
+      <Point x="332" y="108" />
+      <Point x="359" y="108" />
+      <Point x="359" y="98" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="368" y="108" />
+      <Point x="368" y="97" />
+      <Point x="359" y="97" />
+      <Point x="359" y="108" />
+    </object>
+  </frame>
+  <frame ID="142">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="330" y="100" />
+      <Point x="330" y="110" />
+      <Point x="359" y="110" />
+      <Point x="359" y="100" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="368" y="109" />
+      <Point x="368" y="100" />
+      <Point x="359" y="100" />
+      <Point x="359" y="109" />
+    </object>
+  </frame>
+  <frame ID="143">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="332" y="98" />
+      <Point x="332" y="108" />
+      <Point x="361" y="108" />
+      <Point x="361" y="98" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="369" y="107" />
+      <Point x="369" y="98" />
+      <Point x="360" y="98" />
+      <Point x="360" y="107" />
+    </object>
+  </frame>
+  <frame ID="144">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="333" y="96" />
+      <Point x="333" y="106" />
+      <Point x="362" y="106" />
+      <Point x="362" y="96" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="371" y="105" />
+      <Point x="371" y="96" />
+      <Point x="362" y="96" />
+      <Point x="362" y="105" />
+    </object>
+  </frame>
+  <frame ID="145">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="323" y="93" />
+      <Point x="323" y="103" />
+      <Point x="352" y="103" />
+      <Point x="352" y="93" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="361" y="102" />
+      <Point x="361" y="93" />
+      <Point x="352" y="93" />
+      <Point x="352" y="102" />
+    </object>
+  </frame>
+  <frame ID="146">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="317" y="91" />
+      <Point x="317" y="101" />
+      <Point x="346" y="101" />
+      <Point x="346" y="91" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="356" y="100" />
+      <Point x="356" y="91" />
+      <Point x="346" y="91" />
+      <Point x="346" y="100" />
+    </object>
+  </frame>
+  <frame ID="147">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="318" y="90" />
+      <Point x="318" y="100" />
+      <Point x="347" y="100" />
+      <Point x="347" y="90" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="356" y="99" />
+      <Point x="356" y="90" />
+      <Point x="346" y="90" />
+      <Point x="346" y="99" />
+    </object>
+  </frame>
+  <frame ID="148">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="321" y="87" />
+      <Point x="321" y="97" />
+      <Point x="350" y="97" />
+      <Point x="350" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="359" y="96" />
+      <Point x="359" y="87" />
+      <Point x="349" y="87" />
+      <Point x="349" y="96" />
+    </object>
+  </frame>
+  <frame ID="149">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="319" y="86" />
+      <Point x="319" y="96" />
+      <Point x="348" y="96" />
+      <Point x="348" y="86" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="357" y="95" />
+      <Point x="357" y="86" />
+      <Point x="347" y="86" />
+      <Point x="347" y="95" />
+    </object>
+  </frame>
+  <frame ID="150">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="312" y="85" />
+      <Point x="312" y="95" />
+      <Point x="341" y="95" />
+      <Point x="341" y="85" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="351" y="94" />
+      <Point x="351" y="85" />
+      <Point x="341" y="85" />
+      <Point x="341" y="94" />
+    </object>
+  </frame>
+  <frame ID="151">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="305" y="82" />
+      <Point x="305" y="92" />
+      <Point x="334" y="92" />
+      <Point x="334" y="82" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="343" y="91" />
+      <Point x="343" y="82" />
+      <Point x="333" y="82" />
+      <Point x="333" y="91" />
+    </object>
+  </frame>
+  <frame ID="152">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="295" y="81" />
+      <Point x="295" y="91" />
+      <Point x="326" y="91" />
+      <Point x="326" y="81" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="335" y="90" />
+      <Point x="335" y="81" />
+      <Point x="325" y="81" />
+      <Point x="325" y="90" />
+    </object>
+  </frame>
+  <frame ID="153">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="288" y="81" />
+      <Point x="288" y="92" />
+      <Point x="319" y="92" />
+      <Point x="319" y="81" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="329" y="92" />
+      <Point x="329" y="82" />
+      <Point x="319" y="82" />
+      <Point x="319" y="92" />
+    </object>
+  </frame>
+  <frame ID="154">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="284" y="85" />
+      <Point x="284" y="96" />
+      <Point x="315" y="96" />
+      <Point x="315" y="85" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="325" y="96" />
+      <Point x="325" y="86" />
+      <Point x="315" y="86" />
+      <Point x="315" y="96" />
+    </object>
+  </frame>
+  <frame ID="155">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="280" y="89" />
+      <Point x="280" y="101" />
+      <Point x="312" y="101" />
+      <Point x="312" y="89" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="321" y="100" />
+      <Point x="321" y="89" />
+      <Point x="311" y="89" />
+      <Point x="311" y="100" />
+    </object>
+  </frame>
+  <frame ID="156">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="280" y="90" />
+      <Point x="280" y="102" />
+      <Point x="311" y="102" />
+      <Point x="311" y="90" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="321" y="101" />
+      <Point x="321" y="90" />
+      <Point x="311" y="90" />
+      <Point x="311" y="101" />
+    </object>
+  </frame>
+  <frame ID="157">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="281" y="87" />
+      <Point x="281" y="99" />
+      <Point x="313" y="99" />
+      <Point x="313" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="324" y="98" />
+      <Point x="324" y="87" />
+      <Point x="314" y="87" />
+      <Point x="314" y="98" />
+    </object>
+  </frame>
+  <frame ID="158">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="275" y="85" />
+      <Point x="275" y="97" />
+      <Point x="307" y="97" />
+      <Point x="307" y="85" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="316" y="96" />
+      <Point x="316" y="85" />
+      <Point x="306" y="85" />
+      <Point x="306" y="96" />
+    </object>
+  </frame>
+  <frame ID="159">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="267" y="84" />
+      <Point x="267" y="96" />
+      <Point x="299" y="96" />
+      <Point x="299" y="84" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="309" y="95" />
+      <Point x="309" y="84" />
+      <Point x="299" y="84" />
+      <Point x="299" y="95" />
+    </object>
+  </frame>
+  <frame ID="160">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="264" y="83" />
+      <Point x="264" y="95" />
+      <Point x="297" y="95" />
+      <Point x="297" y="83" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="307" y="94" />
+      <Point x="307" y="83" />
+      <Point x="297" y="83" />
+      <Point x="297" y="94" />
+    </object>
+  </frame>
+  <frame ID="161">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="264" y="83" />
+      <Point x="264" y="95" />
+      <Point x="297" y="95" />
+      <Point x="297" y="83" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="307" y="93" />
+      <Point x="307" y="82" />
+      <Point x="297" y="82" />
+      <Point x="297" y="93" />
+    </object>
+  </frame>
+  <frame ID="162">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="265" y="83" />
+      <Point x="265" y="95" />
+      <Point x="299" y="95" />
+      <Point x="299" y="83" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="309" y="93" />
+      <Point x="309" y="81" />
+      <Point x="299" y="81" />
+      <Point x="299" y="93" />
+    </object>
+  </frame>
+  <frame ID="163">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="265" y="82" />
+      <Point x="265" y="94" />
+      <Point x="299" y="94" />
+      <Point x="299" y="82" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="309" y="93" />
+      <Point x="309" y="82" />
+      <Point x="299" y="82" />
+      <Point x="299" y="93" />
+    </object>
+  </frame>
+  <frame ID="164">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="266" y="81" />
+      <Point x="266" y="93" />
+      <Point x="300" y="93" />
+      <Point x="300" y="81" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="309" y="91" />
+      <Point x="309" y="80" />
+      <Point x="299" y="80" />
+      <Point x="299" y="91" />
+    </object>
+  </frame>
+  <frame ID="165">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="266" y="80" />
+      <Point x="266" y="92" />
+      <Point x="300" y="92" />
+      <Point x="300" y="80" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="310" y="90" />
+      <Point x="310" y="79" />
+      <Point x="300" y="79" />
+      <Point x="300" y="90" />
+    </object>
+  </frame>
+  <frame ID="166">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="267" y="79" />
+      <Point x="267" y="91" />
+      <Point x="301" y="91" />
+      <Point x="301" y="79" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="311" y="90" />
+      <Point x="311" y="79" />
+      <Point x="301" y="79" />
+      <Point x="301" y="90" />
+    </object>
+  </frame>
+  <frame ID="167">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="270" y="78" />
+      <Point x="270" y="90" />
+      <Point x="304" y="90" />
+      <Point x="304" y="78" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="314" y="88" />
+      <Point x="314" y="77" />
+      <Point x="304" y="77" />
+      <Point x="304" y="88" />
+    </object>
+  </frame>
+  <frame ID="168">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="270" y="76" />
+      <Point x="270" y="88" />
+      <Point x="305" y="88" />
+      <Point x="305" y="76" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="316" y="87" />
+      <Point x="315" y="76" />
+      <Point x="305" y="76" />
+      <Point x="305" y="87" />
+    </object>
+  </frame>
+  <frame ID="169">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="274" y="75" />
+      <Point x="274" y="87" />
+      <Point x="309" y="87" />
+      <Point x="309" y="75" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="320" y="85" />
+      <Point x="319" y="74" />
+      <Point x="309" y="74" />
+      <Point x="309" y="85" />
+    </object>
+  </frame>
+  <frame ID="170">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="281" y="75" />
+      <Point x="281" y="87" />
+      <Point x="316" y="87" />
+      <Point x="316" y="75" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="326" y="86" />
+      <Point x="326" y="74" />
+      <Point x="316" y="74" />
+      <Point x="316" y="86" />
+    </object>
+  </frame>
+  <frame ID="171">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="284" y="73" />
+      <Point x="284" y="86" />
+      <Point x="318" y="86" />
+      <Point x="318" y="73" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="329" y="85" />
+      <Point x="329" y="73" />
+      <Point x="319" y="73" />
+      <Point x="319" y="85" />
+    </object>
+  </frame>
+  <frame ID="172">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="282" y="71" />
+      <Point x="282" y="83" />
+      <Point x="317" y="83" />
+      <Point x="317" y="71" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="328" y="82" />
+      <Point x="328" y="70" />
+      <Point x="318" y="70" />
+      <Point x="318" y="82" />
+    </object>
+  </frame>
+  <frame ID="173">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="280" y="70" />
+      <Point x="280" y="82" />
+      <Point x="316" y="82" />
+      <Point x="316" y="70" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="326" y="81" />
+      <Point x="326" y="69" />
+      <Point x="316" y="69" />
+      <Point x="316" y="81" />
+    </object>
+  </frame>
+  <frame ID="174">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="279" y="71" />
+      <Point x="279" y="83" />
+      <Point x="315" y="83" />
+      <Point x="315" y="71" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="326" y="82" />
+      <Point x="326" y="70" />
+      <Point x="316" y="70" />
+      <Point x="316" y="82" />
+    </object>
+  </frame>
+  <frame ID="175">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="282" y="71" />
+      <Point x="282" y="83" />
+      <Point x="318" y="83" />
+      <Point x="318" y="71" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="328" y="82" />
+      <Point x="328" y="70" />
+      <Point x="318" y="70" />
+      <Point x="318" y="82" />
+    </object>
+  </frame>
+  <frame ID="176">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="288" y="72" />
+      <Point x="288" y="84" />
+      <Point x="325" y="84" />
+      <Point x="325" y="72" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="335" y="83" />
+      <Point x="335" y="71" />
+      <Point x="324" y="71" />
+      <Point x="324" y="83" />
+    </object>
+  </frame>
+  <frame ID="177">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="296" y="71" />
+      <Point x="296" y="83" />
+      <Point x="333" y="83" />
+      <Point x="333" y="71" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="343" y="82" />
+      <Point x="343" y="70" />
+      <Point x="332" y="70" />
+      <Point x="332" y="82" />
+    </object>
+  </frame>
+  <frame ID="178">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="299" y="69" />
+      <Point x="299" y="81" />
+      <Point x="337" y="81" />
+      <Point x="337" y="69" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="80" />
+      <Point x="347" y="68" />
+      <Point x="336" y="68" />
+      <Point x="336" y="80" />
+    </object>
+  </frame>
+  <frame ID="179">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="297" y="66" />
+      <Point x="297" y="79" />
+      <Point x="334" y="79" />
+      <Point x="334" y="67" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="345" y="79" />
+      <Point x="345" y="67" />
+      <Point x="334" y="67" />
+      <Point x="334" y="79" />
+    </object>
+  </frame>
+  <frame ID="180">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="296" y="66" />
+      <Point x="296" y="79" />
+      <Point x="333" y="79" />
+      <Point x="333" y="66" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="345" y="79" />
+      <Point x="345" y="67" />
+      <Point x="334" y="67" />
+      <Point x="334" y="79" />
+    </object>
+  </frame>
+  <frame ID="181">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="303" y="66" />
+      <Point x="303" y="79" />
+      <Point x="340" y="79" />
+      <Point x="340" y="66" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="351" y="79" />
+      <Point x="351" y="67" />
+      <Point x="340" y="67" />
+      <Point x="340" y="79" />
+    </object>
+  </frame>
+  <frame ID="182">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="307" y="64" />
+      <Point x="307" y="77" />
+      <Point x="344" y="77" />
+      <Point x="344" y="64" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="356" y="77" />
+      <Point x="356" y="65" />
+      <Point x="345" y="65" />
+      <Point x="345" y="77" />
+    </object>
+  </frame>
+  <frame ID="183">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="309" y="64" />
+      <Point x="309" y="77" />
+      <Point x="346" y="77" />
+      <Point x="346" y="64" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="358" y="76" />
+      <Point x="358" y="64" />
+      <Point x="347" y="64" />
+      <Point x="347" y="76" />
+    </object>
+  </frame>
+  <frame ID="184">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="311" y="61" />
+      <Point x="311" y="74" />
+      <Point x="348" y="74" />
+      <Point x="348" y="61" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="360" y="73" />
+      <Point x="360" y="61" />
+      <Point x="349" y="61" />
+      <Point x="349" y="73" />
+    </object>
+  </frame>
+  <frame ID="185">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="310" y="57" />
+      <Point x="310" y="70" />
+      <Point x="348" y="70" />
+      <Point x="348" y="57" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="360" y="69" />
+      <Point x="360" y="57" />
+      <Point x="348" y="57" />
+      <Point x="348" y="69" />
+    </object>
+  </frame>
+  <frame ID="186">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="302" y="54" />
+      <Point x="302" y="67" />
+      <Point x="341" y="67" />
+      <Point x="341" y="54" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="352" y="66" />
+      <Point x="352" y="54" />
+      <Point x="340" y="54" />
+      <Point x="340" y="66" />
+    </object>
+  </frame>
+  <frame ID="187">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="299" y="50" />
+      <Point x="299" y="63" />
+      <Point x="339" y="63" />
+      <Point x="339" y="50" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="351" y="62" />
+      <Point x="351" y="50" />
+      <Point x="339" y="50" />
+      <Point x="339" y="62" />
+    </object>
+  </frame>
+  <frame ID="188">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="303" y="46" />
+      <Point x="303" y="59" />
+      <Point x="344" y="59" />
+      <Point x="344" y="46" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="356" y="59" />
+      <Point x="356" y="47" />
+      <Point x="344" y="47" />
+      <Point x="344" y="59" />
+    </object>
+  </frame>
+  <frame ID="189">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="304" y="44" />
+      <Point x="304" y="58" />
+      <Point x="345" y="58" />
+      <Point x="345" y="44" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="358" y="57" />
+      <Point x="358" y="45" />
+      <Point x="346" y="45" />
+      <Point x="346" y="57" />
+    </object>
+  </frame>
+  <frame ID="190">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="300" y="45" />
+      <Point x="300" y="59" />
+      <Point x="340" y="59" />
+      <Point x="340" y="45" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="354" y="57" />
+      <Point x="354" y="45" />
+      <Point x="342" y="45" />
+      <Point x="342" y="57" />
+    </object>
+  </frame>
+  <frame ID="191">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="299" y="43" />
+      <Point x="299" y="57" />
+      <Point x="339" y="57" />
+      <Point x="339" y="43" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="352" y="56" />
+      <Point x="352" y="43" />
+      <Point x="340" y="43" />
+      <Point x="340" y="56" />
+    </object>
+  </frame>
+  <frame ID="192">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="298" y="41" />
+      <Point x="298" y="55" />
+      <Point x="339" y="55" />
+      <Point x="339" y="41" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="352" y="55" />
+      <Point x="352" y="41" />
+      <Point x="340" y="41" />
+      <Point x="340" y="55" />
+    </object>
+  </frame>
+  <frame ID="193">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="295" y="42" />
+      <Point x="295" y="56" />
+      <Point x="336" y="56" />
+      <Point x="336" y="42" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="349" y="56" />
+      <Point x="349" y="42" />
+      <Point x="337" y="42" />
+      <Point x="337" y="56" />
+    </object>
+  </frame>
+  <frame ID="194">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="292" y="43" />
+      <Point x="292" y="57" />
+      <Point x="333" y="57" />
+      <Point x="333" y="43" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="346" y="56" />
+      <Point x="346" y="42" />
+      <Point x="334" y="42" />
+      <Point x="334" y="56" />
+    </object>
+  </frame>
+  <frame ID="195">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="292" y="44" />
+      <Point x="292" y="58" />
+      <Point x="333" y="58" />
+      <Point x="333" y="44" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="58" />
+      <Point x="347" y="44" />
+      <Point x="335" y="44" />
+      <Point x="335" y="58" />
+    </object>
+  </frame>
+  <frame ID="196">
+    <object Transcription="##DONT#CARE##" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="285" y="45" />
+      <Point x="285" y="59" />
+      <Point x="327" y="59" />
+      <Point x="327" y="45" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="59" />
+      <Point x="342" y="45" />
+      <Point x="330" y="45" />
+      <Point x="330" y="59" />
+    </object>
+  </frame>
+  <frame ID="197">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="276" y="45" />
+      <Point x="276" y="59" />
+      <Point x="319" y="59" />
+      <Point x="319" y="45" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="332" y="59" />
+      <Point x="332" y="45" />
+      <Point x="320" y="45" />
+      <Point x="320" y="59" />
+    </object>
+  </frame>
+  <frame ID="198">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="275" y="44" />
+      <Point x="275" y="58" />
+      <Point x="319" y="58" />
+      <Point x="319" y="44" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="331" y="58" />
+      <Point x="331" y="44" />
+      <Point x="319" y="44" />
+      <Point x="319" y="58" />
+    </object>
+  </frame>
+  <frame ID="199">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="274" y="42" />
+      <Point x="274" y="57" />
+      <Point x="318" y="57" />
+      <Point x="318" y="42" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="331" y="56" />
+      <Point x="331" y="42" />
+      <Point x="319" y="42" />
+      <Point x="319" y="56" />
+    </object>
+  </frame>
+  <frame ID="200">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="267" y="41" />
+      <Point x="267" y="56" />
+      <Point x="311" y="56" />
+      <Point x="311" y="41" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="325" y="55" />
+      <Point x="325" y="41" />
+      <Point x="312" y="41" />
+      <Point x="312" y="55" />
+    </object>
+  </frame>
+  <frame ID="201">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="263" y="40" />
+      <Point x="263" y="55" />
+      <Point x="307" y="55" />
+      <Point x="307" y="40" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="321" y="54" />
+      <Point x="321" y="40" />
+      <Point x="308" y="40" />
+      <Point x="308" y="54" />
+    </object>
+  </frame>
+  <frame ID="202">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="263" y="39" />
+      <Point x="263" y="54" />
+      <Point x="308" y="54" />
+      <Point x="308" y="39" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="322" y="54" />
+      <Point x="322" y="40" />
+      <Point x="309" y="40" />
+      <Point x="309" y="54" />
+    </object>
+  </frame>
+  <frame ID="203">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="265" y="39" />
+      <Point x="265" y="54" />
+      <Point x="310" y="54" />
+      <Point x="310" y="39" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="324" y="54" />
+      <Point x="324" y="39" />
+      <Point x="311" y="39" />
+      <Point x="311" y="54" />
+    </object>
+  </frame>
+  <frame ID="204">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="261" y="39" />
+      <Point x="261" y="54" />
+      <Point x="306" y="54" />
+      <Point x="306" y="39" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="321" y="53" />
+      <Point x="321" y="38" />
+      <Point x="308" y="38" />
+      <Point x="308" y="53" />
+    </object>
+  </frame>
+  <frame ID="205">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="260" y="37" />
+      <Point x="260" y="52" />
+      <Point x="305" y="52" />
+      <Point x="305" y="37" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="320" y="51" />
+      <Point x="320" y="36" />
+      <Point x="307" y="36" />
+      <Point x="307" y="51" />
+    </object>
+  </frame>
+  <frame ID="206">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="262" y="36" />
+      <Point x="262" y="51" />
+      <Point x="308" y="51" />
+      <Point x="308" y="36" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="323" y="50" />
+      <Point x="323" y="35" />
+      <Point x="310" y="35" />
+      <Point x="310" y="50" />
+    </object>
+  </frame>
+  <frame ID="207">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="260" y="34" />
+      <Point x="260" y="49" />
+      <Point x="308" y="49" />
+      <Point x="308" y="34" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="322" y="48" />
+      <Point x="322" y="33" />
+      <Point x="309" y="33" />
+      <Point x="309" y="48" />
+    </object>
+  </frame>
+  <frame ID="208">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="254" y="29" />
+      <Point x="254" y="45" />
+      <Point x="303" y="45" />
+      <Point x="303" y="29" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="318" y="44" />
+      <Point x="318" y="29" />
+      <Point x="304" y="29" />
+      <Point x="304" y="44" />
+    </object>
+  </frame>
+  <frame ID="209">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="252" y="25" />
+      <Point x="252" y="42" />
+      <Point x="301" y="42" />
+      <Point x="301" y="25" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="315" y="39" />
+      <Point x="315" y="24" />
+      <Point x="302" y="24" />
+      <Point x="302" y="39" />
+    </object>
+  </frame>
+  <frame ID="210">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="254" y="22" />
+      <Point x="254" y="39" />
+      <Point x="305" y="38" />
+      <Point x="304" y="21" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="320" y="36" />
+      <Point x="320" y="20" />
+      <Point x="306" y="20" />
+      <Point x="306" y="36" />
+    </object>
+  </frame>
+  <frame ID="211">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="262" y="20" />
+      <Point x="261" y="37" />
+      <Point x="312" y="36" />
+      <Point x="312" y="19" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="327" y="34" />
+      <Point x="327" y="18" />
+      <Point x="313" y="18" />
+      <Point x="313" y="34" />
+    </object>
+  </frame>
+  <frame ID="212">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="263" y="17" />
+      <Point x="263" y="34" />
+      <Point x="313" y="33" />
+      <Point x="313" y="16" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="328" y="32" />
+      <Point x="328" y="16" />
+      <Point x="315" y="16" />
+      <Point x="315" y="32" />
+    </object>
+  </frame>
+  <frame ID="213">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="264" y="15" />
+      <Point x="264" y="32" />
+      <Point x="314" y="31" />
+      <Point x="314" y="14" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="329" y="29" />
+      <Point x="329" y="13" />
+      <Point x="316" y="13" />
+      <Point x="316" y="29" />
+    </object>
+  </frame>
+  <frame ID="214">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="266" y="12" />
+      <Point x="266" y="30" />
+      <Point x="316" y="29" />
+      <Point x="316" y="11" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="331" y="27" />
+      <Point x="331" y="11" />
+      <Point x="318" y="11" />
+      <Point x="318" y="27" />
+    </object>
+  </frame>
+  <frame ID="215">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="264" y="11" />
+      <Point x="264" y="29" />
+      <Point x="315" y="28" />
+      <Point x="315" y="10" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="330" y="27" />
+      <Point x="330" y="11" />
+      <Point x="317" y="11" />
+      <Point x="317" y="27" />
+    </object>
+  </frame>
+  <frame ID="216">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="260" y="12" />
+      <Point x="260" y="30" />
+      <Point x="311" y="29" />
+      <Point x="311" y="11" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="326" y="28" />
+      <Point x="326" y="12" />
+      <Point x="313" y="12" />
+      <Point x="313" y="28" />
+    </object>
+  </frame>
+  <frame ID="217">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="261" y="15" />
+      <Point x="261" y="34" />
+      <Point x="312" y="33" />
+      <Point x="312" y="14" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="329" y="31" />
+      <Point x="328" y="15" />
+      <Point x="314" y="15" />
+      <Point x="314" y="31" />
+    </object>
+  </frame>
+  <frame ID="218">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="270" y="19" />
+      <Point x="270" y="38" />
+      <Point x="323" y="37" />
+      <Point x="323" y="19" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="339" y="35" />
+      <Point x="339" y="19" />
+      <Point x="324" y="19" />
+      <Point x="324" y="35" />
+    </object>
+  </frame>
+  <frame ID="219">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="277" y="19" />
+      <Point x="277" y="38" />
+      <Point x="330" y="37" />
+      <Point x="329" y="21" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="346" y="36" />
+      <Point x="346" y="19" />
+      <Point x="331" y="19" />
+      <Point x="331" y="36" />
+    </object>
+  </frame>
+  <frame ID="220">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="278" y="16" />
+      <Point x="278" y="35" />
+      <Point x="330" y="34" />
+      <Point x="330" y="18" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="33" />
+      <Point x="347" y="16" />
+      <Point x="332" y="16" />
+      <Point x="332" y="33" />
+    </object>
+  </frame>
+  <frame ID="221">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="277" y="12" />
+      <Point x="277" y="31" />
+      <Point x="330" y="31" />
+      <Point x="330" y="15" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="30" />
+      <Point x="347" y="13" />
+      <Point x="332" y="13" />
+      <Point x="332" y="30" />
+    </object>
+  </frame>
+  <frame ID="222">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="277" y="7" />
+      <Point x="277" y="27" />
+      <Point x="330" y="27" />
+      <Point x="330" y="11" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="347" y="26" />
+      <Point x="347" y="9" />
+      <Point x="332" y="9" />
+      <Point x="332" y="26" />
+    </object>
+  </frame>
+  <frame ID="223">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="278" y="4" />
+      <Point x="278" y="24" />
+      <Point x="331" y="24" />
+      <Point x="331" y="6" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="349" y="23" />
+      <Point x="349" y="6" />
+      <Point x="334" y="6" />
+      <Point x="334" y="23" />
+    </object>
+  </frame>
+  <frame ID="224">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="281" y="1" />
+      <Point x="281" y="21" />
+      <Point x="334" y="21" />
+      <Point x="334" y="3" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="353" y="20" />
+      <Point x="353" y="3" />
+      <Point x="337" y="3" />
+      <Point x="337" y="20" />
+    </object>
+  </frame>
+  <frame ID="225">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="280" y="0" />
+      <Point x="280" y="18" />
+      <Point x="335" y="18" />
+      <Point x="335" y="0" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="354" y="17" />
+      <Point x="354" y="0" />
+      <Point x="338" y="0" />
+      <Point x="338" y="17" />
+    </object>
+  </frame>
+  <frame ID="226">
+    <object Transcription="Escala" ID="129001" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="280" y="-1" />
+      <Point x="280" y="13" />
+      <Point x="336" y="12" />
+      <Point x="336" y="-1" />
+    </object>
+    <object Transcription="B" ID="129002" Language="Spanish" Mirrored="Unmirrored" Quality="MODERATE">
+      <Point x="355" y="12" />
+      <Point x="355" y="0" />
+      <Point x="339" y="0" />
+      <Point x="339" y="12" />
+    </object>
+  </frame>
+  <frame ID="227" />
+  <frame ID="228" />
+  <frame ID="229" />
+  <frame ID="230" />
+  <frame ID="231" />
+  <frame ID="232" />
+  <frame ID="233" />
+  <frame ID="234" />
+  <frame ID="235" />
+  <frame ID="236" />
+  <frame ID="237" />
+  <frame ID="238" />
+  <frame ID="239" />
+  <frame ID="240" />
+  <frame ID="241" />
+  <frame ID="242" />
+  <frame ID="243" />
+  <frame ID="244" />
+  <frame ID="245" />
+  <frame ID="246" />
+  <frame ID="247" />
+  <frame ID="248" />
+  <frame ID="249" />
+  <frame ID="250" />
+  <frame ID="251" />
+  <frame ID="252" />
+  <frame ID="253" />
+  <frame ID="254" />
+  <frame ID="255" />
+  <frame ID="256" />
+  <frame ID="257" />
+  <frame ID="258" />
+  <frame ID="259" />
+  <frame ID="260" />
+  <frame ID="261" />
+  <frame ID="262" />
+  <frame ID="263" />
+  <frame ID="264" />
+  <frame ID="265" />
+  <frame ID="266" />
+  <frame ID="267" />
+  <frame ID="268" />
+  <frame ID="269" />
+  <frame ID="270" />
+  <frame ID="271" />
+  <frame ID="272" />
+  <frame ID="273" />
+  <frame ID="274" />
+  <frame ID="275" />
+  <frame ID="276" />
+  <frame ID="277" />
+  <frame ID="278" />
+  <frame ID="279" />
+  <frame ID="280" />
+  <frame ID="281" />
+  <frame ID="282" />
+  <frame ID="283" />
+  <frame ID="284" />
+  <frame ID="285" />
+  <frame ID="286" />
+  <frame ID="287" />
+  <frame ID="288" />
+  <frame ID="289" />
+  <frame ID="290" />
+  <frame ID="291" />
+  <frame ID="292" />
+  <frame ID="293" />
+  <frame ID="294" />
+  <frame ID="295" />
+  <frame ID="296" />
+  <frame ID="297" />
+  <frame ID="298" />
+  <frame ID="299" />
+  <frame ID="300" />
+  <frame ID="301" />
+  <frame ID="302" />
+  <frame ID="303" />
+  <frame ID="304" />
+  <frame ID="305" />
+  <frame ID="306" />
+  <frame ID="307" />
+  <frame ID="308" />
+  <frame ID="309" />
+  <frame ID="310" />
+  <frame ID="311" />
+  <frame ID="312" />
+  <frame ID="313" />
+  <frame ID="314" />
+  <frame ID="315" />
+  <frame ID="316" />
+  <frame ID="317" />
+  <frame ID="318" />
+  <frame ID="319" />
+  <frame ID="320" />
+  <frame ID="321" />
+  <frame ID="322" />
+  <frame ID="323" />
+  <frame ID="324" />
+  <frame ID="325" />
+  <frame ID="326" />
+  <frame ID="327" />
+  <frame ID="328" />
+  <frame ID="329" />
+  <frame ID="330" />
+  <frame ID="331" />
+  <frame ID="332" />
+  <frame ID="333" />
+  <frame ID="334" />
+  <frame ID="335" />
+  <frame ID="336" />
+  <frame ID="337" />
+  <frame ID="338" />
+  <frame ID="339" />
+  <frame ID="340" />
+  <frame ID="341" />
+  <frame ID="342" />
+  <frame ID="343" />
+  <frame ID="344" />
+  <frame ID="345" />
+  <frame ID="346" />
+  <frame ID="347" />
+  <frame ID="348" />
+  <frame ID="349" />
+  <frame ID="350" />
+  <frame ID="351" />
+  <frame ID="352" />
+  <frame ID="353" />
+  <frame ID="354" />
+  <frame ID="355" />
+  <frame ID="356" />
+  <frame ID="357" />
+  <frame ID="358" />
+  <frame ID="359" />
+  <frame ID="360" />
+  <frame ID="361" />
+  <frame ID="362" />
+  <frame ID="363" />
+  <frame ID="364" />
+  <frame ID="365" />
+  <frame ID="366" />
+  <frame ID="367" />
+  <frame ID="368" />
+  <frame ID="369" />
+  <frame ID="370" />
+  <frame ID="371" />
+  <frame ID="372" />
+  <frame ID="373" />
+  <frame ID="374" />
+  <frame ID="375" />
+  <frame ID="376" />
+  <frame ID="377" />
+  <frame ID="378" />
+  <frame ID="379" />
+  <frame ID="380" />
+  <frame ID="381" />
+  <frame ID="382" />
+  <frame ID="383" />
+  <frame ID="384" />
+  <frame ID="385" />
+  <frame ID="386" />
+  <frame ID="387" />
+  <frame ID="388" />
+  <frame ID="389" />
+  <frame ID="390" />
+  <frame ID="391">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="659" y="40" />
+      <Point x="659" y="50" />
+      <Point x="689" y="50" />
+      <Point x="689" y="40" />
+    </object>
+  </frame>
+  <frame ID="392">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="658" y="40" />
+      <Point x="658" y="50" />
+      <Point x="688" y="50" />
+      <Point x="688" y="40" />
+    </object>
+  </frame>
+  <frame ID="393">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="658" y="40" />
+      <Point x="658" y="50" />
+      <Point x="688" y="50" />
+      <Point x="688" y="40" />
+    </object>
+  </frame>
+  <frame ID="394">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="658" y="40" />
+      <Point x="658" y="51" />
+      <Point x="688" y="51" />
+      <Point x="688" y="40" />
+    </object>
+  </frame>
+  <frame ID="395">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="658" y="42" />
+      <Point x="658" y="54" />
+      <Point x="689" y="54" />
+      <Point x="689" y="43" />
+    </object>
+  </frame>
+  <frame ID="396">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="660" y="43" />
+      <Point x="660" y="55" />
+      <Point x="692" y="55" />
+      <Point x="692" y="43" />
+    </object>
+  </frame>
+  <frame ID="397">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="662" y="43" />
+      <Point x="662" y="55" />
+      <Point x="694" y="55" />
+      <Point x="694" y="43" />
+    </object>
+  </frame>
+  <frame ID="398">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="654" y="45" />
+      <Point x="654" y="57" />
+      <Point x="686" y="57" />
+      <Point x="686" y="45" />
+    </object>
+  </frame>
+  <frame ID="399">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="646" y="50" />
+      <Point x="646" y="62" />
+      <Point x="678" y="62" />
+      <Point x="678" y="50" />
+    </object>
+  </frame>
+  <frame ID="400">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="647" y="56" />
+      <Point x="647" y="68" />
+      <Point x="679" y="68" />
+      <Point x="679" y="56" />
+    </object>
+  </frame>
+  <frame ID="401">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="649" y="55" />
+      <Point x="649" y="66" />
+      <Point x="681" y="66" />
+      <Point x="681" y="55" />
+    </object>
+  </frame>
+  <frame ID="402">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="649" y="50" />
+      <Point x="649" y="61" />
+      <Point x="682" y="61" />
+      <Point x="682" y="50" />
+    </object>
+  </frame>
+  <frame ID="403">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="657" y="48" />
+      <Point x="657" y="59" />
+      <Point x="690" y="59" />
+      <Point x="690" y="48" />
+    </object>
+  </frame>
+  <frame ID="404">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="661" y="45" />
+      <Point x="661" y="56" />
+      <Point x="694" y="56" />
+      <Point x="694" y="45" />
+    </object>
+  </frame>
+  <frame ID="405">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="653" y="43" />
+      <Point x="653" y="54" />
+      <Point x="686" y="54" />
+      <Point x="686" y="43" />
+    </object>
+  </frame>
+  <frame ID="406">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="651" y="38" />
+      <Point x="651" y="49" />
+      <Point x="685" y="49" />
+      <Point x="685" y="38" />
+    </object>
+  </frame>
+  <frame ID="407">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="657" y="36" />
+      <Point x="657" y="47" />
+      <Point x="691" y="47" />
+      <Point x="691" y="36" />
+    </object>
+  </frame>
+  <frame ID="408">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="660" y="33" />
+      <Point x="660" y="44" />
+      <Point x="695" y="44" />
+      <Point x="695" y="33" />
+    </object>
+  </frame>
+  <frame ID="409">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="662" y="30" />
+      <Point x="662" y="41" />
+      <Point x="697" y="41" />
+      <Point x="697" y="30" />
+    </object>
+  </frame>
+  <frame ID="410">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="667" y="27" />
+      <Point x="667" y="38" />
+      <Point x="703" y="37" />
+      <Point x="703" y="26" />
+    </object>
+  </frame>
+  <frame ID="411">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="676" y="18" />
+      <Point x="676" y="29" />
+      <Point x="713" y="28" />
+      <Point x="713" y="17" />
+    </object>
+  </frame>
+  <frame ID="412">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="681" y="14" />
+      <Point x="680" y="25" />
+      <Point x="718" y="24" />
+      <Point x="718" y="13" />
+    </object>
+  </frame>
+  <frame ID="413">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="682" y="13" />
+      <Point x="682" y="27" />
+      <Point x="720" y="27" />
+      <Point x="720" y="13" />
+    </object>
+  </frame>
+  <frame ID="414">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="687" y="12" />
+      <Point x="687" y="26" />
+      <Point x="721" y="26" />
+      <Point x="721" y="12" />
+    </object>
+  </frame>
+  <frame ID="415">
+    <object Transcription="##DONT#CARE##" ID="391001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="697" y="11" />
+      <Point x="697" y="25" />
+      <Point x="721" y="25" />
+      <Point x="721" y="11" />
+    </object>
+  </frame>
+  <frame ID="416" />
+  <frame ID="417" />
+  <frame ID="418" />
+  <frame ID="419" />
+  <frame ID="420" />
+  <frame ID="421" />
+  <frame ID="422" />
+  <frame ID="423" />
+  <frame ID="424" />
+  <frame ID="425" />
+  <frame ID="426" />
+  <frame ID="427" />
+  <frame ID="428" />
+  <frame ID="429" />
+  <frame ID="430" />
+  <frame ID="431" />
+  <frame ID="432" />
+  <frame ID="433" />
+  <frame ID="434" />
+  <frame ID="435" />
+  <frame ID="436" />
+  <frame ID="437" />
+  <frame ID="438" />
+  <frame ID="439" />
+  <frame ID="440" />
+  <frame ID="441" />
+  <frame ID="442" />
+  <frame ID="443" />
+  <frame ID="444" />
+  <frame ID="445" />
+  <frame ID="446" />
+  <frame ID="447" />
+  <frame ID="448" />
+  <frame ID="449" />
+  <frame ID="450" />
+  <frame ID="451" />
+  <frame ID="452" />
+  <frame ID="453" />
+  <frame ID="454" />
+  <frame ID="455" />
+  <frame ID="456" />
+  <frame ID="457" />
+  <frame ID="458" />
+  <frame ID="459" />
+  <frame ID="460" />
+  <frame ID="461" />
+  <frame ID="462" />
+  <frame ID="463" />
+  <frame ID="464" />
+  <frame ID="465" />
+  <frame ID="466" />
+  <frame ID="467" />
+  <frame ID="468" />
+  <frame ID="469" />
+  <frame ID="470" />
+  <frame ID="471" />
+  <frame ID="472" />
+  <frame ID="473" />
+  <frame ID="474" />
+  <frame ID="475" />
+  <frame ID="476" />
+  <frame ID="477" />
+  <frame ID="478" />
+  <frame ID="479" />
+  <frame ID="480" />
+  <frame ID="481" />
+  <frame ID="482" />
+  <frame ID="483" />
+  <frame ID="484" />
+  <frame ID="485" />
+  <frame ID="486" />
+  <frame ID="487" />
+  <frame ID="488" />
+  <frame ID="489" />
+  <frame ID="490" />
+  <frame ID="491" />
+  <frame ID="492" />
+  <frame ID="493" />
+  <frame ID="494" />
+  <frame ID="495" />
+  <frame ID="496" />
+  <frame ID="497" />
+  <frame ID="498" />
+  <frame ID="499" />
+  <frame ID="500" />
+  <frame ID="501" />
+  <frame ID="502" />
+  <frame ID="503" />
+  <frame ID="504" />
+  <frame ID="505" />
+  <frame ID="506" />
+  <frame ID="507" />
+  <frame ID="508" />
+  <frame ID="509" />
+  <frame ID="510" />
+  <frame ID="511" />
+  <frame ID="512" />
+  <frame ID="513" />
+  <frame ID="514" />
+  <frame ID="515" />
+  <frame ID="516" />
+  <frame ID="517" />
+  <frame ID="518">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="317" y="57" />
+      <Point x="382" y="57" />
+      <Point x="383" y="108" />
+      <Point x="318" y="108" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="390" y="55" />
+      <Point x="392" y="110" />
+      <Point x="457" y="110" />
+      <Point x="456" y="55" />
+    </object>
+  </frame>
+  <frame ID="519">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="320" y="59" />
+      <Point x="385" y="59" />
+      <Point x="386" y="110" />
+      <Point x="320" y="110" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="393" y="56" />
+      <Point x="393" y="111" />
+      <Point x="460" y="111" />
+      <Point x="459" y="55" />
+    </object>
+  </frame>
+  <frame ID="520">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="315" y="64" />
+      <Point x="380" y="63" />
+      <Point x="380" y="114" />
+      <Point x="314" y="114" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="388" y="60" />
+      <Point x="387" y="115" />
+      <Point x="454" y="115" />
+      <Point x="455" y="60" />
+    </object>
+  </frame>
+  <frame ID="521">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="304" y="74" />
+      <Point x="370" y="73" />
+      <Point x="370" y="125" />
+      <Point x="304" y="124" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="381" y="68" />
+      <Point x="380" y="124" />
+      <Point x="447" y="124" />
+      <Point x="448" y="68" />
+    </object>
+  </frame>
+  <frame ID="522">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="300" y="85" />
+      <Point x="366" y="84" />
+      <Point x="367" y="135" />
+      <Point x="301" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="373" y="78" />
+      <Point x="373" y="133" />
+      <Point x="440" y="133" />
+      <Point x="440" y="77" />
+    </object>
+  </frame>
+  <frame ID="523">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="301" y="87" />
+      <Point x="367" y="87" />
+      <Point x="367" y="135" />
+      <Point x="301" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="376" y="79" />
+      <Point x="376" y="135" />
+      <Point x="443" y="134" />
+      <Point x="443" y="79" />
+    </object>
+  </frame>
+  <frame ID="524">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="304" y="86" />
+      <Point x="371" y="86" />
+      <Point x="370" y="135" />
+      <Point x="304" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="379" y="80" />
+      <Point x="378" y="137" />
+      <Point x="446" y="135" />
+      <Point x="446" y="79" />
+    </object>
+  </frame>
+  <frame ID="525">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="299" y="91" />
+      <Point x="366" y="90" />
+      <Point x="366" y="139" />
+      <Point x="299" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="374" y="86" />
+      <Point x="374" y="141" />
+      <Point x="444" y="141" />
+      <Point x="443" y="84" />
+    </object>
+  </frame>
+  <frame ID="526">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="287" y="91" />
+      <Point x="354" y="90" />
+      <Point x="354" y="139" />
+      <Point x="287" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="361" y="83" />
+      <Point x="362" y="140" />
+      <Point x="433" y="140" />
+      <Point x="432" y="83" />
+    </object>
+  </frame>
+  <frame ID="527">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="275" y="91" />
+      <Point x="343" y="90" />
+      <Point x="344" y="139" />
+      <Point x="276" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="350" y="80" />
+      <Point x="351" y="138" />
+      <Point x="424" y="137" />
+      <Point x="422" y="80" />
+    </object>
+  </frame>
+  <frame ID="528">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="276" y="88" />
+      <Point x="345" y="87" />
+      <Point x="347" y="136" />
+      <Point x="279" y="138" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="350" y="79" />
+      <Point x="353" y="137" />
+      <Point x="426" y="136" />
+      <Point x="423" y="79" />
+    </object>
+  </frame>
+  <frame ID="529">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="284" y="89" />
+      <Point x="353" y="87" />
+      <Point x="355" y="137" />
+      <Point x="286" y="139" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="360" y="81" />
+      <Point x="361" y="137" />
+      <Point x="430" y="136" />
+      <Point x="429" y="80" />
+    </object>
+  </frame>
+  <frame ID="530">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="282" y="87" />
+      <Point x="352" y="87" />
+      <Point x="353" y="135" />
+      <Point x="283" y="137" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="360" y="78" />
+      <Point x="360" y="134" />
+      <Point x="429" y="133" />
+      <Point x="429" y="77" />
+    </object>
+  </frame>
+  <frame ID="531">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="273" y="85" />
+      <Point x="343" y="85" />
+      <Point x="344" y="133" />
+      <Point x="274" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="352" y="75" />
+      <Point x="352" y="131" />
+      <Point x="421" y="130" />
+      <Point x="421" y="74" />
+    </object>
+  </frame>
+  <frame ID="532">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="269" y="83" />
+      <Point x="340" y="82" />
+      <Point x="341" y="132" />
+      <Point x="271" y="134" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="346" y="74" />
+      <Point x="347" y="131" />
+      <Point x="416" y="130" />
+      <Point x="416" y="73" />
+    </object>
+  </frame>
+  <frame ID="533">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="271" y="82" />
+      <Point x="343" y="81" />
+      <Point x="344" y="131" />
+      <Point x="273" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="349" y="73" />
+      <Point x="350" y="130" />
+      <Point x="419" y="129" />
+      <Point x="419" y="72" />
+    </object>
+  </frame>
+  <frame ID="534">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="274" y="80" />
+      <Point x="346" y="79" />
+      <Point x="346" y="129" />
+      <Point x="275" y="131" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="352" y="70" />
+      <Point x="353" y="127" />
+      <Point x="422" y="126" />
+      <Point x="422" y="68" />
+    </object>
+  </frame>
+  <frame ID="535">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="273" y="79" />
+      <Point x="345" y="79" />
+      <Point x="345" y="129" />
+      <Point x="274" y="131" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="354" y="70" />
+      <Point x="356" y="129" />
+      <Point x="424" y="126" />
+      <Point x="425" y="68" />
+    </object>
+  </frame>
+  <frame ID="536">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="274" y="77" />
+      <Point x="346" y="77" />
+      <Point x="347" y="128" />
+      <Point x="275" y="130" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="353" y="70" />
+      <Point x="356" y="130" />
+      <Point x="424" y="127" />
+      <Point x="425" y="69" />
+    </object>
+  </frame>
+  <frame ID="537">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="280" y="77" />
+      <Point x="352" y="77" />
+      <Point x="353" y="128" />
+      <Point x="281" y="130" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="359" y="71" />
+      <Point x="362" y="129" />
+      <Point x="430" y="128" />
+      <Point x="431" y="70" />
+    </object>
+  </frame>
+  <frame ID="538">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="283" y="80" />
+      <Point x="355" y="80" />
+      <Point x="356" y="131" />
+      <Point x="284" y="134" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="73" />
+      <Point x="366" y="131" />
+      <Point x="434" y="130" />
+      <Point x="436" y="72" />
+    </object>
+  </frame>
+  <frame ID="539">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="286" y="80" />
+      <Point x="358" y="80" />
+      <Point x="359" y="131" />
+      <Point x="287" y="134" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="364" y="74" />
+      <Point x="367" y="132" />
+      <Point x="439" y="130" />
+      <Point x="438" y="73" />
+    </object>
+  </frame>
+  <frame ID="540">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="287" y="85" />
+      <Point x="360" y="82" />
+      <Point x="362" y="133" />
+      <Point x="289" y="136" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="367" y="76" />
+      <Point x="371" y="134" />
+      <Point x="443" y="132" />
+      <Point x="442" y="74" />
+    </object>
+  </frame>
+  <frame ID="541">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="292" y="86" />
+      <Point x="365" y="83" />
+      <Point x="367" y="134" />
+      <Point x="294" y="137" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="374" y="75" />
+      <Point x="375" y="135" />
+      <Point x="448" y="133" />
+      <Point x="445" y="73" />
+    </object>
+  </frame>
+  <frame ID="542">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="294" y="89" />
+      <Point x="368" y="86" />
+      <Point x="369" y="137" />
+      <Point x="296" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="377" y="79" />
+      <Point x="378" y="139" />
+      <Point x="452" y="138" />
+      <Point x="450" y="78" />
+    </object>
+  </frame>
+  <frame ID="543">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="295" y="91" />
+      <Point x="369" y="88" />
+      <Point x="371" y="139" />
+      <Point x="297" y="142" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="377" y="83" />
+      <Point x="379" y="143" />
+      <Point x="453" y="142" />
+      <Point x="451" y="82" />
+    </object>
+  </frame>
+  <frame ID="544">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="305" y="92" />
+      <Point x="379" y="89" />
+      <Point x="382" y="140" />
+      <Point x="308" y="143" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="386" y="83" />
+      <Point x="389" y="143" />
+      <Point x="464" y="139" />
+      <Point x="462" y="80" />
+    </object>
+  </frame>
+  <frame ID="545">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="316" y="91" />
+      <Point x="390" y="88" />
+      <Point x="392" y="140" />
+      <Point x="318" y="143" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="397" y="81" />
+      <Point x="399" y="142" />
+      <Point x="476" y="141" />
+      <Point x="473" y="79" />
+    </object>
+  </frame>
+  <frame ID="546">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="315" y="90" />
+      <Point x="389" y="87" />
+      <Point x="390" y="139" />
+      <Point x="316" y="142" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="395" y="80" />
+      <Point x="398" y="142" />
+      <Point x="474" y="141" />
+      <Point x="472" y="79" />
+    </object>
+  </frame>
+  <frame ID="547">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="310" y="86" />
+      <Point x="383" y="84" />
+      <Point x="385" y="135" />
+      <Point x="311" y="138" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="394" y="77" />
+      <Point x="394" y="139" />
+      <Point x="470" y="138" />
+      <Point x="468" y="76" />
+    </object>
+  </frame>
+  <frame ID="548">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="308" y="83" />
+      <Point x="381" y="82" />
+      <Point x="383" y="133" />
+      <Point x="309" y="136" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="393" y="74" />
+      <Point x="395" y="138" />
+      <Point x="469" y="136" />
+      <Point x="467" y="73" />
+    </object>
+  </frame>
+  <frame ID="549">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="309" y="83" />
+      <Point x="382" y="83" />
+      <Point x="384" y="134" />
+      <Point x="309" y="137" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="393" y="75" />
+      <Point x="395" y="139" />
+      <Point x="469" y="137" />
+      <Point x="468" y="74" />
+    </object>
+  </frame>
+  <frame ID="550">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="310" y="81" />
+      <Point x="383" y="81" />
+      <Point x="385" y="132" />
+      <Point x="310" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="394" y="72" />
+      <Point x="396" y="136" />
+      <Point x="470" y="135" />
+      <Point x="469" y="71" />
+    </object>
+  </frame>
+  <frame ID="551">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="310" y="78" />
+      <Point x="383" y="78" />
+      <Point x="385" y="130" />
+      <Point x="310" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="395" y="70" />
+      <Point x="397" y="135" />
+      <Point x="472" y="134" />
+      <Point x="471" y="69" />
+    </object>
+  </frame>
+  <frame ID="552">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="309" y="78" />
+      <Point x="382" y="78" />
+      <Point x="384" y="130" />
+      <Point x="309" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="395" y="70" />
+      <Point x="397" y="135" />
+      <Point x="472" y="134" />
+      <Point x="471" y="69" />
+    </object>
+  </frame>
+  <frame ID="553">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="309" y="79" />
+      <Point x="383" y="79" />
+      <Point x="384" y="131" />
+      <Point x="309" y="134" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="395" y="72" />
+      <Point x="396" y="137" />
+      <Point x="472" y="136" />
+      <Point x="471" y="71" />
+    </object>
+  </frame>
+  <frame ID="554">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="306" y="77" />
+      <Point x="380" y="77" />
+      <Point x="382" y="129" />
+      <Point x="306" y="132" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="392" y="70" />
+      <Point x="394" y="135" />
+      <Point x="470" y="134" />
+      <Point x="469" y="69" />
+    </object>
+  </frame>
+  <frame ID="555">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="305" y="74" />
+      <Point x="379" y="74" />
+      <Point x="379" y="128" />
+      <Point x="305" y="130" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="392" y="66" />
+      <Point x="394" y="131" />
+      <Point x="471" y="130" />
+      <Point x="469" y="65" />
+    </object>
+  </frame>
+  <frame ID="556">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="305" y="71" />
+      <Point x="379" y="71" />
+      <Point x="379" y="126" />
+      <Point x="305" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="395" y="64" />
+      <Point x="397" y="130" />
+      <Point x="474" y="129" />
+      <Point x="473" y="63" />
+    </object>
+  </frame>
+  <frame ID="557">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="301" y="70" />
+      <Point x="376" y="70" />
+      <Point x="375" y="126" />
+      <Point x="301" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="392" y="63" />
+      <Point x="393" y="130" />
+      <Point x="471" y="129" />
+      <Point x="470" y="63" />
+    </object>
+  </frame>
+  <frame ID="558">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="295" y="70" />
+      <Point x="370" y="70" />
+      <Point x="370" y="126" />
+      <Point x="295" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="385" y="64" />
+      <Point x="387" y="131" />
+      <Point x="465" y="130" />
+      <Point x="464" y="64" />
+    </object>
+  </frame>
+  <frame ID="559">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="292" y="70" />
+      <Point x="368" y="70" />
+      <Point x="368" y="126" />
+      <Point x="293" y="129" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="383" y="63" />
+      <Point x="385" y="130" />
+      <Point x="464" y="129" />
+      <Point x="462" y="63" />
+    </object>
+  </frame>
+  <frame ID="560">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="293" y="72" />
+      <Point x="370" y="72" />
+      <Point x="369" y="128" />
+      <Point x="294" y="127" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="385" y="64" />
+      <Point x="386" y="131" />
+      <Point x="466" y="130" />
+      <Point x="464" y="64" />
+    </object>
+  </frame>
+  <frame ID="561">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="291" y="75" />
+      <Point x="369" y="75" />
+      <Point x="368" y="130" />
+      <Point x="292" y="131" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="382" y="66" />
+      <Point x="382" y="133" />
+      <Point x="463" y="132" />
+      <Point x="461" y="66" />
+    </object>
+  </frame>
+  <frame ID="562">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="283" y="76" />
+      <Point x="362" y="76" />
+      <Point x="361" y="132" />
+      <Point x="284" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="377" y="67" />
+      <Point x="377" y="135" />
+      <Point x="458" y="134" />
+      <Point x="456" y="68" />
+    </object>
+  </frame>
+  <frame ID="563">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="277" y="82" />
+      <Point x="356" y="82" />
+      <Point x="355" y="138" />
+      <Point x="278" y="139" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="371" y="71" />
+      <Point x="371" y="139" />
+      <Point x="451" y="139" />
+      <Point x="450" y="72" />
+    </object>
+  </frame>
+  <frame ID="564">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="275" y="87" />
+      <Point x="354" y="87" />
+      <Point x="354" y="143" />
+      <Point x="277" y="144" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="369" y="78" />
+      <Point x="371" y="147" />
+      <Point x="451" y="145" />
+      <Point x="448" y="78" />
+    </object>
+  </frame>
+  <frame ID="565">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="278" y="87" />
+      <Point x="357" y="86" />
+      <Point x="357" y="143" />
+      <Point x="280" y="144" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="372" y="78" />
+      <Point x="374" y="148" />
+      <Point x="455" y="145" />
+      <Point x="452" y="75" />
+    </object>
+  </frame>
+  <frame ID="566">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="276" y="88" />
+      <Point x="355" y="87" />
+      <Point x="354" y="145" />
+      <Point x="276" y="146" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="370" y="79" />
+      <Point x="370" y="152" />
+      <Point x="451" y="149" />
+      <Point x="450" y="78" />
+    </object>
+  </frame>
+  <frame ID="567">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="258" y="87" />
+      <Point x="338" y="86" />
+      <Point x="337" y="145" />
+      <Point x="259" y="145" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="358" y="79" />
+      <Point x="359" y="152" />
+      <Point x="440" y="149" />
+      <Point x="439" y="78" />
+    </object>
+  </frame>
+  <frame ID="568">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="244" y="83" />
+      <Point x="324" y="82" />
+      <Point x="324" y="141" />
+      <Point x="246" y="141" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="73" />
+      <Point x="345" y="146" />
+      <Point x="426" y="143" />
+      <Point x="423" y="71" />
+    </object>
+  </frame>
+  <frame ID="569">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="241" y="82" />
+      <Point x="321" y="81" />
+      <Point x="322" y="140" />
+      <Point x="243" y="141" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="339" y="68" />
+      <Point x="343" y="142" />
+      <Point x="424" y="139" />
+      <Point x="421" y="66" />
+    </object>
+  </frame>
+  <frame ID="570">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="244" y="79" />
+      <Point x="324" y="78" />
+      <Point x="325" y="137" />
+      <Point x="246" y="138" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="68" />
+      <Point x="346" y="142" />
+      <Point x="429" y="139" />
+      <Point x="425" y="66" />
+    </object>
+  </frame>
+  <frame ID="571">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="243" y="79" />
+      <Point x="321" y="78" />
+      <Point x="322" y="136" />
+      <Point x="245" y="138" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="343" y="67" />
+      <Point x="346" y="142" />
+      <Point x="430" y="139" />
+      <Point x="427" y="65" />
+    </object>
+  </frame>
+  <frame ID="572">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="240" y="77" />
+      <Point x="319" y="77" />
+      <Point x="320" y="135" />
+      <Point x="242" y="137" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="70" />
+      <Point x="342" y="143" />
+      <Point x="426" y="140" />
+      <Point x="423" y="68" />
+    </object>
+  </frame>
+  <frame ID="573">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="236" y="75" />
+      <Point x="315" y="75" />
+      <Point x="316" y="133" />
+      <Point x="238" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="337" y="69" />
+      <Point x="339" y="143" />
+      <Point x="421" y="141" />
+      <Point x="419" y="67" />
+    </object>
+  </frame>
+  <frame ID="574">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="233" y="73" />
+      <Point x="312" y="73" />
+      <Point x="313" y="132" />
+      <Point x="235" y="134" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="334" y="64" />
+      <Point x="335" y="141" />
+      <Point x="418" y="139" />
+      <Point x="416" y="64" />
+    </object>
+  </frame>
+  <frame ID="575">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="228" y="69" />
+      <Point x="307" y="69" />
+      <Point x="308" y="129" />
+      <Point x="230" y="131" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="329" y="61" />
+      <Point x="330" y="139" />
+      <Point x="414" y="137" />
+      <Point x="412" y="61" />
+    </object>
+  </frame>
+  <frame ID="576">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="227" y="66" />
+      <Point x="306" y="66" />
+      <Point x="308" y="126" />
+      <Point x="230" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="328" y="58" />
+      <Point x="330" y="137" />
+      <Point x="415" y="135" />
+      <Point x="412" y="57" />
+    </object>
+  </frame>
+  <frame ID="577">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="233" y="65" />
+      <Point x="312" y="65" />
+      <Point x="313" y="126" />
+      <Point x="235" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="334" y="57" />
+      <Point x="335" y="137" />
+      <Point x="421" y="135" />
+      <Point x="418" y="56" />
+    </object>
+  </frame>
+  <frame ID="578">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="235" y="63" />
+      <Point x="314" y="63" />
+      <Point x="315" y="125" />
+      <Point x="237" y="127" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="337" y="55" />
+      <Point x="338" y="136" />
+      <Point x="424" y="134" />
+      <Point x="422" y="54" />
+    </object>
+  </frame>
+  <frame ID="579">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="235" y="62" />
+      <Point x="314" y="62" />
+      <Point x="315" y="124" />
+      <Point x="237" y="126" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="338" y="54" />
+      <Point x="339" y="136" />
+      <Point x="425" y="134" />
+      <Point x="423" y="53" />
+    </object>
+  </frame>
+  <frame ID="580">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="235" y="62" />
+      <Point x="314" y="61" />
+      <Point x="316" y="124" />
+      <Point x="237" y="126" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="338" y="54" />
+      <Point x="340" y="137" />
+      <Point x="426" y="135" />
+      <Point x="424" y="53" />
+    </object>
+  </frame>
+  <frame ID="581">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="239" y="62" />
+      <Point x="318" y="61" />
+      <Point x="320" y="125" />
+      <Point x="241" y="127" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="55" />
+      <Point x="343" y="139" />
+      <Point x="429" y="137" />
+      <Point x="428" y="54" />
+    </object>
+  </frame>
+  <frame ID="582">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="240" y="64" />
+      <Point x="319" y="63" />
+      <Point x="321" y="127" />
+      <Point x="242" y="129" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="57" />
+      <Point x="343" y="141" />
+      <Point x="429" y="139" />
+      <Point x="429" y="56" />
+    </object>
+  </frame>
+  <frame ID="583">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="238" y="66" />
+      <Point x="317" y="65" />
+      <Point x="319" y="129" />
+      <Point x="240" y="131" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="339" y="59" />
+      <Point x="341" y="144" />
+      <Point x="428" y="142" />
+      <Point x="428" y="58" />
+    </object>
+  </frame>
+  <frame ID="584">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="239" y="68" />
+      <Point x="318" y="67" />
+      <Point x="321" y="131" />
+      <Point x="241" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="340" y="62" />
+      <Point x="343" y="148" />
+      <Point x="430" y="146" />
+      <Point x="429" y="62" />
+    </object>
+  </frame>
+  <frame ID="585">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="251" y="68" />
+      <Point x="329" y="67" />
+      <Point x="333" y="131" />
+      <Point x="254" y="133" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="351" y="63" />
+      <Point x="356" y="148" />
+      <Point x="443" y="146" />
+      <Point x="440" y="63" />
+    </object>
+  </frame>
+  <frame ID="586">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="266" y="63" />
+      <Point x="344" y="61" />
+      <Point x="346" y="125" />
+      <Point x="268" y="128" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="367" y="57" />
+      <Point x="370" y="142" />
+      <Point x="457" y="140" />
+      <Point x="457" y="57" />
+    </object>
+  </frame>
+  <frame ID="587">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="266" y="56" />
+      <Point x="344" y="55" />
+      <Point x="344" y="120" />
+      <Point x="266" y="123" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="371" y="50" />
+      <Point x="371" y="137" />
+      <Point x="458" y="135" />
+      <Point x="461" y="51" />
+    </object>
+  </frame>
+  <frame ID="588">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="258" y="52" />
+      <Point x="337" y="51" />
+      <Point x="337" y="117" />
+      <Point x="259" y="119" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="48" />
+      <Point x="364" y="135" />
+      <Point x="451" y="134" />
+      <Point x="454" y="50" />
+    </object>
+  </frame>
+  <frame ID="589">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="261" y="51" />
+      <Point x="341" y="50" />
+      <Point x="342" y="116" />
+      <Point x="263" y="118" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="366" y="44" />
+      <Point x="368" y="132" />
+      <Point x="456" y="131" />
+      <Point x="458" y="46" />
+    </object>
+  </frame>
+  <frame ID="590">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="266" y="47" />
+      <Point x="347" y="45" />
+      <Point x="347" y="112" />
+      <Point x="268" y="114" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="373" y="38" />
+      <Point x="374" y="127" />
+      <Point x="463" y="126" />
+      <Point x="466" y="40" />
+    </object>
+  </frame>
+  <frame ID="591">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="266" y="42" />
+      <Point x="348" y="40" />
+      <Point x="347" y="108" />
+      <Point x="268" y="110" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="374" y="32" />
+      <Point x="374" y="122" />
+      <Point x="463" y="120" />
+      <Point x="467" y="34" />
+    </object>
+  </frame>
+  <frame ID="592">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="261" y="37" />
+      <Point x="344" y="35" />
+      <Point x="343" y="104" />
+      <Point x="263" y="106" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="371" y="28" />
+      <Point x="371" y="119" />
+      <Point x="461" y="117" />
+      <Point x="464" y="30" />
+    </object>
+  </frame>
+  <frame ID="593">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="261" y="33" />
+      <Point x="344" y="31" />
+      <Point x="344" y="101" />
+      <Point x="264" y="103" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="374" y="22" />
+      <Point x="375" y="114" />
+      <Point x="466" y="112" />
+      <Point x="468" y="24" />
+    </object>
+  </frame>
+  <frame ID="594">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="263" y="30" />
+      <Point x="346" y="28" />
+      <Point x="346" y="98" />
+      <Point x="266" y="100" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="378" y="19" />
+      <Point x="378" y="111" />
+      <Point x="469" y="109" />
+      <Point x="472" y="20" />
+    </object>
+  </frame>
+  <frame ID="595">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="261" y="23" />
+      <Point x="344" y="21" />
+      <Point x="343" y="92" />
+      <Point x="263" y="94" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="378" y="12" />
+      <Point x="376" y="105" />
+      <Point x="468" y="103" />
+      <Point x="472" y="13" />
+    </object>
+  </frame>
+  <frame ID="596">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="252" y="17" />
+      <Point x="336" y="15" />
+      <Point x="335" y="87" />
+      <Point x="254" y="89" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="369" y="5" />
+      <Point x="367" y="99" />
+      <Point x="459" y="98" />
+      <Point x="463" y="6" />
+    </object>
+  </frame>
+  <frame ID="597">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="246" y="15" />
+      <Point x="331" y="13" />
+      <Point x="330" y="85" />
+      <Point x="249" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="3" />
+      <Point x="362" y="97" />
+      <Point x="454" y="96" />
+      <Point x="457" y="4" />
+    </object>
+  </frame>
+  <frame ID="598">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="243" y="11" />
+      <Point x="329" y="9" />
+      <Point x="328" y="82" />
+      <Point x="247" y="84" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="361" y="-1" />
+      <Point x="360" y="93" />
+      <Point x="453" y="91" />
+      <Point x="455" y="-1" />
+    </object>
+  </frame>
+  <frame ID="599">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="245" y="10" />
+      <Point x="326" y="10" />
+      <Point x="326" y="84" />
+      <Point x="244" y="85" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="364" y="5" />
+      <Point x="363" y="90" />
+      <Point x="461" y="90" />
+      <Point x="459" y="4" />
+    </object>
+  </frame>
+  <frame ID="600">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="245" y="12" />
+      <Point x="326" y="12" />
+      <Point x="326" y="86" />
+      <Point x="244" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="365" y="7" />
+      <Point x="364" y="92" />
+      <Point x="463" y="92" />
+      <Point x="461" y="6" />
+    </object>
+  </frame>
+  <frame ID="601">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="243" y="12" />
+      <Point x="325" y="11" />
+      <Point x="325" y="86" />
+      <Point x="242" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="365" y="6" />
+      <Point x="364" y="92" />
+      <Point x="463" y="92" />
+      <Point x="462" y="5" />
+    </object>
+  </frame>
+  <frame ID="602">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="236" y="12" />
+      <Point x="319" y="11" />
+      <Point x="319" y="87" />
+      <Point x="235" y="88" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="360" y="6" />
+      <Point x="359" y="93" />
+      <Point x="458" y="93" />
+      <Point x="458" y="5" />
+    </object>
+  </frame>
+  <frame ID="603">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="227" y="14" />
+      <Point x="310" y="13" />
+      <Point x="310" y="89" />
+      <Point x="226" y="90" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="352" y="8" />
+      <Point x="352" y="95" />
+      <Point x="451" y="95" />
+      <Point x="451" y="6" />
+    </object>
+  </frame>
+  <frame ID="604">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="217" y="17" />
+      <Point x="300" y="16" />
+      <Point x="301" y="92" />
+      <Point x="216" y="94" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="343" y="11" />
+      <Point x="344" y="98" />
+      <Point x="443" y="98" />
+      <Point x="443" y="9" />
+    </object>
+  </frame>
+  <frame ID="605">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="213" y="24" />
+      <Point x="296" y="23" />
+      <Point x="298" y="98" />
+      <Point x="213" y="100" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="339" y="19" />
+      <Point x="341" y="105" />
+      <Point x="440" y="105" />
+      <Point x="439" y="17" />
+    </object>
+  </frame>
+  <frame ID="606">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="215" y="30" />
+      <Point x="298" y="28" />
+      <Point x="300" y="103" />
+      <Point x="215" y="105" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="24" />
+      <Point x="343" y="110" />
+      <Point x="443" y="109" />
+      <Point x="441" y="22" />
+    </object>
+  </frame>
+  <frame ID="607">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="216" y="33" />
+      <Point x="299" y="31" />
+      <Point x="302" y="106" />
+      <Point x="217" y="108" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="26" />
+      <Point x="345" y="112" />
+      <Point x="445" y="111" />
+      <Point x="443" y="24" />
+    </object>
+  </frame>
+  <frame ID="608">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="216" y="35" />
+      <Point x="299" y="32" />
+      <Point x="301" y="107" />
+      <Point x="216" y="110" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="27" />
+      <Point x="344" y="113" />
+      <Point x="445" y="112" />
+      <Point x="444" y="25" />
+    </object>
+  </frame>
+  <frame ID="609">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="209" y="35" />
+      <Point x="292" y="32" />
+      <Point x="295" y="107" />
+      <Point x="210" y="110" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="336" y="27" />
+      <Point x="338" y="113" />
+      <Point x="440" y="111" />
+      <Point x="438" y="24" />
+    </object>
+  </frame>
+  <frame ID="610">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="205" y="33" />
+      <Point x="288" y="30" />
+      <Point x="293" y="105" />
+      <Point x="207" y="109" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="333" y="24" />
+      <Point x="336" y="111" />
+      <Point x="439" y="108" />
+      <Point x="436" y="20" />
+    </object>
+  </frame>
+  <frame ID="611">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="202" y="28" />
+      <Point x="293" y="26" />
+      <Point x="299" y="102" />
+      <Point x="206" y="106" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="333" y="16" />
+      <Point x="338" y="107" />
+      <Point x="441" y="103" />
+      <Point x="438" y="15" />
+    </object>
+  </frame>
+  <frame ID="612">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="199" y="24" />
+      <Point x="290" y="21" />
+      <Point x="296" y="98" />
+      <Point x="203" y="103" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="332" y="11" />
+      <Point x="337" y="103" />
+      <Point x="440" y="99" />
+      <Point x="438" y="10" />
+    </object>
+  </frame>
+  <frame ID="613">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="194" y="20" />
+      <Point x="286" y="17" />
+      <Point x="292" y="96" />
+      <Point x="198" y="101" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="7" />
+      <Point x="332" y="101" />
+      <Point x="436" y="97" />
+      <Point x="434" y="7" />
+    </object>
+  </frame>
+  <frame ID="614">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="189" y="16" />
+      <Point x="281" y="13" />
+      <Point x="288" y="93" />
+      <Point x="194" y="98" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="323" y="4" />
+      <Point x="329" y="99" />
+      <Point x="433" y="95" />
+      <Point x="431" y="4" />
+    </object>
+  </frame>
+  <frame ID="615">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="190" y="14" />
+      <Point x="282" y="11" />
+      <Point x="290" y="91" />
+      <Point x="196" y="97" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="322" y="3" />
+      <Point x="329" y="99" />
+      <Point x="434" y="94" />
+      <Point x="430" y="2" />
+    </object>
+  </frame>
+  <frame ID="616">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="193" y="14" />
+      <Point x="285" y="10" />
+      <Point x="293" y="90" />
+      <Point x="199" y="97" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="325" y="-1" />
+      <Point x="332" y="95" />
+      <Point x="438" y="90" />
+      <Point x="433" y="-2" />
+    </object>
+  </frame>
+  <frame ID="617">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="195" y="11" />
+      <Point x="287" y="7" />
+      <Point x="295" y="88" />
+      <Point x="201" y="95" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="328" y="-1" />
+      <Point x="335" y="94" />
+      <Point x="442" y="89" />
+      <Point x="437" y="-1" />
+    </object>
+  </frame>
+  <frame ID="618">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="194" y="8" />
+      <Point x="288" y="6" />
+      <Point x="294" y="85" />
+      <Point x="199" y="92" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="328" y="-2" />
+      <Point x="334" y="91" />
+      <Point x="442" y="87" />
+      <Point x="438" y="-2" />
+    </object>
+  </frame>
+  <frame ID="619">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="189" y="5" />
+      <Point x="284" y="3" />
+      <Point x="290" y="83" />
+      <Point x="193" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="328" y="-1" />
+      <Point x="333" y="88" />
+      <Point x="438" y="84" />
+      <Point x="434" y="0" />
+    </object>
+  </frame>
+  <frame ID="620">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="189" y="4" />
+      <Point x="284" y="2" />
+      <Point x="291" y="83" />
+      <Point x="194" y="87" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="-1" />
+      <Point x="333" y="87" />
+      <Point x="439" y="83" />
+      <Point x="434" y="-1" />
+    </object>
+  </frame>
+  <frame ID="621">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="195" y="6" />
+      <Point x="290" y="4" />
+      <Point x="297" y="85" />
+      <Point x="200" y="89" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="333" y="0" />
+      <Point x="339" y="87" />
+      <Point x="445" y="83" />
+      <Point x="441" y="-1" />
+    </object>
+  </frame>
+  <frame ID="622">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="198" y="7" />
+      <Point x="293" y="4" />
+      <Point x="299" y="86" />
+      <Point x="202" y="90" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="336" y="0" />
+      <Point x="341" y="88" />
+      <Point x="448" y="83" />
+      <Point x="445" y="0" />
+    </object>
+  </frame>
+  <frame ID="623">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="197" y="9" />
+      <Point x="292" y="6" />
+      <Point x="298" y="88" />
+      <Point x="201" y="92" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="337" y="-2" />
+      <Point x="343" y="92" />
+      <Point x="446" y="86" />
+      <Point x="442" y="0" />
+    </object>
+  </frame>
+  <frame ID="624">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="196" y="12" />
+      <Point x="290" y="9" />
+      <Point x="297" y="91" />
+      <Point x="200" y="95" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="337" y="-1" />
+      <Point x="343" y="95" />
+      <Point x="446" y="89" />
+      <Point x="441" y="0" />
+    </object>
+  </frame>
+  <frame ID="625">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="197" y="16" />
+      <Point x="291" y="13" />
+      <Point x="298" y="95" />
+      <Point x="201" y="99" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="339" y="1" />
+      <Point x="345" y="99" />
+      <Point x="448" y="93" />
+      <Point x="443" y="0" />
+    </object>
+  </frame>
+  <frame ID="626">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="198" y="20" />
+      <Point x="292" y="17" />
+      <Point x="298" y="100" />
+      <Point x="201" y="104" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="5" />
+      <Point x="346" y="104" />
+      <Point x="450" y="98" />
+      <Point x="446" y="1" />
+    </object>
+  </frame>
+  <frame ID="627">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="197" y="28" />
+      <Point x="291" y="26" />
+      <Point x="298" y="109" />
+      <Point x="200" y="113" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="341" y="14" />
+      <Point x="347" y="113" />
+      <Point x="451" y="108" />
+      <Point x="446" y="10" />
+    </object>
+  </frame>
+  <frame ID="628">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="205" y="32" />
+      <Point x="298" y="30" />
+      <Point x="304" y="112" />
+      <Point x="207" y="115" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="349" y="18" />
+      <Point x="354" y="115" />
+      <Point x="458" y="111" />
+      <Point x="454" y="14" />
+    </object>
+  </frame>
+  <frame ID="629">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="218" y="38" />
+      <Point x="314" y="35" />
+      <Point x="320" y="122" />
+      <Point x="219" y="124" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="361" y="24" />
+      <Point x="365" y="127" />
+      <Point x="473" y="124" />
+      <Point x="467" y="20" />
+    </object>
+  </frame>
+  <frame ID="630">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="214" y="43" />
+      <Point x="310" y="41" />
+      <Point x="315" y="128" />
+      <Point x="213" y="129" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="359" y="31" />
+      <Point x="361" y="135" />
+      <Point x="470" y="132" />
+      <Point x="465" y="28" />
+    </object>
+  </frame>
+  <frame ID="631">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="208" y="44" />
+      <Point x="305" y="42" />
+      <Point x="311" y="130" />
+      <Point x="207" y="132" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="354" y="36" />
+      <Point x="357" y="140" />
+      <Point x="467" y="138" />
+      <Point x="460" y="33" />
+    </object>
+  </frame>
+  <frame ID="632">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="211" y="47" />
+      <Point x="308" y="45" />
+      <Point x="314" y="133" />
+      <Point x="210" y="135" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="358" y="40" />
+      <Point x="361" y="144" />
+      <Point x="472" y="142" />
+      <Point x="469" y="39" />
+    </object>
+  </frame>
+  <frame ID="633">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="218" y="51" />
+      <Point x="317" y="50" />
+      <Point x="319" y="138" />
+      <Point x="215" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="365" y="44" />
+      <Point x="366" y="147" />
+      <Point x="478" y="145" />
+      <Point x="477" y="42" />
+    </object>
+  </frame>
+  <frame ID="634">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="213" y="51" />
+      <Point x="312" y="50" />
+      <Point x="314" y="139" />
+      <Point x="209" y="141" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="360" y="45" />
+      <Point x="360" y="149" />
+      <Point x="473" y="146" />
+      <Point x="472" y="43" />
+    </object>
+  </frame>
+  <frame ID="635">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="205" y="51" />
+      <Point x="304" y="51" />
+      <Point x="308" y="140" />
+      <Point x="203" y="142" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="354" y="46" />
+      <Point x="357" y="151" />
+      <Point x="470" y="148" />
+      <Point x="467" y="44" />
+    </object>
+  </frame>
+  <frame ID="636">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="211" y="52" />
+      <Point x="310" y="52" />
+      <Point x="314" y="141" />
+      <Point x="210" y="143" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="361" y="47" />
+      <Point x="365" y="153" />
+      <Point x="478" y="150" />
+      <Point x="475" y="45" />
+    </object>
+  </frame>
+  <frame ID="637">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="218" y="53" />
+      <Point x="318" y="53" />
+      <Point x="319" y="142" />
+      <Point x="215" y="144" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="368" y="47" />
+      <Point x="369" y="153" />
+      <Point x="483" y="150" />
+      <Point x="482" y="45" />
+    </object>
+  </frame>
+  <frame ID="638">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="214" y="51" />
+      <Point x="314" y="51" />
+      <Point x="314" y="141" />
+      <Point x="210" y="142" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="363" y="44" />
+      <Point x="363" y="151" />
+      <Point x="477" y="148" />
+      <Point x="478" y="43" />
+    </object>
+  </frame>
+  <frame ID="639">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="205" y="48" />
+      <Point x="306" y="49" />
+      <Point x="306" y="140" />
+      <Point x="202" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="355" y="42" />
+      <Point x="356" y="150" />
+      <Point x="470" y="148" />
+      <Point x="470" y="41" />
+    </object>
+  </frame>
+  <frame ID="640">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="203" y="47" />
+      <Point x="304" y="49" />
+      <Point x="304" y="140" />
+      <Point x="200" y="140" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="353" y="42" />
+      <Point x="354" y="151" />
+      <Point x="469" y="149" />
+      <Point x="469" y="41" />
+    </object>
+  </frame>
+  <frame ID="641">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="203" y="48" />
+      <Point x="304" y="50" />
+      <Point x="304" y="141" />
+      <Point x="200" y="141" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="353" y="43" />
+      <Point x="353" y="152" />
+      <Point x="469" y="151" />
+      <Point x="469" y="42" />
+    </object>
+  </frame>
+  <frame ID="642">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="202" y="50" />
+      <Point x="303" y="52" />
+      <Point x="303" y="144" />
+      <Point x="199" y="144" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="352" y="45" />
+      <Point x="353" y="155" />
+      <Point x="469" y="154" />
+      <Point x="469" y="44" />
+    </object>
+  </frame>
+  <frame ID="643">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="203" y="52" />
+      <Point x="304" y="54" />
+      <Point x="304" y="147" />
+      <Point x="199" y="147" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="353" y="47" />
+      <Point x="354" y="158" />
+      <Point x="470" y="157" />
+      <Point x="471" y="46" />
+    </object>
+  </frame>
+  <frame ID="644">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="200" y="57" />
+      <Point x="301" y="59" />
+      <Point x="301" y="152" />
+      <Point x="195" y="152" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="350" y="52" />
+      <Point x="351" y="163" />
+      <Point x="467" y="162" />
+      <Point x="469" y="51" />
+    </object>
+  </frame>
+  <frame ID="645">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="196" y="62" />
+      <Point x="297" y="64" />
+      <Point x="297" y="158" />
+      <Point x="191" y="158" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="352" y="59" />
+      <Point x="354" y="171" />
+      <Point x="470" y="170" />
+      <Point x="472" y="58" />
+    </object>
+  </frame>
+  <frame ID="646">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="191" y="66" />
+      <Point x="292" y="68" />
+      <Point x="293" y="162" />
+      <Point x="187" y="162" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="348" y="64" />
+      <Point x="352" y="177" />
+      <Point x="468" y="175" />
+      <Point x="469" y="63" />
+    </object>
+  </frame>
+  <frame ID="647">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="190" y="71" />
+      <Point x="291" y="72" />
+      <Point x="292" y="167" />
+      <Point x="186" y="167" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="349" y="69" />
+      <Point x="354" y="182" />
+      <Point x="471" y="179" />
+      <Point x="470" y="67" />
+    </object>
+  </frame>
+  <frame ID="648">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="190" y="76" />
+      <Point x="291" y="77" />
+      <Point x="291" y="172" />
+      <Point x="185" y="173" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="349" y="75" />
+      <Point x="353" y="189" />
+      <Point x="471" y="185" />
+      <Point x="471" y="73" />
+    </object>
+  </frame>
+  <frame ID="649">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="181" y="85" />
+      <Point x="283" y="86" />
+      <Point x="284" y="181" />
+      <Point x="177" y="182" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="343" y="79" />
+      <Point x="348" y="193" />
+      <Point x="467" y="188" />
+      <Point x="466" y="76" />
+    </object>
+  </frame>
+  <frame ID="650">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="181" y="87" />
+      <Point x="283" y="88" />
+      <Point x="284" y="183" />
+      <Point x="177" y="184" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="342" y="81" />
+      <Point x="347" y="195" />
+      <Point x="467" y="190" />
+      <Point x="466" y="77" />
+    </object>
+  </frame>
+  <frame ID="651">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="180" y="90" />
+      <Point x="284" y="92" />
+      <Point x="282" y="188" />
+      <Point x="174" y="189" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="340" y="85" />
+      <Point x="342" y="200" />
+      <Point x="462" y="195" />
+      <Point x="464" y="82" />
+    </object>
+  </frame>
+  <frame ID="652">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="166" y="93" />
+      <Point x="271" y="96" />
+      <Point x="270" y="192" />
+      <Point x="160" y="193" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="329" y="88" />
+      <Point x="331" y="203" />
+      <Point x="452" y="199" />
+      <Point x="454" y="85" />
+    </object>
+  </frame>
+  <frame ID="653">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="155" y="96" />
+      <Point x="261" y="98" />
+      <Point x="263" y="195" />
+      <Point x="152" y="197" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="320" y="91" />
+      <Point x="325" y="207" />
+      <Point x="447" y="202" />
+      <Point x="446" y="87" />
+    </object>
+  </frame>
+  <frame ID="654">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="156" y="102" />
+      <Point x="262" y="103" />
+      <Point x="266" y="200" />
+      <Point x="154" y="203" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="323" y="97" />
+      <Point x="329" y="213" />
+      <Point x="452" y="208" />
+      <Point x="450" y="92" />
+    </object>
+  </frame>
+  <frame ID="655">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="161" y="108" />
+      <Point x="267" y="108" />
+      <Point x="271" y="205" />
+      <Point x="159" y="209" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="328" y="103" />
+      <Point x="334" y="219" />
+      <Point x="458" y="213" />
+      <Point x="456" y="97" />
+    </object>
+  </frame>
+  <frame ID="656">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="159" y="111" />
+      <Point x="272" y="111" />
+      <Point x="278" y="208" />
+      <Point x="156" y="212" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="329" y="106" />
+      <Point x="334" y="222" />
+      <Point x="459" y="216" />
+      <Point x="458" y="99" />
+    </object>
+  </frame>
+  <frame ID="657">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="157" y="112" />
+      <Point x="276" y="113" />
+      <Point x="279" y="211" />
+      <Point x="155" y="213" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="107" />
+      <Point x="333" y="224" />
+      <Point x="459" y="217" />
+      <Point x="457" y="100" />
+    </object>
+  </frame>
+  <frame ID="658">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="156" y="111" />
+      <Point x="273" y="110" />
+      <Point x="278" y="208" />
+      <Point x="153" y="213" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="327" y="107" />
+      <Point x="332" y="225" />
+      <Point x="459" y="218" />
+      <Point x="457" y="100" />
+    </object>
+  </frame>
+  <frame ID="659">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="151" y="110" />
+      <Point x="265" y="110" />
+      <Point x="272" y="208" />
+      <Point x="148" y="213" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="323" y="106" />
+      <Point x="328" y="225" />
+      <Point x="456" y="218" />
+      <Point x="455" y="99" />
+    </object>
+  </frame>
+  <frame ID="660">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="145" y="108" />
+      <Point x="263" y="108" />
+      <Point x="265" y="206" />
+      <Point x="143" y="212" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="319" y="103" />
+      <Point x="325" y="224" />
+      <Point x="454" y="217" />
+      <Point x="452" y="96" />
+    </object>
+  </frame>
+  <frame ID="661">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="144" y="107" />
+      <Point x="266" y="106" />
+      <Point x="262" y="207" />
+      <Point x="142" y="212" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="320" y="103" />
+      <Point x="326" y="225" />
+      <Point x="455" y="218" />
+      <Point x="453" y="96" />
+    </object>
+  </frame>
+  <frame ID="662">
+    <object Transcription="##DONT#CARE##" ID="518001" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="143" y="106" />
+      <Point x="265" y="105" />
+      <Point x="264" y="208" />
+      <Point x="136" y="212" />
+    </object>
+    <object Transcription="##DONT#CARE##" ID="518002" Language="Spanish" Mirrored="Unmirrored" Quality="LOW">
+      <Point x="320" y="102" />
+      <Point x="326" y="226" />
+      <Point x="455" y="219" />
+      <Point x="454" y="95" />
+    </object>
+  </frame>
+</Frames>

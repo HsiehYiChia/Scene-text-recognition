@@ -41,7 +41,36 @@ def save_tp_table(filename):
 
         if sum > 0:
             row /= sum
+    
+    # rearrange the table
+    for i in range(10):
+        for j in range(10):
+            tp_table[i][j] = 1.0/10
+        for j in range(10, CHAR_NUM):
+            tp_table[i][j] = 1.0/26
 
+    for i in range(10, 36):
+        for j in range(10):
+            tp_table[i][j] = 1.0 / 26
+        for j in range(10, 36):
+            tp_table[i][j] = tp_table[i+26][j+26]
+        for j in range(36, 62):
+            tp_table[i][j] = tp_table[i+26][j]
+        for j in range(62, CHAR_NUM):
+            tp_table[i][j] = 1.0 / 26
+    
+    for i in range(36, 62):
+        for j in range(10):
+            tp_table[i][j] = 1.0 / 26
+        for j in range(10, 36):
+            tp_table[i][j] = tp_table[i][j+26]
+        for j in range(62, CHAR_NUM):
+            tp_table[i][j] = 1.0 / 26
+
+    for i in range(62, CHAR_NUM):
+        tp_table[i] = np.full((1, CHAR_NUM), 1.0/26)
+        
+    for row in tp_table:
         for entry in row:
             fout.write(str(entry)+' ')
         fout.write('\n')
@@ -54,9 +83,7 @@ tp_table = np.zeros((CHAR_NUM, CHAR_NUM))
 
 calc_tp_table('dictionary/self_define_word.txt')
 calc_tp_table('dictionary/words.txt')
-calc_tp_table('dictionary/passwords.txt')
 calc_tp_table('dictionary/dictionary.txt')
-calc_tp_table('dictionary/10_million_password_list_top_1000000.txt')
-save_tp_table('dictionary/tp.txt')
+save_tp_table('tp.txt')
 
 print (tp_table)

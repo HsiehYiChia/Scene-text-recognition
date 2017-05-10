@@ -639,6 +639,10 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 			} while (Di < d*D_prev);
 
 			std::cout << offset + ni << " Fi=" << Fi << " Di=" << Di << " Ti=" << Ti << " Pi=" << Pi << endl;
+			if (offset + ni > 5000)
+			{
+				goto end;
+			}
 		}
 		offset += ni;
 		
@@ -666,7 +670,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 			td.set_dim(td.data[0].fv.size());
 		}
 	}
-
+end:
 	write_classifier(outfile);
 }
 

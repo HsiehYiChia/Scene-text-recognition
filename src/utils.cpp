@@ -1,10 +1,35 @@
 #include "utils.h"
 
 
-bool load_test_file(Mat &src, int n)
+bool load_challenge2_test_file(Mat &src, int n)
 {
 	char filename[50];
 	sprintf(filename, "res/ICDAR2015_test/img_%d.jpg", n);
+	src = imread(filename, CV_LOAD_IMAGE_UNCHANGED);
+
+	if (src.empty())
+	{
+		std::cout << n << "\tFail to open" << filename << endl;
+		return false;
+	}
+
+	else if (src.cols > MAX_WIDTH || src.rows > MAX_HEIGHT)
+	{
+		std::cout << n << "\t" << src.rows << "," << src.cols << "\tResize the image" << endl;
+		double resize_factor = (src.rows > MAX_HEIGHT) ? (double)MAX_HEIGHT / src.rows : (double)MAX_WIDTH / src.cols;
+
+		resize(src, src, Size(src.cols*resize_factor, src.rows*resize_factor));
+		return true;
+	}
+
+	//std::cout << n << "\t" << src.rows << "," << src.cols << endl;
+	return true;
+}
+
+bool load_challenge2_training_file(Mat &src, int n)
+{
+	char filename[50];
+	sprintf(filename, "res/ICDAR2015_training/%d.jpg", n);
 	src = imread(filename, CV_LOAD_IMAGE_UNCHANGED);
 
 	if (src.empty())
@@ -27,14 +52,14 @@ bool load_test_file(Mat &src, int n)
 }
 
 
-void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text)
+void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &times, ERs &tracked, vector<ERs> &strong, vector<ERs> &weak, vector<ERs> &all, vector<ERs> &pool)
 {
 	Mat all_img = src.clone();
 	Mat pool_img = src.clone();
 	Mat strong_img = src.clone();
 	Mat weak_img = src.clone();
 	Mat tracked_img = src.clone();
-	Mat result_img = src.clone();
+	result_img = src.clone();
 	for (int i = 0; i < pool.size(); i++)
 	{
 		for (auto it : all[i])
@@ -57,7 +82,7 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 
 	for (auto it : text)
 	{
-		if (abs(it.slope) > 0.05)
+		/*if (abs(it.slope) > 0.05)
 		{
 			vector<Point> points;
 			for (auto it_er : it.ers)
@@ -77,7 +102,8 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 		else
 		{
 			rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
-		}
+		}*/
+		rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
 
 #ifndef DO_OCR
 		//rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y-20, 53, 19), Scalar(30, 30, 200), CV_FILLED);
@@ -92,27 +118,75 @@ void show_result(Mat &src, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &str
 	}
 
 
-	double alpha = 0.7;
-	addWeighted(all_img, alpha, src, 1.0 - alpha, 0.0, all_img);
-	cv::imshow("all", all_img);
-	cv::imshow("pool", pool_img);
-	cv::imshow("weak", weak_img);
-	cv::imshow("strong", strong_img);
-	cv::imshow("tracked", tracked_img);
+	if (!times.empty())
+	{
+	#if defined(WEBCAM_MODE) || defined(VIDEO_MODE)
+		draw_FPS(result_img, times.back());
+	#endif
+
+		cout << "ER extraction = " << times[0] * 1000 << "ms\n"
+			<< "Non-maximum suppression = " << times[1] * 1000 << "ms\n"
+			<< "Classification = " << times[2] * 1000 << "ms\n"
+			<< "Character tracking = " << times[3] * 1000 << "ms\n"
+			<< "Character grouping = " << times[4] * 1000 << "ms\n"
+	#ifdef DO_OCR
+			<< "OCR = " << times[5] * 1000 << "ms\n"
+	#endif
+			<< "Total execution time = " << times[6] * 1000 << "ms\n\n";
+	}
+
+	if (!all.empty())
+	{
+		double alpha = 0.7;
+		addWeighted(all_img, alpha, src, 1.0 - alpha, 0.0, all_img);
+		cv::imshow("all", all_img);
+	}
+	if (!pool.empty())
+		cv::imshow("pool", pool_img);
+	if (!weak.empty())
+		cv::imshow("weak", weak_img);
+	if (!strong.empty())
+		cv::imshow("strong", strong_img);
+	if (!tracked.empty())
+		cv::imshow("tracked", tracked_img);
 	cv::imshow("result", result_img);
 
-#ifndef WEBCAM_MODE
-	imwrite("all.png", all_img);
-	imwrite("pool.jpg", pool_img);
-	imwrite("weak.jpg", weak_img);
-	imwrite("strong.jpg", strong_img);
-	imwrite("tracked.jpg", tracked_img);
-	imwrite("result.jpg", result_img);
+#ifdef IMAGE_MODE
+	if (!all.empty())
+		imwrite("all.png", all_img);
+	if (!pool.empty())
+		imwrite("pool.png", pool_img);
+	if (!weak.empty())
+		imwrite("weak.png", weak_img);
+	if (!strong.empty())
+		imwrite("strong.png", strong_img);
+	if (!tracked.empty())
+		imwrite("tracked.png", tracked_img);
+	imwrite("result.png", result_img);
 	waitKey(0);
 #endif
-
+	
 }
 
+
+void draw_FPS(Mat& src, double time)
+{
+	static int counter = 0;
+	static double avg_time = 0;
+	static char fps_text[20];
+
+	if (counter > 10)
+	{
+		double fps = 1 / (avg_time / 10.0);
+		sprintf(fps_text, "FPS: %.1f", fps);
+		counter = 0;
+		avg_time = 0;
+	}
+	avg_time += time;
+	++counter;
+
+	putText(src, fps_text, Point(10, 25), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 0), 2);
+}
 
 void draw_linear_time_MSER(string img_name)
 {
@@ -379,7 +453,7 @@ void draw_multiple_channel(string img_name)
 }
 
 
-void test_MSER_time(string img_name)
+void output_MSER_time(string img_name)
 {
 	fstream fout = fstream("time.txt", fstream::out);
 	ERFilter *erFilter = new ERFilter(1, 100, 1.0E7, NMS_STABILITY_T, NMS_OVERLAP_COEF);
@@ -415,9 +489,41 @@ void test_MSER_time(string img_name)
 
 
 
-void test_classifier_ROC(string classifier_name, string test_file)
+void output_classifier_ROC(string classifier_name, string test_file)
 {
 
+}
+
+
+void output_optimal_path(string img_name)
+{
+	Mat src = imread("img_1.jpg");
+	Mat Ycrcb;
+	vector<Mat> channel;
+
+	ERs root, tracked;
+	vector<ERs> all, pool, strong, weak;
+	vector<Text> text;
+	ERFilter er_filter;
+	
+	er_filter.compute_channels(src, Ycrcb, channel);
+
+	root.resize(channel.size());
+	all.resize(channel.size());
+	pool.resize(channel.size());
+	strong.resize(channel.size());
+	weak.resize(channel.size());
+
+#pragma omp parallel for
+	for (int i = 0; i < channel.size(); i++)
+	{
+		root[i] = er_filter.er_tree_extract(channel[i]);
+		er_filter.non_maximum_supression(root[i], all[i], pool[i], channel[i]);
+		er_filter.classify(pool[i], strong[i], weak[i], channel[i]);
+	}
+
+	er_filter.er_track(strong, weak, tracked, channel, Ycrcb);
+	er_filter.er_ocr(tracked, channel, text);
 }
 
 
@@ -547,13 +653,178 @@ Vec6d calc_detection_rate(int n, vector<Text> &text)
 }
 
 
-
-void save_deteval_xml(vector<vector<Text>> &text)
+void calc_recall_rate()
 {
-	remove("gt.xml");
-	remove("det.xml");
+	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
+	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
+	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
+	er_filter->ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->load_tp_table("transition_probability/tp.txt");
+
+	Ptr<MSER> ms = MSER::create();
+	
+	
+	int img_count = 0;
+	double overlap_coef = 0.5;
+	vector<double> recall_vec(7, 0);			// all ER, nms, strong, weak, classify, track, MSER
+	vector<double> precision_vec(7, 0);
+	vector<int> candidate_vec(7, 0);
+
+	for (int n = 100; n <= 328; n++)
+	{
+		Mat src;
+		Mat result;
+		if (!load_challenge2_training_file(src, n))	continue;
+
+		Mat Ycrcb;
+		vector<Mat> channel;
+		er_filter->compute_channels(src, Ycrcb, channel);
+
+		ERs root(channel.size());
+		vector<ERs> all(channel.size());
+		vector<ERs> pool(channel.size());
+		vector<ERs> strong(channel.size());
+		vector<ERs> weak(channel.size());
+		ERs tracked;
+
+		vector<vector<Point>> regions;
+		vector<Rect> mser_bbox;
+		ms->detectRegions(Ycrcb, regions, mser_bbox);
+
+#pragma omp parallel for
+		for (int i = 0; i < channel.size(); i++)
+		{
+			root[i] = er_filter->er_tree_extract(channel[i]);
+			er_filter->non_maximum_supression(root[i], all[i], pool[i], channel[i]);
+			er_filter->classify(pool[i], strong[i], weak[i], channel[i]);
+			//ms->detectRegions(channel[i], regions, mser_bbox);
+		}
+
+		er_filter->er_track(strong, weak, tracked, channel, Ycrcb);
+
+		vector<Rect> gt_box;
+		char buf[60];
+		sprintf(buf, "res/ICDAR2015_training_GT/%d_GT.txt", n);
+		
+		ifstream infile(buf);
+		string line;
+		while (getline(infile, line))
+		{
+			istringstream iss(line);
+			
+			int d0, d1, d2, d3, d4, d5, d6, d7, d8, d9;
+			if (!(iss >> d0 >> d1 >> d2 >> d3 >> d4 >> d5 >> d6 >> d7 >> d8))
+			{
+				// encounter a blank line
+				continue;
+			}
+			
+			gt_box.push_back(Rect(Point(d5, d6), Point(d7, d8)));
+		}
+
+		// flatten each stage output
+		vector<ERs> flat(7);	// all ER, nms, strong, weak, classify, track
+		for (auto it : all)
+			flat[0].insert(flat[0].end(), it.begin(), it.end());
+		for (auto it : pool)
+			flat[1].insert(flat[1].end(), it.begin(), it.end());
+		for (auto it : strong)
+			flat[2].insert(flat[2].end(), it.begin(), it.end());
+		for (auto it : weak)
+			flat[3].insert(flat[3].end(), it.begin(), it.end());
+		flat[4].insert(flat[4].end(), flat[2].begin(), flat[2].end());
+		flat[4].insert(flat[4].end(), flat[3].begin(), flat[3].end());
+		flat[5].insert(flat[5].end(), tracked.begin(), tracked.end());
+		flat[6].resize(mser_bbox.size());
+
+		vector<vector<bool>> matches(7, vector<bool>(gt_box.size(), false));	// all, nms, strong, weak, classify, track
+		vector<int> recall_count(7, 0);
+		vector<int> match_count(7, 0);
+
+		
+		for (int b = 0; b < gt_box.size(); b++)
+		{
+			// check matches and misses for my algorithm
+			for (int i = 0; i < 6; i++)
+			{
+				for (int j = 0; j < flat[i].size(); j++)
+				{
+					int overlap_area = (gt_box[b] & flat[i][j]->bound).area();
+					int union_area = (gt_box[b] | flat[i][j]->bound).area();
+					double overlap_over_union = (double)overlap_area / (double)union_area;
+					if (overlap_over_union > overlap_coef)
+					{
+						matches[i][b] = true;
+						match_count[i]++;
+					}
+				}
+			}
+
+			for (int j = 0; j < mser_bbox.size(); j++)
+			{
+				int overlap_area = (gt_box[b] & mser_bbox[j]).area();
+				int union_area = (gt_box[b] | mser_bbox[j]).area();
+				double overlap_over_union = (double)overlap_area / (double)union_area;
+				if (overlap_over_union > overlap_coef)
+				{
+					matches[6][b] = true;
+					match_count[6]++;
+				}
+			}
+		}
+
+		// count matches for every stage
+		for (int i = 0; i < 7; i++)
+		{
+			for (auto it : matches[i])
+			{
+				if (it == true)
+					++recall_count[i];
+			}
+		}
+		
+		for (int i = 0; i < flat.size(); i++)
+		{
+			if (flat[i].empty())
+			{
+				flat[i].push_back(new ER());
+			}
+		}
+
+		cout << "all candidate : " << flat[0].size() <<" recall : " << recall_count[0] / (double)gt_box.size() << "    precision : " << match_count[0] / (double)flat[0].size() << endl;
+		cout << "nms candidate : " << flat[1].size() << " recall : " << recall_count[1] / (double)gt_box.size() << "    precision : " << match_count[1] / (double)flat[1].size() << endl;
+		cout << "strong candidate : " << flat[2].size() << " recall : " << recall_count[2] / (double)gt_box.size() << "    precision : " << match_count[2] / (double)flat[2].size() << endl;
+		cout << "weak candidate : " << flat[3].size() << " recall : " << recall_count[3] / (double)gt_box.size() << "    precision : " << match_count[3] / (double)flat[3].size() << endl;
+		cout << "classify candidate : " << flat[4].size() << " recall : " << recall_count[4] / (double)gt_box.size() << "    precision : " << match_count[4] / (double)flat[4].size() << endl;
+		cout << "track candidate : " << flat[5].size() << " recall : " << recall_count[5] / (double)gt_box.size() << "    precision : " << match_count[5] / (double)flat[5].size() << endl;
+		cout << "MSER candidate : " << flat[6].size() << " recall : " << recall_count[6] / (double)gt_box.size() << "    precision : " << match_count[6] / (double)flat[6].size() << endl << endl;
+
+		img_count++;
+		for (int i = 0; i < 7; i++)
+		{
+			recall_vec[i] += recall_count[i] / (double)gt_box.size();
+			precision_vec[i] += match_count[i] / (double)flat[i].size();
+			candidate_vec[i] += flat[i].size();
+		}
+	}
+
+	std::cout << "Final candidates, recall and precision :" << endl;
+	std::cout << "all candidate : " << candidate_vec[0]<< "    recall : " << recall_vec[0] / img_count << "    precision : " << precision_vec[0] / img_count << endl;
+	std::cout << "nms candidate : " << candidate_vec[1] << "    recall : " << recall_vec[1] / img_count << "    precision : " << precision_vec[1] / img_count << endl;
+	std::cout << "strong candidate : " << candidate_vec[2] << "    recall : " << recall_vec[2] / img_count << "    precision : " << precision_vec[2] / img_count << endl;
+	std::cout << "weak candidate : " << candidate_vec[3] << "    recall : " << recall_vec[3] / img_count << "    precision : " << precision_vec[3] / img_count << endl;
+	std::cout << "classify candidate : " << candidate_vec[4] << "    recall : " << recall_vec[4] / img_count << "    precision : " << precision_vec[4] / img_count << endl;
+	std::cout << "track candidate : " << candidate_vec[5] << "    recall : " << recall_vec[5] / img_count << "    precision : " << precision_vec[5] / img_count << endl;
+	std::cout << "MSER candidate : " << candidate_vec[6] << "    recall : " << recall_vec[6] / img_count << "    precision : " << precision_vec[6] / img_count << endl << endl;
+}
+
+
+void save_deteval_xml(vector<vector<Text>> &text, string det_name)
+{
+	//remove("gt.xml");
+	//remove("det.xml");
 	fstream fgt("gt.xml", fstream::out);
-	fstream fdet("det.xml", fstream::out);
+	fstream fdet(det_name, fstream::out);
 
 	fgt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl << "<tagset>" << endl;
 	fdet << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl << "<tagset>" << endl;
@@ -590,6 +861,49 @@ void save_deteval_xml(vector<vector<Text>> &text)
 }
 
 
+void test_best_detval()
+{
+	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
+	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
+	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
+	er_filter->ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->load_tp_table("transition_probability/tp.txt");
+
+
+	for (int thresh_step = 9; thresh_step <= 16; thresh_step++)
+	{
+		for (int min_area = 20; min_area <= 200; min_area+=10)
+		{
+			cout << "Test " << thresh_step << " " << min_area << endl;
+			er_filter->set_thresh_step(thresh_step);
+			er_filter->set_min_area(min_area);
+			
+			vector<vector<Text>> det_text;
+			for (int n = 1; n <= 233; n++)
+			{
+				Mat src;
+				Mat result;
+				if (!load_challenge2_test_file(src, n))	continue;
+
+				ERs root;
+				vector<ERs> all;
+				vector<ERs> pool;
+				vector<ERs> strong;
+				vector<ERs> weak;
+				ERs tracked;
+				vector<Text> text;
+
+				vector<double> times = er_filter->text_detect(src, root, all, pool, strong, weak, tracked, text);
+
+				det_text.push_back(text);
+			}
+
+			string det_name = "deteval/det_" + to_string(thresh_step) + "_" + to_string(min_area) + ".xml";
+			save_deteval_xml(det_text, det_name);
+		}
+	}
+	
+}
 
 //==================================================
 //=============== Training Function ================
@@ -624,12 +938,12 @@ void train_classifier()
 
 void train_cascade()
 {
-	double Ftarget1 = 0.02;
-	double f1 = 0.80;
-	double d1 = 0.80;
-	double Ftarget2 = 0.30;
-	double f2 = 0.90;
-	double d2 = 0.90;
+	double Ftarget1 = 0.005;
+	double f1 = 0.53;
+	double d1 = 0.85;
+	double Ftarget2 = 0.15;
+	double f2 = 0.62;
+	double d2 = 0.86;
 	TrainingData *td1 = new TrainingData();
 	TrainingData *tmp = new TrainingData();
 	TrainingData *td2 = new TrainingData();
@@ -638,13 +952,23 @@ void train_cascade()
 
 	freopen("er_classifier/log.txt", "w", stdout);
 
+	chrono::high_resolution_clock::time_point start, middle, end;
+	start = chrono::high_resolution_clock::now();
+
 	cout << "Strong Text    Ftarget:" << Ftarget1 << " f=" << f1 << " d:" << d1 << endl;
 	td1->read_data("er_classifier/training_data.txt");
 	adb1->train_classifier(*td1, "er_classifier/cascade1.classifier");
 
+	middle = chrono::high_resolution_clock::now();
+
 	cout << endl << "Weak Text    Ftarget:" << Ftarget2 << " f=" << f2 << " d:" << d2 << endl;
 	td2->read_data("er_classifier/training_data.txt");
 	adb2->train_classifier(*td2, "er_classifier/cascade2.classifier");
+
+	end = chrono::high_resolution_clock::now();
+
+	cout << "strong training time:" << chrono::duration<double>(middle - start).count() * 1000 << " ms" << endl;
+	cout << "weak training time:" << chrono::duration<double>(end - middle).count() * 1000 << " ms" << endl;
 }
 
 
@@ -695,7 +1019,7 @@ void bootstrap()
 
 
 
-void get_canny_data()
+void get_lbp_data()
 {
 	fstream fout = fstream("er_classifier/training_data.txt", fstream::out);
 
@@ -736,7 +1060,7 @@ void get_canny_data()
 	
 
 
-	for (int i = 1; i <= 3; i++)
+	for (int i = 1; i <= 1; i++)
 	{
 		for (int pic = 0; pic <= 15000; pic++)
 		{
@@ -765,7 +1089,6 @@ void get_canny_data()
 			cout << filename <<" finish " << endl;
 		}
 	}
-	
 }
 
 
@@ -834,6 +1157,10 @@ void train_ocr_model()
 	fstream fout = fstream("ocr_classifier/OCR.data", fstream::out);
 	Mat feature;
 	vector<int> labels;
+
+	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+	erFilter.ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+
 	for (int i = 0; i < font_name.size(); i++)
 	{
 		for (int j = 0; j < font_type.size(); j++)
@@ -856,20 +1183,16 @@ void train_ocr_model()
 						cout << filename << " not exist!" << endl;
 						continue;
 					}
-						
-
-					ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-					erFilter.ocr = new OCR();
 
 					fout << label-1;
 					
 					Mat ocr_img;
 					threshold(255 - img, ocr_img, 200, 255, CV_THRESH_BINARY);
 					erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
-					erFilter.ocr->ARAN(ocr_img, ocr_img, 35);
+					erFilter.ocr->ARAN(ocr_img, ocr_img, OCR_IMG_L);
 					
-					// get svm node
-					svm_node *fv = new svm_node[201];
+					// get chain code svm node
+					svm_node *fv = new svm_node[8 * OCR_FEATURE_L * OCR_FEATURE_L + 1];
 					erFilter.ocr->extract_feature(ocr_img, fv);
 
 					int m = 0;
@@ -881,7 +1204,7 @@ void train_ocr_model()
 					fout << endl;
 
 					// get flann feature
-					Mat point = Mat::zeros(1, 200, CV_32F);
+					Mat point = Mat::zeros(1, 8 * OCR_FEATURE_L * OCR_FEATURE_L, CV_32F);
 					float *ptr = point.ptr<float>(0);
 					m = 0;
 					while (fv[m].index != -1)
@@ -891,6 +1214,21 @@ void train_ocr_model()
 					}
 					feature.push_back(point);
 					labels.push_back(label - 1);
+					delete[] fv;
+
+					// get lbp svm node
+					/*ERFilter erfilter;
+					Mat lbp = erfilter.calc_LBP(ocr_img);
+					vector<double> fv = erfilter.make_LBP_hist(lbp, 2, OCR_IMG_L);
+
+					for (int i = 0; i < fv.size(); i++)
+					{
+						if (fv[i] != 0)
+						{
+							fout << " " << i << ":" << fv[i] / 225.0;
+						}
+					}
+					fout << endl;*/
 				}
 			}
 		}
@@ -898,17 +1236,17 @@ void train_ocr_model()
 	fout.close();
 
 	// svm
-	//std::system("C:/libsvm-3.21/windows/svm-train.exe -b 1 -c 512.0.0 -g 0.0078125 ocr_classifier/svm.data ocr_classifier/OCR.model");
-	//std::system("C:/libsvm-3.21/windows/svm-predict.exe -b 1 ocr_classifier/OCR.data ocr_classifier/svm.model ocr_classifier/predict_result.txt");
+	std::system("C:/libsvm-3.22/windows/svm-train.exe -b 1 -c 512.0.0 -g 0.0078125 ocr_classifier/OCR.data ocr_classifier/OCR.model");
+	std::system("C:/libsvm-3.22/windows/svm-predict.exe -b 1 ocr_classifier/OCR.data ocr_classifier/OCR.model ocr_classifier/predict_result.txt");
 
 	// flann
-	cout << "train flann index" << endl;
+	/*cout << "train flann index" << endl;
 	flann::Index index(feature, flann::AutotunedIndexParams(0.9, 0.0, 0.0, 1));
 	index.save("ocr_classifier/index.fln");
 	cv::FileStorage fs_out("ocr_classifier/flann_feature.yml", cv::FileStorage::WRITE);
 	fs_out << "flann_feature" << feature;
 	fs_out << "labels" << labels;
-	fs_out.release();
+	fs_out.release();*/
 }
 
 
@@ -953,4 +1291,73 @@ void opencv_train()
 	cout << "training..." << endl;
 	boost->train(trainData);
 	boost->save("er_classifier/opencv_classifier.xml");
+}
+
+
+
+Profiler::Profiler()
+{
+	count = -1;
+}
+void Profiler::Start()
+{
+	time = high_resolution_clock::now();
+}
+int Profiler::Count()
+{
+	++count;
+	return count;
+}
+double Profiler::Stop()
+{
+	auto elapsed = high_resolution_clock::now() - time;
+	long long microseconds = duration_cast<std::chrono::microseconds>(elapsed).count();
+	return microseconds;
+}
+void Profiler::Log(std::string name)
+{
+	long long t = Stop();
+	logs.push(record(name, t));
+	Start();
+}
+void Profiler::Message(std::string msg, float value)
+{
+	logs.push(record(msg, value, true));
+}
+void Profiler::Report()
+{
+
+	int sum = 0;
+	while (!logs.empty())
+	{
+		record rd = logs.front();
+		if (rd.is_msg)
+		{
+			cout << rd.name << ": " << rd.value << "    ";
+		}
+		else
+		{
+			sum += rd.duration;
+			cout << rd.name << ": " << rd.duration << "us  ";
+
+		}
+		logs.pop();
+	}
+	cout << "sum:" << sum << "us  ";
+	cout << endl;
+}
+
+
+Profiler::record::record(std::string _name, long long _duration)
+{
+	name = _name;
+	duration = _duration;
+	is_msg = false;
+}
+Profiler::record::record(std::string _name, float _value, bool _is_msg)
+{
+	name = _name;
+	value = _value;
+	duration = 0;
+	is_msg = _is_msg;
 }
