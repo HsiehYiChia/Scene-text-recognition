@@ -1,6 +1,6 @@
 #include "utils.h"
 
-
+// Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n)
 {
 	char filename[50];
@@ -51,6 +51,18 @@ bool load_challenge2_training_file(Mat &src, int n)
 	return true;
 }
 
+void load_video_thread(VideoCapture &cap, Mat frame, Mat result, static vector<Text> *text, int *key)
+{
+	for (;;)
+	{
+		cap >> frame;
+		show_result(frame, result, *text);
+		*key = waitKey(1);
+		if (*key >= 0) break;
+	}
+
+	return;
+}
 
 void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &times, ERs &tracked, vector<ERs> &strong, vector<ERs> &weak, vector<ERs> &all, vector<ERs> &pool)
 {
@@ -104,15 +116,18 @@ void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &
 			rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
 		}*/
 		rectangle(result_img, it.box, Scalar(0, 255, 255), 2);
+	}
 
+	for (auto it : text)
+	{
 #ifndef DO_OCR
 		//rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y-20, 53, 19), Scalar(30, 30, 200), CV_FILLED);
 		//putText(result_img, "Text", Point(it.box.tl().x, it.box.tl().y-4), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
-		circle(result_img, Point(it.box.tl().x+5, it.box.tl().y-12), 10, Scalar(30, 30, 200), CV_FILLED);
-		putText(result_img, "T", Point(it.box.tl().x-2, it.box.tl().y-5), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
+		circle(result_img, Point(it.box.tl().x + 5, it.box.tl().y - 12), 10, Scalar(30, 30, 200), CV_FILLED);
+		putText(result_img, "T", Point(it.box.tl().x - 2, it.box.tl().y - 5), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
 #else
 		Size text_size = getTextSize(it.word, FONT_HERSHEY_COMPLEX_SMALL, 1, 1, 0);
-		rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y - 20, text_size.width, text_size.height+5), Scalar(30, 30, 200, 0), CV_FILLED);
+		rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y - 20, text_size.width, text_size.height + 5), Scalar(30, 30, 200, 0), CV_FILLED);
 		putText(result_img, it.word, Point(it.box.tl().x, it.box.tl().y - 4), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0xff, 0xff, 0xff), 1);
 #endif
 	}
@@ -150,6 +165,7 @@ void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &
 	if (!tracked.empty())
 		cv::imshow("tracked", tracked_img);
 	cv::imshow("result", result_img);
+	waitKey(1);
 
 #ifdef IMAGE_MODE
 	if (!all.empty())
@@ -167,7 +183,6 @@ void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &
 #endif
 	
 }
-
 
 void draw_FPS(Mat& src, double time)
 {
@@ -188,6 +203,7 @@ void draw_FPS(Mat& src, double time)
 	putText(src, fps_text, Point(10, 25), FONT_HERSHEY_SIMPLEX, 1, Scalar(255, 255, 0), 2);
 }
 
+// Testing Functions
 void draw_linear_time_MSER(string img_name)
 {
 	Mat input = imread(img_name);
@@ -1017,8 +1033,7 @@ void bootstrap()
 	}
 }
 
-
-
+// Training Functions
 void get_lbp_data()
 {
 	fstream fout = fstream("er_classifier/training_data.txt", fstream::out);

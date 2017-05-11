@@ -1,11 +1,11 @@
 #ifndef __MYLIB__
 #define __MYLIB__
 
-#define WEBCAM_MODE
+#define VIDEO_MODE
 //#define IMAGE_MODE
 
 #define THRESHOLD_STEP 6
-#define MIN_ER_AREA 100
+#define MIN_ER_AREA 200
 #define MAX_ER_AREA 900000
 #define NMS_STABILITY_T 2
 #define NMS_OVERLAP_COEF 0.7
@@ -32,12 +32,16 @@ using namespace std::chrono;
 using namespace cv;
 
 
-// Testing Functions
+// Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n);
 bool load_challenge2_training_file(Mat &src, int n);
+void load_video_thread(VideoCapture &cap, Mat frame, Mat result, static vector<Text> *text, int *key);
 void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &times = vector<double>(), ERs &tracked = ERs(),
 				vector<ERs> &strong = vector<ERs>(), vector<ERs> &weak = vector<ERs>(), vector<ERs> &all = vector<ERs>(), vector<ERs> &pool = vector<ERs>());
 void draw_FPS(Mat& src, double time);
+
+
+// Testing Functions
 void draw_linear_time_MSER(string img_name);
 void draw_multiple_channel(string img_name);
 void output_MSER_time(string img_name);
@@ -48,7 +52,6 @@ Vec6d calc_detection_rate(int n, vector<Text> &text);	// Deprecated
 void calc_recall_rate();
 void save_deteval_xml(vector<vector<Text>> &text, string det_name = "det.xml");
 void test_best_detval();
-
 
 // Training Functions
 void get_lbp_data();
