@@ -487,8 +487,8 @@ save_step_2:
 			if (aspect_ratio < 2.0 && aspect_ratio > 0.10 && 
 				overlapped[max]->area < MAX_AREA && 
 				overlapped[max]->area > MIN_AREA &&
-				overlapped[max]->bound.height < input.rows*0.5 &&
-				overlapped[max]->bound.width < input.cols*0.5)
+				overlapped[max]->bound.height < input.rows*0.8 &&
+				overlapped[max]->bound.width < input.cols*0.8)
 			{
 				pool.push_back(overlapped[max]);
 				/*char buf[20];

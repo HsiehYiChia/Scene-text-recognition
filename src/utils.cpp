@@ -104,6 +104,7 @@ void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &
 				points.push_back(Point(it_er->bound.x, it_er->bound.br().y));
 				points.push_back(Point(it_er->bound.br().x, it_er->bound.y));
 			}
+			
 			RotatedRect ro_rect = minAreaRect(points);
 			Point2f vertices[4];
 			ro_rect.points(vertices);
@@ -918,7 +919,144 @@ void test_best_detval()
 			save_deteval_xml(det_text, det_name);
 		}
 	}
-	
+}
+
+
+void make_video_ground_truth()
+{
+	fstream f_gt("video_result/result/gt.txt", fstream::out);
+
+	for (int i = 0; i <= 220; i++)
+	{
+		f_gt << i;
+
+		/*if (i >= 2 && i <= 139)
+		{
+			f_gt << ',' << "Official" << ',' << "GRE" << ',' << "VERBAL" << ',' << "REASONING" << ',' << "Practice Questions";
+		}
+
+		if (i >= 142 && i <= 510)
+		{
+			f_gt << ',' << "OpenCV";
+		}
+
+		if (i >= 524 && i <= 638)
+		{
+			f_gt << ',' << "MicroC OS II" << ',' << "The Real Time Kernel" << ',' << "Second Edition";
+		}*/
+
+		if (i >= 2 && i <= 220)
+		{
+			f_gt << ',' << "P5QL EM" << ',' << "Motherboard";
+		}
+		f_gt << endl;
+	}
+}
+
+void calc_video_result()
+{
+	fstream f_gt("video_result/result/gt.txt", fstream::in);
+	fstream f_det("video_result/result/det.txt", fstream::in);
+
+	string line;
+	vector<vector<string>> gt;
+	vector<vector<string>> det;
+
+	while (getline(f_gt, line))
+	{
+		istringstream iss(line);
+		string s;
+
+		gt.push_back(vector<string>(0));
+		while (getline(iss, s, ','))
+		{
+			gt.back().push_back(s);
+		}
+	}
+
+	while (getline(f_det, line))
+	{
+		istringstream iss(line);
+		string s;
+
+		det.push_back(vector<string>(0));
+		while (getline(iss, s, ','))
+		{
+			det.back().push_back(s);
+		}
+	}
+
+	if (gt.size() != det.size())
+	{
+		cerr << "gt frame count and det frame count are different!" << endl;
+		return;
+	}
+		
+
+	double correct_thresh = 0.8;
+	int gt_count = 0;
+	int det_count = 0;
+	int tp = 0;
+	int fp = 0;
+	int fn = 0;
+	for (int i = 0; i < gt.size(); i++)
+	{
+		gt_count += gt[i].size() - 1;
+		det_count += det[i].size() - 1;
+
+		vector<bool> gt_is_match(gt[i].size(), false);
+		vector<bool> det_is_match(det[i].size(), false);
+		for (int j = 1; j < det[i].size(); j++)
+		{
+			for (int k = 1; k < gt[i].size(); k++)
+			{
+				int edit_distance = levenshtein_distance(gt[i][k], det[i][j]);
+				double correct_rate = 1 - (double)edit_distance / max(det[i][j].size(), gt[i][k].size());
+
+				if (correct_rate > correct_thresh)
+				{
+					gt_is_match[k] = true;
+					det_is_match[j] = true;
+				}
+			}
+		}
+
+		for (int k = 1; k < gt_is_match.size(); k++)
+		{
+			if (!gt_is_match[k])
+				fn++;
+		}
+
+		for (int j = 1; j < det_is_match.size(); j++)
+		{
+			if (det_is_match[j])
+				tp++;
+			else
+				fp++;
+		}
+	}
+
+	double recall = tp / (double)gt_count;
+	double precision = tp / (double)det_count;
+	double f_score = 2 * recall*precision / (recall + precision);
+	cout << "Ground truth count: " << gt_count << endl
+		<< "Detected count: " << det_count << endl
+		<< "True postive: " << tp << endl
+		<< "False postive: " << fp << endl
+		<< "Miss detected: " << fn << endl
+		<< "Recall: " << recall << endl
+		<< "Precision: " << precision << endl
+		<< "f-score: " << f_score << endl;
+
+	fstream result_file("video_result/result/result_file.txt", fstream::out);
+	result_file << "Ground truth count: " << gt_count << endl
+		<< "Detected count: " << det_count << endl
+		<< "True postive: " << tp << endl
+		<< "False postive: " << fp << endl
+		<< "Miss detected: " << fn << endl
+		<< "Recall: " << recall << endl
+		<< "Precision: " << precision << endl
+		<< "f-score: " << f_score << endl;
 }
 
 //==================================================
@@ -944,7 +1082,6 @@ void train_classifier()
 	}
 	
 	delete td1;
-
 
 	td2->set_num(td2->data.size());
 	td2->set_dim(td2->data.front().fv.size());
@@ -1375,4 +1512,61 @@ Profiler::record::record(std::string _name, float _value, bool _is_msg)
 	value = _value;
 	duration = 0;
 	is_msg = _is_msg;
+}
+
+int levenshtein_distance(string str1, string str2)
+{
+#define INSERT_COST 1
+#define DELETE_COST 1
+#define REPLACE_COST 1
+
+	// cost matrix
+	// row -> str1 & col -> str2
+	int size1 = str1.size();
+	int size2 = str2.size();
+	vector<vector<int>> cost(size1, vector<int>(size2));
+	int i, j;
+
+	// initialize the cost matrix
+	for (i = 0; i<size1; i++) 
+	{
+		for (j = 0; j<size2; j++) 
+		{
+			if (i == 0) 
+			{
+				// source string is NULL
+				// so we need 'j' insert operations
+				cost[i][j] = j*INSERT_COST;
+			}
+			else if (j == 0) 
+			{
+				// target string is NULL
+				// so we need 'i' delete operations
+				cost[i][j] = i*DELETE_COST;
+			}
+			else 
+			{
+				cost[i][j] = -1;
+			}
+		}
+	}
+	
+	//compute cost(i,j) and eventually return cost(m,n)
+	for (i = 1; i<size1; i++) 
+	{
+		for (j = 1; j<size2; j++) 
+		{
+			int x = cost[i - 1][j] + DELETE_COST;
+			int y = cost[i][j - 1] + INSERT_COST;
+			// if str1(i-1) != str2(j-1), add the replace cost
+			// we are comparing str1[i-1] and str2[j-1] since
+			// the array index starts from 0
+			int z = cost[i - 1][j - 1] + (str1[i - 1] != str2[j - 1])*REPLACE_COST;
+			// as per our recursive formula
+			cost[i][j] = min(x, min(y, z));
+		}
+	}
+
+	// last cell of the matrix holds the answer
+	return cost[size1 - 1][size2 - 1];
 }

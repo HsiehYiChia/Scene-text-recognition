@@ -5,7 +5,7 @@
 //#define IMAGE_MODE
 
 #define THRESHOLD_STEP 6
-#define MIN_ER_AREA 200
+#define MIN_ER_AREA 150
 #define MAX_ER_AREA 900000
 #define NMS_STABILITY_T 2
 #define NMS_OVERLAP_COEF 0.7
@@ -19,6 +19,8 @@
 #include <chrono>
 #include <opencv.hpp>
 #include <queue>
+#include <fstream>
+#include <string>
 #include <sstream>
 
 #include <time.h>
@@ -52,6 +54,8 @@ Vec6d calc_detection_rate(int n, vector<Text> &text);	// Deprecated
 void calc_recall_rate();
 void save_deteval_xml(vector<vector<Text>> &text, string det_name = "det.xml");
 void test_best_detval();
+void make_video_ground_truth();
+void calc_video_result();
 
 // Training Functions
 void get_lbp_data();
@@ -63,6 +67,7 @@ void train_classifier();
 void train_cascade();
 void opencv_train();
 
+int levenshtein_distance(string str1, string str2);
 
 
 class Profiler

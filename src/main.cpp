@@ -28,7 +28,10 @@ int main(int argc, char** argv)
 	//extract_ocr_sample();
 	//calc_recall_rate();
 	//test_best_detval();
-	//return 0;
+	make_video_ground_truth();
+	calc_video_result();
+	return 0;
+
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
@@ -47,7 +50,7 @@ int main(int argc, char** argv)
 	Mat frame;
 	VideoWriter writer;
 	cap >> frame;	// get 1 frame to know the frame size
-	writer.open("result.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
+	writer.open("video_result/result/result.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
 	if (!writer.isOpened()) {
 		cerr << "Could not open the output video file for write\n";
 		return -1;
@@ -56,13 +59,14 @@ int main(int argc, char** argv)
 	Mat result;
 	static vector<Text> result_text;
 	int key = -1;
-	thread capture_thread(load_video_thread, cap, frame, result, &result_text, &key);
+	//thread capture_thread(load_video_thread, cap, frame, result, &result_text, &key);
 
 	chrono::high_resolution_clock::time_point start, end;
 	start = chrono::high_resolution_clock::now();
-	const int frame_count = 3;
+	const int frame_count = 2;
 	int img_count = 0;
 	vector<double> avg_time(7, 0);
+	fstream f_result_text("video_result/result/det.txt", fstream::out);
 
 	for (;;)
 	{
@@ -72,7 +76,7 @@ int main(int argc, char** argv)
 
 		for (int n = 0; n < frame_count; n++)
 		{
-			//cap >> frame;
+			cap >> frame;
 			if (frame.empty())	break;
 
 			Mat Ycrcb;
@@ -132,10 +136,23 @@ int main(int argc, char** argv)
 			avg_time[3] += track_time.count();
 
 			show_result(frame, result, result_text);
+
+			// write file
+			char buf[60];
+			sprintf(buf, "video_result/result/%d.jpg", img_count);
+			imwrite(buf, result);
 			writer << result;
+			sort(result_text.begin(), result_text.end(), [](Text a, Text b) {return a.box.y < b.box.y; });
+			f_result_text << img_count;
+			for (auto it : result_text)
+			{
+				f_result_text << "," << it.word;
+			}
+			f_result_text << endl;
 			++img_count;
 
-			//key = waitKey(1);
+			// check key press
+			key = waitKey(1);
 			if (key >= 0) break;
 		}
 		if (key >= 0 || frame.empty()) break;
@@ -169,7 +186,11 @@ int main(int argc, char** argv)
 	avg_time[4] *= frame_count;
 	avg_time[5] *= frame_count;
 
-	cout << "Total frame number: " << img_count << "\n"
+	//capture_thread.join();`
+	cap.release();
+	writer.release();
+
+	std::cout << "Total frame number: " << img_count << "\n"
 		<< "ER extraction = " << avg_time[0] * 1000 / img_count << "ms\n"
 		<< "Non-maximum suppression = " << avg_time[1] * 1000 / img_count << "ms\n"
 		<< "Classification = " << avg_time[2] * 1000 / img_count << "ms\n"
@@ -178,9 +199,17 @@ int main(int argc, char** argv)
 		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
 
-	capture_thread.join();
-	cap.release();
-	writer.release();
+	fstream fout("video_result/result/time_log.txt", fstream::out);
+	fout << "Total frame number: " << img_count << "\n"
+		<< "ER extraction = " << avg_time[0] * 1000 / img_count << "ms\n"
+		<< "Non-maximum suppression = " << avg_time[1] * 1000 / img_count << "ms\n"
+		<< "Classification = " << avg_time[2] * 1000 / img_count << "ms\n"
+		<< "Character tracking = " << avg_time[3] * 1000 / img_count << "ms\n"
+		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
+		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
+		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
+
+	
 
 #elif defined(IMAGE_MODE)
 	int img_count = 0;
