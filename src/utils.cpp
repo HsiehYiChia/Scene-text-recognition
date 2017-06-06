@@ -672,10 +672,10 @@ Vec6d calc_detection_rate(int n, vector<Text> &text)
 
 void calc_recall_rate()
 {
-	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
+	ERFilter* er_filter = new ERFilter(2, 50, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
-	er_filter->ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 	er_filter->load_tp_table("transition_probability/tp.txt");
 
 	Ptr<MSER> ms = MSER::create();
@@ -883,7 +883,7 @@ void test_best_detval()
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
-	er_filter->ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 	er_filter->load_tp_table("transition_probability/tp.txt");
 
 
@@ -926,7 +926,7 @@ void make_video_ground_truth()
 {
 	fstream f_gt("video_result/result/gt.txt", fstream::out);
 
-	for (int i = 0; i <= 220; i++)
+	for (int i = 0; i <= 3133; i++)
 	{
 		f_gt << i;
 
@@ -945,10 +945,43 @@ void make_video_ground_truth()
 			f_gt << ',' << "MicroC OS II" << ',' << "The Real Time Kernel" << ',' << "Second Edition";
 		}*/
 
-		if (i >= 2 && i <= 220)
+
+		/*if (i >= 2 && i <= 220)
 		{
 			f_gt << ',' << "P5QL EM" << ',' << "Motherboard";
+		}*/
+
+
+		if (i >= 2 && i <= 489)
+		{
+			f_gt << ',' << "EVI" << ',' << "D70" << ',' << "series";
 		}
+
+		if (i >= 518 && i <= 1013)
+		{
+			f_gt << ',' << "SONY";
+		}
+
+		if (i >= 1044 && i <= 1505)
+		{
+			f_gt << ',' << "QUALITY" << ',' << "A4" << ',' << "7o" << ',' << "500" << ',' << "5";
+		}
+
+		if (i >= 1588 && i <= 2089)
+		{
+			f_gt << ',' << "NTUST";
+		}
+
+		if (i >= 2116 && i <= 2665)
+		{
+			f_gt << ',' << "REALTEK";
+		}
+
+		if (i >= 2730 && i <= 3133)
+		{
+			f_gt << ',' << "BenQ";
+		}
+
 		f_gt << endl;
 	}
 }
@@ -993,7 +1026,7 @@ void calc_video_result()
 	}
 		
 
-	double correct_thresh = 0.8;
+	double correct_thresh = 0.7;
 	int gt_count = 0;
 	int det_count = 0;
 	int tp = 0;
@@ -1311,7 +1344,7 @@ void train_ocr_model()
 	vector<int> labels;
 
 	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-	erFilter.ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
+	erFilter.ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 
 	for (int i = 0; i < font_name.size(); i++)
 	{
@@ -1354,34 +1387,51 @@ void train_ocr_model()
 						m++;
 					}
 					fout << endl;
-
-					// get flann feature
-					Mat point = Mat::zeros(1, 8 * OCR_FEATURE_L * OCR_FEATURE_L, CV_32F);
-					float *ptr = point.ptr<float>(0);
-					m = 0;
-					while (fv[m].index != -1)
-					{
-						ptr[fv[m].index] = fv[m].value;
-						m++;
-					}
-					feature.push_back(point);
-					labels.push_back(label - 1);
-					delete[] fv;
-
-					// get lbp svm node
-					/*ERFilter erfilter;
-					Mat lbp = erfilter.calc_LBP(ocr_img);
-					vector<double> fv = erfilter.make_LBP_hist(lbp, 2, OCR_IMG_L);
-
-					for (int i = 0; i < fv.size(); i++)
-					{
-						if (fv[i] != 0)
-						{
-							fout << " " << i << ":" << fv[i] / 225.0;
-						}
-					}
-					fout << endl;*/
 				}
+			}
+		}
+	}
+
+	// for Other
+	int label = 0;
+	for (int k = 0; k < category.size()-1; k++)
+	{
+		for (int cat_it = 0; cat_it < cat_num[k]; cat_it++)
+		{
+			string path = string("ocr_classifier/Other/" + category[k] + "/" + table[label] + "/");
+			label++;
+			for (int i = 0; i < 100; i++)
+			{
+				char buf[8];
+				string filename = path + _itoa(i, buf, 10) + ".jpg";
+
+				Mat img = imread(filename, IMREAD_GRAYSCALE);
+				if (!img.empty())
+					cout << filename << " done!" << endl;
+				else
+				{
+					cout << filename << " not exist!" << endl;
+					continue;
+				}
+
+				fout << label - 1;
+
+				Mat ocr_img;
+				threshold(255 - img, ocr_img, 200, 255, CV_THRESH_BINARY);
+				erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
+				erFilter.ocr->ARAN(ocr_img, ocr_img, OCR_IMG_L);
+
+				// get chain code svm node
+				svm_node *fv = new svm_node[8 * OCR_FEATURE_L * OCR_FEATURE_L + 1];
+				erFilter.ocr->extract_feature(ocr_img, fv);
+
+				int m = 0;
+				while (fv[m].index != -1)
+				{
+					fout << " " << fv[m].index << ":" << fv[m].value;
+					m++;
+				}
+				fout << endl;
 			}
 		}
 	}
@@ -1390,15 +1440,6 @@ void train_ocr_model()
 	// svm
 	std::system("C:/libsvm-3.22/windows/svm-train.exe -b 1 -c 512.0.0 -g 0.0078125 ocr_classifier/OCR.data ocr_classifier/OCR.model");
 	std::system("C:/libsvm-3.22/windows/svm-predict.exe -b 1 ocr_classifier/OCR.data ocr_classifier/OCR.model ocr_classifier/predict_result.txt");
-
-	// flann
-	/*cout << "train flann index" << endl;
-	flann::Index index(feature, flann::AutotunedIndexParams(0.9, 0.0, 0.0, 1));
-	index.save("ocr_classifier/index.fln");
-	cv::FileStorage fs_out("ocr_classifier/flann_feature.yml", cv::FileStorage::WRITE);
-	fs_out << "flann_feature" << feature;
-	fs_out << "labels" << labels;
-	fs_out.release();*/
 }
 
 
@@ -1514,6 +1555,9 @@ Profiler::record::record(std::string _name, float _value, bool _is_msg)
 	is_msg = _is_msg;
 }
 
+
+// solve levenshtein distance(edit distance) by dynamic programming, 
+// check https://vinayakgarg.wordpress.com/2012/12/10/edit-distance-using-dynamic-programming/ for more info
 int levenshtein_distance(string str1, string str2)
 {
 #define INSERT_COST 1

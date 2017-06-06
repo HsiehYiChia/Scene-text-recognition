@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <string>
 #include <math.h>
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <fstream>
@@ -16,6 +18,7 @@
 #include <opencv.hpp>
 #include "adaboost.h"
 #include "OCR.h"
+#include "SpellingCorrector.h"
 
 #define DO_OCR
 //#define GET_ALL_ER
@@ -116,6 +119,7 @@ public:
 	svm_model *st_svm;
 	svm_model *wt_svm;
 	OCR *ocr;
+	SpellingCorrector corrector;
 	
 	//! functions
 	vector<double> text_detect(Mat src, ERs &root, vector<ERs> &all, vector<ERs> &pool, vector<ERs> &strong, vector<ERs> &weak, ERs &tracked, vector<Text> &text);
@@ -152,10 +156,13 @@ private:
 	// Gouping operation functions
 	inline bool is_neighboring(ER *a, ER *b);
 	inline bool is_overlapping(ER *a, ER *b);
-	void build_graph(Text &text, Graph &graph);
-	void solve_graph(Text &text, Graph &graph);
 	void inner_suppression(ERs &pool);
 	void overlap_suppression(ERs &pool);
+
+	// OCR operation functions
+	void build_graph(Text &text, Graph &graph);
+	void solve_graph(Text &text, Graph &graph);
+	void spell_check(Text &text);
 
 	// feature extract
 	Vec3d color_hist(Mat input);

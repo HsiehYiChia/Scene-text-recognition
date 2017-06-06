@@ -22,25 +22,27 @@ int main(int argc, char** argv)
 	//train_cascade();
 	//bootstrap();
 	//rotate_ocr_samples();
-	//draw_linear_time_MSER("img_1.jpg");
+	//draw_linear_time_MSER("img_7.jpg");
 	//draw_multiple_channel("img_6.jpg");
 	//test_MSER_time("img_7.jpg");
 	//extract_ocr_sample();
 	//calc_recall_rate();
 	//test_best_detval();
-	make_video_ground_truth();
-	calc_video_result();
-	return 0;
-
+	//make_video_ground_truth();
+	//calc_video_result();
+	//return 0;
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
-	er_filter->ocr = new OCR("ocr_classifier/OCR.model", "ocr_classifier/flann_feature.yml", "ocr_classifier/index.fln", OCR_IMG_L, OCR_FEATURE_L);
-	er_filter->load_tp_table("transition_probability/tp.txt");
+	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->load_tp_table("tp_table.txt");
+	er_filter->corrector.load("dictionary/modified_big.txt");
+	er_filter->corrector.load("dictionary/self_define_word.txt");
 
 #if defined(VIDEO_MODE)
-	VideoCapture cap(0);
+	//VideoCapture cap(0);
+	VideoCapture cap("video_result/result4/test2.mpg");
 	if (!cap.isOpened())
 	{
 		cerr << "ERROR! Unable to open camera or video file\n";
@@ -250,5 +252,8 @@ int main(int argc, char** argv)
 	save_deteval_xml(det_text);
 #endif
 
+	delete er_filter->wtc;
+	delete er_filter->stc;
+	delete er_filter->ocr;
 	return 0;
 }

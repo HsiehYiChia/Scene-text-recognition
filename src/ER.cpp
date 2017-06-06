@@ -653,7 +653,7 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text, bool overlap_sup, bo
 		for (int j = i+1; j < all_er.size(); j++)
 		{
 			ER *b = all_er[j];
-			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*3.0 &&
+			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*2.0 &&
 				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
 				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
 				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&
@@ -779,7 +779,6 @@ void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 		solve_graph(text[i], graph);
 		ocr->feedback_verify(text[i]);
 
-
 		/*fstream fout("graph.txt", fstream::out);
 		for (int i = 0; i < graph.size(); i++)
 		{
@@ -807,6 +806,8 @@ void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 		{
 			text[i].box |= text[i].ers[j]->bound;
 		}
+
+		spell_check(text[i]);
 		//cout << text[i].word << " " << text[i].slope << endl;
 	}
 }
@@ -1091,6 +1092,72 @@ void ERFilter::solve_graph(Text &text, Graph &graph)
 }
 
 
+void ERFilter::spell_check(Text &text)
+{
+	if (text.word.length() <= 1)
+		return;
+
+	for (auto it : text.word)
+	{
+		if (it >= '0' && it <= '9')	return;
+	}
+
+	string request = text.word;
+	transform(request.begin(), request.end(), request.begin(), ::tolower);
+
+	//cout << text.word << " -> ";
+	string corrected = corrector.correct(request);
+	int upper_count = 0;
+	int lower_count = 0;
+	for (int i = 0; i < corrected.length(); i++)
+	{
+		if (i < text.word.length())
+		{
+			if (text.word[i] >= 'A' && text.word[i] <= 'Z')
+			{
+				text.word[i] = corrected[i] - 0x20;
+				++upper_count;
+			}
+				
+			else
+			{
+				text.word[i] = corrected[i];
+				++lower_count;
+			}
+		}
+		
+		else
+		{
+			if (upper_count > lower_count)
+			{
+				text.word.push_back(corrected[i] - 0x20);
+				++upper_count;
+			}
+			else
+			{
+				text.word.push_back(corrected[i]);
+				++upper_count;
+			}
+				
+			text.box.width *= (1.0 + 1.0 / text.word.size());
+		}
+	}
+	
+
+	if ((double)upper_count/(upper_count + lower_count) > 0.6)
+	{
+		for (int i = 0; i < text.word.length(); i++)
+		{
+			if (text.word[i] >= 'a' && text.word[i] <= 'z')
+			{
+				text.word[i] -= 0x20;
+			}
+		}
+	}
+	//cout << corrected << endl;
+}
+
+
 bool ERFilter::load_tp_table(const char* filename)
 {
 	fstream fin;
@@ -1321,7 +1388,7 @@ double fitline_LMS(const vector<Point> &p)
 
 double fitline_avgslope(const vector<Point> &p)
 {
-	if (p.size() < 2)
+	if (p.size() <= 2)
 		return 0;
 
 	const double epsilon = 0.07;

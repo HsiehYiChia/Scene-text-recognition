@@ -9,7 +9,7 @@
 #define MAX_ER_AREA 900000
 #define NMS_STABILITY_T 2
 #define NMS_OVERLAP_COEF 0.7
-#define MIN_OCR_PROBABILITY 0.10
+#define MIN_OCR_PROBABILITY 0.15
 #define OCR_IMG_L 30
 #define OCR_FEATURE_L 15
 #define MAX_WIDTH 15000
@@ -67,6 +67,8 @@ void train_classifier();
 void train_cascade();
 void opencv_train();
 
+// solve levenshtein distance(edit distance) by dynamic programming, 
+// check https://vinayakgarg.wordpress.com/2012/12/10/edit-distance-using-dynamic-programming/ for more info
 int levenshtein_distance(string str1, string str2);
 
 

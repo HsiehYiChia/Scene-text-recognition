@@ -9,20 +9,15 @@ enum category
 };
 const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
 const int cat[65] = { big, big, big, big, big, big, big, big, big, big, 
-big, big, change, big, big, big, big, big, big, change, big, big, big, big, change, change, big, big, change, big, change, change, change, change, big, change,
+big, big, change, big, big, big, big, big, change, change, big, big, big, big, change, change, big, big, change, big, change, change, change, change, big, change,
 small, big, change, big, small, big, small, big, change, change, big, change, small, small, change, change, small, small, change, big, change, change, change, change, small, change,
 big, big, big};
 
 
 
-OCR::OCR(const char *svm_file_name, const char *flann_feature_file_name, const char*flann_index_file_name, int _img_L, int _feature_L) : img_L(_img_L), feature_L(_feature_L)
+OCR::OCR(const char *svm_file_name, int _img_L, int _feature_L) : img_L(_img_L), feature_L(_feature_L)
 {
 	model = svm_load_model(svm_file_name);
-
-	cv::FileStorage fs_out(flann_feature_file_name, cv::FileStorage::READ);
-	fs_out["flann_feature"] >> features;
-	fs_out["labels"] >> labels;
-	index.load(features, flann_index_file_name);
 }
 
 
@@ -461,7 +456,7 @@ void OCR::feedback_verify(Text &text)
 		case 'C': case 'J': case 'O': case 'P': case 'S': case 'U': case 'V': case 'W': case 'X': case 'Z':
 			for (auto it2 : big_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+				double offset = (it2->bound.x - it->bound.x) * text.slope;
 				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
 					vote_little++;
 				else
@@ -469,7 +464,7 @@ void OCR::feedback_verify(Text &text)
 			}
 			for (auto it2 : small_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+				double offset = (it2->bound.x - it->bound.x) * text.slope;
 				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
 					vote_little++;
 				else
@@ -483,7 +478,7 @@ void OCR::feedback_verify(Text &text)
 			{
 				for (auto it2 : big_letter)
 				{
-					double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+					double offset = (it2->bound.x - it->bound.x) * text.slope;
 					if (it->bound.y - it->bound.height*T < it2->bound.y - offset)
 						vote_big++;
 					else
@@ -494,7 +489,7 @@ void OCR::feedback_verify(Text &text)
 			{
 				for (auto it2 : small_letter)
 				{
-					double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+					double offset = (it2->bound.x - it->bound.x) * text.slope;
 					if (it2->bound.y - it2->bound.height*T > it->bound.y + offset)
 						vote_big++;
 					else
@@ -508,7 +503,7 @@ void OCR::feedback_verify(Text &text)
 		case '1': case 'i': case 'l':
 			for (auto it2 : big_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+				double offset = (it2->bound.x - it->bound.x) * text.slope;
 				if (it->bound.y - it->bound.height*T > it2->bound.y - offset)
 					vote_little++;
 				else
@@ -516,7 +511,7 @@ void OCR::feedback_verify(Text &text)
 			}
 			for (auto it2 : small_letter)
 			{
-				double offset = (it2->bound.x - it->bound.x) * tan(text.slope);
+				double offset = (it2->bound.x - it->bound.x) * text.slope;
 				if (it2->bound.y - it2->bound.height*T < it->bound.y + offset)
 					vote_little++;
 				else
@@ -591,7 +586,7 @@ void OCR::try_add_space(Text &text)
 	sort(dist.begin(), dist.end(), [](double a, double b) {return a < b; });
 	double median_x_dist = dist[dist.size()/2];
 
-	const double dist_thresh = 2.0;
+	const double dist_thresh = 2.5;
 	for (int i = text.ers.size() - 2; i >= 0; i--)
 	{
 		double d = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
