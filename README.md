@@ -39,13 +39,13 @@ Result
 ----------
 
 Detection 
-![result1][pic1]
-![result2][pic2]
-![result3][pic3]
+![result1](res/result1.jpg)
+![result2](res/result2.jpg)
+![result3](res/result3.jpg)
 
 Recognition
-![result4][pic4]
-![result5][pic5]
+![result4](res/result4.jpg)
+![result5](res/result5.jpg)
 
 
 
@@ -53,9 +53,3 @@ Recognition
 [2]: https://www.csie.ntu.edu.tw/~cjlin/libsvm/
 [3]: http://u-pat.org/ICDAR2017/
 [4]: http://norvig.com/spell-correct.html
-
-[pic1]: res/result1.jpg
-[pic2]: res/result2.jpg
-[pic3]: res/result3.jpg
-[pic4]: res/result4.jpg
-[pic5]: res/result5.jpg
