@@ -1,4 +1,5 @@
 .ipynb_checkpoints
+.vs
 x64
 video_result
 *.wmv
