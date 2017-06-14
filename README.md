@@ -39,13 +39,13 @@ Result
 ----------
 
 Detection 
-![result1](res/result1.jpg)
-![result2](res/result2.jpg)
-![result3](res/result3.jpg)
+![result1](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt1.jpg)
+![result2](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt2.jpg)
+![result3](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt3.jpg)
 
 Recognition
-![result4](res/result4.jpg)
-![result5](res/result5.jpg)
+![result4](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt4.jpg)
+![result5](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt5.jpg)
 
 
 
