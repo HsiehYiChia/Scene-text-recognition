@@ -653,7 +653,7 @@ void ERFilter::er_grouping(ERs &all_er, vector<Text> &text, bool overlap_sup, bo
 		for (int j = i+1; j < all_er.size(); j++)
 		{
 			ER *b = all_er[j];
-			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*2.0 &&
+			if (abs(a->center.x - b->center.x) < max(a->bound.width,b->bound.width)*3.0 &&
 				abs(a->center.y - b->center.y) < (a->bound.height + b->bound.height)*0.25 &&			// 0.5*0.5
 				abs(a->bound.height - b->bound.height) < min(a->bound.height, b->bound.height) &&
 				abs(a->bound.width - b->bound.width) < min(a->bound.height, b->bound.height * 2) &&

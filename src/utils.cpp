@@ -924,7 +924,7 @@ void test_best_detval()
 
 void make_video_ground_truth()
 {
-	fstream f_gt("video_result/result/gt.txt", fstream::out);
+	fstream f_gt("video_result/result3/gt.txt", fstream::out);
 
 	for (int i = 0; i <= 3133; i++)
 	{
@@ -946,7 +946,7 @@ void make_video_ground_truth()
 		}*/
 
 
-		/*if (i >= 2 && i <= 220)
+		/*if (i >= 2 && i <= 793)
 		{
 			f_gt << ',' << "P5QL EM" << ',' << "Motherboard";
 		}*/
@@ -964,7 +964,7 @@ void make_video_ground_truth()
 
 		if (i >= 1044 && i <= 1505)
 		{
-			f_gt << ',' << "QUALITY" << ',' << "A4" << ',' << "7o" << ',' << "500" << ',' << "5";
+			f_gt << ',' << "QUALITY" << ',' << "A4" << ',' << "70" << ',' << "500" << ',' << "5";
 		}
 
 		if (i >= 1588 && i <= 2089)
@@ -988,8 +988,8 @@ void make_video_ground_truth()
 
 void calc_video_result()
 {
-	fstream f_gt("video_result/result/gt.txt", fstream::in);
-	fstream f_det("video_result/result/det.txt", fstream::in);
+	fstream f_gt("video_result/result3/gt.txt", fstream::in);
+	fstream f_det("video_result/result3/det.txt", fstream::in);
 
 	string line;
 	vector<vector<string>> gt;
@@ -1081,7 +1081,7 @@ void calc_video_result()
 		<< "Precision: " << precision << endl
 		<< "f-score: " << f_score << endl;
 
-	fstream result_file("video_result/result/result_file.txt", fstream::out);
+	fstream result_file("video_result/result3/result_file.txt", fstream::out);
 	result_file << "Ground truth count: " << gt_count << endl
 		<< "Detected count: " << det_count << endl
 		<< "True postive: " << tp << endl

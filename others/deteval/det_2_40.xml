@@ -1,0 +1,2122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tagset>
+	<image>
+		<imageName>img_1.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="656" width="850" height="189" offset="0" />
+			<taggedRectangle x="35" y="42" width="678" height="171" offset="0" />
+			<taggedRectangle x="85" y="883" width="822" height="161" offset="0" />
+			<taggedRectangle x="167" y="1095" width="303" height="134" offset="0" />
+			<taggedRectangle x="274" y="1102" width="85" height="105" offset="0" />
+			<taggedRectangle x="274" y="267" width="392" height="184" offset="0" />
+			<taggedRectangle x="387" y="47" width="536" height="168" offset="0" />
+			<taggedRectangle x="438" y="712" width="7" height="26" offset="0" />
+			<taggedRectangle x="611" y="1069" width="134" height="137" offset="0" />
+			<taggedRectangle x="677" y="923" width="126" height="103" offset="0" />
+			<taggedRectangle x="683" y="792" width="136" height="54" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_3.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="66" y="263" width="34" height="24" offset="0" />
+			<taggedRectangle x="48" y="172" width="464" height="219" offset="0" />
+			<taggedRectangle x="123" y="147" width="430" height="147" offset="0" />
+			<taggedRectangle x="117" y="212" width="461" height="187" offset="0" />
+			<taggedRectangle x="230" y="147" width="74" height="111" offset="0" />
+			<taggedRectangle x="393" y="12" width="4" height="14" offset="0" />
+			<taggedRectangle x="404" y="227" width="12" height="29" offset="0" />
+			<taggedRectangle x="604" y="154" width="9" height="50" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_4.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="1127" y="1330" width="946" height="218" offset="0" />
+			<taggedRectangle x="1383" y="1089" width="1328" height="402" offset="0" />
+			<taggedRectangle x="1908" y="2009" width="738" height="208" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_5.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="80" y="234" width="71" height="27" offset="0" />
+			<taggedRectangle x="148" y="170" width="466" height="203" offset="0" />
+			<taggedRectangle x="234" y="236" width="29" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_6.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="33" y="126" width="581" height="130" offset="0" />
+			<taggedRectangle x="92" y="259" width="342" height="133" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_7.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="108" y="285" width="252" height="76" offset="0" />
+			<taggedRectangle x="117" y="211" width="89" height="73" offset="0" />
+			<taggedRectangle x="106" y="388" width="492" height="58" offset="0" />
+			<taggedRectangle x="128" y="133" width="76" height="57" offset="0" />
+			<taggedRectangle x="124" y="18" width="324" height="54" offset="0" />
+			<taggedRectangle x="143" y="82" width="187" height="37" offset="0" />
+			<taggedRectangle x="245" y="236" width="51" height="32" offset="0" />
+			<taggedRectangle x="306" y="227" width="97" height="44" offset="0" />
+			<taggedRectangle x="452" y="39" width="58" height="38" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_8.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="631" y="259" width="20" height="22" offset="0" />
+			<taggedRectangle x="664" y="1007" width="50" height="12" offset="0" />
+			<taggedRectangle x="655" y="225" width="503" height="78" offset="0" />
+			<taggedRectangle x="714" y="310" width="289" height="52" offset="0" />
+			<taggedRectangle x="746" y="256" width="21" height="25" offset="0" />
+			<taggedRectangle x="793" y="369" width="261" height="52" offset="0" />
+			<taggedRectangle x="963" y="857" width="168" height="54" offset="0" />
+			<taggedRectangle x="1067" y="1027" width="75" height="17" offset="0" />
+			<taggedRectangle x="1132" y="256" width="19" height="22" offset="0" />
+			<taggedRectangle x="1140" y="1002" width="69" height="11" offset="0" />
+			<taggedRectangle x="1186" y="1027" width="27" height="14" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_9.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="23" y="422" width="204" height="39" offset="0" />
+			<taggedRectangle x="25" y="464" width="421" height="36" offset="0" />
+			<taggedRectangle x="29" y="512" width="413" height="45" offset="0" />
+			<taggedRectangle x="197" y="224" width="60" height="55" offset="0" />
+			<taggedRectangle x="197" y="294" width="66" height="76" offset="0" />
+			<taggedRectangle x="285" y="422" width="161" height="34" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_10.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="842" y="872" width="116" height="256" offset="0" />
+			<taggedRectangle x="1030" y="313" width="423" height="69" offset="0" />
+			<taggedRectangle x="1045" y="421" width="16" height="18" offset="0" />
+			<taggedRectangle x="1034" y="377" width="725" height="94" offset="0" />
+			<taggedRectangle x="1076" y="903" width="1334" height="195" offset="0" />
+			<taggedRectangle x="1087" y="1070" width="997" height="193" offset="0" />
+			<taggedRectangle x="1081" y="2269" width="184" height="244" offset="0" />
+			<taggedRectangle x="1223" y="2094" width="1387" height="281" offset="0" />
+			<taggedRectangle x="1992" y="1292" width="11" height="17" offset="0" />
+			<taggedRectangle x="1996" y="1023" width="52" height="23" offset="0" />
+			<taggedRectangle x="2414" y="1264" width="106" height="29" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_11.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="30" y="240" width="520" height="109" offset="0" />
+			<taggedRectangle x="220" y="53" width="149" height="126" offset="0" />
+			<taggedRectangle x="268" y="52" width="54" height="42" offset="0" />
+			<taggedRectangle x="226" y="53" width="138" height="125" offset="0" />
+			<taggedRectangle x="299" y="331" width="79" height="97" offset="0" />
+			<taggedRectangle x="391" y="341" width="176" height="78" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_12.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="901" y="887" width="740" height="64" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_14.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="17" y="153" width="596" height="31" offset="0" />
+			<taggedRectangle x="121" y="262" width="391" height="17" offset="0" />
+			<taggedRectangle x="121" y="204" width="391" height="30" offset="0" />
+			<taggedRectangle x="115" y="102" width="403" height="38" offset="0" />
+			<taggedRectangle x="212" y="394" width="201" height="23" offset="0" />
+			<taggedRectangle x="214" y="36" width="206" height="36" offset="0" />
+			<taggedRectangle x="238" y="422" width="157" height="20" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_15.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="207" y="275" width="396" height="46" offset="0" />
+			<taggedRectangle x="208" y="180" width="398" height="98" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_17.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="278" y="1312" width="572" height="112" offset="0" />
+			<taggedRectangle x="291" y="1086" width="567" height="111" offset="0" />
+			<taggedRectangle x="319" y="1781" width="225" height="108" offset="0" />
+			<taggedRectangle x="355" y="888" width="571" height="85" offset="0" />
+			<taggedRectangle x="287" y="2318" width="372" height="255" offset="0" />
+			<taggedRectangle x="238" y="2256" width="1435" height="328" offset="0" />
+			<taggedRectangle x="617" y="1580" width="169" height="75" offset="0" />
+			<taggedRectangle x="905" y="2302" width="124" height="65" offset="0" />
+			<taggedRectangle x="1265" y="2060" width="9" height="10" offset="0" />
+			<taggedRectangle x="1407" y="2309" width="108" height="65" offset="0" />
+			<taggedRectangle x="1073" y="1584" width="751" height="1008" offset="0" />
+			<taggedRectangle x="1690" y="1473" width="26" height="18" offset="0" />
+			<taggedRectangle x="1698" y="1457" width="17" height="14" offset="0" />
+			<taggedRectangle x="1987" y="885" width="558" height="105" offset="0" />
+			<taggedRectangle x="2045" y="1332" width="54" height="102" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_18.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="301" y="245" width="224" height="51" offset="0" />
+			<taggedRectangle x="319" y="198" width="201" height="48" offset="0" />
+			<taggedRectangle x="341" y="296" width="142" height="43" offset="0" />
+			<taggedRectangle x="378" y="209" width="8" height="13" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_19.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="509" y="518" width="190" height="71" offset="0" />
+			<taggedRectangle x="508" y="426" width="213" height="81" offset="0" />
+			<taggedRectangle x="508" y="430" width="36" height="68" offset="0" />
+			<taggedRectangle x="510" y="608" width="293" height="82" offset="0" />
+			<taggedRectangle x="512" y="518" width="70" height="69" offset="0" />
+			<taggedRectangle x="510" y="609" width="45" height="71" offset="0" />
+			<taggedRectangle x="634" y="366" width="102" height="29" offset="0" />
+			<taggedRectangle x="836" y="359" width="98" height="29" offset="0" />
+			<taggedRectangle x="877" y="510" width="83" height="70" offset="0" />
+			<taggedRectangle x="895" y="434" width="87" height="66" offset="0" />
+			<taggedRectangle x="988" y="353" width="299" height="32" offset="0" />
+			<taggedRectangle x="980" y="762" width="74" height="68" offset="0" />
+			<taggedRectangle x="1023" y="968" width="47" height="75" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_20.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="170" y="172" width="666" height="148" offset="0" />
+			<taggedRectangle x="164" y="474" width="190" height="214" offset="0" />
+			<taggedRectangle x="415" y="315" width="134" height="53" offset="0" />
+			<taggedRectangle x="386" y="304" width="580" height="136" offset="0" />
+			<taggedRectangle x="427" y="493" width="620" height="132" offset="0" />
+			<taggedRectangle x="430" y="614" width="217" height="75" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_21.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="68" y="307" width="486" height="51" offset="0" />
+			<taggedRectangle x="76" y="416" width="469" height="35" offset="0" />
+			<taggedRectangle x="102" y="48" width="418" height="45" offset="0" />
+			<taggedRectangle x="123" y="250" width="361" height="42" offset="0" />
+			<taggedRectangle x="146" y="108" width="346" height="52" offset="0" />
+			<taggedRectangle x="235" y="167" width="122" height="43" offset="0" />
+			<taggedRectangle x="255" y="261" width="8" height="28" offset="0" />
+			<taggedRectangle x="261" y="308" width="10" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_22.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="196" y="181" width="135" height="52" offset="0" />
+			<taggedRectangle x="196" y="181" width="34" height="40" offset="0" />
+			<taggedRectangle x="162" y="96" width="478" height="197" offset="0" />
+			<taggedRectangle x="429" y="189" width="60" height="57" offset="0" />
+			<taggedRectangle x="455" y="123" width="71" height="168" offset="0" />
+			<taggedRectangle x="584" y="374" width="22" height="31" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_23.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="935" y="182" width="1268" height="140" offset="0" />
+			<taggedRectangle x="971" y="2055" width="501" height="113" offset="0" />
+			<taggedRectangle x="950" y="907" width="1727" height="208" offset="0" />
+			<taggedRectangle x="950" y="971" width="154" height="144" offset="0" />
+			<taggedRectangle x="1065" y="590" width="1712" height="215" offset="0" />
+			<taggedRectangle x="2385" y="1499" width="467" height="96" offset="0" />
+			<taggedRectangle x="2398" y="1628" width="465" height="113" offset="0" />
+			<taggedRectangle x="2390" y="1369" width="408" height="112" offset="0" />
+			<taggedRectangle x="2392" y="1242" width="404" height="88" offset="0" />
+			<taggedRectangle x="2427" y="1506" width="31" height="15" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_24.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="276" y="192" width="166" height="34" offset="0" />
+			<taggedRectangle x="278" y="123" width="166" height="55" offset="0" />
+			<taggedRectangle x="368" y="213" width="5" height="8" offset="0" />
+			<taggedRectangle x="392" y="313" width="15" height="14" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_25.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="37" y="178" width="428" height="57" offset="0" />
+			<taggedRectangle x="111" y="154" width="15" height="17" offset="0" />
+			<taggedRectangle x="199" y="159" width="174" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_26.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="1719" y="1411" width="597" height="37" offset="0" />
+			<taggedRectangle x="1862" y="764" width="353" height="43" offset="0" />
+			<taggedRectangle x="1959" y="1217" width="512" height="62" offset="0" />
+			<taggedRectangle x="2093" y="548" width="351" height="148" offset="0" />
+			<taggedRectangle x="2281" y="762" width="24" height="26" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_27.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="184" y="0" width="1269" height="419" offset="0" />
+			<taggedRectangle x="375" y="0" width="2053" height="891" offset="0" />
+			<taggedRectangle x="644" y="1311" width="1020" height="158" offset="0" />
+			<taggedRectangle x="984" y="848" width="477" height="403" offset="0" />
+			<taggedRectangle x="2569" y="726" width="27" height="10" offset="0" />
+			<taggedRectangle x="2825" y="0" width="545" height="232" offset="0" />
+			<taggedRectangle x="2893" y="332" width="599" height="121" offset="0" />
+			<taggedRectangle x="2825" y="0" width="663" height="248" offset="0" />
+			<taggedRectangle x="3067" y="458" width="403" height="91" offset="0" />
+			<taggedRectangle x="3134" y="332" width="128" height="99" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_28.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="123" width="48" height="31" offset="0" />
+			<taggedRectangle x="7" y="51" width="72" height="88" offset="0" />
+			<taggedRectangle x="33" y="103" width="607" height="111" offset="0" />
+			<taggedRectangle x="0" y="327" width="470" height="153" offset="0" />
+			<taggedRectangle x="142" y="339" width="73" height="93" offset="0" />
+			<taggedRectangle x="154" y="226" width="313" height="100" offset="0" />
+			<taggedRectangle x="195" y="254" width="130" height="63" offset="0" />
+			<taggedRectangle x="223" y="34" width="186" height="59" offset="0" />
+			<taggedRectangle x="253" y="378" width="21" height="24" offset="0" />
+			<taggedRectangle x="415" y="271" width="24" height="26" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_29.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="1484" y="1680" width="810" height="146" offset="0" />
+			<taggedRectangle x="1754" y="1803" width="632" height="115" offset="0" />
+			<taggedRectangle x="2717" y="1769" width="55" height="66" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_30.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="134" y="570" width="210" height="81" offset="0" />
+			<taggedRectangle x="154" y="579" width="32" height="42" offset="0" />
+			<taggedRectangle x="147" y="245" width="1024" height="323" offset="0" />
+			<taggedRectangle x="147" y="315" width="411" height="253" offset="0" />
+			<taggedRectangle x="513" y="617" width="40" height="43" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_31.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="102" y="271" width="337" height="50" offset="0" />
+			<taggedRectangle x="177" y="325" width="25" height="13" offset="0" />
+			<taggedRectangle x="239" y="327" width="74" height="13" offset="0" />
+			<taggedRectangle x="224" y="60" width="141" height="180" offset="0" />
+			<taggedRectangle x="276" y="257" width="81" height="22" offset="0" />
+			<taggedRectangle x="403" y="333" width="37" height="13" offset="0" />
+			<taggedRectangle x="487" y="62" width="35" height="42" offset="0" />
+			<taggedRectangle x="494" y="111" width="59" height="94" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_32.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="62" y="55" width="35" height="46" offset="0" />
+			<taggedRectangle x="45" y="107" width="534" height="85" offset="0" />
+			<taggedRectangle x="119" y="304" width="152" height="37" offset="0" />
+			<taggedRectangle x="126" y="208" width="49" height="20" offset="0" />
+			<taggedRectangle x="131" y="356" width="350" height="33" offset="0" />
+			<taggedRectangle x="233" y="57" width="339" height="52" offset="0" />
+			<taggedRectangle x="252" y="212" width="83" height="19" offset="0" />
+			<taggedRectangle x="314" y="308" width="182" height="39" offset="0" />
+			<taggedRectangle x="380" y="216" width="115" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_33.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="89" y="239" width="441" height="98" offset="0" />
+			<taggedRectangle x="224" y="30" width="10" height="16" offset="0" />
+			<taggedRectangle x="220" y="355" width="193" height="23" offset="0" />
+			<taggedRectangle x="335" y="430" width="117" height="50" offset="0" />
+			<taggedRectangle x="582" y="33" width="15" height="34" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_35.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="61" y="0" width="11" height="10" offset="0" />
+			<taggedRectangle x="384" y="224" width="147" height="40" offset="0" />
+			<taggedRectangle x="611" y="112" width="29" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_36.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="151" y="43" width="154" height="208" offset="0" />
+			<taggedRectangle x="214" y="595" width="43" height="17" offset="0" />
+			<taggedRectangle x="233" y="615" width="74" height="18" offset="0" />
+			<taggedRectangle x="246" y="581" width="31" height="12" offset="0" />
+			<taggedRectangle x="258" y="481" width="26" height="38" offset="0" />
+			<taggedRectangle x="290" y="593" width="30" height="17" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_37.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="381" y="410" width="345" height="149" offset="0" />
+			<taggedRectangle x="383" y="196" width="372" height="198" offset="0" />
+			<taggedRectangle x="522" y="1075" width="231" height="125" offset="0" />
+			<taggedRectangle x="697" y="560" width="508" height="55" offset="0" />
+			<taggedRectangle x="764" y="992" width="76" height="48" offset="0" />
+			<taggedRectangle x="1011" y="446" width="305" height="113" offset="0" />
+			<taggedRectangle x="1024" y="871" width="288" height="197" offset="0" />
+			<taggedRectangle x="1011" y="267" width="316" height="126" offset="0" />
+			<taggedRectangle x="1124" y="1026" width="44" height="45" offset="0" />
+			<taggedRectangle x="1101" y="814" width="251" height="275" offset="0" />
+			<taggedRectangle x="1147" y="972" width="53" height="51" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_38.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="603" y="1472" width="216" height="415" offset="0" />
+			<taggedRectangle x="1652" y="1201" width="204" height="59" offset="0" />
+			<taggedRectangle x="1504" y="647" width="708" height="682" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_39.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="2091" width="88" height="181" offset="0" />
+			<taggedRectangle x="34" y="2471" width="66" height="102" offset="0" />
+			<taggedRectangle x="625" y="2343" width="56" height="37" offset="0" />
+			<taggedRectangle x="628" y="2187" width="160" height="124" offset="0" />
+			<taggedRectangle x="628" y="2098" width="415" height="213" offset="0" />
+			<taggedRectangle x="729" y="2358" width="11" height="13" offset="0" />
+			<taggedRectangle x="733" y="2140" width="230" height="56" offset="0" />
+			<taggedRectangle x="802" y="2275" width="326" height="96" offset="0" />
+			<taggedRectangle x="809" y="2362" width="60" height="42" offset="0" />
+			<taggedRectangle x="927" y="2315" width="43" height="38" offset="0" />
+			<taggedRectangle x="1000" y="2213" width="124" height="65" offset="0" />
+			<taggedRectangle x="1076" y="2163" width="58" height="41" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_40.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="619" y="46" width="636" height="178" offset="0" />
+			<taggedRectangle x="750" y="1149" width="23" height="22" offset="0" />
+			<taggedRectangle x="805" y="85" width="403" height="31" offset="0" />
+			<taggedRectangle x="925" y="777" width="416" height="135" offset="0" />
+			<taggedRectangle x="967" y="1149" width="21" height="22" offset="0" />
+			<taggedRectangle x="1116" y="141" width="301" height="272" offset="0" />
+			<taggedRectangle x="1196" y="584" width="143" height="116" offset="0" />
+			<taggedRectangle x="1251" y="1148" width="26" height="22" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_41.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="68" y="160" width="396" height="108" offset="0" />
+			<taggedRectangle x="172" y="259" width="219" height="83" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_42.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="189" y="0" width="451" height="250" offset="0" />
+			<taggedRectangle x="296" y="251" width="323" height="206" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_43.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="171" y="163" width="32" height="10" offset="0" />
+			<taggedRectangle x="186" y="63" width="45" height="44" offset="0" />
+			<taggedRectangle x="201" y="104" width="20" height="22" offset="0" />
+			<taggedRectangle x="173" y="49" width="98" height="91" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_44.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="9" y="1291" width="927" height="135" offset="0" />
+			<taggedRectangle x="664" y="1314" width="272" height="75" offset="0" />
+			<taggedRectangle x="670" y="1561" width="418" height="78" offset="0" />
+			<taggedRectangle x="1470" y="1234" width="1122" height="128" offset="0" />
+			<taggedRectangle x="1475" y="1518" width="483" height="89" offset="0" />
+			<taggedRectangle x="1520" y="1353" width="312" height="76" offset="0" />
+			<taggedRectangle x="2935" y="1249" width="358" height="73" offset="0" />
+			<taggedRectangle x="2942" y="1467" width="341" height="70" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_45.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="547" y="1037" width="1542" height="275" offset="0" />
+			<taggedRectangle x="616" y="2370" width="1335" height="113" offset="0" />
+			<taggedRectangle x="621" y="2238" width="2314" height="130" offset="0" />
+			<taggedRectangle x="641" y="2100" width="1457" height="116" offset="0" />
+			<taggedRectangle x="1356" y="707" width="710" height="270" offset="0" />
+			<taggedRectangle x="2154" y="2364" width="1147" height="166" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_46.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="56" y="401" width="417" height="32" offset="0" />
+			<taggedRectangle x="524" y="400" width="44" height="30" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_47.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="396" y="163" width="508" height="75" offset="0" />
+			<taggedRectangle x="460" y="388" width="365" height="112" offset="0" />
+			<taggedRectangle x="524" y="326" width="381" height="90" offset="0" />
+			<taggedRectangle x="860" y="344" width="15" height="24" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_48.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="322" y="712" width="465" height="110" offset="0" />
+			<taggedRectangle x="360" y="842" width="188" height="81" offset="0" />
+			<taggedRectangle x="361" y="553" width="320" height="79" offset="0" />
+			<taggedRectangle x="434" y="456" width="247" height="50" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_49.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="798" y="368" width="515" height="89" offset="0" />
+			<taggedRectangle x="834" y="472" width="27" height="17" offset="0" />
+			<taggedRectangle x="1261" y="374" width="51" height="79" offset="0" />
+			<taggedRectangle x="1369" y="1015" width="105" height="32" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_50.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="86" y="90" width="483" height="86" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_51.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="111" y="790" width="760" height="76" offset="0" />
+			<taggedRectangle x="101" y="566" width="301" height="74" offset="0" />
+			<taggedRectangle x="107" y="681" width="772" height="77" offset="0" />
+			<taggedRectangle x="122" y="903" width="181" height="64" offset="0" />
+			<taggedRectangle x="582" y="262" width="59" height="32" offset="0" />
+			<taggedRectangle x="814" y="94" width="35" height="14" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_52.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="521" y="95" width="340" height="66" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_53.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="17" y="109" width="1197" height="59" offset="0" />
+			<taggedRectangle x="192" y="195" width="457" height="57" offset="0" />
+			<taggedRectangle x="617" y="195" width="433" height="57" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_54.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="49" y="818" width="1193" height="123" offset="0" />
+			<taggedRectangle x="290" y="875" width="160" height="66" offset="0" />
+			<taggedRectangle x="583" y="514" width="210" height="45" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_55.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="474" width="978" height="463" offset="0" />
+			<taggedRectangle x="193" y="145" width="966" height="161" offset="0" />
+			<taggedRectangle x="621" y="296" width="356" height="151" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_56.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="481" y="485" width="319" height="96" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_58.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="41" y="387" width="1190" height="573" offset="0" />
+			<taggedRectangle x="257" y="850" width="586" height="78" offset="0" />
+			<taggedRectangle x="265" y="380" width="450" height="115" offset="0" />
+			<taggedRectangle x="327" y="893" width="6" height="14" offset="0" />
+			<taggedRectangle x="730" y="513" width="282" height="233" offset="0" />
+			<taggedRectangle x="928" y="882" width="156" height="28" offset="0" />
+			<taggedRectangle x="964" y="852" width="81" height="27" offset="0" />
+			<taggedRectangle x="1057" y="424" width="163" height="160" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_59.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="514" y="522" width="276" height="40" offset="0" />
+			<taggedRectangle x="527" y="571" width="242" height="21" offset="0" />
+			<taggedRectangle x="608" y="571" width="34" height="20" offset="0" />
+			<taggedRectangle x="632" y="489" width="103" height="28" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_60.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="25" y="47" width="433" height="267" offset="0" />
+			<taggedRectangle x="25" y="0" width="1221" height="319" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_61.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="366" y="442" width="645" height="75" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_62.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="128" y="554" width="477" height="42" offset="0" />
+			<taggedRectangle x="157" y="497" width="419" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_64.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="95" y="332" width="1135" height="302" offset="0" />
+			<taggedRectangle x="356" y="736" width="641" height="89" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_65.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="480" y="537" width="587" height="154" offset="0" />
+			<taggedRectangle x="464" y="350" width="600" height="205" offset="0" />
+			<taggedRectangle x="480" y="572" width="144" height="119" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_66.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="113" y="622" width="28" height="59" offset="0" />
+			<taggedRectangle x="234" y="847" width="271" height="51" offset="0" />
+			<taggedRectangle x="232" y="321" width="414" height="116" offset="0" />
+			<taggedRectangle x="318" y="915" width="178" height="43" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_67.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="32" y="72" width="1128" height="338" offset="0" />
+			<taggedRectangle x="32" y="263" width="67" height="44" offset="0" />
+			<taggedRectangle x="185" y="836" width="806" height="95" offset="0" />
+			<taggedRectangle x="212" y="271" width="942" height="77" offset="0" />
+			<taggedRectangle x="689" y="171" width="32" height="29" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_68.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="15" y="130" width="480" height="61" offset="0" />
+			<taggedRectangle x="391" y="202" width="58" height="28" offset="0" />
+			<taggedRectangle x="576" y="151" width="56" height="35" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_69.jpg</imageName>
+		<taggedRectangles>
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_70.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="76" y="395" width="1190" height="254" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_71.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="29" y="703" width="1113" height="207" offset="0" />
+			<taggedRectangle x="738" y="729" width="323" height="179" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_72.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="464" width="195" height="250" offset="0" />
+			<taggedRectangle x="237" y="678" width="741" height="80" offset="0" />
+			<taggedRectangle x="229" y="771" width="864" height="100" offset="0" />
+			<taggedRectangle x="359" y="369" width="58" height="71" offset="0" />
+			<taggedRectangle x="419" y="865" width="50" height="85" offset="0" />
+			<taggedRectangle x="1262" y="214" width="18" height="15" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_73.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="317" y="355" width="383" height="111" offset="0" />
+			<taggedRectangle x="393" y="760" width="46" height="14" offset="0" />
+			<taggedRectangle x="358" y="480" width="296" height="112" offset="0" />
+			<taggedRectangle x="500" y="758" width="99" height="18" offset="0" />
+			<taggedRectangle x="930" y="1164" width="30" height="57" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_74.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="123" y="967" width="705" height="149" offset="0" />
+			<taggedRectangle x="136" y="720" width="684" height="140" offset="0" />
+			<taggedRectangle x="160" y="497" width="634" height="148" offset="0" />
+			<taggedRectangle x="397" y="162" width="223" height="36" offset="0" />
+			<taggedRectangle x="453" y="0" width="128" height="96" offset="0" />
+			<taggedRectangle x="653" y="1030" width="30" height="51" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_75.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="179" y="954" width="217" height="70" offset="0" />
+			<taggedRectangle x="166" y="957" width="762" height="119" offset="0" />
+			<taggedRectangle x="202" y="976" width="20" height="30" offset="0" />
+			<taggedRectangle x="215" y="563" width="400" height="210" offset="0" />
+			<taggedRectangle x="203" y="127" width="462" height="98" offset="0" />
+			<taggedRectangle x="218" y="755" width="394" height="137" offset="0" />
+			<taggedRectangle x="420" y="277" width="303" height="174" offset="0" />
+			<taggedRectangle x="447" y="807" width="442" height="97" offset="0" />
+			<taggedRectangle x="464" y="969" width="283" height="86" offset="0" />
+			<taggedRectangle x="455" y="481" width="377" height="90" offset="0" />
+			<taggedRectangle x="455" y="481" width="103" height="84" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_76.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="597" width="150" height="96" offset="0" />
+			<taggedRectangle x="37" y="401" width="64" height="52" offset="0" />
+			<taggedRectangle x="0" y="503" width="150" height="89" offset="0" />
+			<taggedRectangle x="180" y="542" width="1100" height="213" offset="0" />
+			<taggedRectangle x="476" y="553" width="550" height="145" offset="0" />
+			<taggedRectangle x="931" y="615" width="22" height="28" offset="0" />
+			<taggedRectangle x="974" y="458" width="24" height="32" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_77.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="166" y="562" width="743" height="166" offset="0" />
+			<taggedRectangle x="626" y="567" width="34" height="62" offset="0" />
+			<taggedRectangle x="812" y="567" width="31" height="60" offset="0" />
+			<taggedRectangle x="1029" y="564" width="59" height="132" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_78.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="182" y="606" width="1098" height="354" offset="0" />
+			<taggedRectangle x="274" y="522" width="209" height="71" offset="0" />
+			<taggedRectangle x="318" y="447" width="140" height="58" offset="0" />
+			<taggedRectangle x="217" y="0" width="532" height="448" offset="0" />
+			<taggedRectangle x="502" y="845" width="57" height="115" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_79.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="38" width="116" height="157" offset="0" />
+			<taggedRectangle x="347" y="158" width="112" height="37" offset="0" />
+			<taggedRectangle x="364" y="213" width="76" height="33" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_80.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="439" y="807" width="443" height="129" offset="0" />
+			<taggedRectangle x="483" y="525" width="346" height="44" offset="0" />
+			<taggedRectangle x="510" y="686" width="49" height="20" offset="0" />
+			<taggedRectangle x="598" y="678" width="287" height="24" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_81.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="46" y="901" width="17" height="15" offset="0" />
+			<taggedRectangle x="301" y="703" width="79" height="85" offset="0" />
+			<taggedRectangle x="424" y="463" width="491" height="146" offset="0" />
+			<taggedRectangle x="464" y="478" width="24" height="39" offset="0" />
+			<taggedRectangle x="495" y="774" width="310" height="186" offset="0" />
+			<taggedRectangle x="636" y="706" width="101" height="80" offset="0" />
+			<taggedRectangle x="865" y="123" width="39" height="26" offset="0" />
+			<taggedRectangle x="1212" y="217" width="40" height="22" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_82.jpg</imageName>
+		<taggedRectangles>
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_83.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="64" y="404" width="147" height="204" offset="0" />
+			<taggedRectangle x="304" y="374" width="54" height="85" offset="0" />
+			<taggedRectangle x="263" y="326" width="153" height="152" offset="0" />
+			<taggedRectangle x="484" y="413" width="463" height="70" offset="0" />
+			<taggedRectangle x="559" y="318" width="293" height="70" offset="0" />
+			<taggedRectangle x="568" y="575" width="289" height="75" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_84.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="432" y="407" width="83" height="37" offset="0" />
+			<taggedRectangle x="693" y="488" width="166" height="37" offset="0" />
+			<taggedRectangle x="1153" y="347" width="110" height="82" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_85.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="38" y="876" width="78" height="84" offset="0" />
+			<taggedRectangle x="479" y="597" width="282" height="133" offset="0" />
+			<taggedRectangle x="436" y="738" width="293" height="222" offset="0" />
+			<taggedRectangle x="477" y="591" width="803" height="252" offset="0" />
+			<taggedRectangle x="562" y="597" width="272" height="225" offset="0" />
+			<taggedRectangle x="589" y="468" width="235" height="43" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_86.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="148" y="709" width="188" height="46" offset="0" />
+			<taggedRectangle x="497" y="275" width="21" height="23" offset="0" />
+			<taggedRectangle x="514" y="164" width="7" height="23" offset="0" />
+			<taggedRectangle x="514" y="191" width="21" height="24" offset="0" />
+			<taggedRectangle x="515" y="133" width="37" height="29" offset="0" />
+			<taggedRectangle x="527" y="301" width="22" height="19" offset="0" />
+			<taggedRectangle x="528" y="247" width="7" height="22" offset="0" />
+			<taggedRectangle x="546" y="106" width="7" height="24" offset="0" />
+			<taggedRectangle x="547" y="122" width="4" height="8" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_87.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="291" y="929" width="43" height="31" offset="0" />
+			<taggedRectangle x="319" y="680" width="268" height="52" offset="0" />
+			<taggedRectangle x="370" y="160" width="612" height="56" offset="0" />
+			<taggedRectangle x="536" y="510" width="96" height="32" offset="0" />
+			<taggedRectangle x="538" y="447" width="94" height="32" offset="0" />
+			<taggedRectangle x="568" y="480" width="95" height="31" offset="0" />
+			<taggedRectangle x="571" y="407" width="93" height="41" offset="0" />
+			<taggedRectangle x="602" y="387" width="223" height="32" offset="0" />
+			<taggedRectangle x="634" y="360" width="158" height="26" offset="0" />
+			<taggedRectangle x="636" y="24" width="100" height="102" offset="0" />
+			<taggedRectangle x="668" y="332" width="94" height="22" offset="0" />
+			<taggedRectangle x="729" y="520" width="94" height="26" offset="0" />
+			<taggedRectangle x="730" y="445" width="97" height="37" offset="0" />
+			<taggedRectangle x="761" y="483" width="32" height="31" offset="0" />
+			<taggedRectangle x="762" y="433" width="29" height="17" offset="0" />
+			<taggedRectangle x="861" y="732" width="98" height="33" offset="0" />
+			<taggedRectangle x="895" y="698" width="30" height="33" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_88.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="634" y="133" width="187" height="51" offset="0" />
+			<taggedRectangle x="654" y="777" width="262" height="55" offset="0" />
+			<taggedRectangle x="654" y="421" width="271" height="98" offset="0" />
+			<taggedRectangle x="770" y="244" width="274" height="86" offset="0" />
+			<taggedRectangle x="779" y="610" width="273" height="91" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_89.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="306" y="628" width="744" height="136" offset="0" />
+			<taggedRectangle x="405" y="491" width="563" height="124" offset="0" />
+			<taggedRectangle x="702" y="683" width="36" height="47" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_90.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="4" y="520" width="468" height="86" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_91.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="455" y="174" width="13" height="12" offset="0" />
+			<taggedRectangle x="461" y="678" width="376" height="40" offset="0" />
+			<taggedRectangle x="464" y="769" width="93" height="21" offset="0" />
+			<taggedRectangle x="492" y="480" width="313" height="33" offset="0" />
+			<taggedRectangle x="506" y="633" width="278" height="33" offset="0" />
+			<taggedRectangle x="523" y="525" width="264" height="39" offset="0" />
+			<taggedRectangle x="590" y="767" width="245" height="25" offset="0" />
+			<taggedRectangle x="591" y="579" width="80" height="23" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_92.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="925" y="863" width="192" height="40" offset="0" />
+			<taggedRectangle x="926" y="834" width="113" height="29" offset="0" />
+			<taggedRectangle x="939" y="771" width="230" height="52" offset="0" />
+			<taggedRectangle x="953" y="721" width="19" height="19" offset="0" />
+			<taggedRectangle x="1114" y="731" width="19" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_93.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="176" y="169" width="430" height="203" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_94.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="331" y="497" width="346" height="46" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_95.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="492" y="524" width="322" height="91" offset="0" />
+			<taggedRectangle x="490" y="370" width="323" height="94" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_96.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="510" y="435" width="571" height="48" offset="0" />
+			<taggedRectangle x="553" y="524" width="450" height="47" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_97.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="226" y="273" width="31" height="34" offset="0" />
+			<taggedRectangle x="318" y="485" width="600" height="120" offset="0" />
+			<taggedRectangle x="376" y="138" width="32" height="21" offset="0" />
+			<taggedRectangle x="354" y="113" width="109" height="87" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_98.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="213" y="651" width="823" height="115" offset="0" />
+			<taggedRectangle x="337" y="768" width="572" height="70" offset="0" />
+			<taggedRectangle x="558" y="569" width="127" height="41" offset="0" />
+			<taggedRectangle x="1014" y="351" width="37" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_99.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="39" y="315" width="43" height="48" offset="0" />
+			<taggedRectangle x="46" y="312" width="34" height="29" offset="0" />
+			<taggedRectangle x="62" y="293" width="18" height="25" offset="0" />
+			<taggedRectangle x="362" y="768" width="486" height="26" offset="0" />
+			<taggedRectangle x="429" y="742" width="390" height="22" offset="0" />
+			<taggedRectangle x="786" y="537" width="43" height="29" offset="0" />
+			<taggedRectangle x="963" y="769" width="141" height="25" offset="0" />
+			<taggedRectangle x="1004" y="746" width="39" height="16" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_100.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="49" y="0" width="348" height="118" offset="0" />
+			<taggedRectangle x="148" y="719" width="194" height="72" offset="0" />
+			<taggedRectangle x="186" y="86" width="32" height="124" offset="0" />
+			<taggedRectangle x="218" y="451" width="157" height="226" offset="0" />
+			<taggedRectangle x="247" y="928" width="31" height="31" offset="0" />
+			<taggedRectangle x="254" y="284" width="30" height="92" offset="0" />
+			<taggedRectangle x="318" y="113" width="189" height="118" offset="0" />
+			<taggedRectangle x="313" y="0" width="242" height="147" offset="0" />
+			<taggedRectangle x="328" y="70" width="70" height="52" offset="0" />
+			<taggedRectangle x="348" y="349" width="242" height="217" offset="0" />
+			<taggedRectangle x="412" y="669" width="290" height="168" offset="0" />
+			<taggedRectangle x="435" y="440" width="49" height="40" offset="0" />
+			<taggedRectangle x="434" y="488" width="54" height="93" offset="0" />
+			<taggedRectangle x="538" y="788" width="23" height="88" offset="0" />
+			<taggedRectangle x="541" y="562" width="47" height="41" offset="0" />
+			<taggedRectangle x="563" y="336" width="46" height="44" offset="0" />
+			<taggedRectangle x="567" y="501" width="90" height="63" offset="0" />
+			<taggedRectangle x="593" y="626" width="21" height="44" offset="0" />
+			<taggedRectangle x="638" y="360" width="38" height="79" offset="0" />
+			<taggedRectangle x="665" y="581" width="38" height="88" offset="0" />
+			<taggedRectangle x="673" y="191" width="100" height="67" offset="0" />
+			<taggedRectangle x="704" y="142" width="65" height="53" offset="0" />
+			<taggedRectangle x="709" y="119" width="115" height="104" offset="0" />
+			<taggedRectangle x="768" y="170" width="40" height="49" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_101.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="104" y="440" width="264" height="79" offset="0" />
+			<taggedRectangle x="149" y="140" width="189" height="99" offset="0" />
+			<taggedRectangle x="186" y="348" width="99" height="58" offset="0" />
+			<taggedRectangle x="119" y="78" width="232" height="206" offset="0" />
+			<taggedRectangle x="257" y="205" width="32" height="28" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_102.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="17" y="294" width="426" height="59" offset="0" />
+			<taggedRectangle x="126" y="350" width="59" height="26" offset="0" />
+			<taggedRectangle x="232" y="360" width="27" height="16" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_103.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="179" y="337" width="275" height="43" offset="0" />
+			<taggedRectangle x="260" y="457" width="24" height="19" offset="0" />
+			<taggedRectangle x="276" y="341" width="13" height="27" offset="0" />
+			<taggedRectangle x="358" y="360" width="39" height="18" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_104.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="32" y="67" width="598" height="215" offset="0" />
+			<taggedRectangle x="307" y="163" width="33" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_105.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="44" y="126" width="314" height="93" offset="0" />
+			<taggedRectangle x="165" y="300" width="350" height="43" offset="0" />
+			<taggedRectangle x="571" y="127" width="32" height="40" offset="0" />
+			<taggedRectangle x="627" y="202" width="13" height="25" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_106.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="0" width="51" height="41" offset="0" />
+			<taggedRectangle x="13" y="220" width="335" height="89" offset="0" />
+			<taggedRectangle x="72" y="254" width="21" height="27" offset="0" />
+			<taggedRectangle x="384" y="284" width="150" height="38" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_107.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="10" y="211" width="422" height="53" offset="0" />
+			<taggedRectangle x="64" y="272" width="99" height="16" offset="0" />
+			<taggedRectangle x="272" y="266" width="227" height="27" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_108.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="94" y="416" width="369" height="64" offset="0" />
+			<taggedRectangle x="250" y="472" width="8" height="8" offset="0" />
+			<taggedRectangle x="385" y="0" width="255" height="195" offset="0" />
+			<taggedRectangle x="492" y="463" width="15" height="17" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_109.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="55" y="31" width="435" height="113" offset="0" />
+			<taggedRectangle x="171" y="92" width="200" height="81" offset="0" />
+			<taggedRectangle x="271" y="45" width="14" height="24" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_110.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="143" y="285" width="95" height="32" offset="0" />
+			<taggedRectangle x="136" y="318" width="394" height="71" offset="0" />
+			<taggedRectangle x="269" y="168" width="19" height="25" offset="0" />
+			<taggedRectangle x="477" y="13" width="25" height="10" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_111.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="138" y="379" width="14" height="28" offset="0" />
+			<taggedRectangle x="231" y="198" width="334" height="57" offset="0" />
+			<taggedRectangle x="264" y="275" width="298" height="54" offset="0" />
+			<taggedRectangle x="276" y="350" width="283" height="49" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_112.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="9" y="63" width="577" height="51" offset="0" />
+			<taggedRectangle x="9" y="63" width="89" height="49" offset="0" />
+			<taggedRectangle x="12" y="131" width="580" height="181" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_113.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="64" y="506" width="54" height="21" offset="0" />
+			<taggedRectangle x="86" y="455" width="269" height="30" offset="0" />
+			<taggedRectangle x="183" y="332" width="32" height="22" offset="0" />
+			<taggedRectangle x="190" y="309" width="49" height="17" offset="0" />
+			<taggedRectangle x="271" y="509" width="37" height="21" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_114.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="334" y="356" width="94" height="51" offset="0" />
+			<taggedRectangle x="335" y="303" width="152" height="43" offset="0" />
+			<taggedRectangle x="338" y="227" width="146" height="66" offset="0" />
+			<taggedRectangle x="404" y="180" width="58" height="41" offset="0" />
+			<taggedRectangle x="424" y="180" width="21" height="22" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_115.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="18" y="99" width="575" height="23" offset="0" />
+			<taggedRectangle x="140" y="13" width="331" height="38" offset="0" />
+			<taggedRectangle x="155" y="54" width="120" height="23" offset="0" />
+			<taggedRectangle x="155" y="55" width="305" height="23" offset="0" />
+			<taggedRectangle x="228" y="102" width="65" height="17" offset="0" />
+			<taggedRectangle x="260" y="57" width="20" height="19" offset="0" />
+			<taggedRectangle x="330" y="101" width="24" height="20" offset="0" />
+			<taggedRectangle x="419" y="60" width="37" height="16" offset="0" />
+			<taggedRectangle x="539" y="104" width="43" height="15" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_116.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="241" y="42" width="45" height="50" offset="0" />
+			<taggedRectangle x="328" y="80" width="9" height="10" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_117.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="6" y="134" width="620" height="54" offset="0" />
+			<taggedRectangle x="13" y="1" width="506" height="55" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_118.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="78" y="311" width="473" height="70" offset="0" />
+			<taggedRectangle x="101" y="427" width="443" height="41" offset="0" />
+			<taggedRectangle x="156" y="386" width="323" height="38" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_119.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="31" y="254" width="608" height="69" offset="0" />
+			<taggedRectangle x="78" y="335" width="402" height="76" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_120.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="19" y="398" width="250" height="56" offset="0" />
+			<taggedRectangle x="16" y="345" width="119" height="41" offset="0" />
+			<taggedRectangle x="465" y="417" width="75" height="36" offset="0" />
+			<taggedRectangle x="495" y="417" width="20" height="14" offset="0" />
+			<taggedRectangle x="521" y="352" width="112" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_121.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="3" y="103" width="609" height="140" offset="0" />
+			<taggedRectangle x="153" y="356" width="330" height="83" offset="0" />
+			<taggedRectangle x="232" y="261" width="176" height="53" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_122.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="69" y="358" width="22" height="21" offset="0" />
+			<taggedRectangle x="172" y="349" width="105" height="20" offset="0" />
+			<taggedRectangle x="184" y="227" width="65" height="21" offset="0" />
+			<taggedRectangle x="190" y="290" width="45" height="19" offset="0" />
+			<taggedRectangle x="193" y="208" width="54" height="19" offset="0" />
+			<taggedRectangle x="295" y="389" width="55" height="113" offset="0" />
+			<taggedRectangle x="333" y="397" width="40" height="46" offset="0" />
+			<taggedRectangle x="371" y="476" width="16" height="27" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_123.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="81" y="323" width="1143" height="229" offset="0" />
+			<taggedRectangle x="265" y="434" width="235" height="115" offset="0" />
+			<taggedRectangle x="648" y="360" width="48" height="69" offset="0" />
+			<taggedRectangle x="886" y="335" width="191" height="172" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_124.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="246" y="422" width="169" height="35" offset="0" />
+			<taggedRectangle x="276" y="325" width="134" height="39" offset="0" />
+			<taggedRectangle x="276" y="378" width="126" height="29" offset="0" />
+			<taggedRectangle x="340" y="422" width="94" height="59" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_125.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="276" y="354" width="721" height="85" offset="0" />
+			<taggedRectangle x="449" y="474" width="74" height="41" offset="0" />
+			<taggedRectangle x="617" y="478" width="63" height="38" offset="0" />
+			<taggedRectangle x="743" y="479" width="95" height="37" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_126.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="547" y="446" width="110" height="23" offset="0" />
+			<taggedRectangle x="547" y="421" width="194" height="24" offset="0" />
+			<taggedRectangle x="548" y="472" width="131" height="18" offset="0" />
+			<taggedRectangle x="570" y="513" width="31" height="60" offset="0" />
+			<taggedRectangle x="609" y="545" width="58" height="16" offset="0" />
+			<taggedRectangle x="608" y="515" width="105" height="21" offset="0" />
+			<taggedRectangle x="649" y="711" width="27" height="37" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_127.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="774" y="890" width="7" height="25" offset="0" />
+			<taggedRectangle x="920" y="762" width="57" height="32" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_128.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="82" y="81" width="69" height="25" offset="0" />
+			<taggedRectangle x="239" y="112" width="13" height="14" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_130.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="121" y="309" width="58" height="114" offset="0" />
+			<taggedRectangle x="156" y="228" width="129" height="201" offset="0" />
+			<taggedRectangle x="300" y="248" width="569" height="127" offset="0" />
+			<taggedRectangle x="291" y="371" width="424" height="102" offset="0" />
+			<taggedRectangle x="315" y="324" width="298" height="72" offset="0" />
+			<taggedRectangle x="352" y="617" width="268" height="56" offset="0" />
+			<taggedRectangle x="421" y="935" width="21" height="25" offset="0" />
+			<taggedRectangle x="472" y="479" width="441" height="125" offset="0" />
+			<taggedRectangle x="587" y="368" width="17" height="22" offset="0" />
+			<taggedRectangle x="578" y="0" width="152" height="281" offset="0" />
+			<taggedRectangle x="791" y="486" width="87" height="165" offset="0" />
+			<taggedRectangle x="814" y="553" width="102" height="124" offset="0" />
+			<taggedRectangle x="985" y="408" width="112" height="67" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_131.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="596" y="258" width="658" height="514" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_132.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="67" y="879" width="452" height="33" offset="0" />
+			<taggedRectangle x="165" y="636" width="149" height="22" offset="0" />
+			<taggedRectangle x="167" y="689" width="323" height="30" offset="0" />
+			<taggedRectangle x="167" y="582" width="32" height="22" offset="0" />
+			<taggedRectangle x="170" y="429" width="310" height="36" offset="0" />
+			<taggedRectangle x="172" y="988" width="147" height="24" offset="0" />
+			<taggedRectangle x="169" y="778" width="182" height="23" offset="0" />
+			<taggedRectangle x="183" y="724" width="318" height="24" offset="0" />
+			<taggedRectangle x="243" y="589" width="51" height="14" offset="0" />
+			<taggedRectangle x="252" y="724" width="22" height="22" offset="0" />
+			<taggedRectangle x="275" y="832" width="182" height="27" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_133.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="822" y="659" width="9" height="13" offset="0" />
+			<taggedRectangle x="875" y="648" width="112" height="34" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_134.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="41" y="427" width="1173" height="155" offset="0" />
+			<taggedRectangle x="423" y="597" width="780" height="363" offset="0" />
+			<taggedRectangle x="423" y="606" width="352" height="353" offset="0" />
+			<taggedRectangle x="1072" y="643" width="119" height="69" offset="0" />
+			<taggedRectangle x="1158" y="469" width="26" height="35" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_135.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="194" y="169" width="334" height="69" offset="0" />
+			<taggedRectangle x="216" y="288" width="298" height="58" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_136.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="396" y="149" width="855" height="184" offset="0" />
+			<taggedRectangle x="409" y="344" width="817" height="75" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_138.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="261" y="306" width="950" height="283" offset="0" />
+			<taggedRectangle x="697" y="525" width="48" height="62" offset="0" />
+			<taggedRectangle x="947" y="352" width="201" height="98" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_139.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="712" width="108" height="248" offset="0" />
+			<taggedRectangle x="88" y="166" width="1106" height="388" offset="0" />
+			<taggedRectangle x="179" y="212" width="83" height="108" offset="0" />
+			<taggedRectangle x="229" y="590" width="94" height="62" offset="0" />
+			<taggedRectangle x="457" y="772" width="294" height="104" offset="0" />
+			<taggedRectangle x="507" y="585" width="162" height="65" offset="0" />
+			<taggedRectangle x="863" y="577" width="307" height="69" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_140.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="434" y="757" width="457" height="83" offset="0" />
+			<taggedRectangle x="436" y="616" width="341" height="79" offset="0" />
+			<taggedRectangle x="436" y="832" width="241" height="66" offset="0" />
+			<taggedRectangle x="432" y="688" width="332" height="75" offset="0" />
+			<taggedRectangle x="814" y="0" width="54" height="23" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_141.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="33" y="289" width="216" height="94" offset="0" />
+			<taggedRectangle x="33" y="289" width="66" height="90" offset="0" />
+			<taggedRectangle x="337" y="289" width="121" height="32" offset="0" />
+			<taggedRectangle x="337" y="292" width="29" height="26" offset="0" />
+			<taggedRectangle x="505" y="596" width="12" height="12" offset="0" />
+			<taggedRectangle x="478" y="0" width="801" height="479" offset="0" />
+			<taggedRectangle x="479" y="0" width="406" height="297" offset="0" />
+			<taggedRectangle x="633" y="683" width="71" height="34" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_142.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="176" y="565" width="962" height="138" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_143.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="531" y="176" width="240" height="287" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_144.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="277" y="784" width="700" height="51" offset="0" />
+			<taggedRectangle x="372" y="850" width="514" height="57" offset="0" />
+			<taggedRectangle x="462" y="296" width="5" height="22" offset="0" />
+			<taggedRectangle x="915" y="252" width="11" height="18" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_145.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="115" y="438" width="982" height="100" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_146.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="50" y="270" width="554" height="56" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_147.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="60" y="714" width="1172" height="142" offset="0" />
+			<taggedRectangle x="63" y="721" width="179" height="129" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_148.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="205" y="631" width="48" height="68" offset="0" />
+			<taggedRectangle x="394" y="606" width="265" height="166" offset="0" />
+			<taggedRectangle x="523" y="374" width="258" height="185" offset="0" />
+			<taggedRectangle x="707" y="692" width="38" height="48" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_149.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="564" width="672" height="364" offset="0" />
+			<taggedRectangle x="35" y="1228" width="82" height="52" offset="0" />
+			<taggedRectangle x="94" y="1145" width="586" height="68" offset="0" />
+			<taggedRectangle x="429" y="553" width="416" height="183" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_150.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="746" y="679" width="253" height="66" offset="0" />
+			<taggedRectangle x="797" y="602" width="158" height="57" offset="0" />
+			<taggedRectangle x="877" y="673" width="12" height="13" offset="0" />
+			<taggedRectangle x="924" y="596" width="30" height="18" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_151.jpg</imageName>
+		<taggedRectangles>
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_152.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="35" y="235" width="395" height="67" offset="0" />
+			<taggedRectangle x="39" y="365" width="379" height="78" offset="0" />
+			<taggedRectangle x="111" y="312" width="221" height="55" offset="0" />
+			<taggedRectangle x="193" y="151" width="23" height="33" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_153.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="13" y="170" width="533" height="113" offset="0" />
+			<taggedRectangle x="48" y="204" width="44" height="52" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_154.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="187" y="0" width="133" height="143" offset="0" />
+			<taggedRectangle x="206" y="497" width="75" height="16" offset="0" />
+			<taggedRectangle x="206" y="211" width="50" height="50" offset="0" />
+			<taggedRectangle x="270" y="114" width="40" height="88" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_155.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="208" y="0" width="68" height="153" offset="0" />
+			<taggedRectangle x="311" y="96" width="43" height="14" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_157.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="80" y="171" width="208" height="42" offset="0" />
+			<taggedRectangle x="80" y="120" width="212" height="63" offset="0" />
+			<taggedRectangle x="144" y="205" width="90" height="24" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_158.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="147" y="0" width="361" height="121" offset="0" />
+			<taggedRectangle x="147" y="0" width="126" height="114" offset="0" />
+			<taggedRectangle x="181" y="168" width="268" height="107" offset="0" />
+			<taggedRectangle x="197" y="326" width="63" height="49" offset="0" />
+			<taggedRectangle x="311" y="346" width="66" height="56" offset="0" />
+			<taggedRectangle x="338" y="380" width="43" height="28" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_159.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="0" width="64" height="226" offset="0" />
+			<taggedRectangle x="0" y="0" width="317" height="263" offset="0" />
+			<taggedRectangle x="46" y="286" width="114" height="35" offset="0" />
+			<taggedRectangle x="45" y="287" width="26" height="27" offset="0" />
+			<taggedRectangle x="232" y="133" width="85" height="90" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_160.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="48" y="120" width="451" height="183" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_161.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="68" y="275" width="348" height="70" offset="0" />
+			<taggedRectangle x="91" y="350" width="106" height="18" offset="0" />
+			<taggedRectangle x="99" y="201" width="285" height="74" offset="0" />
+			<taggedRectangle x="127" y="0" width="351" height="156" offset="0" />
+			<taggedRectangle x="221" y="289" width="17" height="24" offset="0" />
+			<taggedRectangle x="287" y="285" width="48" height="35" offset="0" />
+			<taggedRectangle x="300" y="205" width="62" height="25" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_162.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="155" y="434" width="277" height="46" offset="0" />
+			<taggedRectangle x="200" y="251" width="192" height="204" offset="0" />
+			<taggedRectangle x="544" y="452" width="96" height="24" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_164.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="202" y="79" width="59" height="60" offset="0" />
+			<taggedRectangle x="227" y="332" width="19" height="22" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_165.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="174" y="207" width="365" height="39" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_166.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="6" y="225" width="181" height="69" offset="0" />
+			<taggedRectangle x="420" y="260" width="60" height="48" offset="0" />
+			<taggedRectangle x="503" y="224" width="38" height="62" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_167.jpg</imageName>
+		<taggedRectangles>
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_169.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="235" y="326" width="88" height="18" offset="0" />
+			<taggedRectangle x="248" y="308" width="60" height="14" offset="0" />
+			<taggedRectangle x="254" y="285" width="91" height="18" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_170.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="6" y="152" width="16" height="22" offset="0" />
+			<taggedRectangle x="174" y="136" width="24" height="30" offset="0" />
+			<taggedRectangle x="243" y="287" width="344" height="36" offset="0" />
+			<taggedRectangle x="450" y="324" width="138" height="156" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_171.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="135" y="343" width="494" height="63" offset="0" />
+			<taggedRectangle x="175" y="347" width="141" height="55" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_172.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="183" y="352" width="354" height="25" offset="0" />
+			<taggedRectangle x="183" y="302" width="355" height="37" offset="0" />
+			<taggedRectangle x="298" y="391" width="71" height="35" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_173.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="148" y="260" width="43" height="15" offset="0" />
+			<taggedRectangle x="158" y="265" width="12" height="10" offset="0" />
+			<taggedRectangle x="161" y="0" width="110" height="121" offset="0" />
+			<taggedRectangle x="346" y="110" width="24" height="37" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_174.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="0" y="0" width="238" height="224" offset="0" />
+			<taggedRectangle x="241" y="271" width="52" height="58" offset="0" />
+			<taggedRectangle x="333" y="247" width="17" height="18" offset="0" />
+			<taggedRectangle x="362" y="153" width="249" height="170" offset="0" />
+			<taggedRectangle x="515" y="212" width="104" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_175.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="72" y="367" width="24" height="13" offset="0" />
+			<taggedRectangle x="71" y="203" width="36" height="57" offset="0" />
+			<taggedRectangle x="192" y="155" width="24" height="35" offset="0" />
+			<taggedRectangle x="229" y="202" width="103" height="25" offset="0" />
+			<taggedRectangle x="386" y="234" width="142" height="36" offset="0" />
+			<taggedRectangle x="391" y="152" width="127" height="46" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_176.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="103" y="150" width="293" height="40" offset="0" />
+			<taggedRectangle x="405" y="290" width="72" height="96" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_177.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="172" y="189" width="259" height="61" offset="0" />
+			<taggedRectangle x="237" y="264" width="61" height="21" offset="0" />
+			<taggedRectangle x="249" y="296" width="80" height="24" offset="0" />
+			<taggedRectangle x="329" y="263" width="13" height="19" offset="0" />
+			<taggedRectangle x="354" y="264" width="37" height="18" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_178.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="370" y="160" width="139" height="15" offset="0" />
+			<taggedRectangle x="371" y="140" width="155" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_180.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="582" y="796" width="148" height="50" offset="0" />
+			<taggedRectangle x="603" y="678" width="141" height="80" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_181.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="249" y="408" width="784" height="63" offset="0" />
+			<taggedRectangle x="484" y="490" width="373" height="50" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_182.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="292" y="437" width="274" height="107" offset="0" />
+			<taggedRectangle x="368" y="658" width="100" height="161" offset="0" />
+			<taggedRectangle x="211" y="377" width="421" height="582" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_183.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="34" y="328" width="463" height="45" offset="0" />
+			<taggedRectangle x="93" y="822" width="10" height="14" offset="0" />
+			<taggedRectangle x="569" y="701" width="21" height="26" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_184.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="477" y="180" width="465" height="73" offset="0" />
+			<taggedRectangle x="479" y="69" width="462" height="79" offset="0" />
+			<taggedRectangle x="485" y="617" width="436" height="106" offset="0" />
+			<taggedRectangle x="555" y="486" width="325" height="104" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_185.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="149" y="719" width="381" height="239" offset="0" />
+			<taggedRectangle x="210" y="564" width="116" height="57" offset="0" />
+			<taggedRectangle x="396" y="813" width="23" height="24" offset="0" />
+			<taggedRectangle x="409" y="548" width="204" height="51" offset="0" />
+			<taggedRectangle x="949" y="500" width="54" height="84" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_187.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="1" y="1" width="450" height="195" offset="0" />
+			<taggedRectangle x="70" y="72" width="106" height="108" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_188.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="76" y="328" width="560" height="102" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_189.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="89" y="205" width="439" height="49" offset="0" />
+			<taggedRectangle x="91" y="109" width="437" height="84" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_190.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="17" y="616" width="55" height="15" offset="0" />
+			<taggedRectangle x="119" y="380" width="154" height="33" offset="0" />
+			<taggedRectangle x="113" y="539" width="107" height="101" offset="0" />
+			<taggedRectangle x="118" y="291" width="156" height="34" offset="0" />
+			<taggedRectangle x="125" y="329" width="142" height="39" offset="0" />
+			<taggedRectangle x="133" y="425" width="124" height="34" offset="0" />
+			<taggedRectangle x="133" y="575" width="38" height="65" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_191.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="14" y="273" width="618" height="122" offset="0" />
+			<taggedRectangle x="85" y="99" width="487" height="130" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_192.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="44" y="324" width="573" height="62" offset="0" />
+			<taggedRectangle x="79" y="463" width="10" height="17" offset="0" />
+			<taggedRectangle x="218" y="147" width="35" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_193.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="311" y="440" width="17" height="36" offset="0" />
+			<taggedRectangle x="403" y="341" width="32" height="28" offset="0" />
+			<taggedRectangle x="364" y="267" width="148" height="150" offset="0" />
+			<taggedRectangle x="447" y="312" width="185" height="49" offset="0" />
+			<taggedRectangle x="580" y="325" width="244" height="42" offset="0" />
+			<taggedRectangle x="580" y="374" width="107" height="41" offset="0" />
+			<taggedRectangle x="581" y="326" width="25" height="33" offset="0" />
+			<taggedRectangle x="581" y="279" width="251" height="42" offset="0" />
+			<taggedRectangle x="612" y="288" width="25" height="24" offset="0" />
+			<taggedRectangle x="792" y="326" width="8" height="7" offset="0" />
+			<taggedRectangle x="890" y="437" width="54" height="110" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_194.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="77" y="271" width="460" height="101" offset="0" />
+			<taggedRectangle x="89" y="152" width="259" height="95" offset="0" />
+			<taggedRectangle x="272" y="95" width="80" height="42" offset="0" />
+			<taggedRectangle x="393" y="96" width="127" height="44" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_195.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="16" y="350" width="442" height="40" offset="0" />
+			<taggedRectangle x="203" y="315" width="168" height="24" offset="0" />
+			<taggedRectangle x="298" y="316" width="8" height="22" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_196.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="26" y="499" width="16" height="22" offset="0" />
+			<taggedRectangle x="53" y="518" width="25" height="11" offset="0" />
+			<taggedRectangle x="110" y="524" width="15" height="11" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_197.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="189" y="4" width="269" height="24" offset="0" />
+			<taggedRectangle x="244" y="63" width="42" height="18" offset="0" />
+			<taggedRectangle x="302" y="109" width="34" height="50" offset="0" />
+			<taggedRectangle x="321" y="65" width="112" height="19" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_198.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="201" y="910" width="40" height="19" offset="0" />
+			<taggedRectangle x="253" y="954" width="9" height="15" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_199.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="272" y="104" width="140" height="55" offset="0" />
+			<taggedRectangle x="279" y="655" width="67" height="70" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_200.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="211" y="424" width="61" height="14" offset="0" />
+			<taggedRectangle x="222" y="437" width="82" height="14" offset="0" />
+			<taggedRectangle x="233" y="328" width="228" height="31" offset="0" />
+			<taggedRectangle x="297" y="50" width="43" height="33" offset="0" />
+			<taggedRectangle x="309" y="378" width="37" height="13" offset="0" />
+			<taggedRectangle x="344" y="357" width="91" height="17" offset="0" />
+			<taggedRectangle x="390" y="453" width="32" height="15" offset="0" />
+			<taggedRectangle x="398" y="460" width="134" height="20" offset="0" />
+			<taggedRectangle x="422" y="380" width="68" height="19" offset="0" />
+			<taggedRectangle x="434" y="283" width="18" height="15" offset="0" />
+			<taggedRectangle x="446" y="393" width="50" height="17" offset="0" />
+			<taggedRectangle x="483" y="301" width="42" height="17" offset="0" />
+			<taggedRectangle x="539" y="408" width="19" height="14" offset="0" />
+			<taggedRectangle x="541" y="382" width="19" height="15" offset="0" />
+			<taggedRectangle x="548" y="368" width="18" height="13" offset="0" />
+			<taggedRectangle x="548" y="281" width="11" height="12" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_201.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="82" y="195" width="96" height="14" offset="0" />
+			<taggedRectangle x="98" y="270" width="512" height="51" offset="0" />
+			<taggedRectangle x="109" y="354" width="422" height="43" offset="0" />
+			<taggedRectangle x="120" y="424" width="218" height="42" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_202.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="13" y="182" width="16" height="18" offset="0" />
+			<taggedRectangle x="68" y="256" width="91" height="224" offset="0" />
+			<taggedRectangle x="272" y="147" width="119" height="29" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_203.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="32" y="301" width="572" height="99" offset="0" />
+			<taggedRectangle x="81" y="162" width="477" height="92" offset="0" />
+			<taggedRectangle x="201" y="45" width="239" height="82" offset="0" />
+			<taggedRectangle x="363" y="367" width="22" height="28" offset="0" />
+			<taggedRectangle x="456" y="53" width="8" height="8" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_204.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="34" y="322" width="242" height="44" offset="0" />
+			<taggedRectangle x="93" y="376" width="135" height="44" offset="0" />
+			<taggedRectangle x="379" y="445" width="257" height="25" offset="0" />
+			<taggedRectangle x="436" y="0" width="204" height="224" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_205.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="302" y="248" width="57" height="27" offset="0" />
+			<taggedRectangle x="307" y="202" width="77" height="21" offset="0" />
+			<taggedRectangle x="306" y="226" width="63" height="18" offset="0" />
+			<taggedRectangle x="282" y="164" width="120" height="140" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_206.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="96" y="583" width="34" height="21" offset="0" />
+			<taggedRectangle x="313" y="809" width="34" height="41" offset="0" />
+			<taggedRectangle x="316" y="774" width="135" height="64" offset="0" />
+			<taggedRectangle x="320" y="757" width="133" height="47" offset="0" />
+			<taggedRectangle x="320" y="721" width="82" height="37" offset="0" />
+			<taggedRectangle x="326" y="655" width="184" height="39" offset="0" />
+			<taggedRectangle x="326" y="621" width="159" height="38" offset="0" />
+			<taggedRectangle x="329" y="589" width="182" height="36" offset="0" />
+			<taggedRectangle x="338" y="469" width="178" height="41" offset="0" />
+			<taggedRectangle x="344" y="880" width="153" height="60" offset="0" />
+			<taggedRectangle x="356" y="501" width="26" height="40" offset="0" />
+			<taggedRectangle x="358" y="485" width="11" height="25" offset="0" />
+			<taggedRectangle x="380" y="694" width="125" height="32" offset="0" />
+			<taggedRectangle x="390" y="563" width="69" height="29" offset="0" />
+			<taggedRectangle x="394" y="868" width="54" height="35" offset="0" />
+			<taggedRectangle x="416" y="531" width="48" height="30" offset="0" />
+			<taggedRectangle x="445" y="410" width="24" height="29" offset="0" />
+			<taggedRectangle x="447" y="381" width="72" height="28" offset="0" />
+			<taggedRectangle x="452" y="351" width="68" height="28" offset="0" />
+			<taggedRectangle x="459" y="727" width="48" height="33" offset="0" />
+			<taggedRectangle x="723" y="626" width="62" height="36" offset="0" />
+			<taggedRectangle x="752" y="361" width="26" height="26" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_207.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="181" y="827" width="42" height="133" offset="0" />
+			<taggedRectangle x="433" y="431" width="318" height="36" offset="0" />
+			<taggedRectangle x="431" y="483" width="474" height="40" offset="0" />
+			<taggedRectangle x="786" y="0" width="494" height="183" offset="0" />
+			<taggedRectangle x="1123" y="0" width="65" height="82" offset="0" />
+			<taggedRectangle x="1152" y="0" width="14" height="38" offset="0" />
+			<taggedRectangle x="1214" y="86" width="65" height="96" offset="0" />
+			<taggedRectangle x="1254" y="2" width="26" height="94" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_208.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="47" y="650" width="1204" height="154" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_209.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="236" y="543" width="74" height="25" offset="0" />
+			<taggedRectangle x="355" y="556" width="12" height="11" offset="0" />
+			<taggedRectangle x="413" y="550" width="121" height="32" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_210.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="129" y="207" width="602" height="128" offset="0" />
+			<taggedRectangle x="431" y="450" width="503" height="43" offset="0" />
+			<taggedRectangle x="459" y="56" width="564" height="188" offset="0" />
+			<taggedRectangle x="939" y="0" width="235" height="117" offset="0" />
+			<taggedRectangle x="1061" y="68" width="46" height="61" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_211.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="528" y="427" width="229" height="47" offset="0" />
+			<taggedRectangle x="568" y="510" width="150" height="47" offset="0" />
+			<taggedRectangle x="608" y="353" width="123" height="20" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_212.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="99" y="133" width="140" height="37" offset="0" />
+			<taggedRectangle x="98" y="173" width="139" height="39" offset="0" />
+			<taggedRectangle x="130" y="212" width="76" height="34" offset="0" />
+			<taggedRectangle x="130" y="251" width="78" height="36" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_213.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="217" y="482" width="296" height="80" offset="0" />
+			<taggedRectangle x="230" y="710" width="255" height="50" offset="0" />
+			<taggedRectangle x="247" y="645" width="227" height="52" offset="0" />
+			<taggedRectangle x="312" y="587" width="111" height="45" offset="0" />
+			<taggedRectangle x="662" y="419" width="98" height="153" offset="0" />
+			<taggedRectangle x="771" y="661" width="44" height="27" offset="0" />
+			<taggedRectangle x="952" y="159" width="86" height="47" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_214.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="18" y="148" width="56" height="55" offset="0" />
+			<taggedRectangle x="18" y="148" width="24" height="54" offset="0" />
+			<taggedRectangle x="550" y="138" width="13" height="17" offset="0" />
+			<taggedRectangle x="614" y="120" width="161" height="29" offset="0" />
+			<taggedRectangle x="647" y="171" width="44" height="34" offset="0" />
+			<taggedRectangle x="657" y="150" width="13" height="28" offset="0" />
+			<taggedRectangle x="718" y="141" width="52" height="35" offset="0" />
+			<taggedRectangle x="894" y="230" width="158" height="28" offset="0" />
+			<taggedRectangle x="921" y="162" width="137" height="37" offset="0" />
+			<taggedRectangle x="926" y="278" width="87" height="25" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_215.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="97" y="836" width="1017" height="86" offset="0" />
+			<taggedRectangle x="134" y="366" width="27" height="29" offset="0" />
+			<taggedRectangle x="122" y="404" width="48" height="30" offset="0" />
+			<taggedRectangle x="173" y="420" width="39" height="30" offset="0" />
+			<taggedRectangle x="84" y="496" width="1037" height="281" offset="0" />
+			<taggedRectangle x="326" y="333" width="55" height="50" offset="0" />
+			<taggedRectangle x="1072" y="71" width="23" height="12" offset="0" />
+			<taggedRectangle x="1089" y="325" width="27" height="21" offset="0" />
+			<taggedRectangle x="1163" y="28" width="85" height="38" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_217.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="307" y="347" width="715" height="71" offset="0" />
+			<taggedRectangle x="334" y="369" width="73" height="41" offset="0" />
+			<taggedRectangle x="351" y="435" width="12" height="15" offset="0" />
+			<taggedRectangle x="447" y="449" width="329" height="57" offset="0" />
+			<taggedRectangle x="706" y="449" width="215" height="51" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_218.jpg</imageName>
+		<taggedRectangles>
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_219.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="216" y="7" width="94" height="118" offset="0" />
+			<taggedRectangle x="279" y="231" width="255" height="94" offset="0" />
+			<taggedRectangle x="469" y="246" width="248" height="111" offset="0" />
+			<taggedRectangle x="474" y="85" width="48" height="51" offset="0" />
+			<taggedRectangle x="571" y="13" width="394" height="136" offset="0" />
+			<taggedRectangle x="674" y="207" width="121" height="79" offset="0" />
+			<taggedRectangle x="851" y="102" width="33" height="32" offset="0" />
+			<taggedRectangle x="919" y="225" width="187" height="65" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_220.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="6" y="418" width="71" height="39" offset="0" />
+			<taggedRectangle x="0" y="452" width="107" height="137" offset="0" />
+			<taggedRectangle x="0" y="776" width="837" height="504" offset="0" />
+			<taggedRectangle x="238" y="534" width="16" height="18" offset="0" />
+			<taggedRectangle x="397" y="592" width="29" height="22" offset="0" />
+			<taggedRectangle x="472" y="410" width="23" height="22" offset="0" />
+			<taggedRectangle x="557" y="909" width="230" height="231" offset="0" />
+			<taggedRectangle x="613" y="1168" width="39" height="27" offset="0" />
+			<taggedRectangle x="652" y="1240" width="55" height="37" offset="0" />
+			<taggedRectangle x="657" y="1205" width="20" height="25" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_221.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="258" y="545" width="66" height="40" offset="0" />
+			<taggedRectangle x="372" y="472" width="141" height="53" offset="0" />
+			<taggedRectangle x="413" y="809" width="71" height="39" offset="0" />
+			<taggedRectangle x="232" y="456" width="418" height="401" offset="0" />
+			<taggedRectangle x="565" y="544" width="60" height="38" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_222.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="442" y="526" width="387" height="109" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_224.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="148" y="54" width="1130" height="77" offset="0" />
+			<taggedRectangle x="237" y="342" width="17" height="8" offset="0" />
+			<taggedRectangle x="241" y="518" width="36" height="9" offset="0" />
+			<taggedRectangle x="251" y="508" width="27" height="9" offset="0" />
+			<taggedRectangle x="125" y="297" width="1155" height="477" offset="0" />
+			<taggedRectangle x="320" y="480" width="17" height="8" offset="0" />
+			<taggedRectangle x="334" y="353" width="17" height="9" offset="0" />
+			<taggedRectangle x="691" y="915" width="141" height="45" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_225.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="118" y="78" width="340" height="85" offset="0" />
+			<taggedRectangle x="140" y="305" width="513" height="52" offset="0" />
+			<taggedRectangle x="126" y="489" width="329" height="80" offset="0" />
+			<taggedRectangle x="134" y="683" width="408" height="78" offset="0" />
+			<taggedRectangle x="786" y="647" width="137" height="93" offset="0" />
+			<taggedRectangle x="798" y="498" width="100" height="56" offset="0" />
+			<taggedRectangle x="840" y="311" width="26" height="47" offset="0" />
+			<taggedRectangle x="892" y="507" width="242" height="89" offset="0" />
+			<taggedRectangle x="884" y="415" width="51" height="64" offset="0" />
+			<taggedRectangle x="949" y="664" width="211" height="114" offset="0" />
+			<taggedRectangle x="975" y="301" width="131" height="89" offset="0" />
+			<taggedRectangle x="979" y="99" width="134" height="96" offset="0" />
+			<taggedRectangle x="1076" y="585" width="104" height="80" offset="0" />
+			<taggedRectangle x="1085" y="37" width="141" height="82" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_226.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="515" y="318" width="202" height="183" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_227.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="75" y="463" width="508" height="187" offset="0" />
+			<taggedRectangle x="172" y="354" width="738" height="94" offset="0" />
+			<taggedRectangle x="627" y="369" width="10" height="23" offset="0" />
+			<taggedRectangle x="627" y="404" width="11" height="29" offset="0" />
+			<taggedRectangle x="928" y="461" width="80" height="61" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_228.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="8" y="405" width="680" height="118" offset="0" />
+			<taggedRectangle x="139" y="1" width="258" height="281" offset="0" />
+			<taggedRectangle x="193" y="98" width="36" height="35" offset="0" />
+			<taggedRectangle x="177" y="40" width="465" height="242" offset="0" />
+			<taggedRectangle x="591" y="444" width="96" height="70" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_229.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="515" y="1340" width="1011" height="489" offset="0" />
+			<taggedRectangle x="532" y="871" width="1993" height="605" offset="0" />
+			<taggedRectangle x="675" y="1816" width="1711" height="776" offset="0" />
+			<taggedRectangle x="756" y="425" width="1187" height="520" offset="0" />
+			<taggedRectangle x="1248" y="1855" width="982" height="508" offset="0" />
+			<taggedRectangle x="1633" y="1297" width="132" height="88" offset="0" />
+			<taggedRectangle x="2990" y="1254" width="120" height="137" offset="0" />
+			<taggedRectangle x="3166" y="2152" width="165" height="176" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_231.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="170" y="785" width="1271" height="131" offset="0" />
+			<taggedRectangle x="182" y="915" width="1258" height="100" offset="0" />
+			<taggedRectangle x="700" y="187" width="190" height="171" offset="0" />
+			<taggedRectangle x="699" y="403" width="206" height="236" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_232.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="1593" y="1685" width="1462" height="350" offset="0" />
+			<taggedRectangle x="1952" y="816" width="14" height="16" offset="0" />
+			<taggedRectangle x="2061" y="1420" width="637" height="284" offset="0" />
+			<taggedRectangle x="2387" y="1558" width="109" height="87" offset="0" />
+			<taggedRectangle x="2544" y="1725" width="12" height="15" offset="0" />
+			<taggedRectangle x="2728" y="2445" width="15" height="15" offset="0" />
+		</taggedRectangles>
+	</image>
+	<image>
+		<imageName>img_233.jpg</imageName>
+		<taggedRectangles>
+			<taggedRectangle x="75" y="141" width="501" height="109" offset="0" />
+			<taggedRectangle x="151" y="251" width="329" height="115" offset="0" />
+			<taggedRectangle x="186" y="233" width="12" height="11" offset="0" />
+			<taggedRectangle x="154" y="251" width="82" height="113" offset="0" />
+			<taggedRectangle x="292" y="156" width="143" height="91" offset="0" />
+		</taggedRectangles>
+	</image>
+</tagset>

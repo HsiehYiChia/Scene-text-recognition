@@ -4,8 +4,8 @@
 #define VIDEO_MODE
 //#define IMAGE_MODE
 
-#define THRESHOLD_STEP 6
-#define MIN_ER_AREA 150
+#define THRESHOLD_STEP 8
+#define MIN_ER_AREA 120
 #define MAX_ER_AREA 900000
 #define NMS_STABILITY_T 2
 #define NMS_OVERLAP_COEF 0.7

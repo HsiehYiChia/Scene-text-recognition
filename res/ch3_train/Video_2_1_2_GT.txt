@@ -1,6 +1,0 @@
-"85001","Rectorat"
-"250001","Social"
-"248003","Gerencia"
-"339001","ICE"
-"248002","Social"
-"248001","Consell"

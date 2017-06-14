@@ -68,8 +68,8 @@ string SpellingCorrector::correct(const std::string& word)
 
     edits(edited_str[i], subResult);
     known(subResult, candidates);
-  }
-  if (candidates.size() > 0) { return max_element(candidates.begin(), candidates.end(), sortBySecond)->first; }*/
+  }*/
+  if (candidates.size() > 0) { return max_element(candidates.begin(), candidates.end(), sortBySecond)->first; }
 
   return "";
 }

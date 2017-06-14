@@ -22,9 +22,9 @@ int main(int argc, char** argv)
 	//train_cascade();
 	//bootstrap();
 	//rotate_ocr_samples();
-	//draw_linear_time_MSER("img_7.jpg");
-	//draw_multiple_channel("img_6.jpg");
-	//test_MSER_time("img_7.jpg");
+	//draw_linear_time_MSER("res/ICDAR2015_test/img_7.jpg");
+	//draw_multiple_channel("res/ICDAR2015_test/img_6.jpg");
+	//test_MSER_time("res/ICDAR2015_test/img_7.jpg");
 	//extract_ocr_sample();
 	//calc_recall_rate();
 	//test_best_detval();
@@ -36,13 +36,13 @@ int main(int argc, char** argv)
 	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
-	er_filter->load_tp_table("tp_table.txt");
+	er_filter->load_tp_table("dictionary/tp_table.txt");
 	er_filter->corrector.load("dictionary/modified_big.txt");
 	er_filter->corrector.load("dictionary/self_define_word.txt");
 
 #if defined(VIDEO_MODE)
-	//VideoCapture cap(0);
-	VideoCapture cap("video_result/result4/test2.mpg");
+	VideoCapture cap(0);
+	//VideoCapture cap("video_result/result3/input5.mpg");
 	if (!cap.isOpened())
 	{
 		cerr << "ERROR! Unable to open camera or video file\n";
@@ -51,8 +51,10 @@ int main(int argc, char** argv)
 		
 	Mat frame;
 	VideoWriter writer;
+	VideoWriter original_writer;
 	cap >> frame;	// get 1 frame to know the frame size
 	writer.open("video_result/result/result.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
+	original_writer.open("video_result/result/input.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
 	if (!writer.isOpened()) {
 		cerr << "Could not open the output video file for write\n";
 		return -1;
@@ -79,6 +81,7 @@ int main(int argc, char** argv)
 		for (int n = 0; n < frame_count; n++)
 		{
 			cap >> frame;
+			original_writer << frame;
 			if (frame.empty())	break;
 
 			Mat Ycrcb;
@@ -190,6 +193,7 @@ int main(int argc, char** argv)
 
 	//capture_thread.join();`
 	cap.release();
+	original_writer.release();
 	writer.release();
 
 	std::cout << "Total frame number: " << img_count << "\n"
