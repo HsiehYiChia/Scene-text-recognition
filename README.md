@@ -54,8 +54,8 @@ Recognition
 [3]: http://u-pat.org/ICDAR2017/
 [4]: http://norvig.com/spell-correct.html
 
-[pic1]: ./res/result1.jpg
-[pic2]: ./res/result2.jpg
-[pic3]: ./res/result3.jpg
-[pic4]: ./res/result4.jpg
-[pic5]: ./res/result5.jpg
+[pic1]: res/result1.jpg
+[pic2]: res/result2.jpg
+[pic3]: res/result3.jpg
+[pic4]: res/result4.jpg
+[pic5]: res/result5.jpg
