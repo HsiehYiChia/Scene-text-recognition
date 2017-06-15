@@ -41,12 +41,12 @@ The system is able to detect text in real-time(30FPS) and recognize text in near
 Result
 ----------
 
-####Detection result on IDCAR 2015  
+#### Detection result on IDCAR 2015  
 ![result1](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt1.jpg)
 ![result2](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt2.jpg)
 ![result3](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt3.jpg)
 
-####Recognition result on random image 
+#### Recognition result on random image 
 ![result4](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt4.jpg)
 ![result5](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt5.jpg)
 
