@@ -1,6 +1,9 @@
+x64
+Debug
+Release
+video_result
 .ipynb_checkpoints
 .vs
-x64
-video_result
 *.wmv
 *.db
+*.opendb
