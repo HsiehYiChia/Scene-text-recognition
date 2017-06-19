@@ -18,7 +18,7 @@ How to?
 --------
 Put the `opencv` directory to `C:\` and setup a OpenCV project for Visual Studio. It's recommend to enable the OpenMP flag to speed up the system performance.  
   
-Usage:
+Usage:  
 `*.exe -v infile`: take video as input, default for camera  
 `*.exe -i infile`: take image as input  
 `*.exe -icdar`: take icdar dataset as input  
