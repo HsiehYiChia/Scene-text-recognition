@@ -12,8 +12,11 @@
 using namespace std;
 using namespace cv;
 
+int icdar_mode(ERFilter* er_filter);
+int image_mode(ERFilter* er_filter, char filename[]);
+int video_mode(ERFilter* er_filter, char filename[]);
 
-int main(int argc, char** argv)
+int main(int argc, char* argv[])
 {
 	//get_lbp_data();
 	//train_classifier();
@@ -32,23 +35,133 @@ int main(int argc, char** argv)
 	//calc_video_result();
 	//return 0;
 
+
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
-	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
+	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 	er_filter->load_tp_table("dictionary/tp_table.txt");
 	er_filter->corrector.load("dictionary/modified_big.txt");
 	er_filter->corrector.load("dictionary/self_define_word.txt");
 
-#if defined(VIDEO_MODE)
-	VideoCapture cap(0);
-	//VideoCapture cap("video_result/result3/input5.mpg");
+	char *filename = nullptr;
+	if (strcmp(argv[1],"-icdar") == 0)
+	{
+		icdar_mode(er_filter);
+	}
+	else if(strcmp(argv[1], "-v") == 0)
+	{
+		if (argc == 3)
+		{
+			filename = argv[2];
+		}
+		video_mode(er_filter, filename);
+	}
+	else if (strcmp(argv[1], "-i") == 0)
+	{
+		if (argc == 3)
+		{
+			filename = argv[2];
+		}
+		image_mode(er_filter, filename);
+	}
+	else
+	{
+		cerr << "Wrong input argument! Usage as follow: " << endl;
+		cerr << "[thisfile] -v [infile]: take video as input, default for camera" << endl;
+		cerr << "[thisfile] -i [infile]: take image as input" << endl;
+		cerr << "[thisfile] -icdar: take icdar dataset as input" << endl;
+	}
+
+	delete er_filter->wtc;
+	delete er_filter->stc;
+	delete er_filter->ocr;
+	return 0;
+}
+
+int icdar_mode(ERFilter* er_filter)
+{
+	int img_count = 0;
+	vector<double> avg_time(7, 0);
+	vector<vector<Text>> det_text;
+	for (int n = 1; n <= 328; n++)
+	{
+		Mat src;
+		Mat result;
+		if (!load_challenge2_test_file(src, n))	continue;
+
+		ERs root;
+		vector<ERs> all;
+		vector<ERs> pool;
+		vector<ERs> strong;
+		vector<ERs> weak;
+		ERs tracked;
+		vector<Text> result_text;
+
+		vector<double> times = er_filter->text_detect(src, root, all, pool, strong, weak, tracked, result_text);
+		show_result(src, result, result_text, times, tracked, strong, weak, all, pool);
+
+		++img_count;
+		for (int i = 0; i < times.size(); i++)
+			avg_time[i] += times[i];
+		det_text.push_back(result_text);
+	}
+
+	cout << "Total frame number: " << img_count << "\n"
+		<< "ER extraction = " << avg_time[0] * 1000 / img_count << "ms\n"
+		<< "Non-maximum suppression = " << avg_time[1] * 1000 / img_count << "ms\n"
+		<< "Classification = " << avg_time[2] * 1000 / img_count << "ms\n"
+		<< "Character tracking = " << avg_time[3] * 1000 / img_count << "ms\n"
+		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
+		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
+		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
+
+	save_deteval_xml(det_text, "others/deteval/det.xml");
+}
+
+
+int image_mode(ERFilter* er_filter, char filename[])
+{
+	Mat src = imread(filename);
+	
+	if (src.empty())
+	{
+		cerr << "ERROR! Unable to open the image file\n";
+		return -1;
+	}
+
+	Mat result;
+
+	ERs root;
+	vector<ERs> all;
+	vector<ERs> pool;
+	vector<ERs> strong;
+	vector<ERs> weak;
+	ERs tracked;
+	vector<Text> result_text;
+
+	vector<double> times = er_filter->text_detect(src, root, all, pool, strong, weak, tracked, result_text);
+	show_result(src, result, result_text, times, tracked, strong, weak, all, pool);
+	waitKey(0);
+
+	return 0;
+}
+
+
+int video_mode(ERFilter* er_filter, char filename[])
+{
+	VideoCapture cap;
+	if (filename != nullptr)
+		cap = VideoCapture(filename);
+	else
+		cap = VideoCapture(0);
+
 	if (!cap.isOpened())
 	{
 		cerr << "ERROR! Unable to open camera or video file\n";
 		return -1;
 	}
-		
+
 	Mat frame;
 	VideoWriter writer;
 	VideoWriter original_writer;
@@ -59,11 +172,10 @@ int main(int argc, char** argv)
 		cerr << "Could not open the output video file for write\n";
 		return -1;
 	}
-	
+
 	Mat result;
 	static vector<Text> result_text;
 	int key = -1;
-	//thread capture_thread(load_video_thread, cap, frame, result, &result_text, &key);
 
 	chrono::high_resolution_clock::time_point start, end;
 	start = chrono::high_resolution_clock::now();
@@ -99,7 +211,7 @@ int main(int argc, char** argv)
 			ERs tracked;
 			vector<chrono::high_resolution_clock::time_point> time_vec(channel.size() * 4 + 2);
 
-		#pragma omp parallel for
+#pragma omp parallel for
 			for (int i = 0; i < channel.size(); i++)
 			{
 				time_vec[i * 4] = chrono::high_resolution_clock::now();
@@ -144,10 +256,10 @@ int main(int argc, char** argv)
 
 			// write file
 			char buf[60];
-			sprintf(buf, "video_result/result/%d.jpg", img_count);
-			imwrite(buf, result);
+			std::sprintf(buf, "video_result/result/%d.jpg", img_count);
+			cv::imwrite(buf, result);
 			writer << result;
-			sort(result_text.begin(), result_text.end(), [](Text a, Text b) {return a.box.y < b.box.y; });
+			std::sort(result_text.begin(), result_text.end(), [](Text a, Text b) {return a.box.y < b.box.y; });
 			f_result_text << img_count;
 			for (auto it : result_text)
 			{
@@ -165,24 +277,24 @@ int main(int argc, char** argv)
 		vector<chrono::high_resolution_clock::time_point> time(3);
 
 		vector<Text> tmp_text;
-	#ifndef DO_OCR
+#ifndef DO_OCR
 		time[0] = chrono::high_resolution_clock::now();
 		er_filter->er_grouping(tracked_vec, text, true, true);
 		time[1] = chrono::high_resolution_clock::now();
-	#else
+#else
 		time[0] = chrono::high_resolution_clock::now();
 		er_filter->er_grouping(tracked_vec, tmp_text, false, true);
 		time[1] = chrono::high_resolution_clock::now();
 		er_filter->er_ocr(tracked_vec, channel_vec, tmp_text);
 		time[2] = chrono::high_resolution_clock::now();
-	#endif
+#endif
 		result_text = tmp_text;
 
 		chrono::duration<double> grouping_time = (time[1] - time[0]);
 		chrono::duration<double> ocr_time = (time[2] - time[1]);
 		avg_time[4] += grouping_time.count();
 		avg_time[5] += ocr_time.count();
-		
+
 		for (auto it : root_vec)
 			er_filter->er_delete(it);
 	}
@@ -214,50 +326,4 @@ int main(int argc, char** argv)
 		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
 		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
-
-	
-
-#elif defined(IMAGE_MODE)
-	int img_count = 0;
-	vector<double> avg_time(7, 0);
-	vector<vector<Text>> det_text;
-	for (int n = 1; n <= 328; n++)
-	{
-		Mat src;
-		Mat result;
-		if (!load_challenge2_test_file(src, n))	continue;
-
-		ERs root;
-		vector<ERs> all;
-		vector<ERs> pool;
-		vector<ERs> strong;
-		vector<ERs> weak;
-		ERs tracked;
-		vector<Text> result_text;
-
-		vector<double> times = er_filter->text_detect(src, root, all, pool, strong, weak, tracked, result_text);
-		show_result(src, result, text, times, tracked, strong, weak, all, pool);
-		
-		++img_count;
-		for (int i = 0; i < times.size(); i++)
-			avg_time[i] += times[i];
-		det_text.push_back(text);
-	}
-
-	cout << "Total frame number: " << img_count << "\n"
-		<< "ER extraction = " << avg_time[0] * 1000 / img_count << "ms\n"
-		<< "Non-maximum suppression = " << avg_time[1] * 1000 / img_count << "ms\n"
-		<< "Classification = " << avg_time[2] * 1000 / img_count << "ms\n"
-		<< "Character tracking = " << avg_time[3] * 1000 / img_count << "ms\n"
-		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
-		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
-		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
-
-	save_deteval_xml(det_text);
-#endif
-
-	delete er_filter->wtc;
-	delete er_filter->stc;
-	delete er_filter->ocr;
-	return 0;
 }

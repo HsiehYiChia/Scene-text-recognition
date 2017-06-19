@@ -1,9 +1,6 @@
 #ifndef __MYLIB__
 #define __MYLIB__
 
-#define VIDEO_MODE
-//#define IMAGE_MODE
-
 #define THRESHOLD_STEP 8
 #define MIN_ER_AREA 120
 #define MAX_ER_AREA 900000
@@ -52,7 +49,7 @@ void output_optimal_path(string img_name);
 vector<Vec4i> load_gt(int n);
 Vec6d calc_detection_rate(int n, vector<Text> &text);	// Deprecated
 void calc_recall_rate();
-void save_deteval_xml(vector<vector<Text>> &text, string det_name = "det.xml");
+void save_deteval_xml(vector<vector<Text>> &text, string det_name);
 void test_best_detval();
 void make_video_ground_truth();
 void calc_video_result();

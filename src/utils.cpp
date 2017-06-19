@@ -676,7 +676,7 @@ void calc_recall_rate()
 	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
-	er_filter->load_tp_table("transition_probability/tp.txt");
+	er_filter->load_tp_table("dictionary/tp_table.txt");
 
 	Ptr<MSER> ms = MSER::create();
 	
@@ -840,7 +840,8 @@ void save_deteval_xml(vector<vector<Text>> &text, string det_name)
 {
 	//remove("gt.xml");
 	//remove("det.xml");
-	fstream fgt("gt.xml", fstream::out);
+
+	fstream fgt("others/deteval/gt.xml", fstream::out);
 	fstream fdet(det_name, fstream::out);
 
 	fgt << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl << "<tagset>" << endl;
@@ -884,7 +885,7 @@ void test_best_detval()
 	er_filter->stc = new CascadeBoost("er_classifier/cascade1.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
-	er_filter->load_tp_table("transition_probability/tp.txt");
+	er_filter->load_tp_table("dictionar/yttp_table.txt");
 
 
 	for (int thresh_step = 9; thresh_step <= 16; thresh_step++)
@@ -915,7 +916,7 @@ void test_best_detval()
 				det_text.push_back(text);
 			}
 
-			string det_name = "deteval/det_" + to_string(thresh_step) + "_" + to_string(min_area) + ".xml";
+			string det_name = "others/deteval/det_" + to_string(thresh_step) + "_" + to_string(min_area) + ".xml";
 			save_deteval_xml(det_text, det_name);
 		}
 	}
