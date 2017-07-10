@@ -117,6 +117,7 @@ int icdar_mode(ERFilter* er_filter)
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
 
 	save_deteval_xml(det_text, "others/deteval/det.xml");
+	return 0;
 }
 
 
@@ -168,9 +169,9 @@ int video_mode(ERFilter* er_filter, char filename[])
 	cap >> frame;	// get 1 frame to know the frame size
 	writer.open("video_result/result/result.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
 	original_writer.open("video_result/result/input.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
-	if (!writer.isOpened()) {
-		cerr << "Could not open the output video file for write\n";
-		return -1;
+	if (!writer.isOpened()) 
+	{
+		//cerr << "Could not open the output video file for write\n";
 	}
 
 	Mat result;
@@ -326,4 +327,6 @@ int video_mode(ERFilter* er_filter, char filename[])
 		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
 		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
+
+	return 0;
 }
