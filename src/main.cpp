@@ -3,17 +3,10 @@
 #include <thread>
 #include <opencv.hpp>
 
-<<<<<<< HEAD
 #include "../inc/ER.h"
 #include "../inc/OCR.h"
 #include "../inc/adaboost.h"
 #include "../inc/utils.h"
-=======
-#include "ER.h"
-#include "OCR.h"
-#include "adaboost.h"
-#include "utils.h"
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 
 
 using namespace std;

@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 ﻿#include "../inc/OCR.h"
 #include "../inc/ER.h"
-=======
-﻿#include "OCR.h"
-#include "ER.h"
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 
 enum category
 {
