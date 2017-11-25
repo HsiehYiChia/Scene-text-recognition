@@ -1,0 +1,9 @@
+x64
+Debug
+Release
+video_result
+.ipynb_checkpoints
+.vs
+*.wmv
+*.db
+*.opendb
