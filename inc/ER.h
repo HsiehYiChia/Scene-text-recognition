@@ -20,7 +20,11 @@
 #include "OCR.h"
 #include "SpellingCorrector.h"
 
+<<<<<<< HEAD
 //#define DO_OCR
+=======
+#define DO_OCR
+>>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 //#define GET_ALL_ER
 //#define USE_STROKE_WIDTH
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "../inc/utils.h"
+=======
+#include "utils.h"
+>>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 
 // Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n)

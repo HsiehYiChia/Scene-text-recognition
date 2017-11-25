@@ -3,7 +3,11 @@
 #include <algorithm>
 #include <iostream>
 
+<<<<<<< HEAD
 #include "../inc/SpellingCorrector.h"
+=======
+#include "SpellingCorrector.h"
+>>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 
 using namespace std;
 
