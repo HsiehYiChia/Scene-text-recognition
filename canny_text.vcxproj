@@ -1,9 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-=======
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -26,51 +22,32 @@
     <ProjectGuid>{247B18A8-CC94-4D5C-A912-AA8408E74882}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>canny_text</RootNamespace>
-<<<<<<< HEAD
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
-=======
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-<<<<<<< HEAD
     <PlatformToolset>v141</PlatformToolset>
-=======
-    <PlatformToolset>v140</PlatformToolset>
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-<<<<<<< HEAD
     <PlatformToolset>v141</PlatformToolset>
-=======
-    <PlatformToolset>v140</PlatformToolset>
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-<<<<<<< HEAD
     <PlatformToolset>v141</PlatformToolset>
-=======
-    <PlatformToolset>v140</PlatformToolset>
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-<<<<<<< HEAD
     <PlatformToolset>v141</PlatformToolset>
-=======
-    <PlatformToolset>v140</PlatformToolset>
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -103,11 +80,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-<<<<<<< HEAD
     <IncludePath>C:\opencv\build\include;C:\opencv\build\include\opencv;C:\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
-=======
-    <IncludePath>C:\opencv\build\include;C:\opencv\build\include\opencv;C:\opencv\build\include\opencv2;D:\0.Projects\canny_text\inc;D:\0.Projects\canny_text\annoy\src;$(IncludePath)</IncludePath>
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
     <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

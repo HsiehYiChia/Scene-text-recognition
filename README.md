@@ -18,7 +18,8 @@ How to?
 ### Via Visual Studio:
 1. Put the `opencv` directory to `C:\` 
 2. Open the `*.vcxproj` project file(or you can setup a OpenCV project for Visual Studio by yourself). It's recommend to enable the OpenMP flag to speed up system performance.  
-3. Config input arguments `Debug -> Properties Pages -> Coniguration Properties -> Debugging -> Command Arguments -> -v / -v [infile] / -i [infile] / -icdar`  
+3. Config input arguments 
+  `Properties Pages -> Coniguration Properties -> Debugging -> Command Arguments`  
 4. Press `Ctrl+F5` to execute and `Esc` to end.  
   
 ### Via Command Prompt:  
