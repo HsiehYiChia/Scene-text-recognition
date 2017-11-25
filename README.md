@@ -26,8 +26,8 @@ How to?
 1. Compile the `.exe` via Visual Studio and you'll find `.exe` in `x64/Release/`  
 2. Put `.exe`, `opencv_world3xx.dll`, `er_classifier/`, `ocr_classifier/`, `dictionary/` in the same directory.  
 3. Usage:  
-`*.exe -v`: take default webcam as input
-`*.exe -v [infile]`: take video as input
+`*.exe -v`: take default webcam as input  
+`*.exe -v [infile]`: take video as input  
 `*.exe -i [infile]`: take image as input  
 `*.exe -icdar`: take icdar dataset as input  
 
