@@ -41,12 +41,7 @@ int main(int argc, char* argv[])
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
 	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 	er_filter->load_tp_table("dictionary/tp_table.txt");
-<<<<<<< HEAD
 	er_filter->corrector.load("dictionary/big.txt");
-=======
-	er_filter->corrector.load("dictionary/modified_big.txt");
-	er_filter->corrector.load("dictionary/self_define_word.txt");
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 
 	char *filename = nullptr;
 	if (strcmp(argv[1],"-icdar") == 0)
@@ -108,10 +103,6 @@ int icdar_mode(ERFilter* er_filter)
 		++img_count;
 		for (int i = 0; i < times.size(); i++)
 			avg_time[i] += times[i];
-<<<<<<< HEAD
-=======
-		det_text.push_back(result_text);
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 	}
 
 	cout << "Total frame number: " << img_count << "\n"
@@ -122,11 +113,7 @@ int icdar_mode(ERFilter* er_filter)
 		<< "Character grouping = " << avg_time[4] * 1000 / img_count << "ms\n"
 		<< "OCR = " << avg_time[5] * 1000 / img_count << "ms\n"
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
-<<<<<<< HEAD
-=======
 
-	save_deteval_xml(det_text, "others/deteval/det.xml");
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 	return 0;
 }
 
@@ -314,11 +301,7 @@ int video_mode(ERFilter* er_filter, char filename[])
 	avg_time[4] *= frame_count;
 	avg_time[5] *= frame_count;
 
-<<<<<<< HEAD
 	//capture_thread.join();
-=======
-	//capture_thread.join();`
->>>>>>> 379573d12242c4dd41c5e0061ffb0896933f923d
 	cap.release();
 	original_writer.release();
 	writer.release();
