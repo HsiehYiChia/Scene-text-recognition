@@ -995,7 +995,7 @@ void ERFilter::overlap_suppression(ERs &pool)
 void ERFilter::build_graph(Text &text, Graph &graph)
 {
 	for (int j = 0; j < text.ers.size(); j++)
-		graph.push_back(Node(text.ers[j], j));
+		graph.push_back(GraphNode(text.ers[j], j));
 
 	for (int j = 0; j < text.ers.size(); j++)
 	{

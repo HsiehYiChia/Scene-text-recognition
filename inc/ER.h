@@ -96,16 +96,16 @@ struct Text
 	string word;
 };
 
-struct Node
+struct GraphNode
 {
-	Node(ER *v, const int i) : vertex(v), index(i){};
+	GraphNode(ER *v, const int i) : vertex(v), index(i){};
 	ER* vertex;
 	int index;
-	vector<Node> adj_list;
+	vector<GraphNode> adj_list;
 	vector<double> edge_prob;
 };
 
-typedef vector<Node> Graph;
+typedef vector<GraphNode> Graph;
 
 class ERFilter
 {
