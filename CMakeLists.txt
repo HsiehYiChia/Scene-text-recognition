@@ -4,7 +4,6 @@ project( scene_text_recognition )
 
 # use unicode
 add_definitions(-DUNICODE -D_UNICODE) 
-add_definitions(-D)
 
 # set lib path
 set(MYLIBPATH "C:\\opencv\\build\\x64\\vc14\\lib\\") 
