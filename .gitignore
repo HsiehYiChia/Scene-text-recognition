@@ -1,9 +1,11 @@
 x64
 Debug
 Release
+build
 video_result
 .ipynb_checkpoints
 .vs
+.v12
 *.wmv
 *.db
 *.opendb

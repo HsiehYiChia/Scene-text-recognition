@@ -7,29 +7,35 @@ This algorithm is based on [several papers](#references), and was implemented in
 Enviroment and dependency
 --------
 1. Microsoft Windows 10
-2. Visual Studio 2015 Community or above
+2. Visual Studio 2017 Community or above
 3. [OpenCV](http://opencv.org/) 3.1 or above
-4. [libsvm](https://www.csie.ntu.edu.tw/~cjlin/libsvm/) 3.21 or above
-5. [ICDAR](http://u-pat.org/ICDAR2017/) dataset
+4. CMake 2.8 or above (optional)
 
 
-How to?
+How to build?
 --------
-### Via Visual Studio:
+### Via Windows Visual Studio:
 1. Put the `opencv` directory to `C:\` 
 2. Open the `*.vcxproj` project file(or you can setup a OpenCV project for Visual Studio by yourself). It's recommend to enable the OpenMP flag to speed up system performance.  
 3. Config input arguments 
   `Properties Pages -> Coniguration Properties -> Debugging -> Command Arguments`  
 4. Press `Ctrl+F5` to execute and `Esc` to end.  
-  
-### Via Command Prompt:  
-1. Compile the `.exe` via Visual Studio and you'll find `.exe` in `x64/Release/`  
-2. Put `.exe`, `opencv_world3xx.dll`, `er_classifier/`, `ocr_classifier/`, `dictionary/` in the same directory.  
+
+
+### Via Windows CMake
+```sh
+cd Scene-text-recognition
+mkdir build
+cd build
+cmake -G "Visual Studio 15 2017 Win64" ..
+```
+1. Compile via `Visual Studio(scene_text_recognition.sln)`, you will find scene
+2. Put `scene_text_recognition`, `opencv_world3xx.dll`, `er_classifier/`, `ocr_classifier/`, `dictionary/` in the same directory.
 3. Usage:  
-`*.exe -v`: take default webcam as input  
-`*.exe -v [infile]`: take video as input  
-`*.exe -i [infile]`: take image as input  
-`*.exe -icdar`: take icdar dataset as input  
+`./scene_text_recognition -v`: take default webcam as input  
+`./scene_text_recognition -v [infile]`: take video as input  
+`./scene_text_recognition -i [infile]`: take image as input  
+`./scene_text_recognition -icdar`: take icdar dataset as input  
 
 
 How it works

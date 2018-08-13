@@ -15,7 +15,7 @@
 #include <omp.h>
 #include <memory>
 
-#include <opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include "adaboost.h"
 #include "OCR.h"
 #include "SpellingCorrector.h"

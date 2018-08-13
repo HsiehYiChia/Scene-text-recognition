@@ -15,7 +15,7 @@ bool TrainingData::read_data(string filename)
 	fin.open(filename, fstream::in);
 	if (!fin.is_open())
 	{
-		std::cout << "Error: the input file is not opened!!" << endl;
+		std::cout << "Error: " << filename << " is not opened!!" << endl;
 		return false;
 	}
 
@@ -391,7 +391,7 @@ bool AdaBoost::load_classifier(string filename)
 	fin.open(filename, fstream::in);
 	if (!fin.is_open())
 	{
-		std::cout << "Error: the input file is not opened!!" << endl;
+		std::cout << "Error: " << filename << " is not opened!!" << endl;
 		return false;
 	}
 
@@ -870,7 +870,7 @@ bool CascadeBoost::load_classifier(string filename)
 	fin.open(filename, fstream::in);
 	if (!fin.is_open())
 	{
-		std::cout << "Error: the input file is not opened!!" << endl;
+		std::cout << "Error: " << filename << " is not opened!!" << endl;
 		return false;
 	}
 

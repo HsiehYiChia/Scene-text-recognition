@@ -1,4 +1,4 @@
-#ifndef __MYLIB__
+﻿#ifndef __MYLIB__
 #define __MYLIB__
 
 #define THRESHOLD_STEP 8
@@ -12,9 +12,12 @@
 #define MAX_WIDTH 15000
 #define MAX_HEIGHT 8000
 
+#define DBL_MAX 2147483647
+#define DBL_MIN -2147483648
+
 #include <iostream>
 #include <chrono>
-#include <opencv.hpp>
+#include <opencv2/opencv.hpp>
 #include <queue>
 #include <fstream>
 #include <string>
@@ -29,6 +32,15 @@
 using namespace std;
 using namespace std::chrono;
 using namespace cv;
+
+// info function
+void usage();
+void print_result(int img_count, vector<double> avg_time);
+
+// getopt function
+int icdar_mode(ERFilter* er_filter);
+int image_mode(ERFilter* er_filter, char filename[]);
+int video_mode(ERFilter* er_filter, char filename[]);
 
 
 // Runtime Functions

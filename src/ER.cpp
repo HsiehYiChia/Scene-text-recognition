@@ -1164,7 +1164,7 @@ bool ERFilter::load_tp_table(const char* filename)
 	fin.open(filename, fstream::in);
 	if (!fin.is_open())
 	{
-		std::cout << "Error: the Transition Probability Table file is not opened!!" << endl;
+		std::cout << "Error: " << filename << " is not opened!!" << endl;
 		return false;
 	}
 

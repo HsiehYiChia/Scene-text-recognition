@@ -13,7 +13,7 @@
 #include <numeric>
 #include <omp.h>
 
-#include <opencv.hpp>
+#include <opencv2/opencv.hpp>
 
 #include "svm.h"
 #include "SpellingCorrector.h"
