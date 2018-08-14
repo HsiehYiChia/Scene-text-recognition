@@ -14,6 +14,7 @@
 #include <set>
 #include <algorithm>
 #include <math.h>
+#include <cfloat>
 
 #include <thread>
 #include <omp.h>
@@ -68,7 +69,7 @@ class BaseClassifier
 public:
 	BaseClassifier() {};
 	~BaseClassifier() {};
-	inline virtual double predict(const vector<double> fv) = 0;
+	virtual double predict(const vector<double> fv) = 0;
 	virtual void print_classifier() = 0;
 	virtual vector<double> get_para() = 0;
 	virtual void set_para(const vector<double> para) = 0;
@@ -81,7 +82,7 @@ public:
 	DecisionStump(int _dim, int _dir, double t);
 	~DecisionStump() {};
 
-	inline double predict(const vector<double> fv);
+	double predict(const vector<double> fv);
 	void print_classifier();
 	vector<double> get_para();
 	void set_para(const vector<double> para);

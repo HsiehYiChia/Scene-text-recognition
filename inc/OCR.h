@@ -32,7 +32,7 @@ public:
 	OCR(const char *svm_file_name, int _img_L, int _feature_L);
 	~OCR() {};
 	double lbp_run(Mat &src, int thresh, double slope = 0);		// use LBP spacial histogram as feature vector
-	double chain_run(Mat &src, int thresh, double slope = 0);	// use chain code as feature
+	double chain_run(Mat src, int thresh, double slope = 0);	// use chain code as feature
 	void feedback_verify(Text &text);
 	void rotate_mat(Mat &src, Mat &dst, double rad, bool crop = false);
 	void geometric_normalization(Mat &src, Mat &dst, double rad, const bool crop);

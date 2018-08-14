@@ -5,6 +5,7 @@ build
 video_result
 .ipynb_checkpoints
 .vs
+.vscode
 *.wmv
 *.db
 *.opendb

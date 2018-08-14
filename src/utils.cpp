@@ -102,8 +102,8 @@ int video_mode(ERFilter* er_filter, char filename[])
 	VideoWriter writer;
 	VideoWriter original_writer;
 	cap >> frame;	// get 1 frame to know the frame size
-	writer.open("video_result/result/result.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
-	original_writer.open("video_result/result/input.wmv", CV_FOURCC('W', 'M', 'V', '2'), 20.0, frame.size(), true);
+	writer.open("video_result/result/result.wmv", cv::VideoWriter::fourcc('W', 'M', 'V', '2'), 20.0, frame.size(), true);
+	original_writer.open("video_result/result/input.wmv", cv::VideoWriter::fourcc('W', 'M', 'V', '2'), 20.0, frame.size(), true);
 	if (!writer.isOpened())
 	{
 		cerr << "Could not open the output video file for write\n";
@@ -257,7 +257,7 @@ bool load_challenge2_test_file(Mat &src, int n)
 {
 	char filename[50];
 	sprintf(filename, "res/ICDAR2015_test/img_%d.jpg", n);
-	src = imread(filename, CV_LOAD_IMAGE_UNCHANGED);
+	src = imread(filename, cv::IMREAD_UNCHANGED);
 
 	if (src.empty())
 	{
@@ -282,7 +282,7 @@ bool load_challenge2_training_file(Mat &src, int n)
 {
 	char filename[50];
 	sprintf(filename, "res/ICDAR2015_training/%d.jpg", n);
-	src = imread(filename, CV_LOAD_IMAGE_UNCHANGED);
+	src = imread(filename, cv::IMREAD_UNCHANGED);
 
 	if (src.empty())
 	{
@@ -303,7 +303,7 @@ bool load_challenge2_training_file(Mat &src, int n)
 	return true;
 }
 
-void load_video_thread(VideoCapture &cap, Mat frame, Mat result, static vector<Text> *text, int *key)
+void load_video_thread(VideoCapture &cap, Mat frame, Mat result, vector<Text> *text, int *key)
 {
 	for (;;)
 	{
@@ -316,7 +316,7 @@ void load_video_thread(VideoCapture &cap, Mat frame, Mat result, static vector<T
 	return;
 }
 
-void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &times, ERs &tracked, vector<ERs> &strong, vector<ERs> &weak, vector<ERs> &all, vector<ERs> &pool)
+void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> times, ERs tracked, vector<ERs> strong, vector<ERs> weak, vector<ERs> all, vector<ERs> pool)
 {
 	Mat all_img = src.clone();
 	Mat pool_img = src.clone();
@@ -380,7 +380,7 @@ void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &
 		putText(result_img, "T", Point(it.box.tl().x - 2, it.box.tl().y - 5), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(255, 255, 255), 1);
 #else
 		Size text_size = getTextSize(it.word, FONT_HERSHEY_COMPLEX_SMALL, 1, 1, 0);
-		rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y - 20, text_size.width, text_size.height + 5), Scalar(30, 30, 200, 0), CV_FILLED);
+		rectangle(result_img, Rect(it.box.tl().x, it.box.tl().y - 20, text_size.width, text_size.height + 5), Scalar(30, 30, 200, 0), cv::FILLED);
 		putText(result_img, it.word, Point(it.box.tl().x, it.box.tl().y - 4), FONT_HERSHEY_COMPLEX_SMALL, 1, Scalar(0xff, 0xff, 0xff), 1);
 #endif
 	}
@@ -464,7 +464,7 @@ void draw_linear_time_MSER(string img_name)
 	int pixel_count = 0;
 	VideoWriter writer;
 	//writer.open("Linear time MSER.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, input.size());
-	writer.open("Linear time MSER.wmv", CV_FOURCC('W', 'M', 'V', '2'), 30, input.size());
+	writer.open("Linear time MSER.wmv", cv::VideoWriter::fourcc('W', 'M', 'V', '2'), 30, input.size());
 
 
 	Mat color = Mat::zeros(input.rows, input.cols, CV_8UC3);
@@ -809,7 +809,7 @@ vector<Vec4i> load_gt(int n)
 
 	char picname[50];
 	sprintf(picname, "res/ICDAR2015_test/img_%d.jpg", n);
-	Mat src = imread(picname, CV_LOAD_IMAGE_UNCHANGED);
+	Mat src = imread(picname, cv::IMREAD_UNCHANGED);
 
 
 	vector<string> data;
@@ -1625,7 +1625,7 @@ void train_ocr_model()
 					fout << label-1;
 					
 					Mat ocr_img;
-					threshold(255 - img, ocr_img, 200, 255, CV_THRESH_BINARY);
+					threshold(255 - img, ocr_img, 200, 255, cv::THRESH_BINARY);
 					erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
 					erFilter.ocr->ARAN(ocr_img, ocr_img, OCR_IMG_L);
 					
@@ -1656,7 +1656,8 @@ void train_ocr_model()
 			for (int i = 0; i < 100; i++)
 			{
 				char buf[8];
-				string filename = path + _itoa(i, buf, 10) + ".jpg";
+				sprintf(buf, "%d", i);
+				string filename = path + buf + ".jpg";
 
 				Mat img = imread(filename, IMREAD_GRAYSCALE);
 				if (!img.empty())
@@ -1670,7 +1671,7 @@ void train_ocr_model()
 				fout << label - 1;
 
 				Mat ocr_img;
-				threshold(255 - img, ocr_img, 200, 255, CV_THRESH_BINARY);
+				threshold(255 - img, ocr_img, 200, 255, cv::THRESH_BINARY);
 				erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
 				erFilter.ocr->ARAN(ocr_img, ocr_img, OCR_IMG_L);
 

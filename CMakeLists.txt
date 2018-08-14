@@ -5,8 +5,13 @@ project( scene_text_recognition )
 # use unicode
 add_definitions(-DUNICODE -D_UNICODE) 
 
-# set lib path
-set(MYLIBPATH "C:\\opencv\\build\\x64\\vc14\\lib\\") 
+# set library and include path
+if(UNIX)
+    find_package(OpenCV REQUIRED)
+else()
+    set(OpenCV_LIBS "C:\\opencv\\build\\x64\\vc14\\lib\\opencv_world310.lib") 
+    set(OpenCV_INCLUDE_DIRS "C:\\opencv\\build\\include")
+endif()
 
 find_package(OpenMP)
 if (OPENMP_FOUND)
@@ -16,6 +21,6 @@ if (OPENMP_FOUND)
 endif()
 
 file(GLOB SOURCES "src/*.cpp")
-include_directories("." "C:\\opencv\\build\\include") 
+include_directories( ${OpenCV_INCLUDE_DIRS} ) 
 add_executable(scene_text_recognition ${SOURCES})
-target_link_libraries(scene_text_recognition ${MYLIBPATH}opencv_world310.lib)
+target_link_libraries(scene_text_recognition ${OpenCV_LIBS})

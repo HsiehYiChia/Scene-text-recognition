@@ -1197,8 +1197,8 @@ double StrokeWidth::SWT(Mat input)
 	threshold(input, thresh, 128, 255, THRESH_OTSU);
 	cv::Canny(thresh, canny, 150, 300, 3);
 	cv::GaussianBlur(thresh, blur, Size(5, 5), 0);
-	cv::Sobel(blur, grad_x, CV_32F, 1, 0, CV_SCHARR);
-	cv::Sobel(blur, grad_y, CV_32F, 0, 1, CV_SCHARR);
+	cv::Sobel(blur, grad_x, CV_32F, 1, 0, 3);
+	cv::Sobel(blur, grad_y, CV_32F, 0, 1, 3);
 
 
 	// Stroke Width Transform 1st pass

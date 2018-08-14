@@ -25,7 +25,7 @@ double OCR::lbp_run(Mat &src, int thresh, double slope)
 {
 	Mat ocr_img;
 
-	threshold(255 - src, ocr_img, thresh, 255, CV_THRESH_OTSU);
+	threshold(255 - src, ocr_img, thresh, 255, cv::THRESH_OTSU);
 	if (abs(slope) > 0.01)
 	{
 		double rad = atan2(slope, 1);
@@ -64,12 +64,12 @@ double OCR::lbp_run(Mat &src, int thresh, double slope)
 }
 
 
-double OCR::chain_run(Mat &src, int thresh, double slope)
+double OCR::chain_run(Mat src, int thresh, double slope)
 {
 	Mat ocr_img;
 
 	//! pre process
-	threshold(255-src, ocr_img, thresh, 255, CV_THRESH_OTSU);
+	threshold(255-src, ocr_img, thresh, 255, cv::THRESH_OTSU);
 	if (abs(slope) > 0.01)
 	{
 		double rad = atan2(slope, 1);
@@ -152,7 +152,7 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 
 	// get boundary direction and insert every boundary pixel into 8 bitmap
 	vector<vector<Point>> contours;
-	cv::findContours(src, contours, CV_RETR_LIST, CV_CHAIN_APPROX_NONE);
+	cv::findContours(src, contours, cv::RETR_LIST, cv::CHAIN_APPROX_NONE);
 
 	for (int i = 0; i < contours.size(); i++)
 	{

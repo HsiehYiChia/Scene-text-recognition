@@ -12,8 +12,6 @@
 #define MAX_WIDTH 15000
 #define MAX_HEIGHT 8000
 
-#define DBL_MAX 2147483647
-#define DBL_MIN -2147483648
 
 #include <iostream>
 #include <chrono>
@@ -22,6 +20,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <stdio.h>
+#include <stdlib.h>
 
 #include <time.h>
 #include "ER.h"
@@ -46,9 +46,9 @@ int video_mode(ERFilter* er_filter, char filename[]);
 // Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n);
 bool load_challenge2_training_file(Mat &src, int n);
-void load_video_thread(VideoCapture &cap, Mat frame, Mat result, static vector<Text> *text, int *key);
-void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> &times = vector<double>(), ERs &tracked = ERs(),
-				vector<ERs> &strong = vector<ERs>(), vector<ERs> &weak = vector<ERs>(), vector<ERs> &all = vector<ERs>(), vector<ERs> &pool = vector<ERs>());
+void load_video_thread(VideoCapture &cap, Mat frame, Mat result, vector<Text> *text, int *key);
+void show_result(Mat& src, Mat& result_img, vector<Text> &text, vector<double> times = vector<double>(), ERs tracked = ERs(),
+				vector<ERs> strong = vector<ERs>(), vector<ERs> weak = vector<ERs>(), vector<ERs> all = vector<ERs>(), vector<ERs> pool = vector<ERs>());
 void draw_FPS(Mat& src, double time);
 
 
