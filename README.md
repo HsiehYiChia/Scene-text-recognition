@@ -42,10 +42,11 @@ Usage
 ---------
 Put `scene_text_recognition`, `er_classifier/`, `ocr_classifier/`, `dictionary/` in the same directory.
 ```
-./scene_text_recognition -v: take default webcam as input  
-./scene_text_recognition -v [infile]: take video as input  
-./scene_text_recognition -i [infile]: take image as input  
-./scene_text_recognition -icdar: take icdar dataset as input  
+./scene_text_recognition -v:            take default webcam as input  
+./scene_text_recognition -v [video]:    take a video as input  
+./scene_text_recognition -i [image]:    take an image as input  
+./scene_text_recognition -i [path]:     take folder with images as input,  
+./scene_text_recognition -l [image]:    demonstrate "Linear Time MSER" Algorithm  
 ```
 
 How it works

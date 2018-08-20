@@ -7,14 +7,11 @@
 #include "../inc/OCR.h"
 #include "../inc/adaboost.h"
 #include "../inc/utils.h"
+#include "../inc/getopt.h"
 
 
 using namespace std;
 using namespace cv;
-
-int icdar_mode(ERFilter* er_filter);
-int image_mode(ERFilter* er_filter, char filename[]);
-int video_mode(ERFilter* er_filter, char filename[]);
 
 int main(int argc, char* argv[])
 {
@@ -35,7 +32,7 @@ int main(int argc, char* argv[])
 	//calc_video_result();
 	//return 0;
 
-	usage();
+	
 
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
@@ -45,31 +42,52 @@ int main(int argc, char* argv[])
 	er_filter->corrector.load("dictionary/big.txt");
 
 	char *filename = nullptr;
-	if (strcmp(argv[1],"-icdar") == 0)
+	int is_file = -1;
+	char c = 0;
+	
+	while ((c = getopt (argc, argv, "v:i:o:l:")) != -1)
 	{
-		icdar_mode(er_filter);
-	}
-	else if(strcmp(argv[1], "-v") == 0)
-	{
-		if (argc == 3)
+		switch (c)
 		{
-			filename = argv[2];
+		case 'i':
+			filename = optarg;
+			is_file = is_file_or_dir(filename);
+			if (is_file) // File
+			{
+				image_mode(er_filter, filename);
+			}
+			else // Directory
+			{
+				for (auto & p : std::filesystem::directory_iterator(filename))
+				{
+					char *file = (char *)p.path().string().c_str();
+					image_mode(er_filter, file);
+				}
+			}
+			break;
+		case 'v':
+			filename = optarg;
+			if ( filename != nullptr)
+				video_mode(er_filter, filename);
+			break;
+		case 'l':
+			filename = optarg;
+			draw_linear_time_MSER(filename);
+			break;
+		case '?':
+			/* Camera Mode */
+			if (optopt == 'v' && isprint(optopt))
+				video_mode(er_filter, nullptr);
+			else if (optopt == 'i' || optopt =='l')
+			{
+				cout << "Option -" << (char)optopt << " requires an argument" << endl;
+			}
+			break;
+		default:
+			abort ();
 		}
-		video_mode(er_filter, filename);
 	}
-	else if (strcmp(argv[1], "-i") == 0)
-	{
-		if (argc == 3)
-		{
-			filename = argv[2];
-		}
-		image_mode(er_filter, filename);
-	}
-	else
-	{
-		cout << "Wrong input argument! " << endl;
-		usage();
-	}
+
 
 	delete er_filter->wtc;
 	delete er_filter->stc;

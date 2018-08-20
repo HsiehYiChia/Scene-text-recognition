@@ -22,40 +22,6 @@ void print_result(int img_count, vector<double> avg_time)
 		<< "Total execution time = " << avg_time[6] * 1000 / img_count << "ms\n\n";
 }
 
-// getopt function
-int icdar_mode(ERFilter* er_filter)
-{
-	int img_count = 0;
-	vector<double> avg_time(7, 0);
-	vector<vector<Text>> det_text;
-	for (int n = 1; n <= 328; n++)
-	{
-		Mat src;
-		Mat result;
-		if (!load_challenge2_test_file(src, n))	continue;
-
-		ERs root;
-		vector<ERs> all;
-		vector<ERs> pool;
-		vector<ERs> strong;
-		vector<ERs> weak;
-		ERs tracked;
-		vector<Text> result_text;
-
-		vector<double> times = er_filter->text_detect(src, root, all, pool, strong, weak, tracked, result_text);
-		show_result(src, result, result_text, times, tracked, strong, weak, all, pool);
-
-		++img_count;
-		for (int i = 0; i < times.size(); i++)
-			avg_time[i] += times[i];
-	}
-
-	print_result(img_count, avg_time);
-
-	return 0;
-}
-
-
 int image_mode(ERFilter* er_filter, char filename[])
 {
 	Mat src = imread(filename);
@@ -249,8 +215,33 @@ int video_mode(ERFilter* er_filter, char filename[])
 	return 0;
 }
 
-
-
+int is_file_or_dir(char *filename)
+{
+	struct stat s;
+	if( stat(filename,&s) == 0 )
+	{
+		if( s.st_mode & S_IFDIR )
+		{
+			//it's a directory
+			return IS_DIRECTORY;
+		}
+		else if( s.st_mode & S_IFREG )
+		{
+			//it's a file
+			return IS_FILE;
+		}
+		else
+		{
+			//something else
+			return -1;
+		}
+	}
+	else
+	{
+		//error
+		return -1;
+	}
+}
 
 // Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n)
@@ -462,11 +453,6 @@ void draw_linear_time_MSER(string img_name)
 	Mat input = imread(img_name);
 
 	int pixel_count = 0;
-	VideoWriter writer;
-	//writer.open("Linear time MSER.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, input.size());
-	writer.open("Linear time MSER.wmv", cv::VideoWriter::fourcc('W', 'M', 'V', '2'), 30, input.size());
-
-
 	Mat color = Mat::zeros(input.rows, input.cols, CV_8UC3);
 	Mat gray;
 	cvtColor(input, gray, COLOR_BGR2GRAY);
@@ -592,7 +578,6 @@ step_3:
 		if (pixel_count % 300 == 0)
 		{
 			imshow("Linear time MSER", color);
-			writer << color;
 			waitKey(1);
 		}
 
@@ -602,7 +587,6 @@ step_3:
 		if (priority == highest_level)
 		{
 			delete[] pixel_accessible;
-			writer.release();
 			waitKey(0);
 			return;
 		}
