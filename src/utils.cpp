@@ -452,7 +452,13 @@ void draw_linear_time_MSER(string img_name)
 {
 	Mat input = imread(img_name);
 
+	int pixel_reset_counter = 600;
 	int pixel_count = 0;
+	VideoWriter writer;
+	//writer.open("Linear time MSER.avi", CV_FOURCC('M', 'J', 'P', 'G'), 30, input.size());
+	writer.open("Linear time MSER.wmv", cv::VideoWriter::fourcc('W', 'M', 'V', '2'), 30, input.size());
+
+
 	Mat color = Mat::zeros(input.rows, input.cols, CV_8UC3);
 	Mat gray;
 	cvtColor(input, gray, COLOR_BGR2GRAY);
@@ -575,9 +581,10 @@ step_3:
 		color.at<uchar>(y, x * 3 + 1) = current_level;
 		color.at<uchar>(y, x * 3 + 2) = current_level;*/
 		pixel_count++;
-		if (pixel_count % 300 == 0)
+		if (pixel_count % pixel_reset_counter == 0)
 		{
 			imshow("Linear time MSER", color);
+			writer << color;
 			waitKey(1);
 		}
 
@@ -587,6 +594,7 @@ step_3:
 		if (priority == highest_level)
 		{
 			delete[] pixel_accessible;
+			writer.release();
 			waitKey(0);
 			return;
 		}
