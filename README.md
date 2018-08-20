@@ -74,6 +74,8 @@ Result
 ![result4](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt4.jpg)
 ![result5](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt5.jpg)
 
+### Linear Time MSER Demo
+![result4](https://github.com/HsiehYiChia/canny_text/blob/master/res/demo_linear_time_MSER.gif)
 
 References
 ----------
