@@ -11,7 +11,6 @@
 
 
 using namespace std;
-using namespace cv;
 
 int main(int argc, char* argv[])
 {
@@ -58,11 +57,14 @@ int main(int argc, char* argv[])
 			}
 			else // Directory
 			{
+				cout << "under construction" << endl;
+				/*
 				for (auto & p : std::filesystem::directory_iterator(filename))
 				{
 					char *file = (char *)p.path().string().c_str();
 					image_mode(er_filter, file);
 				}
+				*/
 			}
 			break;
 		case 'v':
