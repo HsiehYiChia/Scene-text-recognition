@@ -7,7 +7,12 @@
 #include "../inc/OCR.h"
 #include "../inc/adaboost.h"
 #include "../inc/utils.h"
+
+#ifdef _win32
 #include "../inc/getopt.h"
+#elif __linux__
+#include <getopt.h>
+#endif
 
 
 using namespace std;
@@ -50,27 +55,11 @@ int main(int argc, char* argv[])
 		{
 		case 'i':
 			filename = optarg;
-			is_file = is_file_or_dir(filename);
-			if (is_file) // File
-			{
-				image_mode(er_filter, filename);
-			}
-			else // Directory
-			{
-				cout << "under construction" << endl;
-				/*
-				for (auto & p : std::filesystem::directory_iterator(filename))
-				{
-					char *file = (char *)p.path().string().c_str();
-					image_mode(er_filter, file);
-				}
-				*/
-			}
+			image_mode(er_filter, filename);
 			break;
 		case 'v':
 			filename = optarg;
-			if ( filename != nullptr)
-				video_mode(er_filter, filename);
+			video_mode(er_filter, filename);
 			break;
 		case 'l':
 			filename = optarg;

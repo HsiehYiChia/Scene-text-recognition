@@ -1,3 +1,4 @@
+#ifdef _win32
 #ifndef __GETOPT_H__
 /**
  * DISCLAIMER
@@ -650,3 +651,5 @@ getopt_long_only(int nargc, char * const *nargv, const char *options,
 #endif
 
 #endif /* !defined(__UNISTD_H_SOURCED__) && !defined(__GETOPT_LONG_H__) */
+
+#endif

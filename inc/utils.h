@@ -35,11 +35,6 @@ using namespace std;
 using namespace std::chrono;
 using namespace cv;
 
-enum FILE_OR_DIR {
-	IS_DIRECTORY = 0,
-	IS_FILE,
-};
-
 // info function
 void usage();
 void print_result(int img_count, vector<double> avg_time);
@@ -47,7 +42,6 @@ void print_result(int img_count, vector<double> avg_time);
 // getopt function
 int image_mode(ERFilter* er_filter, char filename[]);
 int video_mode(ERFilter* er_filter, char filename[]);
-int is_file_or_dir(char *filename);
 
 // Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n);

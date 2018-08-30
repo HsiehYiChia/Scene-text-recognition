@@ -215,33 +215,6 @@ int video_mode(ERFilter* er_filter, char filename[])
 	return 0;
 }
 
-int is_file_or_dir(char *filename)
-{
-	struct stat s;
-	if( stat(filename,&s) == 0 )
-	{
-		if( s.st_mode & S_IFDIR )
-		{
-			//it's a directory
-			return IS_DIRECTORY;
-		}
-		else if( s.st_mode & S_IFREG )
-		{
-			//it's a file
-			return IS_FILE;
-		}
-		else
-		{
-			//something else
-			return -1;
-		}
-	}
-	else
-	{
-		//error
-		return -1;
-	}
-}
 
 // Runtime Functions
 bool load_challenge2_test_file(Mat &src, int n)
