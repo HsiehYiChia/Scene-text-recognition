@@ -8,7 +8,7 @@
 #include "../inc/adaboost.h"
 #include "../inc/utils.h"
 
-#ifdef _win32
+#ifdef _WIN32
 #include "../inc/getopt.h"
 #elif __linux__
 #include <getopt.h>

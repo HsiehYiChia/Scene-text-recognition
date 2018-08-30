@@ -1,4 +1,4 @@
-#ifdef _win32
+#ifdef _WIN32
 #ifndef __GETOPT_H__
 /**
  * DISCLAIMER

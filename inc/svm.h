@@ -2,9 +2,6 @@
 #define _LIBSVM_H
 
 #define LIBSVM_VERSION 321
-#ifdef _win32
-#define strdup _strdup
-#endif
 #ifdef __cplusplus
 extern "C" {
 #endif
