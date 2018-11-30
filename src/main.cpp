@@ -19,25 +19,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-	//get_lbp_data();
-	//train_classifier();
-	//train_ocr_model();
-	//opencv_train();
-	//train_cascade();
-	//bootstrap();
-	//rotate_ocr_samples();
-	//draw_linear_time_MSER("res/ICDAR2015_test/img_7.jpg");
-	//draw_multiple_channel("res/ICDAR2015_test/img_6.jpg");
-	//test_MSER_time("res/ICDAR2015_test/img_7.jpg");
-	//extract_ocr_sample();
-	//calc_recall_rate();
-	//test_best_detval();
-	//make_video_ground_truth();
-	//calc_video_result();
-	//return 0;
-
-	
-
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
 	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
 	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
@@ -46,10 +27,11 @@ int main(int argc, char* argv[])
 	er_filter->corrector.load("dictionary/big.txt");
 
 	char *filename = nullptr;
+	char *training_type = nullptr;
 	int is_file = -1;
 	char c = 0;
 	
-	while ((c = getopt (argc, argv, "v:i:o:l:")) != -1)
+	while ((c = getopt (argc, argv, "v:i:o:l:t:")) != -1)
 	{
 		switch (c)
 		{
@@ -65,6 +47,17 @@ int main(int argc, char* argv[])
 			filename = optarg;
 			draw_linear_time_MSER(filename);
 			break;
+		case 't':
+			training_type = optarg;
+			if (strcmp(training_type, "detection")==0)
+			{
+				get_lbp_data();
+				train_detection_classifier();
+			}
+			else if (training_type == "ocr")
+			{
+
+			}
 		case '?':
 			/* Camera Mode */
 			if (optopt == 'v' && isprint(optopt))
@@ -72,10 +65,12 @@ int main(int argc, char* argv[])
 			else if (optopt == 'i' || optopt =='l')
 			{
 				cout << "Option -" << (char)optopt << " requires an argument" << endl;
+				usage();
 			}
 			break;
 		default:
-			abort ();
+			usage();
+			abort();
 		}
 	}
 

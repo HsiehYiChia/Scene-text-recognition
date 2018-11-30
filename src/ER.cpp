@@ -524,33 +524,6 @@ void ERFilter::classify(ERs &pool, ERs &strong, ERs &weak, Mat input)
 				weak.push_back(pool[i]);
 			}
 		}
-
-		/*vector<double> fv = make_LBP_hist(input(pool[i]->bound), N, normalize_size);
-		svm_node *svm_fv = new svm_node[fv.size() + 1];
-		int count = 0;
-		for (int j = 0; j < fv.size(); j++)
-		{
-			if (fv[j] != 0)
-			{
-				svm_fv[count].index = j;
-				svm_fv[count].value = fv[j] / 144.0;
-				count++;
-			}
-		}
-		svm_fv[count].index = -1;
-
-		cout << svm_predict(st_svm, svm_fv) << endl;
-		if (svm_predict(st_svm, svm_fv) == 1)
-		{
-			strong.push_back(pool[i]);
-		}
-		else
-		{
-			if (svm_predict(wt_svm, svm_fv) == 1)
-			{
-				weak.push_back(pool[i]);
-			}
-		}*/
 	}
 }
 

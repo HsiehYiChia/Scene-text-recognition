@@ -3,6 +3,7 @@ Debug
 Release
 build
 video_result
+training
 .ipynb_checkpoints
 .vs
 .vscode

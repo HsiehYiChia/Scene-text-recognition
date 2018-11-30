@@ -4,9 +4,13 @@
 void usage()
 {
 	cout << "Usage: " << endl;
-	cout << "./scene_text_recognition -v [infile]: take video as input, default for camera" << endl;
-	cout << "./scene_text_recognition -i [infile]: take image as input" << endl;
-	cout << "./scene_text_recognition -icdar: take icdar dataset as input" << endl;
+	cout << "./scene_text_recognition -v:            take default webcam as input  " << endl;
+	cout << "./scene_text_recognition -v [video]:    take a video as input  " << endl;
+	cout << "./scene_text_recognition -i [image]:    take an image as input  " << endl;
+	cout << "./scene_text_recognition -i [path]:     take folder with images as input,  " << endl;
+	cout << "./scene_text_recognition -l [image]:    demonstrate \"Linear Time MSER\" Algorithm  " << endl;
+	cout << "./scene_text_recognition -t detection:  train text detection classifier  " << endl;
+	cout << "./scene_text_recognition -t ocr:        train text recognition(OCR) classifier " << endl;
 	cout << endl ;
 }
 
@@ -1313,61 +1317,36 @@ void calc_video_result()
 //==================================================
 //=============== Training Function ================
 //==================================================
-void train_classifier()
-{
-	TrainingData *td1 = new TrainingData();
-	TrainingData *td2 = new TrainingData();
-	AdaBoost adb1(AdaBoost::REAL, AdaBoost::DECISION_STUMP, 30);
-	AdaBoost adb2(AdaBoost::REAL, AdaBoost::DECISION_STUMP, 60);
-
-
-	td1->read_data("er_classifier/training_data.txt");
-	adb1.train_classifier(*td1, "er_classifier/adb1.classifier");
-	
-	for (int i = 0; i < td1->data.size(); i++)
-	{
-		if (adb1.predict(td1->data[i].fv) < 2.0)
-		{
-			td2->data.push_back(td1->data[i]);
-		}
-	}
-	
-	delete td1;
-
-	td2->set_num(td2->data.size());
-	td2->set_dim(td2->data.front().fv.size());
-	adb2.train_classifier(*td2, "er_classifier/adb2.classifier");
-}
-
-
-void train_cascade()
+void train_detection_classifier()
 {
 	double Ftarget1 = 0.005;
-	double f1 = 0.53;
-	double d1 = 0.85;
+	double f1 = 0.53;		// false postive rate of each cascade layer
+	double d1 = 0.85;		// detection rate of each cascade layer
 	double Ftarget2 = 0.15;
-	double f2 = 0.62;
-	double d2 = 0.86;
+	double f2 = 0.62;		// false postive rate of each cascade layer
+	double d2 = 0.86;		// detection rate of each cascade layer
 	TrainingData *td1 = new TrainingData();
-	TrainingData *tmp = new TrainingData();
 	TrainingData *td2 = new TrainingData();
 	AdaBoost *adb1 = new CascadeBoost(AdaBoost::REAL, AdaBoost::DECISION_STUMP, Ftarget1, f1, d1);
 	AdaBoost *adb2 = new CascadeBoost(AdaBoost::REAL, AdaBoost::DECISION_STUMP, Ftarget2, f2, d2);
 
-	freopen("er_classifier/log.txt", "w", stdout);
+	std::cout << "Training text detection classifier, " << endl 
+		<< "log are saved to \"training/detection_training_log.txt\", " << endl
+		<< "this would take serval minutes(depends on target false postive rate)" << endl;
+	freopen("training/detection_training_log.txt", "w", stdout);
 
 	chrono::high_resolution_clock::time_point start, middle, end;
 	start = chrono::high_resolution_clock::now();
 
 	cout << "Strong Text    Ftarget:" << Ftarget1 << " f=" << f1 << " d:" << d1 << endl;
-	td1->read_data("er_classifier/training_data.txt");
-	adb1->train_classifier(*td1, "er_classifier/cascade1.classifier");
+	td1->read_data("training/detection_training_data.txt");
+	adb1->train_classifier(*td1, "training/strong.classifier");
 
 	middle = chrono::high_resolution_clock::now();
 
 	cout << endl << "Weak Text    Ftarget:" << Ftarget2 << " f=" << f2 << " d:" << d2 << endl;
-	td2->read_data("er_classifier/training_data.txt");
-	adb2->train_classifier(*td2, "er_classifier/cascade2.classifier");
+	td2->read_data("training/detection_training_data.txt");
+	adb2->train_classifier(*td2, "training/weak.classifier");
 
 	end = chrono::high_resolution_clock::now();
 
@@ -1421,81 +1400,71 @@ void bootstrap()
 	}
 }
 
+
 // Training Functions
+
+static void write_lbp_hist(fstream &fout, vector<double> &spacial_hist, int direction)
+{
+	fout << direction;
+	for (int f = 0; f < spacial_hist.size(); f++)
+		fout << " " << spacial_hist[f];
+	fout << endl;
+}
+
 void get_lbp_data()
 {
-	fstream fout = fstream("er_classifier/training_data.txt", fstream::out);
-
+	char *data_filename = "training/detection_training_data.txt";
+	fstream fout = fstream(data_filename, fstream::out);
 	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-	erFilter.ocr = new OCR();
 
+	/* 
+	 *  We will normalize the image to 24x24, and split it into 4 12x12 blocks.
+	 *  After that, we extract LBP histogram of each block. Therefore the dimension of
+	 *  feature vector is 1024(256*4), and have range of value from 0 to 144(12*12)
+	 */
 	const int N = 2;
 	const int normalize_size = 24;
 
-	for (int i = 1; i <= 3; i++)
+	cout << "Writing LBP histogram to " << data_filename << endl;
+	for (int pic = 0; pic <= MAX_FILE_NUMBER; pic++)
 	{
-		for (int pic = 0; pic <= 15000; pic++)
-		{
-			char filename[30];
-			sprintf(filename, "res/neg/neg%d/%d.jpg", i, pic);
+		char filename[MAX_FILE_PATH];
+		sprintf(filename, "res/pos/%d.jpg", pic);
 
-			Mat input = imread(filename, IMREAD_GRAYSCALE);
-			if (input.empty())	continue;
+		Mat input = imread(filename, IMREAD_GRAYSCALE);
+		if (input.empty())
+			continue;
 
-			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-			fout << -1;
-			for (int f = 0; f < spacial_hist.size(); f++)
-			{
-				fout << " " << spacial_hist[f];
-			}
-			fout << endl;
+		cout << "\r" << "Training " << filename;
 
-			/*spacial_hist = erFilter.make_LBP_hist(255-input, N, normalize_size);
-			fout << -1;
-			for (int f = 0; f < spacial_hist.size(); f++)
-				fout << " " << spacial_hist[f];
-			fout << endl;*/
+		/* 
+		*  For postive data, we extract LBP histogram of its "normal" and "inverted" image 
+		*/
+		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
+		write_lbp_hist(fout, spacial_hist, POS);
 
-
-			cout << filename << " finish " << endl;
-		}
+		spacial_hist = erFilter.make_LBP_hist(255 - input, N, normalize_size);
+		write_lbp_hist(fout, spacial_hist, POS);
 	}
-	
 
-
-	for (int i = 1; i <= 1; i++)
+	for (int pic = 0; pic <= MAX_FILE_NUMBER; pic++)
 	{
-		for (int pic = 0; pic <= 15000; pic++)
-		{
-			char filename[30];
-			sprintf(filename, "res/pos/pos%d/%d.jpg", i, pic);
+		char filename[MAX_FILE_PATH];
+		sprintf(filename, "res/neg/%d.jpg", pic);
 
-			Mat input = imread(filename, IMREAD_GRAYSCALE);
-			if (input.empty())	continue;
+		Mat input = imread(filename, IMREAD_GRAYSCALE);
+		if (input.empty())
+			continue;
 
-			vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
-			fout << 1;
-			for (int f = 0; f < spacial_hist.size(); f++)
-			{
-				fout << " " << spacial_hist[f];
-			}
-			fout << endl;
+		cout << "\r" << "Training " << filename;
 
-			spacial_hist = erFilter.make_LBP_hist(255 - input, N, normalize_size);
-			fout << 1;
-			for (int f = 0; f < spacial_hist.size(); f++)
-			{
-				fout << " " << spacial_hist[f];
-			}
-			fout << endl;
-
-			cout << filename <<" finish " << endl;
-		}
+		vector<double> spacial_hist = erFilter.make_LBP_hist(input, N, normalize_size);
+		write_lbp_hist(fout, spacial_hist, NEG);
 	}
+
+	cout << endl;
+	fout.close();
 }
-
-
-
 
 void rotate_ocr_samples()
 {
@@ -1689,22 +1658,6 @@ void extract_ocr_sample()
 	imshow("input", input);
 	waitKey(0);
 }
-
-
-void opencv_train()
-{
-	using namespace ml;
-	Ptr<Boost> boost = Boost::create();
-	Ptr<TrainData> trainData = TrainData::loadFromCSV("er_classifier/training_data.txt", 0, 0, 1, String(), ' ');
-	boost->setBoostType(Boost::REAL);
-	boost->setWeakCount(100);
-	boost->setMaxDepth(1);
-	boost->setWeightTrimRate(0);
-	cout << "training..." << endl;
-	boost->train(trainData);
-	boost->save("er_classifier/opencv_classifier.xml");
-}
-
 
 
 // solve levenshtein distance(edit distance) by dynamic programming, 

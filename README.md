@@ -40,14 +40,32 @@ make
 
 Usage
 ---------
-Put `scene_text_recognition`, `er_classifier/`, `ocr_classifier/`, `dictionary/` in the same directory.
+Put `scene_text_recognition`, `er_classifier/`, `ocr_classifier/`, `dictionary/`, `res/` in the same directory.
 ```
 ./scene_text_recognition -v:            take default webcam as input  
 ./scene_text_recognition -v [video]:    take a video as input  
 ./scene_text_recognition -i [image]:    take an image as input  
 ./scene_text_recognition -i [path]:     take folder with images as input,  
 ./scene_text_recognition -l [image]:    demonstrate "Linear Time MSER" Algorithm  
+./scene_text_recognition -t detection:  train text detection classifier  
+./scene_text_recognition -t ocr:        train text recognition(OCR) classifier 
 ```
+
+Train your own classifier
+---------
+### Text detection
+1. Put your text data to `res/pos`, non-text data to `res/neg`
+2. Make sure `traning` folder exist
+3. Run `./scene_text_recognition -t detection`
+```
+mkdir training
+./scene_text_recognition -t detection
+```
+4. Text detection classifier will be found at `training` folder
+
+### Text recognition(OCR)
+under developing
+
 
 How it works
 ---------
