@@ -1,6 +1,8 @@
 ﻿#ifndef __MYLIB__
 #define __MYLIB__
 
+#define POS 1
+#define NEG -1
 #define THRESHOLD_STEP 8
 #define MIN_ER_AREA 120
 #define MAX_ER_AREA 900000
@@ -11,6 +13,8 @@
 #define OCR_FEATURE_L 15
 #define MAX_WIDTH 15000
 #define MAX_HEIGHT 8000
+#define MAX_FILE_PATH 100
+#define MAX_FILE_NUMBER 50000
 
 
 #include <iostream>
@@ -67,14 +71,13 @@ void make_video_ground_truth();
 void calc_video_result();
 
 // Training Functions
+void train_ocr_classifier();
+void train_detection_classifier();
 void get_lbp_data();
 void bootstrap();
 void rotate_ocr_samples();
 void train_ocr_model();
 void extract_ocr_sample();
-void train_classifier();
-void train_cascade();
-void opencv_train();
 
 // solve levenshtein distance(edit distance) by dynamic programming, 
 // check https://vinayakgarg.wordpress.com/2012/12/10/edit-distance-using-dynamic-programming/ for more info

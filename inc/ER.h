@@ -114,11 +114,9 @@ public:
 	~ERFilter()	{}
 	
 	//! modules
-	AdaBoost *stc;
-	AdaBoost *wtc;
-	svm_model *st_svm;
-	svm_model *wt_svm;
-	OCR *ocr;
+	AdaBoost *stc;  // strong text classifier
+	AdaBoost *wtc;  // weak text classifier
+	OCR *ocr;       // text ocr model, base on libsvm
 	SpellingCorrector corrector;
 	
 	//! functions
