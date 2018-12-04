@@ -16,6 +16,8 @@
 #define MAX_FILE_PATH 100
 #define MAX_FILE_NUMBER 50000
 
+/* for libsvm */
+#define Malloc(type,n) (type *)malloc((n)*sizeof(type))
 
 #include <iostream>
 #include <chrono>
@@ -71,12 +73,13 @@ void make_video_ground_truth();
 void calc_video_result();
 
 // Training Functions
-void train_ocr_classifier();
-void train_detection_classifier();
 void get_lbp_data();
+void get_ocr_data();
+void train_ocr_model();
+void train_detection_classifier();
 void bootstrap();
 void rotate_ocr_samples();
-void train_ocr_model();
+
 void extract_ocr_sample();
 
 // solve levenshtein distance(edit distance) by dynamic programming, 

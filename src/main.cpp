@@ -54,9 +54,10 @@ int main(int argc, char* argv[])
 				get_lbp_data();
 				train_detection_classifier();
 			}
-			else if (training_type == "ocr")
+			else if (strcmp(training_type, "ocr") == 0)
 			{
-
+				get_ocr_data();
+				train_ocr_model();
 			}
 		case '?':
 			/* Camera Mode */

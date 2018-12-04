@@ -55,13 +55,14 @@ Train your own classifier
 ---------
 ### Text detection
 1. Put your text data to `res/pos`, non-text data to `res/neg`
-2. Make sure `training` folder exist
-3. Run `./scene_text_recognition -t detection`
+2. Name your data in numerical, e.g. `1.jpg`, `2.jpg`, `3.jpg`, and so on.
+3. Make sure `training` folder exist
+4. Run `./scene_text_recognition -t detection`
 ```
 mkdir training
 ./scene_text_recognition -t detection
 ```
-4. Text detection classifier will be found at `training` folder
+5. Text detection classifier will be found at `training` folder
 
 ### Text recognition(OCR)
 under developing
@@ -69,7 +70,7 @@ under developing
 
 How it works
 ---------
-The algorithm is based on an region detector called **Extremal Region (ER)**, which is basically the superset of famous region detector **MSER**. We use ER to find text candidates. The ER is extracted by **Linear-time MSER** algorithm. The pitfall of ER is repeating detection, therefore we remove most of repeating ERs with **non-maximum suppression**. We estimate the overlapped between ER based on the Component tree. and calculate the stability of every ER. Among the same group of overlapped ER, only the one with maximum stability is kept. After that we apply a 2-stages **Real-AdaBoost** to fliter non-text region. We choose **Mean-LBP** as feature because it's faster compare to other features. The suviving ERs are then group together to make the result from character-level to word level, which is more instinct for human. Our next step is to apply an OCR to these detected text. The chain-code of the ER is used as feature and the classifier is trained by **SVM**. We also introduce several post-process such as `optimal-path selection` and [spelling check](http://norvig.com/spell-correct.html) to make the recognition result better.  
+The algorithm is based on an region detector called **Extremal Region (ER)**, which is basically the superset of famous region detector **MSER**. We use ER to find text candidates. The ER is extracted by **Linear-time MSER** algorithm. The pitfall of ER is repeating detection, therefore we remove most of repeating ERs with **non-maximum suppression**. We estimate the overlapped between ER based on the Component tree. and calculate the stability of every ER. Among the same group of overlapped ER, only the one with maximum stability is kept. After that we apply a 2-stages **Real-AdaBoost** to fliter non-text region. We choose **Mean-LBP** as feature because it's faster compare to other features. The suviving ERs are then group together to make the result from character-level to word level, which is more instinct for human. Our next step is to apply an OCR to these detected text. The chain-code of the ER is used as feature and the classifier is trained by **SVM**. We also introduce several post-process such as **optimal-path selection** and [spelling check](http://norvig.com/spell-correct.html) to make the recognition result better.  
 
 ![overview](https://github.com/HsiehYiChia/canny_text/blob/master/res/overview.jpg)
 

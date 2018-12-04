@@ -1466,55 +1466,8 @@ void get_lbp_data()
 	fout.close();
 }
 
-void rotate_ocr_samples()
-{
-	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
-	vector<string> font_name = { 
-		"Arial", "Bitter", "Calibri", "Cambria", "Coda", "Comic_Sans_MS", "Courier_New", "Domine", "Droid_Serif", "Fine_Ming",
-		"Gill_Sans", "Francois_One", "Georgia", "Impact", "Lato", "Neuton", "Open_Sans", "Oswald", "Oxygen", "Play", "PT_Serif", "Roboto_Slab", "Russo_One", 
-		"Sans_Serif", "Syncopate", "Time_New_Roman", "Trebuchet_MS", "Twentieth_Century", "Ubuntu", "Verdana" };
-	vector<string> font_type = { "Bold", "Bold_and_Italic", "Italic", "Normal" };
-	vector<string> category = { "number", "upper", "lower", "symbol" };
-	vector<int> cat_num = { 10,26,26,3 };
 
-	OCR ocr = OCR();
-	int n = 0;
-	double rad = 0 / 180.0*CV_PI;
-	for (int i = 0; i < font_name.size(); i++)
-	{
-		for (int j = 0; j < font_type.size(); j++)
-		{
-			int label = 0;
-			for (int k = 0; k < category.size(); k++)
-			{
-				string path = String("ocr_classifier/" + font_name[i] + "/" + font_type[j] + "/" + category[k] + "/");
-				for (int cat_it = 0; cat_it < cat_num[k]; cat_it++)
-				{
-					String filename = path + table[label] + ".jpg";
-					label++;
-					Mat img = imread(filename, IMREAD_GRAYSCALE);
-
-					if (!img.empty())
-						cout << filename << " done!" << endl;
-					else
-					{
-						cout << filename << " not exist!" << endl;
-						continue;
-					}
-
-					ocr.geometric_normalization(img, img, rad, false);
-
-					char buf[256];
-					sprintf(buf, "res/tmp2/%d.jpg",  n++);
-					imwrite(buf, img);
-				}
-			}
-		}
-	}
-}
-
-
-void train_ocr_model()
+void get_ocr_data()
 {
 	const char *table = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&()";	// 10 num, 52 alphabet, 3 symbol and 1 '\0'
 	vector<string> font_name = {
@@ -1525,7 +1478,7 @@ void train_ocr_model()
 	vector<string> category = {"number", "upper", "lower", "symbol" };
 	vector<int> cat_num = { 10,26,26,3 };
 
-
+	cout << "Get OCR data" << endl;
 	fstream fout = fstream("ocr_classifier/OCR.data", fstream::out);
 	Mat feature;
 	vector<int> labels;
@@ -1578,87 +1531,175 @@ void train_ocr_model()
 			}
 		}
 	}
+	fout.close();
+}
 
-	// for Other
-	int label = 0;
-	for (int k = 0; k < category.size()-1; k++)
+
+void exit_input_error(int line_num)
+{
+	fprintf(stderr,"Wrong input format at line %d\n", line_num);
+	exit(1);
+}
+
+static char* readline(FILE *input)
+{
+	static char *line = NULL;
+	static int max_line_len;
+	int len;
+
+	if(fgets(line,max_line_len,input) == NULL)
+		return NULL;
+
+	while(strrchr(line,'\n') == NULL)
 	{
-		for (int cat_it = 0; cat_it < cat_num[k]; cat_it++)
+		max_line_len *= 2;
+		line = (char *) realloc(line,max_line_len);
+		len = (int) strlen(line);
+		if(fgets(line+len,max_line_len-len,input) == NULL)
+			break;
+	}
+	return line;
+}
+
+void svm_read_problem(struct svm_problem &prob, struct svm_parameter &param, const char *filename)
+{
+	int max_index, inst_max_index, i;
+	size_t elements, j;
+	FILE *fp = fopen(filename,"r");
+	char *endptr;
+	char *idx, *val, *label;
+	static char *line = NULL;
+	static int max_line_len;
+	struct svm_node *x_space;
+
+	if(fp == NULL)
+	{
+		fprintf(stderr,"can't open input file %s\n",filename);
+		exit(1);
+	}
+
+	prob.l = 0;
+	elements = 0;
+	max_line_len = 1024;
+	line = Malloc(char,max_line_len);
+	while(readline(fp)!=NULL)
+	{
+		char *p = strtok(line," \t"); // label
+
+		// features
+		while(1)
 		{
-			string path = string("ocr_classifier/Other/" + category[k] + "/" + table[label] + "/");
-			label++;
-			for (int i = 0; i < 100; i++)
+			p = strtok(NULL," \t");
+			if(p == NULL || *p == '\n') // check '\n' as ' ' may be after the last feature
+				break;
+			++elements;
+		}
+		++elements;
+		++prob.l;
+	}
+	rewind(fp);
+
+	prob.y = Malloc(double,prob.l);
+	prob.x = Malloc(struct svm_node *,prob.l);
+	x_space = Malloc(struct svm_node,elements);
+
+	max_index = 0;
+	j=0;
+	for(i=0;i<prob.l;i++)
+	{
+		inst_max_index = -1; // strtol gives 0 if wrong format, and precomputed kernel has <index> start from 0
+		readline(fp);
+		prob.x[i] = &x_space[j];
+		label = strtok(line," \t\n");
+		if(label == NULL) // empty line
+			exit_input_error(i+1);
+
+		prob.y[i] = strtod(label,&endptr);
+		if(endptr == label || *endptr != '\0')
+			exit_input_error(i+1);
+
+		while(1)
+		{
+			idx = strtok(NULL,":");
+			val = strtok(NULL," \t");
+
+			if(val == NULL)
+				break;
+
+			errno = 0;
+			x_space[j].index = (int) strtol(idx,&endptr,10);
+			if(endptr == idx || errno != 0 || *endptr != '\0' || x_space[j].index <= inst_max_index)
+				exit_input_error(i+1);
+			else
+				inst_max_index = x_space[j].index;
+
+			errno = 0;
+			x_space[j].value = strtod(val,&endptr);
+			if(endptr == val || errno != 0 || (*endptr != '\0' && !isspace(*endptr)))
+				exit_input_error(i+1);
+
+			++j;
+		}
+
+		if(inst_max_index > max_index)
+			max_index = inst_max_index;
+		x_space[j++].index = -1;
+	}
+
+	if(param.gamma == 0 && max_index > 0)
+		param.gamma = 1.0/max_index;
+
+	if(param.kernel_type == PRECOMPUTED)
+		for(i=0;i<prob.l;i++)
+		{
+			if (prob.x[i][0].index != 0)
 			{
-				char buf[8];
-				sprintf(buf, "%d", i);
-				string filename = path + buf + ".jpg";
-
-				Mat img = imread(filename, IMREAD_GRAYSCALE);
-				if (!img.empty())
-					cout << filename << " done!" << endl;
-				else
-				{
-					cout << filename << " not exist!" << endl;
-					continue;
-				}
-
-				fout << label - 1;
-
-				Mat ocr_img;
-				threshold(255 - img, ocr_img, 200, 255, cv::THRESH_BINARY);
-				erFilter.ocr->rotate_mat(ocr_img, ocr_img, 0, true);
-				erFilter.ocr->ARAN(ocr_img, ocr_img, OCR_IMG_L);
-
-				// get chain code svm node
-				svm_node *fv = new svm_node[8 * OCR_FEATURE_L * OCR_FEATURE_L + 1];
-				erFilter.ocr->extract_feature(ocr_img, fv);
-
-				int m = 0;
-				while (fv[m].index != -1)
-				{
-					fout << " " << fv[m].index << ":" << fv[m].value;
-					m++;
-				}
-				fout << endl;
+				fprintf(stderr,"Wrong input format: first column must be 0:sample_serial_number\n");
+				exit(1);
+			}
+			if ((int)prob.x[i][0].value <= 0 || (int)prob.x[i][0].value > max_index)
+			{
+				fprintf(stderr,"Wrong input format: sample_serial_number out of range\n");
+				exit(1);
 			}
 		}
-	}
-	fout.close();
 
-	// svm
-	std::system("C:/libsvm-3.22/windows/svm-train.exe -b 1 -c 512.0.0 -g 0.0078125 ocr_classifier/OCR.data ocr_classifier/OCR.model");
-	std::system("C:/libsvm-3.22/windows/svm-predict.exe -b 1 ocr_classifier/OCR.data ocr_classifier/OCR.model ocr_classifier/predict_result.txt");
+	fclose(fp);
 }
 
-
-void extract_ocr_sample()
+void train_ocr_model()
 {
-	string path = "ocr_classifier/Calibri/Normal/";
-	string file = path + "C.jpg";
-	Mat input = imread(file, IMREAD_GRAYSCALE);
+	struct svm_model *model;
+	struct svm_problem prob;
+	struct svm_parameter param;
+
+	/* default value from svm_train.cpp */
+	param.svm_type = C_SVC;
+	param.kernel_type = RBF;
+	param.degree = 3;
+	param.gamma = 0;	// 1/num_features
+	param.coef0 = 0;
+	param.nu = 0.5;
+	param.cache_size = 100;
+	param.C = 1;
+	param.eps = 1e-3;
+	param.p = 0.1;
+	param.shrinking = 1;
+	param.probability = 0;
+	param.nr_weight = 0;
+	param.weight_label = NULL;
+	param.weight = NULL;
+
+	/* My customize param */
+	param.probability = 1;
+	param.C = 512.0;
+	param.gamma = 0.0078125;
 	
-	ERFilter erFilter(1, 200, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
-
-	ER* root = erFilter.er_tree_extract(input);
-	ERs all, pool, strong, weak;
-	erFilter.non_maximum_supression(root, all, pool, input);
-	int n = 0;
-	for (auto it : pool)
-	{
-		char buf[100];
-		sprintf(buf, "ocr_classifier/Calibri/Normal/%d.jpg", n++);
-		imwrite(buf, input(it->bound));
-	}
-
-	for (auto it : pool)
-	{
-		rectangle(input, it->bound, Scalar(128));
-	}
-
-	imshow("input", input);
-	waitKey(0);
+	cout << "Train OCR model by svm_train" << endl;
+	svm_read_problem(prob, param, "ocr_classifier/OCR.data");
+	model = svm_train(&prob, &param);
+	svm_save_model("ocr_classifier/OCR.model", model);
 }
-
 
 // solve levenshtein distance(edit distance) by dynamic programming, 
 // check https://vinayakgarg.wordpress.com/2012/12/10/edit-distance-using-dynamic-programming/ for more info
