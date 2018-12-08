@@ -68,12 +68,13 @@ mkdir training
 1. Put your training data to `res/ocr_training_data/` 
 2. Arrange the data in `[Font Name]/[Font Type]/[Category]/[Character.jpg]`, for instance `Time_New_Roman/Bold/lower/a.jpg`. You can refer to `res/ocr_training_data.zip` 
 3. Make sure `training` folder exist, and put `svm-train` to root folder (svm-train will be build by the system and should be found at build/)
+4. Run `./scene_text_recognition -t ocr`
 ```
 mkdir training
 mv svm-train scene-text-recognition/
+scene_text_recognition -t ocr
 ```
-4. Run `./scene_text_recognition -t ocr`
-5. OCR classifier will be fould at `training` folder
+5. Text recognition(OCR) classifier will be fould at `training` folder
 
 
 How it works
