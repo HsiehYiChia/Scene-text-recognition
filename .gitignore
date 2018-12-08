@@ -4,9 +4,14 @@ Release
 build
 video_result
 training
+scene_text_recognition.exe
+scene_text_recognition
+svm-train.exe
+svm-train
 .ipynb_checkpoints
 .vs
 .vscode
+*.exe
 *.wmv
 *.db
 *.opendb

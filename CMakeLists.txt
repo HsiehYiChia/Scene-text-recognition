@@ -20,7 +20,20 @@ if (OPENMP_FOUND)
     set (CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
 endif()
 
-file(GLOB SOURCES "src/*.cpp")
-include_directories( ${OpenCV_INCLUDE_DIRS} ) 
-add_executable(scene_text_recognition ${SOURCES})
+# scene_text_recognition
+add_executable(scene_text_recognition 
+    src/adaboost.cpp 
+    src/ER.cpp 
+    src/main.cpp 
+    src/OCR.cpp 
+    src/SpellingCorrector.cpp 
+    src/svm.cpp src/utils.cpp
+)
+target_include_directories(scene_text_recognition PRIVATE ${OpenCV_INCLUDE_DIRS} ) 
 target_link_libraries(scene_text_recognition ${OpenCV_LIBS})
+
+# svm-train from libsvm
+add_executable(svm-train 
+    src/svm-train.cpp
+    src/svm.cpp
+)

@@ -20,9 +20,9 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	ERFilter* er_filter = new ERFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF, MIN_OCR_PROBABILITY);
-	er_filter->stc = new CascadeBoost("er_classifier/strong.classifier");
-	er_filter->wtc = new CascadeBoost("er_classifier/weak.classifier");
-	er_filter->ocr = new OCR("ocr_classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
+	er_filter->stc = new CascadeBoost("classifier/strong.classifier");
+	er_filter->wtc = new CascadeBoost("classifier/weak.classifier");
+	er_filter->ocr = new OCR("classifier/OCR.model", OCR_IMG_L, OCR_FEATURE_L);
 	er_filter->load_tp_table("dictionary/tp_table.txt");
 	er_filter->corrector.load("dictionary/big.txt");
 

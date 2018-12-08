@@ -40,7 +40,7 @@ make
 
 Usage
 ---------
-Put `scene_text_recognition`, `er_classifier/`, `ocr_classifier/`, `dictionary/`, `res/` in the same directory.
+Move execuatble file `scene_text_recognition` to project root directory(`classifier/`, `dictionary/` must be present)
 ```
 ./scene_text_recognition -v:            take default webcam as input  
 ./scene_text_recognition -v [video]:    take a video as input  
@@ -65,7 +65,15 @@ mkdir training
 5. Text detection classifier will be found at `training` folder
 
 ### Text recognition(OCR)
-under developing
+1. Put your training data to `res/ocr_training_data/` 
+2. Arrange the data in `[Font Name]/[Font Type]/[Category]/[Character.jpg]`, for instance `Time_New_Roman/Bold/lower/a.jpg`. You can refer to `res/ocr_training_data.zip` 
+3. Make sure `training` folder exist, and put `svm-train` to root folder (svm-train will be build by the system and should be found at build/)
+```
+mkdir training
+mv svm-train scene-text-recognition/
+```
+4. Run `./scene_text_recognition -t ocr`
+5. OCR classifier will be fould at `training` folder
 
 
 How it works
@@ -94,6 +102,7 @@ Result
 ![result5](https://github.com/HsiehYiChia/canny_text/blob/master/res/reuslt5.jpg)
 
 #### Linear Time MSER Demo
+The green pixels are so called **boundry pixels**, which are pushed into stacks. Each stack stand for a gray level, and pixels will be pushed according to their gary level. 
 ![result4](https://github.com/HsiehYiChia/canny_text/blob/master/res/demo_linear_time_MSER.gif)
 
 References
