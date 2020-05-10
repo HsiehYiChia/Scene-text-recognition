@@ -697,7 +697,7 @@ void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 	const unsigned min_er = 6;
 	const unsigned min_pass_ocr = 2;
 	
-	for (int i = text.size()-1; i >= 0; i--)
+	for (int i = (int)text.size()-1; i >= 0; i--)
 	{
 		// delete ERs that are in the same channel and are highly overlap
 		vector<bool> to_delete(text[i].ers.size(), false);
@@ -717,7 +717,7 @@ void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 			}
 		}
 
-		for (int j = text[i].ers.size() - 1; j >= 0; j--)
+		for (int j = (int)text[i].ers.size() - 1; j >= 0; j--)
 		{
 			if (to_delete[j])
 				text[i].ers.erase(text[i].ers.begin() + j);
@@ -730,12 +730,12 @@ void ERFilter::er_ocr(ERs &all_er, vector<Mat> &channel, vector<Text> &text)
 		{
 			ER* er = text[i].ers[j];
 			const double result = ocr->chain_run(channel[er->ch](er->bound), er->level*THRESH_STEP, text[i].slope);
-			er->letter = floor(result);
+			er->letter = (char)floor(result);
 			er->prob = result - floor(result);
 		}
 		
 		// delete ER with low OCR confidence
-		for (int j = text[i].ers.size() - 1; j >= 0; j--)
+		for (int j = (int)text[i].ers.size() - 1; j >= 0; j--)
 		{
 			if (text[i].ers[j]->prob < MIN_OCR_PROB)
 				text[i].ers.erase(text[i].ers.begin() + j);
@@ -914,7 +914,7 @@ void ERFilter::inner_suppression(ERs &pool)
 
 
 
-	for (int i = pool.size() - 1; i >= 0; i--)
+	for (int i = (int)pool.size() - 1; i >= 0; i--)
 	{
 		if (to_delete[i])
 			pool.erase(pool.begin() + i);
@@ -939,22 +939,22 @@ void ERFilter::overlap_suppression(ERs &pool)
 			{
 				merged[j] = true;
 
-				int x = (pool[i]->bound.x + pool[j]->bound.x) * 0.5;
-				int y = (pool[i]->bound.y + pool[j]->bound.y) * 0.5;
-				int width = (pool[i]->bound.width + pool[j]->bound.width) * 0.5;
-				int height = (pool[i]->bound.height + pool[j]->bound.height) * 0.5;
+				int x = (int)((pool[i]->bound.x + pool[j]->bound.x) * 0.5);
+				int y = (int)((pool[i]->bound.y + pool[j]->bound.y) * 0.5);
+				int width = (int)((pool[i]->bound.width + pool[j]->bound.width) * 0.5);
+				int height = (int)((pool[i]->bound.height + pool[j]->bound.height) * 0.5);
 
 				pool[i]->bound.x = x;
 				pool[i]->bound.y = y;
 				pool[i]->bound.height = height;
 				pool[i]->bound.width = width;			
-				pool[i]->center.x = x + pool[i]->bound.width * 0.5;
-				pool[i]->center.y = y + pool[i]->bound.height * 0.5;
+				pool[i]->center.x = (int)(x + pool[i]->bound.width * 0.5);
+				pool[i]->center.y = (int)(y + pool[i]->bound.height * 0.5);
 			}
 		}
 	}
 
-	for (int i = pool.size()-1; i >= 0; i--)
+	for (int i = (int)pool.size()-1; i >= 0; i--)
 	{
 		if (merged[i])
 		{
@@ -1112,7 +1112,7 @@ void ERFilter::spell_check(Text &text)
 				++upper_count;
 			}
 				
-			text.box.width *= (1.0 + 1.0 / text.word.size());
+			text.box.width = (int)(text.box.width * (1.0 + 1.0 / text.word.size()));
 		}
 	}
 	
@@ -1206,7 +1206,7 @@ double StrokeWidth::SWT(Mat input)
 					if (round(cur_x) == cur_pixel_x && round(cur_y) == cur_pixel_y)
 						continue;
 					else
-						cur_pixel_x = round(cur_x), cur_pixel_y = round(cur_y);
+						cur_pixel_x = (int)round(cur_x), cur_pixel_y = (int)round(cur_y);
 
 					if (cur_pixel_x < 0 || (cur_pixel_x >= canny.cols) || cur_pixel_y < 0 || (cur_pixel_y >= canny.rows))
 						break;
@@ -1224,7 +1224,7 @@ double StrokeWidth::SWT(Mat input)
 						{
 							if (length < SWT_img.at<float>(it.y, it.x))
 							{
-								SWT_img.at<float>(it.y, it.x) = length;
+								SWT_img.at<float>(it.y, it.x) = (float)length;
 							}
 						}
 						rays.push_back(Ray(SWTPoint2d(j, i), SWTPoint2d(cur_pixel_x, cur_pixel_y), point));
@@ -1281,7 +1281,7 @@ inline void ColorHist::calc_hist(Mat img)
 		}
 	}
 
-	const int total = img.total();
+	const int total = (int)img.total();
 	for (int i = 0; i < 256; i++)
 	{
 		c1[i] /= total;
@@ -1300,16 +1300,16 @@ inline double ColorHist::compare_hist(ColorHist ch)
 
 double fitline_LSE(const vector<Point> &p)	// LSE works bad when there are both upper and lower line
 {
-	Mat A(p.size(), 2, CV_32F);
-	Mat B(p.size(), 1, CV_32F);
+	Mat A((int)p.size(), 2, CV_32F);
+	Mat B((int)p.size(), 1, CV_32F);
 	Mat AT;
 	Mat invATA;
 
-	for (int i = 0; i < p.size(); i++)
+	for (int i = 0; i < (int)p.size(); i++)
 	{
-		A.at<float>(i, 0) = p[i].x;
-		A.at<float>(i, 1) = 1;
-		B.at<float>(i) = p[i].y;
+		A.at<float>(i, 0) = (float)p[i].x;
+		A.at<float>(i, 1) = (float)1;
+		B.at<float>(i) = (float)p[i].y;
 	}
 	transpose(A, AT);
 	invert(AT*A, invATA);
@@ -1342,7 +1342,7 @@ double fitline_LMS(const vector<Point> &p)
 
 			sort(z.begin(), z.end(), [](double a, double b) {return a < b; });
 
-			const int m = p.size() / 2;
+			const int m = (int)p.size() / 2;
 			for (int j = 0; j < m; j++)
 			{
 				if (z[j + m] - z[j] < d_star)
@@ -1464,7 +1464,7 @@ vector<vector<int> > comb(int N, int K)
 
 double standard_dev(vector<double> arr, bool normalize)
 {
-	const int N = arr.size();
+	const int N = (int)arr.size();
 	double avg = 0;
 
 	for (auto it : arr)
