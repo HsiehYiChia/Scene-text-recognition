@@ -28,7 +28,7 @@ bool TrainingData::read_data(string filename)
 
 		data.push_back(FeatureVector());
 		getline(row, item, ' ');
-		data[i].label = stod(item);
+		data[i].label = (int)stod(item);
 
 		while (getline(row, item, ' '))
 		{
@@ -37,8 +37,8 @@ bool TrainingData::read_data(string filename)
 		i++;
 	}
 
-	nums = data.size();
-	dims = data.front().fv.size();
+	nums = (int)data.size();
+	dims = (int)data.front().fv.size();
 	return true;
 }
 
@@ -60,20 +60,22 @@ bool TrainingData::write_data(string filename)
 	}
 		
 
-	nums = data.size();
-	dims = data.front().fv.size();
+	nums = (int)data.size();
+	dims = (int)data.front().fv.size();
 
-	for (int i = 0; i < data.size(); i++)
+	for (int i = 0; i < (int)data.size(); i++)
 	{
 		fout << data[i].label;
 
-		for (int j = 0; j < data[i].fv.size(); j++)
+		for (int j = 0; j < (int)data[i].fv.size(); j++)
 		{
 			fout << " " << data[i].fv[j];
 		}
 
 		fout << endl;
 	}
+
+	return true;
 }
 //==================================================
 //================= DecisionStump ==================
@@ -109,8 +111,8 @@ void DecisionStump::set_para(const vector<double> para)
 		return;
 	}
 
-	dim = para[0];
-	dir = para[1];
+	dim = (int)para[0];
+	dir = (int)para[1];
 	thresh = para[2];
 }
 
@@ -151,7 +153,7 @@ void RealDecisionStump::set_para(const vector<double> para)
 		return;
 	}
 
-	dim = para[0];
+	dim = (int)para[0];
 	thresh = para[1];
 	cp = para[2];
 	cn = para[3];
@@ -442,6 +444,8 @@ bool AdaBoost::load_classifier(string filename)
 		bc->set_para(para);
 		strong_classifier.push_back(bc);
 	}
+
+	return true;
 }
 
 bool AdaBoost::write_classifier(string filename)
@@ -472,6 +476,8 @@ bool AdaBoost::write_classifier(string filename)
 		}
 		fout << endl;
 	}
+
+	return true;
 }
 
 
@@ -496,7 +502,7 @@ CascadeBoost::CascadeBoost(string filename)
 CascadeBoost::CascadeBoost(int boost, int base, double _Ftarget, double _f, double _d) : boost_type(boost), base_type(base), Ftarget(_Ftarget), f(_f), d(_d)  {}
 
 void CascadeBoost::set_num_iter(int _iter) { ; }
-int CascadeBoost::get_num_iter() { return classifier.size(); }
+int CascadeBoost::get_num_iter() { return (int)classifier.size(); }
 
 double CascadeBoost::predict(vector<double> fv)
 {
@@ -597,7 +603,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 		double F_prev = Fi;
 		double D_prev = Di;
 		num_of_iter.push_back(ni);
-		thresh.push_back(Ti);
+		thresh.push_back((int)Ti);
 
 		std::cout << "Layer " << i << "    pos=" << pos << " neg=" << neg << endl;
 		while (Fi > f * F_prev && Fi > Ftarget)
@@ -621,7 +627,7 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 			do
 			{
 				Ti -= 0.5;
-				thresh.back() = Ti;
+				thresh.back() = (int)Ti;
 				int tp = 0;
 				int fp = 0;
 
@@ -666,8 +672,8 @@ void CascadeBoost::train_classifier(TrainingData &td, string outfile)
 			}
 			
 			td = td_tmp;
-			td.set_num(td.data.size());
-			td.set_dim(td.data[0].fv.size());
+			td.set_num((int)td.data.size());
+			td.set_dim((int)td.data[0].fv.size());
 		}
 	}
 end:
@@ -897,7 +903,7 @@ bool CascadeBoost::load_classifier(string filename)
 		{
 			fin >> buffer;
 			try {
-				num_of_iter.push_back(stod(buffer));
+				num_of_iter.push_back((int)stod(buffer));
 			} 
 			catch (std::invalid_argument){
 				break;
@@ -910,7 +916,7 @@ bool CascadeBoost::load_classifier(string filename)
 		for (int j = 0; j < num_of_iter.size(); j++)
 		{
 			fin >> buffer;
-			thresh.push_back(stod(buffer));
+			thresh.push_back((int)stod(buffer));
 		}
 			
 	}
@@ -940,6 +946,8 @@ bool CascadeBoost::load_classifier(string filename)
 		bc->set_para(para);
 		classifier.push_back(bc);
 	}
+
+	return true;
 }
 
 
@@ -980,6 +988,8 @@ bool CascadeBoost::write_classifier(string filename)
 		}
 		fout << endl;
 	}
+
+	return true;
 }
 
 

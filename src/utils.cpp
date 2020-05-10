@@ -57,10 +57,18 @@ int image_mode(ERFilter* er_filter, char filename[])
 int video_mode(ERFilter* er_filter, char filename[])
 {
 	VideoCapture cap;
+	int cap_api;
 	if (filename != nullptr)
 		cap = VideoCapture(filename);
 	else
-		cap = VideoCapture(0);
+	{
+#if defined(_WIN32)
+		cap_api = cv::CAP_DSHOW;
+#else
+		cap_api = cv::CAP_V4L2;
+#endif
+		cap = VideoCapture(0, cap_api);
+	}
 
 	if (!cap.isOpened())
 	{
@@ -238,7 +246,7 @@ bool load_challenge2_test_file(Mat &src, int n)
 		std::cout << n << "\t" << src.rows << "," << src.cols << "\tResize the image" << endl;
 		double resize_factor = (src.rows > MAX_HEIGHT) ? (double)MAX_HEIGHT / src.rows : (double)MAX_WIDTH / src.cols;
 
-		resize(src, src, Size(src.cols*resize_factor, src.rows*resize_factor));
+		resize(src, src, Size((int)(src.cols*resize_factor), (int)(src.rows*resize_factor)));
 		return true;
 	}
 
@@ -263,7 +271,7 @@ bool load_challenge2_training_file(Mat &src, int n)
 		std::cout << n << "\t" << src.rows << "," << src.cols << "\tResize the image" << endl;
 		double resize_factor = (src.rows > MAX_HEIGHT) ? (double)MAX_HEIGHT / src.rows : (double)MAX_WIDTH / src.cols;
 
-		resize(src, src, Size(src.cols*resize_factor, src.rows*resize_factor));
+		resize(src, src, Size((int)(src.cols*resize_factor), (int)(src.rows*resize_factor)));
 		return true;
 	}
 
@@ -694,7 +702,7 @@ void draw_multiple_channel(string img_name)
 void output_MSER_time(string img_name)
 {
 	fstream fout = fstream("time.txt", fstream::out);
-	ERFilter *erFilter = new ERFilter(1, 100, 1.0E7, NMS_STABILITY_T, NMS_OVERLAP_COEF);
+	ERFilter *erFilter = new ERFilter(1, 100, (int)1.0E7, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 	Mat input = imread(img_name, IMREAD_GRAYSCALE);
 	double coef = 0.181;
 	Mat tmp;
@@ -816,10 +824,10 @@ vector<Vec4i> load_gt(int n)
 		int x2 = stoi(data[i + 2]);
 		int y2 = stoi(data[i + 3]);
 
-		x1 *= resize_factor;
-		y1 *= resize_factor;
-		x2 *= resize_factor;
-		y2 *= resize_factor;
+		x1 = (int)(x1 * resize_factor);
+		y1 = (int)(y1 * resize_factor);
+		x2 = (int)(x2 * resize_factor);
+		y2 = (int)(y2 * resize_factor);
 
 		bbox.push_back(Rect(Point(x1, y1), Point(x2, y2)));
 	}
@@ -887,7 +895,7 @@ Vec6d calc_detection_rate(int n, vector<Text> &text)
 	double precision = (!text.empty()) ? tp / text.size() : 0;
 	double harmonic_mean = (precision != 0) ? (recall*precision) * 2 / (recall + precision) : 0;
 
-	return Vec6d(tp, detected.size(), text.size(), recall, precision, harmonic_mean);
+	return Vec6d(tp, (double)detected.size(), (double)text.size(), recall, precision, harmonic_mean);
 }
 
 
@@ -950,7 +958,7 @@ void calc_recall_rate()
 		{
 			istringstream iss(line);
 			
-			int d0, d1, d2, d3, d4, d5, d6, d7, d8, d9;
+			int d0, d1, d2, d3, d4, d5, d6, d7, d8;
 			if (!(iss >> d0 >> d1 >> d2 >> d3 >> d4 >> d5 >> d6 >> d7 >> d8))
 			{
 				// encounter a blank line
@@ -1042,7 +1050,7 @@ void calc_recall_rate()
 		{
 			recall_vec[i] += recall_count[i] / (double)gt_box.size();
 			precision_vec[i] += match_count[i] / (double)flat[i].size();
-			candidate_vec[i] += flat[i].size();
+			candidate_vec[i] += (int)flat[i].size();
 		}
 	}
 
@@ -1256,8 +1264,8 @@ void calc_video_result()
 	int fn = 0;
 	for (int i = 0; i < gt.size(); i++)
 	{
-		gt_count += gt[i].size() - 1;
-		det_count += det[i].size() - 1;
+		gt_count += (int)gt[i].size() - 1;
+		det_count += (int)det[i].size() - 1;
 
 		vector<bool> gt_is_match(gt[i].size(), false);
 		vector<bool> det_is_match(det[i].size(), false);
@@ -1413,7 +1421,7 @@ static void write_lbp_hist(fstream &fout, vector<double> &spacial_hist, int dire
 
 void get_lbp_data()
 {
-	char *data_filename = "training/detection_training_data.txt";
+	char data_filename[] = "training/detection_training_data.txt";
 	fstream fout = fstream(data_filename, fstream::out);
 	ERFilter erFilter(THRESHOLD_STEP, MIN_ER_AREA, MAX_ER_AREA, NMS_STABILITY_T, NMS_OVERLAP_COEF);
 
@@ -1555,8 +1563,8 @@ int levenshtein_distance(string str1, string str2)
 
 	// cost matrix
 	// row -> str1 & col -> str2
-	int size1 = str1.size();
-	int size2 = str2.size();
+	int size1 = (int)str1.size();
+	int size2 = (int)str2.size();
 	vector<vector<int>> cost(size1, vector<int>(size2));
 	int i, j;
 

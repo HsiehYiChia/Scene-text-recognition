@@ -53,7 +53,7 @@ double OCR::lbp_run(Mat &src, int thresh, double slope)
 	node[j].index = -1;
 	
 	double *pv = new double[svm_get_nr_class(model)];
-	const int label = svm_predict_probability(model, node, pv);
+	const int label = (int)svm_predict_probability(model, node, pv);
 	const double prob = pv[label];
 	cout << table[label] << " Probability = " << pv[label] << endl;
 	
@@ -89,7 +89,7 @@ double OCR::chain_run(Mat src, int thresh, double slope)
 	
 	//! classify
 	double *pv = new double[svm_get_nr_class(model)];
-	const int label = svm_predict_probability(model, fv, pv);
+	const int label = (int)svm_predict_probability(model, fv, pv);
 	const double prob = pv[label];
 
 	//cout << table[label] << " Probability = " << pv[label] << endl;
@@ -253,8 +253,8 @@ void OCR::extract_feature(Mat &src, svm_node *fv)
 // Don't use this function any more
 void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 {
-	const int x0 = (src.cols - 1) / 2.0;
-	const int y0 = (src.rows - 1) / 2.0;
+	const int x0 = (int)((src.cols - 1) / 2.0);
+	const int y0 = (int)((src.rows - 1) / 2.0);
 
 	const int x1 = 0 - x0;
 	const int y1 = 0 - y0;
@@ -265,14 +265,14 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 	const int x4 = 0 - x0;
 	const int y4 = (src.rows - 1) - y0;
 
-	const int new_x1 = round(x1 * cos(rad) - y1 * sin(rad));
-	const int new_y1 = round(x1 * sin(rad) + y1 * cos(rad));
-	const int new_x2 = round(x2 * cos(rad) - y2 * sin(rad));
-	const int new_y2 = round(x2 * sin(rad) + y2 * cos(rad));
-	const int new_x3 = round(x3 * cos(rad) - y3 * sin(rad));
-	const int new_y3 = round(x3 * sin(rad) + y3 * cos(rad));
-	const int new_x4 = round(x4 * cos(rad) - y4 * sin(rad));
-	const int new_y4 = round(x4 * sin(rad) + y4 * cos(rad));
+	const int new_x1 = (int)round(x1 * cos(rad) - y1 * sin(rad));
+	const int new_y1 = (int)round(x1 * sin(rad) + y1 * cos(rad));
+	const int new_x2 = (int)round(x2 * cos(rad) - y2 * sin(rad));
+	const int new_y2 = (int)round(x2 * sin(rad) + y2 * cos(rad));
+	const int new_x3 = (int)round(x3 * cos(rad) - y3 * sin(rad));
+	const int new_y3 = (int)round(x3 * sin(rad) + y3 * cos(rad));
+	const int new_x4 = (int)round(x4 * cos(rad) - y4 * sin(rad));
+	const int new_y4 = (int)round(x4 * sin(rad) + y4 * cos(rad));
 
 	const int max_x = max(new_x1, max(new_x2, max(new_x3, new_x4)));
 	const int max_y = max(new_y1, max(new_y2, max(new_y3, new_y4)));
@@ -282,7 +282,7 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 
 	if (crop)
 	{
-		int crop_height = (new_x2 - new_x1) * tan(rad) * 0.5;
+		int crop_height = (int)((new_x2 - new_x1) * tan(rad) * 0.5);
 		if (max_y - min_y + 1 - 2 * crop_height <= 0)
 		{
 			rotate_mat(src, dst, rad, false);
@@ -297,7 +297,7 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 			{
 				double new_j = cos(rad) *j - sin(rad)*(i-crop_height) + x0;
 				double new_i = sin(rad) *j + cos(rad)*(i - crop_height) + y0;
-				uchar *sptr = src.ptr(new_i, new_j);
+				uchar *sptr = src.ptr((int)new_i, (int)new_j);
 
 				if (new_i > 0 && new_j > 0 && new_i < src.rows - 1 && new_j < src.cols - 1 &&
 					i >(min_y + crop_height) && i < (max_y - crop_height))
@@ -313,7 +313,7 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 						uchar B = sptr[1];
 						uchar C = sptr[src.cols];
 						uchar D = sptr[src.cols + 1];
-						tptr[j - min_x] = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
+						tptr[j - min_x] = (uchar)round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
 					}
 				}
 			}
@@ -332,7 +332,7 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 			{
 				double new_j = cos(rad) *j - sin(rad)*i + x0;
 				double new_i = sin(rad) *j + cos(rad)*i + y0;
-				uchar *sptr = src.ptr(new_i, new_j);
+				uchar *sptr = src.ptr((int)new_i, (int)new_j);
 
 				if (new_i > 0 && new_j > 0 && new_i < src.rows - 1 && new_j < src.cols - 1)
 				{
@@ -347,7 +347,7 @@ void OCR::rotate_mat(Mat &src, Mat &dst, double rad, bool crop)
 						uchar B = sptr[1];
 						uchar C = sptr[src.cols];
 						uchar D = sptr[src.cols + 1];
-						tptr[j - min_x] = round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
+						tptr[j - min_x] = (uchar)round((1 - alpha)*(1 - beta)*A + (1 - alpha)*beta*B + alpha*(1 - beta)*C + alpha*beta*D);
 					}
 				}
 			}
@@ -374,7 +374,7 @@ void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool cro
 	Mat rot = getRotationMatrix2D(center, angle, scale);
 
 	//determine the bounding box
-	Rect bbox = RotatedRect(center, Size(src.cols*scale, src.rows*scale), angle).boundingRect();
+	Rect bbox = RotatedRect(center, Size((int)(src.cols*scale), (int)(src.rows*scale)), (float)angle).boundingRect();
 
 	// adjust transformation matrix
 	rot.at<double>(0, 2) += bbox.width / 2.0 - center.x;
@@ -384,7 +384,7 @@ void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool cro
 	{
 		const double crop_L = bbox.width * tan(rad) - 1;
 		rot.at<double>(1, 2) -= crop_L;
-		bbox.height -= 2 * crop_L;
+		bbox.height -= (int)(2 * crop_L);
 	}
 
 	warpAffine(src, dst, rot, bbox.size(), 1, 0, Scalar(255));
@@ -394,7 +394,7 @@ void OCR::geometric_normalization(Mat &src, Mat &dst, double rad, const bool cro
 void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 {
 	double R1 = (src.cols > src.rows) ? (double)src.rows / src.cols : (double)src.cols / src.rows;
-	Size size_R2 = (src.cols > src.rows) ? Size(L, L * pow(R1, para)) : Size(L * pow(R1, para), L);
+	Size size_R2 = (src.cols > src.rows) ? Size(L, (int)(L * pow(R1, para))) : Size((int)(L * pow(R1, para)), L);
 
 
 	Mat tmp;
@@ -402,7 +402,7 @@ void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 	dst = Mat::zeros(L, L, CV_8U);
 	if (tmp.cols > tmp.rows)
 	{
-		int offset = round((L - tmp.rows) / 2);
+		int offset = (int)round((L - tmp.rows) / 2);
 		for (int i = 0; i < tmp.rows; i++)
 		{
 			uchar* dptr = dst.ptr(i+offset);
@@ -416,7 +416,7 @@ void OCR::ARAN(Mat &src, Mat &dst, const int L, const double para)
 
 	else
 	{
-		int offset = round((L - tmp.cols) / 2);
+		int offset = (int)round((L - tmp.cols) / 2);
 		for (int i = 0; i < tmp.rows; i++)
 		{
 			uchar* dptr = dst.ptr(i, offset);
@@ -587,7 +587,7 @@ void OCR::try_add_space(Text &text)
 	double median_x_dist = dist[dist.size()/2];
 
 	const double dist_thresh = 2.5;
-	for (int i = text.ers.size() - 2; i >= 0; i--)
+	for (int i = (int)text.ers.size() - 2; i >= 0; i--)
 	{
 		double d = text.ers[i + 1]->bound.x - text.ers[i]->bound.br().x;
 		if (d > median_x_dist * dist_thresh && d > 0)
@@ -617,6 +617,8 @@ int OCR::chain_code_direction(Point p1, Point p2)
 		return 6;
 	else if (p1.x < p2.x && p1.y > p2.y)
 		return 7;
+	else
+		return -1;
 }
 
 int OCR::index_mapping(char c)
