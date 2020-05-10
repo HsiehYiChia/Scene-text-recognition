@@ -7,40 +7,66 @@ This algorithm is based on [several papers](#references), and was implemented in
 Enviroment and dependency
 -------- 
 1. [OpenCV](http://opencv.org/) 3.1 or above
-2. [CMake](https://cmake.org/) 2.8 or above
-3. Visual Studio 2017 Community or above (windows only)
+2. [CMake](https://cmake.org/) 3.10 or above
+3. Visual Studio 2017 Community or above (Windows-only)
 
 
 How to build?
 --------
 ### Windows
-1. Install opencv, put `opencv/` to `C:\`
-2. add `C:\opencv\build\x64\vc14\bin` to [System Variable Path](https://www.computerhope.com/issues/ch000549.htm)
-3. Use `cmake` to create Visual Studio Project
-```sh
-cd Scene-text-recognition
-mkdir build
-cd build
-cmake -G "Visual Studio 15 2017 Win64" ..
-```
-4. Compile via `scene_text_recognition.sln`, you will find executable in `build/Release/`
 
+1.  Install OpenCV; put the `opencv` directory into `C:\tools`
+    -   You can install it manually from its Github repo, **or**
+    -   You can install it via Chocolatey: `choco install opencv`, **or**
+    -   If you already have OpenCV, edit `CMakeLists.txt` and change `WIN_OPENCV_CONFIG_PATH` to where you have it
+2.  Use CMake to generate the project files
+    ```bat
+    cd Scene-text-recognition
+    mkdir build-win
+    cd build-win
+    cmake .. -G "Visual Studio 15 2017 Win64"
+    ```
+3.  Use CMake to build the project
+    ```bat
+    cmake --build . --config Release
+    ```
+4.  Find the binaries in the root directory
+    ```bat
+    cd ..
+    dir | findstr scene
+    ```
+5.  To execute the `scene_text_recognition.exe` binary, use its wrapper script; for example:
+    ```bat
+    .\scene_text_recognition.bat -i res\ICDAR2015_test\img_6.jpg
+    ```
 
 ### Linux 
-1. Install opencv, refer to [OpenCV Installation in Linux](https://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html)
-2. Use `cmake` to create Makefile, and `make`
-```sh
-cd Scene-text-recognition
-mkdir build
-cd build
-cmake ..
-make
-```
 
+1.  Install OpenCV; refer to [OpenCV Installation in Linux](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
+2.  Use CMake to generate the project files
+    ```sh
+    cd Scene-text-recognition
+    mkdir build-linux
+    cd build-linux
+    cmake ..
+    ```
+3.  Use CMake to build the project
+    ```sh
+    cmake --build .
+    ```
+4.  Find the binaries in the root directory
+    ```sh
+    cd ..
+    ls | grep scene
+    ```
+5.  To execute the binaries, run them as-is; for example:
+    ```sh
+    ./scene_text_recognition -i res/ICDAR2015_test/img_6.jpg
+    ```
 
 Usage
 ---------
-Move execuatble file `scene_text_recognition` to project root directory(`classifier/`, `dictionary/` must be present)
+The executable file `scene_text_recognition` must ultimately exist in the project root directory (i.e., next to `classifier/`, `dictionary/` etc.)
 ```
 ./scene_text_recognition -v:            take default webcam as input  
 ./scene_text_recognition -v [video]:    take a video as input  

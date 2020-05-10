@@ -1,12 +1,13 @@
+build*/*
 x64
 Debug
 Release
 build
 video_result
 training
-scene_text_recognition.exe
+scene_text_recognition.*
 scene_text_recognition
-svm-train.exe
+svm-train.*
 svm-train
 .ipynb_checkpoints
 .vs
